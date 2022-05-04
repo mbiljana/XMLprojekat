@@ -1,0 +1,1 @@
+--paket u kom se nalaze mikroservisi aplikacije--
