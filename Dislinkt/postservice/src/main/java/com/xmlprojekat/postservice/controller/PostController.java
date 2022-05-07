@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xmlprojekat.postservice.model.Comment;
 import com.xmlprojekat.postservice.model.Post;
-import com.xmlprojekat.postservice.model.User;
+import com.xmlprojekat.postservice.model.*;
 import com.xmlprojekat.postservice.dto.*;
+import com.xmlprojekat.postservice.service.CommentService;
 import com.xmlprojekat.postservice.service.PostService;
 import com.xmlprojekat.postservice.service.UserService;
 
@@ -28,6 +29,9 @@ public class PostController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	//formiranje novog posta
 	@RequestMapping(value="api/posts",method = RequestMethod.POST,
@@ -63,6 +67,16 @@ public class PostController {
 		post.setNumOfLikes(post.getNumOfLikes()+1);
 		Post savedPost=this.postService.save(post);
 		return new ResponseEntity<>(savedPost,HttpStatus.OK);
+	}
+	@RequestMapping(value="api/posts/comment",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Post> commentPost(@RequestBody NewCommentDTO commentDTO){
+		Comment newComment=new Comment(commentDTO.getId(), commentDTO.getText());
+		Comment savedComment=this.commentService.save(newComment);
+		Post post=this.postService.getOne(commentDTO.getIdPost());
+		post.getComments().add(savedComment);
+		Post savedPost=this.postService.save(post);
+		return new ResponseEntity<>(savedPost,HttpStatus.CREATED);
 	}
 
 }
