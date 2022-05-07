@@ -33,7 +33,7 @@ public class PostController {
 	@RequestMapping(value="api/posts",method = RequestMethod.POST,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Post> save(@RequestBody PostSaveDTO postDTO){
-		Post newPost=new Post(postDTO.getText(), postDTO.getImageLink(), postDTO.getLinks());
+		Post newPost=new Post(postDTO.getText(), postDTO.getImageLink(), postDTO.getLinks(),postDTO.getFollowersCanSee());
 		Post savedPost=this.postService.save(newPost);
 		User user=this.userService.getOne(postDTO.getUserId());
 		user.getPosts().add(savedPost);
