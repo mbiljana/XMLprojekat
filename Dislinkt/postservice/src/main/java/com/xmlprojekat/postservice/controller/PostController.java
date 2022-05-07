@@ -48,6 +48,21 @@ public class PostController {
 		posts=this.userService.findAllByUser(id);
 		return new ResponseEntity<>(posts,HttpStatus.OK);
 	}
-	
+	@RequestMapping(value="api/posts/{id}/dislike", method = RequestMethod.GET,produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<Post> dislikePost (@PathVariable Long id){
+		Post post=this.postService.getOne(id);
+		post.setNumOfDislikes(post.getNumOfDislikes()+1);
+		Post savedPost=this.postService.save(post);
+		return new ResponseEntity<>(savedPost,HttpStatus.OK);
+	}
+	@RequestMapping(value="api/posts/{id}/like", method = RequestMethod.GET,produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<Post> likePost (@PathVariable Long id){
+		Post post=this.postService.getOne(id);
+		post.setNumOfLikes(post.getNumOfLikes()+1);
+		Post savedPost=this.postService.save(post);
+		return new ResponseEntity<>(savedPost,HttpStatus.OK);
+	}
 
 }
