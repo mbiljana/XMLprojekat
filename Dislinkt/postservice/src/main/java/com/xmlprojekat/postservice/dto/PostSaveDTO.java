@@ -2,12 +2,24 @@ package com.xmlprojekat.postservice.dto;
 
 import java.util.List;
 
+import com.xmlprojekat.postservice.model.User;
+
 public class PostSaveDTO {
 	private Long id;
 	private Long userId; 
 	private String text;
 	private String imageLink;
 	private List<String> links;
+	private List<User> followersCanSee;
+	
+	public List<User> getFollowersCanSee() {
+		return followersCanSee;
+	}
+
+	public void setFollowersCanSee(List<User> followersCanSee) {
+		this.followersCanSee = followersCanSee;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -41,13 +53,14 @@ public class PostSaveDTO {
 	public void setLinks(List<String> links) {
 		this.links = links;
 	}
-	public PostSaveDTO(Long id,Long userId, String text, String imageLink, List<String> links) {
+	public PostSaveDTO(Long id,Long userId, String text, String imageLink, List<String> links,List<User> followersCanSee) {
 		super();
 		this.id = id;
 		this.userId=userId;
 		this.text = text;
 		this.imageLink = imageLink;
 		this.links = links;
+		this.followersCanSee=followersCanSee;
 	}
 	public PostSaveDTO() {}
 	

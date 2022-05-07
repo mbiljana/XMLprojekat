@@ -38,11 +38,12 @@ public class Post {
 		this.comments = comments;
 		this.followersCanSee = followersCanSee;
 	}
-	public Post(String text, String imageLink, List<String> links) {
+	public Post(String text, String imageLink, List<String> links,List<User> followersCanSee) {
 		super();
 		this.text = text;
 		this.imageLink = imageLink;
 		this.links = links;
+		this.followersCanSee=followersCanSee;
 	}
 	//getters and setters
 	public Long getId() {
