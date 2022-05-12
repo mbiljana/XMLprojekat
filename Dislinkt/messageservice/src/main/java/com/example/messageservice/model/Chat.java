@@ -15,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table
 @Setter
 @Getter
 public class Chat implements Serializable {
@@ -24,6 +25,6 @@ public class Chat implements Serializable {
     @OneToMany(mappedBy = "messages", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Message> allMessages = new ArrayList<>();
     @ManyToMany(mappedBy = "chats")
-    public Set<Profile> profiles = new HashSet<>();
+    public List<Profile> profilesInChat = new ArrayList<>();
 
 }

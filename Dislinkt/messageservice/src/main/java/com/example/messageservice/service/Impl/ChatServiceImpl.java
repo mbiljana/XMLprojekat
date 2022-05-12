@@ -45,7 +45,8 @@ public class ChatServiceImpl implements ChatService {
         if (chat.getId() == null){
             throw new Exception("Chat doesn't exist");
         }
-        updateChat.setProfiles(chat.getProfiles());
+
+        updateChat.setProfilesInChat(chat.getProfilesInChat());
         updateChat.setAllMessages(chat.getAllMessages());
         Chat updated = this.chatRepository.save(updateChat);
 

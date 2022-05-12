@@ -30,6 +30,14 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    public Profile findByUsername(String username) {
+        Profile profile = new Profile();
+        profile = this.profileRepository.findByUsername(username);
+
+        return profile;
+    }
+
+    @Override
     public Profile create(Profile profile) throws Exception {
         if(profile.getId() != null){
             throw  new Exception("ID must be null");

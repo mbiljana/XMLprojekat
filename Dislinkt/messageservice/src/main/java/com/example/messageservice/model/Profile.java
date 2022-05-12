@@ -7,10 +7,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,10 +26,9 @@ public class Profile implements Serializable {
     public String username;
     @ManyToMany
     @JoinTable(name = "chats",
-            joinColumns = @JoinColumn(name = "profileId", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "chatId", referencedColumnName = "id"))
-    public Set<Chat> chats = new HashSet<>();
-
+            joinColumns = @JoinColumn(name = "profile_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "chat_id", referencedColumnName = "id"))
+    public List<Chat> chats = new ArrayList<>();
 
 
 
