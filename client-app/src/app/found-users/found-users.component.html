@@ -1,0 +1,13 @@
+<div>
+  <table class="table table-striped ">
+      <thead>
+          <tr>
+              <th>First name</th><th>Last name</th><th>Profile picture</th>
+          </tr>
+      </thead>
+      <tbody >
+    <tr app-found-user *ngFor="let user of users" [user]=user >
+          </tr>
+  </tbody>
+  </table>
+</div>
