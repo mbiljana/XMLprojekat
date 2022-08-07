@@ -13,8 +13,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public void save(User user) {
-		this.userRepository.save(user);
+	public User save(User user) {
+		return this.userRepository.save(user);
 	}
 	public List<User> findByFirstNameAndLastName(User user) {
 		return this.userRepository.findByFirstNameAndLastName(user.getFirstName(),user.getLastName());

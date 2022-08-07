@@ -22,14 +22,6 @@ public class ComapnyController {
 	@Autowired
 	private CompanyService companyService;
 	
-	@RequestMapping(value="api/company/insert",method = RequestMethod.GET,produces = {
-			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<Void> insert(){
-		this.companyService.save(new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg"));
-		this.companyService.save(new Company((long)2, "symhony", "123","Symhony", "symhony@gmail.com", "83498234923", "/assets/companyPicture/company2.jpeg"));
-		this.companyService.save(new Company((long)3, "synehrone", "123","Synehrone", "synehrone@gmail.com", "83498234923", "/assets/companyPicture/company3.jpeg"));
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
 	@RequestMapping(value="api/company", method = RequestMethod.GET,
 			params = "name",
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
