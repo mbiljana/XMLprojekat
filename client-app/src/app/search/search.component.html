@@ -1,0 +1,10 @@
+<div class="jumbotron jumbotron-fluid" *ngIf="showSearchProfile">
+  <div class="container">
+    <h1 class="display-4">Dislinkt</h1>
+    <p class="lead">...perfect place to find job perfect for you! :)</p>
+  </div>
+  <app-search-profile *ngIf="showSearchProfile" (UserSearched)="searchUsers($event)" (CompanySearched)="searchCompany($event)"></app-search-profile>
+  <app-found-users *ngIf="showFoundUsers" [users]="foundUsers"></app-found-users>
+  <app-found-company *ngIf="showFoundCompany" [company]="foundCompany" (ViewProfile)="viewProfile($event)"></app-found-company>
+</div>
+<app-company-profile *ngIf="showCompanyProfile" [company]="foundCompany"></app-company-profile>
