@@ -7,4 +7,4 @@
   <app-found-users *ngIf="showFoundUsers" [users]="foundUsers"></app-found-users>
   <app-found-company *ngIf="showFoundCompany" [company]="foundCompany" (ViewProfile)="viewProfile($event)"></app-found-company>
 </div>
-<app-company-profile  [company]="foundCompany"></app-company-profile>
+<app-company-profile *ngIf="showCompanyProfile"  [company]="foundCompany"></app-company-profile>

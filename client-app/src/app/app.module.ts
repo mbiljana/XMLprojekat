@@ -14,6 +14,8 @@ import { FoundUserComponent } from './found-user/found-user.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { FoundCompanyComponent } from './found-company/found-company.component';
 import { SearchComponent } from './search/search.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostItemComponent } from './post-item/post-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SearchComponent } from './search/search.component';
     FoundUserComponent,
     CompanyProfileComponent,
     FoundCompanyComponent,
-    SearchComponent
+    SearchComponent,
+    PostListComponent,
+    PostItemComponent
   ],
   imports: [
     BrowserModule,

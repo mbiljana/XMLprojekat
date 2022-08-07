@@ -59,7 +59,7 @@ public class InitialData {
 		Post p2=new Post((long)2, "Senior C# programer", "We are looking for senior C# developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",c2);
 		postService.save(p2);
 		
-		Post p3=new Post((long)3, "Senior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post3.jpeg",c1);
+		Post p3=new Post((long)3, "Senior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",c1);
 		postService.save(p3);
 		
 		Post p4=new Post((long)4, "Senior C++ programer", "Hello! We are looking for senior C++ developer, with very good experiance in programing and also communication skills","/assets/postPicture/post4.jpeg",c1);
