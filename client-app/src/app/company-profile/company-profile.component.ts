@@ -1,3 +1,5 @@
+import { PostService } from './../../service/post.service';
+import { Post } from './../model/post';
 import { Company } from './../model/company';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -9,11 +11,22 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CompanyProfileComponent implements OnInit {
   @Input()
   company:Company;
-  
 
-  constructor() { }
+  showPost=false;
+
+  posts:Post[];
+  constructor(private postService:PostService) {
+    this.posts=[];
+    console.log(this.company)
+   }
 
   ngOnInit(): void {
+  }
+
+  public showPosts(){
+    this.postService.searchPostByCompany(this.company.id)
+    .subscribe(res=>this.posts=res);
+    this.showPost=true;
   }
 
 }

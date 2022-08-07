@@ -16,7 +16,7 @@ public class CompanyService {
 	public Company findByName(String name) {
 		return this.companyRepository.findByName(name);
 	}
-	public void save(Company company) {
-		this.companyRepository.save(company);
+	public Company save(Company company) {
+		return this.companyRepository.save(company);
 	}
 }

@@ -1,5 +1,7 @@
 package com.example.Profile.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,13 +14,13 @@ import lombok.Setter;
 public class Company {
 	@Id
 	private Long id;
-	
 	private String username;
 	private String password;
 	private String name;
 	private String email;
 	private String mobile;
 	private String profilePicture;
+	private List<Post> posts;
 	
 	public Company() {}
 

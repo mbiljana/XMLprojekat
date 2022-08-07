@@ -12,6 +12,11 @@ import com.example.Profile.repository.UserRepository;
 @SpringBootApplication
 @EnableMongoRepositories
 public class ProfileApplication {
+	
+	@Autowired
+	InitialData initialData;
+
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProfileApplication.class, args);
 	}
