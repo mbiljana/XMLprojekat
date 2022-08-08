@@ -1,6 +1,6 @@
 
 export interface CompanyInterface {
-  id?:number;
+  id:number;
   name: string;
   username: string;
   password: string;
@@ -10,7 +10,7 @@ export interface CompanyInterface {
 
 }
 export class Company implements CompanyInterface {
-  id?:number;
+  id:number;
   name: string;
   username: string;
   password: string;
