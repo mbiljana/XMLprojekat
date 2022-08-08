@@ -1,0 +1,68 @@
+.modal-content {
+  padding: 20px;
+  background-color: #AEC2D5;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 690px;
+  width: 400px;
+}
+
+.form-group input {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+  font-size: 19px;
+  width: 300px;
+}
+.form-group select {
+  margin-top: 10px;
+  margin-left: 30px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+  font-size: 19px;
+  width: 300px;
+}
+
+.form-group textarea {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 19px;
+  width: 300px;
+}
+
+label {
+  font-size: 20px;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+h5 {
+  margin-bottom: 0px;
+}
+
+.error {
+  color: red;
+}
+
+.alert alert-success {
+  width: 50px;
+}
+
+.role {
+  margin: auto;
+  width: 300px;
+  text-align: left;
+}

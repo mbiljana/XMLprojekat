@@ -1,0 +1,63 @@
+<div class="modal-dialog text-center">
+  <div class="modal-content" *ngIf="showForm">
+    <h2 class="text-center">Become our member !</h2>
+    <form id="loginform" name="loginform">
+      <div class="form-group">
+        <label>First name</label>
+        <input id="fistName" name="fistName" type="text" class="from-control"
+          [(ngModel)]="newUser.firstName">
+      </div>
+      <label>Last name</label>
+      <div class="form-group">
+        <input id="lastName" name="lastName" type="text" class="from-control"
+          [(ngModel)]="newUser.lastName">
+      </div>
+      <label>Email</label>
+      <div class="form-group">
+        <input id="email" name="email" type="text" class="from-control" [(ngModel)]="newUser.email">
+      </div>
+      <div class="form-group">
+        <label>Mobile</label>
+        <input id="mobile" name="mobile" type="text" class="from-control"
+          [(ngModel)]="newUser.mobile">
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input id="username" name="username" type="text" class="from-control"
+          [(ngModel)]="newUser.username">
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select class="form-control" [(ngModel)]="newUser.gender" name="gender" id="gender">
+          <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+        </select><br/>
+      </div>
+      <label>Password</label>
+      <div class="form-group">
+        <input id="password" name="password" type="password" class="from-control" placeholder="password"
+          [(ngModel)]="newUser.password">
+      </div>
+      <div class="form-group">
+        <input id="confirmPassword" name="confirmPassword" type="password" class="from-control"
+          placeholder=" confirm password" [(ngModel)]="confirmedPassword">
+      </div>
+      <p class="error">{{ error }}</p>
+      <div>
+        <button type="submit" class="btn btn-primary" (click)="addNewUser()">Register</button><br>
+      </div>
+
+    </form>
+  </div>
+</div><!--
+<div class="alert alert-success" role="alert" *ngIf="registrated">
+  <h1 class="alert-heading">Well done!</h1>
+  <h2>Aww yeah, you succeeded. You should go to your email account and check your message.</h2>
+  <hr>
+  <p class="mb-0">In message you will receive link for activation you account</p>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="registratedOwner">
+  <h1 class="alert-heading">Well done!</h1>
+  <h2> Your registration request has been sent to admin. It is in process...</h2>
+  <hr>
+  <p class="mb-0">Check your email!</p>
+</div>-->
