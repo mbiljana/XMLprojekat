@@ -1,5 +1,6 @@
 import { User } from './../model/user';
 import { Component, OnInit } from '@angular/core';
+import { ProfileType } from '../model/profileType';
 
 @Component({
   selector: 'app-register-page',
@@ -21,7 +22,8 @@ export class RegisterPageComponent implements OnInit {
     email: '',
     mobile: '',
     profilePicture:'',
-    gender:''
+    gender:'',
+    profileType:ProfileType.Private
   });
   genders=['female','male'];
   confirmedPassword: string;

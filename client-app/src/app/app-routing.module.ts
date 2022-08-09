@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SearchComponent } from './search/search.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   { path: '', component: MainPageComponent},
   { path: 'search', component: SearchComponent},
   { path:'register',component:RegisterPageComponent},
-  { path:'sign-in',component:SignInPageComponent}
+  { path:'sign-in',component:SignInPageComponent},
+  { path:'search/profile/:id',component:UserProfileComponent}
 ];
 
 @NgModule({
