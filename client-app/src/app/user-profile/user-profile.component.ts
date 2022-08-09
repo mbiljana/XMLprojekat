@@ -1,8 +1,10 @@
+import { ProgramLanguage } from './../model/programLanguage';
 import { ProfileService } from './../../service/profile.service';
 import { ProfileType } from './../model/profileType';
 import { User } from 'src/app/model/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Profile } from '../model/profile';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,8 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  @Input()
+
   user:User;
+
+  profile:Profile;
+
 
   id:number;
   compare=ProfileType.Private;
@@ -30,13 +35,32 @@ export class UserProfileComponent implements OnInit {
       gender:'',
       profileType:ProfileType.Private
     });
+    this.profile=new Profile({
+      user:new User({
+        firstName: '',
+        lastName: '',
+        username: '',
+        password: '',
+        email: '',
+        mobile: '',
+        gender:'',
+        profileType:ProfileType.Private
+      }),
+      proramLanguages:[],
+      exCompanies:[],
+      languages:[],
+      education:'',
+      additionInformation:'',
+      profileType:ProfileType.Private
+    });
   }
 
   ngOnInit(): void {
-    this.loadClient();
-
+    this.loadProfile();
   }
+
   loadClient(){
+    console.log(this.id);
     this.id = this.route.snapshot.params['id'];
     this.profileService.getUser(this.id)
       .subscribe(res =>{
@@ -49,6 +73,11 @@ export class UserProfileComponent implements OnInit {
         }
       }
       )
+  }
+  loadProfile(){
+    this.id = this.route.snapshot.params['id'];
+    this.profileService.getProfile(this.id)
+      .subscribe(res=>this.profile=res)
   }
   checkProfileType(){
     if(this.user.profileType==ProfileType.Private){
