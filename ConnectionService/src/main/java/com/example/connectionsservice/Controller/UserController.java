@@ -1,5 +1,6 @@
 package com.example.connectionsservice.Controller;
 
+import com.example.connectionsservice.Dto.FollowRequestsDTO;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,9 @@ public class UserController {
     @PutMapping(path = "/follow",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> follow(@RequestBody Map<String, String> followRequest){
+    public ResponseEntity<?> follow(@RequestBody FollowRequestsDTO fDTO){
         try{
-            return new ResponseEntity<User>(userService.follow(followRequest.get("followerId"), followRequest.get("toFollowId")), HttpStatus.OK);
+            return new ResponseEntity<User>(userService.follow(fDTO.followerId, fDTO.toFollowId), HttpStatus.OK);
         } catch (IllegalStateException e){
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
