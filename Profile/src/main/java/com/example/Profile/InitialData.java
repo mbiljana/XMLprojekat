@@ -136,7 +136,7 @@ public class InitialData {
 		exCopmanies.add("Vega IT");
 		exCopmanies.add("FSD");
 		
-		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.");
+		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.",ProfileType.PRIVATE);
 		profileService.save(pro1);
 	}
 	

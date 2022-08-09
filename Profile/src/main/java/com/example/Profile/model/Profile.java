@@ -19,9 +19,108 @@ public class Profile {
 	private List<Language> languages;
 	private String education;
 	private String additionInformation;
+	private ProfileType profileType;
 	
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+	public List<ProgramLanguage> getProramLanguages() {
+		return proramLanguages;
+	}
+
+
+
+	public void setProramLanguages(List<ProgramLanguage> proramLanguages) {
+		this.proramLanguages = proramLanguages;
+	}
+
+
+
+	public List<String> getExCompanies() {
+		return exCompanies;
+	}
+
+
+
+	public void setExCompanies(List<String> exCompanies) {
+		this.exCompanies = exCompanies;
+	}
+
+
+
+	public List<Language> getLanguages() {
+		return languages;
+	}
+
+
+
+	public void setLanguages(List<Language> languages) {
+		this.languages = languages;
+	}
+
+
+
+	public String getEducation() {
+		return education;
+	}
+
+
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+
+
+	public String getAdditionInformation() {
+		return additionInformation;
+	}
+
+
+
+	public void setAdditionInformation(String additionInformation) {
+		this.additionInformation = additionInformation;
+	}
+
+
+
+	public ProfileType getProfileType() {
+		return profileType;
+	}
+
+
+
+	public void setProfileType(ProfileType profileType) {
+		this.profileType = profileType;
+	}
+
+
+
 	public Profile(Long id, User user, List<ProgramLanguage> proramLanguages, List<String> exCompanies,
-			List<Language> languages, String education, String additionInformation) {
+			List<Language> languages, String education, String additionInformation, ProfileType profileType) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -30,7 +129,10 @@ public class Profile {
 		this.languages = languages;
 		this.education = education;
 		this.additionInformation = additionInformation;
+		this.profileType = profileType;
 	}
-	
+
+
+
 	public Profile() {}
 }
