@@ -1,5 +1,8 @@
 package com.example.Profile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +10,18 @@ import org.springframework.stereotype.Component;
 
 import com.example.Profile.model.Comment;
 import com.example.Profile.model.Company;
+import com.example.Profile.model.Language;
 import com.example.Profile.model.Post;
+import com.example.Profile.model.Profile;
+import com.example.Profile.model.ProfileType;
+import com.example.Profile.model.ProgramLanguage;
 import com.example.Profile.model.User;
 import com.example.Profile.service.CommentService;
 import com.example.Profile.service.CompanyService;
+import com.example.Profile.service.LanguageService;
 import com.example.Profile.service.PostService;
+import com.example.Profile.service.ProfileService;
+import com.example.Profile.service.ProgramLanguageService;
 import com.example.Profile.service.UserService;
 
 @Component
@@ -29,16 +39,25 @@ public class InitialData {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	LanguageService languageService;
+	
+	@Autowired
+	ProgramLanguageService programLanguageService;
+	
+	@Autowired
+	ProfileService profileService;
+	
 	@PostConstruct
 	public void init() {
 		
-		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg");
+		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE);
 		userService.save(u1);
 		
-		User u2=new User((long)2,"lana","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg");
+		User u2=new User((long)2,"lana","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC);
 		userService.save(u2);
 		
-		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg");
+		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE);
 		userService.save(u3);
 		
 		User u4=new User((long)4,"stef","123","Stefan","Stefanovic");
@@ -73,7 +92,52 @@ public class InitialData {
 		
 		Comment com3=new Comment((long)3, "Excelent job for students",p1);
 		commentService.save(com3);
+		//////////////////////////////////
+		ProgramLanguage pl1=new ProgramLanguage((long)1, "C#");
+		programLanguageService.save(pl1);
 		
+		ProgramLanguage pl2=new ProgramLanguage((long)2, "C++");
+		programLanguageService.save(pl2);
+		
+		ProgramLanguage pl3=new ProgramLanguage((long)3, "C");
+		programLanguageService.save(pl3);
+		
+		ProgramLanguage pl4=new ProgramLanguage((long)4, "Java");
+		programLanguageService.save(pl4);
+		
+		ProgramLanguage pl5=new ProgramLanguage((long)5, "Python");
+		programLanguageService.save(pl5);
+		/////////////////////////////////
+		
+		Language l1=new Language((long)1, "English");
+		languageService.save(l1);
+		
+		Language l2=new Language((long)2, "Serbian");
+		languageService.save(l2);
+		
+		Language l3=new Language((long)3, "Hungarian");
+		languageService.save(l3);
+		
+		Language l4=new Language((long)4, "Spanish");
+		languageService.save(l4);
+		
+		Language l5=new Language((long)5, "French");
+		languageService.save(l5);
+		/////////////////////////////////////////////////
+		List<ProgramLanguage> pls1=new ArrayList<>();
+		pls1.add(pl1);
+		pls1.add(pl2);
+		
+		List<Language> ls1=new ArrayList<>();
+		ls1.add(l1);
+		ls1.add(l4);
+		
+		List<String> exCopmanies=new ArrayList<>();
+		exCopmanies.add("Vega IT");
+		exCopmanies.add("FSD");
+		
+		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.");
+		profileService.save(pro1);
 	}
 	
 }

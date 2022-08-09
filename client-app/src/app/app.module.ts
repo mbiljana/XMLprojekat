@@ -18,6 +18,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     PostListComponent,
     PostItemComponent,
     RegisterPageComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

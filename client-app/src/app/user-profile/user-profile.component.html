@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div class="center" id="comp1" >
+    <h1>{{user.firstName}}  {{user.lastName}}</h1>
+
+    <div class="text-center">
+      <img src="{{user.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+    <h3>{{user.profileType}} PROFILE</h3>
+    <button class="btn btn-primary">Follow</button>
+  </div><br>
+  <div *ngIf="showAllInformation" class="center" id="comp2" >
+    <h3>User's informations</h3>
+    <h3>Username: {{user.username}}</h3>
+    <h3>Mobile: {{user.mobile}}</h3>
+    <h3></h3>
+
+  </div>
+
+</div>

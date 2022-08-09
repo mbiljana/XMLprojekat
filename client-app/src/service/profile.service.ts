@@ -15,4 +15,7 @@ export class ProfileService {
   searchUserByFirstAndLastName(user :UserSearch):Observable<User[]>{
     return this.http.post<User[]>(this.url,user);
   }
+  getUser(id:number):Observable<User>{
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
 }

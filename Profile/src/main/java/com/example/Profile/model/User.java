@@ -21,6 +21,7 @@ public class User {
 	private String mobile;
 	private String gender;
 	private String profilePicture;
+	private ProfileType profileType;
 	
 	
 	public User() {}
@@ -40,10 +41,8 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-
-
 	public User(Long id, String username, String password, String firstName, String lastName, String email,
-			String mobile, String gender, String profilePicture) {
+			String mobile, String gender, String profilePicture, ProfileType profileType) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -54,6 +53,7 @@ public class User {
 		this.mobile = mobile;
 		this.gender = gender;
 		this.profilePicture = profilePicture;
+		this.profileType = profileType;
 	}
 
 
@@ -144,6 +144,16 @@ public class User {
 
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
+	}
+
+
+	public ProfileType getProfileType() {
+		return profileType;
+	}
+
+
+	public void setProfileType(ProfileType profileType) {
+		this.profileType = profileType;
 	}
 	
 	

@@ -1,3 +1,4 @@
+import { ProfileType } from './profileType';
 export interface UserInterface {
     id?: number ;
     firstName: string;
@@ -8,6 +9,7 @@ export interface UserInterface {
     mobile: string;
     profilePicture?:string;
     gender?:string;
+    profileType:ProfileType;
 }
 export class User implements UserInterface {
   id?: number ;
@@ -19,6 +21,7 @@ export class User implements UserInterface {
   mobile: string;
   profilePicture?:string;
   gender?:string;
+  profileType:ProfileType;
 
   constructor(obj: UserInterface) {
       this.id = obj.id;
@@ -29,6 +32,7 @@ export class User implements UserInterface {
       this.email = obj.email;
       this.mobile = obj.mobile;
       this.profilePicture=obj.profilePicture;
-      this.gender=obj.gender
+      this.gender=obj.gender;
+      this.profileType=obj.profileType;
   }
 }
