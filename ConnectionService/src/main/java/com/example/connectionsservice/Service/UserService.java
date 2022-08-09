@@ -5,6 +5,7 @@ import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class UserService {
     }
 
 
+    //follow a user
     public User follow(String followerUsername, String toFollowUsername) {
         //the user that sent the request
         User followerUser = userRepository.findByUsername(followerUsername);
@@ -47,5 +49,37 @@ public class UserService {
     public List<User> getAll(){
         List<User> allUsers = userRepository.findAll();
         return allUsers;
+    }
+
+    //get all follow request for user
+    public List<String> getFollowRequests(String username){
+        List<String> followRequest = new ArrayList<>();
+        User user = userRepository.findByUsername(username);
+        followRequest = user.getFollowRequests();
+        return  followRequest;
+    }
+
+    //confirm a request
+    public List<String> confirmRequest(String username, String followerUsername){
+        //user koji je primio zahtev
+        User user = userRepository.findByUsername(username);
+        //user koji je poslao zahtev
+        User follower = userRepository.findByUsername(followerUsername);
+
+        //lista ljudi koje prati user koji je zapratio
+        List<String> userFollowing = follower.getFollowing();
+        //zahtevi koje je primio user
+        List<String> userRequests = user.getFollowRequests();
+        for (String f: user.getFollowRequests()
+             ) {
+            if(f.equals(follower.getUsername())){
+                userFollowing.add(user.getUsername());
+                userRequests.remove(f);
+                userRepository.save(user);
+                userRepository.save(follower);
+                break;
+            }
+        }
+        return userRequests;
     }
 }

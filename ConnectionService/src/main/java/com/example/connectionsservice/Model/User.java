@@ -34,7 +34,16 @@ public class User {
     //follow request from other users
     private List<String> followRequests;
 
-
-
-
+    public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobile = mobile;
+        this.gender = gender;
+        this.profilePicture = profilePicture;
+        this.isPrivate = isPrivate;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.connectionsservice.Controller;
 
 import com.example.connectionsservice.Dto.FollowRequestsDTO;
+import com.example.connectionsservice.Dto.UsersFollowRequests;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<List<User>>(userService.getAll(), HttpStatus.OK);
     }
-    //follow
+    //follow a user
     @PutMapping(path = "/follow",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,5 +42,21 @@ public class UserController {
         }
     }
 
+    //get all follow requests for user
+    @GetMapping(path = "/requests",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllFollowRequests(@RequestBody UsersFollowRequests username){
+        List<String> followRequests = new ArrayList<>();
+        followRequests = userService.getFollowRequests(username.getUsername());
+        return new ResponseEntity<List<String>>(followRequests, HttpStatus.OK);
+    }
+
+    //accept follow request
+    @PutMapping (path = "/accept",consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> acceptRequest(@RequestBody FollowRequestsDTO fDTO){
+        List<String> userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
+        return new ResponseEntity<List<String>>(userFollowing, HttpStatus.OK);
+    }
 
 }
