@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 
 
 @Getter
@@ -26,5 +27,14 @@ public class User {
     private String mobile;
     private String gender;
     private String profilePicture;
+    //is the profile private(true) or public(false)
+    private boolean isPrivate;
+    //accounts this user follows
+    private List<String> following;
+    //follow request from other users
+    private List<String> followRequests;
+
+
+
 
 }
