@@ -39,9 +39,11 @@ import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-pos
     RegisterPageComponent,
     SignInPageComponent,
     SendRequestsComponent,
+
     UserProfileComponent,
     UserPersonalProfileComponent,
     MakeNewUserPostComponent
+
   ],
   imports: [
     BrowserModule,
