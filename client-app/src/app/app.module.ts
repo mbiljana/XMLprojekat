@@ -19,6 +19,7 @@ import { PostItemComponent } from './post-item/post-item.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SendRequestsComponent } from './send-requests/send-requests.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SendRequestsComponent } from './send-requests/send-requests.component';
     RegisterPageComponent,
     SignInPageComponent,
     SendRequestsComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
 <td>{{user.firstName}}</td>
 <td>{{user.lastName}}</td>
 <td><img src="{{user.profilePicture}}"></td>
+<td>
+  <button class="btn btn-info" [routerLink]="['profile',user.id]">Profile</button>
+</td>

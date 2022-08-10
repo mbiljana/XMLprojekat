@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ProfileType } from '../model/profileType';
 import { User } from '../model/user';
 
 @Component({
@@ -10,6 +11,10 @@ export class FoundUserComponent implements OnInit {
   @Input()
   public user:User;
 
+  @Output()
+  UserProfile: EventEmitter<User>=new EventEmitter();
+
+
   constructor() {
     this.user=new User({
       firstName: '',
@@ -18,11 +23,14 @@ export class FoundUserComponent implements OnInit {
       password: '',
       email: '',
       mobile: '',
-      gender:''
+      gender:'',
+      profileType:ProfileType.Private
     });
   }
 
   ngOnInit(): void {
   }
-
+  viewUserProfile(){
+    this.UserProfile.next(this.user);
+  }
 }
