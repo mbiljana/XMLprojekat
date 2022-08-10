@@ -20,6 +20,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SendRequestsComponent } from './send-requests/send-requests.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserPersonalProfileComponent } from './user-personal-profile/user-personal-profile.component';
+import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     PostItemComponent,
     RegisterPageComponent,
     SignInPageComponent,
-    SendRequestsComponent
-    UserProfileComponent
+    SendRequestsComponent,
+    UserProfileComponent,
+    UserPersonalProfileComponent,
+    MakeNewUserPostComponent
   ],
   imports: [
     BrowserModule,

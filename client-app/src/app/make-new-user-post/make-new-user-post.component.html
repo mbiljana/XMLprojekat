@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm">
+          <br>
+          <h2>Create new post :)</h2>
+          <div class="whoToRate" >
+
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm">
+          <br>
+          <label>Write your post</label>
+          <textarea [(ngModel)]="text">Some text...</textarea>
+          <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+          <label>Add useful and important links ...</label>
+          <textarea [(ngModel)]="links_text" style="height: 100px; " >Additional links ...</textarea>
+          <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+          <label>Choose main picture:</label>
+          <input id="file_input" type="file" (change)="onFileChanged($event)">
+          <button id="upload_button" class="btn btn-info" (click)="onUpload()">Upload</button>
+          <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm"><br>
+          <button id="submit" class="btn btn-info" (click)="makeNewPost()">Post</button>
+      </div>
+  </div>
+</div>
