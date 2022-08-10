@@ -36,7 +36,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     PostItemComponent,
     RegisterPageComponent,
     SignInPageComponent,
-    SendRequestsComponent
+    SendRequestsComponent,
     UserProfileComponent
   ],
   imports: [
