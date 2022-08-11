@@ -35,7 +35,9 @@ export class MakeNewUserPostComponent implements OnInit {
       }),
       text:'',
       links:[],
-      picture:''
+      picture:'',
+      likes:0,
+      dislikes:0
     });
    }
 
@@ -72,6 +74,9 @@ export class MakeNewUserPostComponent implements OnInit {
     this.userPost.text=this.text;
     this.userPost.links=list_links;
     this.userPost.picture=path_picture;
+    this.userPost.dislikes=0;
+    this.userPost.likes-0;
+
     this.userPostService.save(this.userPost)
     .subscribe()
   }

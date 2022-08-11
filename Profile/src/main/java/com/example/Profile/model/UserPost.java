@@ -17,17 +17,25 @@ public class UserPost {
 	private String text;
 	private List<String> links;
 	private String picture;
+	private int likes;
+	private int dislikes;
 	
 	public UserPost() {}
 	
-	public UserPost(String id, User user, String text, List<String> links, String picture) {
+
+
+	public UserPost(String id, User user, String text, List<String> links, String picture, int likes, int dislikes) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.text = text;
 		this.links = links;
 		this.picture = picture;
+		this.likes = likes;
+		this.dislikes = dislikes;
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -67,6 +75,18 @@ public class UserPost {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+	public int getDislikes() {
+		return dislikes;
+	}
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
 	}
 	
 }
