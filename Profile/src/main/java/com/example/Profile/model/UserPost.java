@@ -34,6 +34,15 @@ public class UserPost {
 		this.likes = likes;
 		this.dislikes = dislikes;
 	}
+	public UserPost( User user, String text, List<String> links, String picture, int likes, int dislikes) {
+		super();
+		this.user = user;
+		this.text = text;
+		this.links = links;
+		this.picture = picture;
+		this.likes = likes;
+		this.dislikes = dislikes;
+	}
 
 
 
