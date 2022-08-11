@@ -1,3 +1,5 @@
+import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
+import { UserPersonalProfileComponent } from './user-personal-profile/user-personal-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
   { path:'search/profile/:id',component:UserProfileComponent}
-
+  { path:'search/profile/:id',component:UserProfileComponent},
+  { path:'profile/:id',component:UserPersonalProfileComponent},
+  { path:'profile/:id/newPost',component:MakeNewUserPostComponent}
 ];
 
 @NgModule({
