@@ -1,8 +1,12 @@
 package com.example.connectionsservice.Controller;
 
 import com.example.connectionsservice.Dto.FollowRequestsDTO;
+import com.example.connectionsservice.Dto.MessageDTO;
+import com.example.connectionsservice.Dto.SentMessageDTO;
 import com.example.connectionsservice.Dto.UsersFollowRequests;
+import com.example.connectionsservice.Model.Message;
 import com.example.connectionsservice.Model.User;
+import com.example.connectionsservice.Service.MessageService;
 import com.example.connectionsservice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +24,9 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MessageService messageService;
 
     //get all users
     @GetMapping(
@@ -58,5 +65,41 @@ public class UserController {
         List<String> userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
         return new ResponseEntity<List<String>>(userFollowing, HttpStatus.OK);
     }
+
+    @PostMapping(path = "/sendMessage", consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> sendMessage(@RequestBody MessageDTO mDTO){
+        Message message = this.messageService.sendMessage(mDTO.getSenderUsername(),mDTO.getRecieverUsername(),mDTO.getMessage());
+        return new ResponseEntity<Message>(message,HttpStatus.OK);
+    }
+
+    //dobavljanje svih poslatih poruka za korisnika
+    @GetMapping(path = "/sentMess",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllSentMessages(@RequestBody SentMessageDTO sDTO){
+        User user = this.userService.findByUsername(sDTO.getUsername());
+        List<Message> messages = user.getSentMessages();
+        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+    }
+
+
+    //dobavljanje svih primljenih poruka za korisnika
+    @GetMapping(path = "/recMess",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllRecievedMessages(@RequestBody SentMessageDTO sDTO){
+        User user = this.userService.findByUsername(sDTO.getUsername());
+        List<Message> messages = user.getRecievedMessages();
+        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+    }
+
+
+    //dobavljanje svih poruka - test
+    @GetMapping(path = "/allMess",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllMessages(){
+        List<Message> messages = this.messageService.getAll();
+        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+    }
+
 
 }

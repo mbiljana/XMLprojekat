@@ -33,6 +33,8 @@ public class User {
     private List<String> following;
     //follow request from other users
     private List<String> followRequests;
+    private List<Message> sentMessages;
+    private List<Message> recievedMessages;
 
     public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate) {
         this.id = id;
@@ -45,5 +47,20 @@ public class User {
         this.gender = gender;
         this.profilePicture = profilePicture;
         this.isPrivate = isPrivate;
+    }
+
+    public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobile = mobile;
+        this.gender = gender;
+        this.profilePicture = profilePicture;
+        this.isPrivate = isPrivate;
+        this.following = following;
+        this.followRequests = followRequests;
     }
 }
