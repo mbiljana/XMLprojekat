@@ -1,9 +1,9 @@
 import { Profile } from './../app/model/profile';
 import { UserSearch } from './../app/model/userSearch';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/model/user';
-import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {User} from "../app/model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import { HttpClient} from '@angular/common/http';
 export class ProfileService {
   url = "http://localhost:8080/api/user";
   urlProfile="http://localhost:8080/api/profile";
+  urlFollow = "http://localhost:8191/api/users/follow"
 
   constructor(private http: HttpClient) { }
 

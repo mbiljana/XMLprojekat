@@ -86,4 +86,8 @@ export class UserProfileComponent implements OnInit {
       this.showAllInformation=true;
     }
   }
+
+  followUser() {
+    console.log("Hi I'm here!");
+  }
 }

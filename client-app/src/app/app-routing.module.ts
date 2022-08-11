@@ -12,6 +12,7 @@ const routes: Routes = [
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
   { path:'search/profile/:id',component:UserProfileComponent}
+
 ];
 
 @NgModule({
