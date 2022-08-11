@@ -18,6 +18,8 @@ export class MakeNewUserPostComponent implements OnInit {
   selectedFile: File;
   userPost:UserPost;
   id:number;
+  makedPost:boolean=false;
+  showMakePost:boolean=true;
   constructor(private http: HttpClient,private userPostService:UserPostService,
     private route: ActivatedRoute,private profileService: ProfileService) {
 
@@ -79,5 +81,7 @@ export class MakeNewUserPostComponent implements OnInit {
 
     this.userPostService.save(this.userPost)
     .subscribe()
+    this.makedPost=true;
+    this.showMakePost=false;
   }
 }

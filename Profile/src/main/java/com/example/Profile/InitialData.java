@@ -16,12 +16,14 @@ import com.example.Profile.model.Profile;
 import com.example.Profile.model.ProfileType;
 import com.example.Profile.model.ProgramLanguage;
 import com.example.Profile.model.User;
+import com.example.Profile.model.UserPost;
 import com.example.Profile.service.CommentService;
 import com.example.Profile.service.CompanyService;
 import com.example.Profile.service.LanguageService;
 import com.example.Profile.service.PostService;
 import com.example.Profile.service.ProfileService;
 import com.example.Profile.service.ProgramLanguageService;
+import com.example.Profile.service.UserPostService;
 import com.example.Profile.service.UserService;
 
 @Component
@@ -47,6 +49,9 @@ public class InitialData {
 	
 	@Autowired
 	ProfileService profileService;
+	
+	@Autowired
+	UserPostService userPostService;
 	
 	@PostConstruct
 	public void init() {
@@ -138,6 +143,19 @@ public class InitialData {
 		
 		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.",ProfileType.PRIVATE);
 		profileService.save(pro1);
+		
+		List<String> links1=new ArrayList<String>();
+		links1.add("https://dev.java/");
+		links1.add("https://getbootstrap.com/docs/4.0/components/buttons/");
+		UserPost up1=new UserPost(u1,"Join us October 17-20 in Las Vegas, for the first JavaOne in 5 years. With hundreds of talks from platform architects and industry luminaries, a city-sized developer pavilion, and plenty of networking opportunities, JavaOne is the place to push your Java knowledge to new levels.",links1,"/assets/userPostPicture/post1.jpeg",0, 0);
+		userPostService.save(up1);
+		
+		List<String> links2=new ArrayList<String>();
+		links2.add("https://www.geeksforgeeks.org/go-programming-language-introduction/");
+		links2.add("https://getbootstrap.com/docs/4.0/components/buttons/");
+		links2.add("https://www.w3schools.com/angular/angular_tables.asp");
+		UserPost up2=new UserPost(u1,"Go is a procedural programming language. It was developed in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson at Google but launched in 2009 as an open-source programming language. Programs are assembled by using packages, for efficient management of dependencies. This language also supports environment adopting patterns alike to dynamic languages. For eg., type inference (y := 0 is a valid declaration of a variable y of type float).",links2,"/assets/userPostPicture/post3.jpeg",0, 0);
+		userPostService.save(up2);
 	}
 	
 }
