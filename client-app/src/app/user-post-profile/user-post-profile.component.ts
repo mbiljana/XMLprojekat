@@ -1,3 +1,4 @@
+import { UserPostService } from './../../service/user-post.service';
 import { ProfileType } from './../model/profileType';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserPost } from '../model/userPost';
@@ -14,7 +15,7 @@ export class UserPostProfileComponent implements OnInit {
 
   @Output()
   ClickedBAckToAllPosts:EventEmitter<void>=new EventEmitter();
-  constructor() {
+  constructor(private userPostService:UserPostService) {
 
 
   }
@@ -25,5 +26,14 @@ export class UserPostProfileComponent implements OnInit {
   backToProfile(){
     this.ClickedBAckToAllPosts.next();
   }
-
+  likePost(){
+    this.post.likes=this.post.likes+1;
+    this.userPostService.save(this.post)
+    .subscribe(res=>this.post=res);
+  }
+  dislikePost(){
+    this.post.dislikes=this.post.dislikes+1;
+    this.userPostService.save(this.post)
+    .subscribe(res=>this.post=res);
+  }
 }
