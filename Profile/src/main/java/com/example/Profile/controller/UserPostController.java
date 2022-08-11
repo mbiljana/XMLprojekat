@@ -36,5 +36,4 @@ public class UserPostController {
 		List<UserPost> posts=this.userPostService.findAllPostsByUser(userId);
 		return new ResponseEntity<List<UserPost>>(posts, HttpStatus.OK);
 	}
-
 }
