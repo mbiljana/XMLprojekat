@@ -19,6 +19,10 @@ public class UserService {
         return this.userRepository.findByFirstNameAndLastName(user.getFirstName(),user.getLastName());
     }
 
+    public User findByUsername(String username) {
+       return this.userRepository.findByUsername(username);
+    }
+
 
     //follow a user
     public User follow(String followerUsername, String toFollowUsername) {
@@ -82,4 +86,6 @@ public class UserService {
         }
         return userRequests;
     }
+
+
 }

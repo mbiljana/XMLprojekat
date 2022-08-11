@@ -10,6 +10,8 @@ export interface UserInterface {
     profilePicture?:string;
     gender?:string;
     profileType:ProfileType;
+   // following:string[];
+    //followRequests:string[];
 }
 export class User implements UserInterface {
   id?: number ;
@@ -22,6 +24,8 @@ export class User implements UserInterface {
   profilePicture?:string;
   gender?:string;
   profileType:ProfileType;
+  //following:string[];
+  //followRequests:string[];
 
   constructor(obj: UserInterface) {
       this.id = obj.id;
@@ -34,5 +38,7 @@ export class User implements UserInterface {
       this.profilePicture=obj.profilePicture;
       this.gender=obj.gender;
       this.profileType=obj.profileType;
+     // this.following = obj.following;
+     // this.followRequests = obj.followRequests;
   }
 }
