@@ -22,6 +22,9 @@ import { SendRequestsComponent } from './send-requests/send-requests.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserPersonalProfileComponent } from './user-personal-profile/user-personal-profile.component';
 import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
+import { UserPostListComponent } from './user-post-list/user-post-list.component';
+import { UserPostComponent } from './user-post/user-post.component';
+import { UserPostProfileComponent } from './user-post-profile/user-post-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-pos
 
     UserProfileComponent,
     UserPersonalProfileComponent,
-    MakeNewUserPostComponent
+    MakeNewUserPostComponent,
+    UserPostListComponent,
+    UserPostComponent,
+    UserPostProfileComponent
 
   ],
   imports: [

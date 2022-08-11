@@ -1,0 +1,21 @@
+<td><img src="{{post.picture}}"></td>
+<td>{{post.text}}</td>
+<td>
+  <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pl of post.links">
+            <td><a href="{{pl}}">{{pl}}</a></td>
+        </tr>
+    </tbody>
+</table>
+</td>
+<td>{{post.likes}}</td>
+<td>{{post.dislikes}}</td>
+<td>
+  <button class="btn btn-primary" (click)="viewHolePost()">View</button>
+</td>

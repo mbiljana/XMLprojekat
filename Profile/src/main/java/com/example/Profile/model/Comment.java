@@ -14,11 +14,18 @@ public class Comment {
 	private Long id;
 	private String text;
 	private Post post;
+	private UserPost userPost;
 	public Comment(Long id, String text,Post post) {
 		super();
 		this.id = id;
 		this.text = text;
 		this.post=post;
+	}
+	public Comment(Long id, String text,UserPost userPost) {
+		super();
+		this.id = id;
+		this.text = text;
+		this.userPost=userPost;
 	}
 	public Comment() {}
 	public Long getId() {
@@ -38,6 +45,12 @@ public class Comment {
 	}
 	public void setPost(Post post) {
 		this.post = post;
+	}
+	public UserPost getUserPost() {
+		return userPost;
+	}
+	public void setUserPost(UserPost userPost) {
+		this.userPost = userPost;
 	}
 	
 }
