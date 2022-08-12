@@ -6,8 +6,8 @@ import com.example.securityservice.Model.User;
 import java.util.List;
 
 public interface UserService {
-    User findById(Long id);
-    User findByUsername(String username);
+    User findById(String id);
+    User findByKorisnicko(String korisnicko);
     List<User> findAll ();
     User save(UserRequest userRequest);
     User saveUser(User user);

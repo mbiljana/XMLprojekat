@@ -2,7 +2,7 @@ package com.example.securityservice.Dto;
 
 //dto za login
 public class JwtAuthenticationRequest {
-    private String username;
+    private String korisnicko;
     private String password;
 
 
@@ -16,11 +16,11 @@ public class JwtAuthenticationRequest {
     }
 
     public String getUsername() {
-        return this.username;
+        return this.korisnicko;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.korisnicko = username;
     }
 
     public String getPassword() {

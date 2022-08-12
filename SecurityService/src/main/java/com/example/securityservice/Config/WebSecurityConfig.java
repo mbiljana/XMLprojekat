@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,11 +23,12 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+    //injection password encodera da bi se izbegao circular reference
+    //private final EncoderConfig encoderConfig;
+
 
     // Servis koji se koristi za citanje podataka o korisnicima aplikacije
     private final CustomUserDetailsService customUserDetailsService;
@@ -41,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.customUserDetailsService = customUserDetailsService;
         this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
         this.tokenUtils = tokenUtils;
+       // this.encoderConfig = encoderConfig;
     }
 
     // Registrujemo authentication manager koji ce da uradi autentifikaciju korisnika za nas
@@ -58,17 +61,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // 1. koji servis da koristi da izvuce podatke o korisniku koji zeli da se autentifikuje
                 // prilikom autentifikacije, AuthenticationManager ce sam pozivati loadUserByUsername() metodu ovog servisa
-                .userDetailsService(customUserDetailsService)
+                .userDetailsService(customUserDetailsService);
 
                 // 2. kroz koji enkoder da provuce lozinku koju je dobio od klijenta u zahtevu
                 // da bi adekvatan hash koji dobije kao rezultat hash algoritma uporedio sa onim koji se nalazi u bazi (posto se u bazi ne cuva plain lozinka)
-                .passwordEncoder(passwordEncoder());
+                //.passwordEncoder(encoderConfig.passwordEncoder());
     }
 
 
 
     // Definisemo prava pristupa za zahteve ka odredjenim URL-ovima/rutama
     @Override
+    //Autowired
     protected void configure(HttpSecurity http) throws Exception {
         http
                 // komunikacija izmedju klijenta i servera je stateless posto je u pitanju REST aplikacija

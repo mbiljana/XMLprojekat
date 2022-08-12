@@ -24,31 +24,41 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private Long id;
+    private String id;
 
-    private String username;
+    private String korisnicko;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
     private boolean enabled;
-    private Timestamp lastPasswordResetDate;
+    //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
 
-    public Long getId() {
+    public User(String username, String password, String firstName, String lastName, String email, boolean enabled, List<Role> roles) {
+        this.korisnicko = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
+
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public String getUsername() {
-        return username;
+        return korisnicko;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.korisnicko = username;
     }
 
     public String getPassword() {
@@ -56,8 +66,8 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        Timestamp now = new Timestamp(new Date().getTime());
-        this.setLastPasswordResetDate(now);
+        //Timestamp now = new Timestamp(new Date().getTime());
+        //this.setLastPasswordResetDate(now);
         this.password = password;
     }
 
@@ -108,13 +118,15 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public Timestamp getLastPasswordResetDate() {
+    /*public Timestamp getLastPasswordResetDate() {
         return lastPasswordResetDate;
     }
 
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
+
+     */
 
     @JsonIgnore
     @Override

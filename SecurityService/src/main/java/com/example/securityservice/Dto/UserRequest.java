@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 public class UserRequest {
     private Long id;
 
-    private String username;
+    private String korisnicko;
 
     private String password;
 
@@ -19,12 +19,12 @@ public class UserRequest {
 
     private String email;
 
-    public String getUsername() {
-        return username;
+    public String getKorisnicko() {
+        return korisnicko;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setKorisnicko(String username) {
+        this.korisnicko = username;
     }
 
     public String getPassword() {

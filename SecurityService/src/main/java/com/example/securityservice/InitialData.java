@@ -31,7 +31,7 @@ public class InitialData {
     public void init(){
         List<Role> role1 = new ArrayList<>();
         List<Role> role2 = new ArrayList<>();
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Role r1 = new Role((long)55, "ROLE_USER");
         Role r2 = new Role((long)56, "ROLE_ADMIN");
         roleService.save(r1);
@@ -39,8 +39,8 @@ public class InitialData {
         role1.add(r1);
         role2.add(r2);
         role2.add(r1);
-        User u1 = new User((long)1,"user", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Marko","Markovic", "user@example.com",true,  timestamp,role1);
-        User u2 = new User((long)1,"admin", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Nikola","Nikolic", "admin@example.com",true, timestamp,role2);
+        User u1 = new User("16","user", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Marko","Markovic", "user@example.com",true,role1);
+        User u2 = new User("12","admin", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Nikola","Nikolic", "admin@example.com",true,role2);
         //UserRequest ur1 = new UserRequest("user", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Marko","Markovic", "user@example.com",true,  timestamp)
 
         userService.saveUser(u1);
