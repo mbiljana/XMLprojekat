@@ -19,10 +19,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     // Funkcija koja na osnovu username-a iz baze vraca objekat User-a
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String korisn) throws UsernameNotFoundException {
+        User user = userRepository.findByKorisnicko(korisn);
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
+            throw new UsernameNotFoundException(String.format("No user found with username '%s'.", korisn));
         } else {
             return user;
         }

@@ -30,12 +30,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
+    public User findByKorisnicko(String username) throws UsernameNotFoundException {
+        return userRepository.findByKorisnicko(username);
     }
 
-    public User findById(Long id) throws AccessDeniedException {
-        return userRepository.findById(id).orElseGet(null);
+    public User findById(String id) throws AccessDeniedException {
+        return userRepository.findById(id).get();
     }
 
     public List<User> findAll() throws AccessDeniedException {
@@ -45,11 +45,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(UserRequest userRequest) {
         User u = new User();
-        u.setUsername(userRequest.getUsername());
+        u.setUsername(userRequest.getKorisnicko());
 
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
-        u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        u.setPassword(userRequest.getPassword());
 
         u.setFirstName(userRequest.getFirstname());
         u.setLastName(userRequest.getLastname());

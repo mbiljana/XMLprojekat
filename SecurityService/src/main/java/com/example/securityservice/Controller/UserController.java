@@ -33,7 +33,7 @@ public class UserController {
     // Korisnik jeste autentifikovan, ali nije autorizovan da pristupi resursu
     @GetMapping("/user/{userId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public User loadById(@PathVariable Long userId) {
+    public User loadById(@PathVariable String userId) {
         return this.userService.findById(userId);
     }
 
@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/whoami")
     @PreAuthorize("hasRole('USER')")
     public User user(Principal user) {
-        return this.userService.findByUsername(user.getName());
+        return this.userService.findByKorisnicko(user.getName());
     }
 
     @GetMapping("/foo")

@@ -1,5 +1,4 @@
 package com.example.securityservice.Controller;
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.securityservice.Dto.JwtAuthenticationRequest;
@@ -9,7 +8,6 @@ import com.example.securityservice.Service.UserService;
 import com.example.securityservice.exception.ResourceConflictException;
 import com.example.securityservice.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -74,7 +72,7 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<User> addUser(@RequestBody UserRequest userRequest, UriComponentsBuilder ucBuilder) {
 
-        User existUser = this.userService.findByUsername(userRequest.getUsername());
+        User existUser = this.userService.findByKorisnicko(userRequest.getKorisnicko());
 
         if (existUser != null) {
             throw new ResourceConflictException(userRequest.getId(), "Username already exists");
