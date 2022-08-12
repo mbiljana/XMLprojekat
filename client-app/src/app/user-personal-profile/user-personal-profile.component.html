@@ -91,8 +91,7 @@
 <div class="row" class="container" *ngIf="showHolePost">
   <div class="col-md"></div>
   <div class="center" id="comp1"  style="width: 1000px;">
-    <app-user-post-profile [post]="post" (ClickedBAckToAllPosts)="showAllPosts()"></app-user-post-profile>
+    <app-user-post-profile [post]="post" [id]="post.id" (ClickedBAckToAllPosts)="showAllPosts()"></app-user-post-profile>
   </div>
   <div class="col-md"></div>
 </div>
-<mat-icon>adjust</mat-icon>

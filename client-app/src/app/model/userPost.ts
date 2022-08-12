@@ -1,7 +1,7 @@
 import { User } from 'src/app/model/user';
 
 export interface UserPostInterface {
-  id?:string;
+  id:number;
   user:User;
   text: string;
   links:string[];
@@ -10,7 +10,7 @@ export interface UserPostInterface {
   dislikes:number;
 }
 export class UserPost implements UserPostInterface {
-  id?:string;
+  id:number;
   user:User;
   text: string;
   links:string[];

@@ -1,8 +1,11 @@
+import { ActivatedRoute } from '@angular/router';
+import { CommentService } from './../../service/comment.service';
 import { UserPostService } from './../../service/user-post.service';
 import { ProfileType } from './../model/profileType';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserPost } from '../model/userPost';
 import { User } from '../model/user';
+import { Comment } from '../model/comment';
 
 @Component({
   selector: 'app-user-post-profile',
@@ -12,17 +15,29 @@ import { User } from '../model/user';
 export class UserPostProfileComponent implements OnInit {
   @Input()
   post:UserPost;
+  @Input()
+  id:number;
+
+  comments:Comment[]
+
+
 
   @Output()
   ClickedBAckToAllPosts:EventEmitter<void>=new EventEmitter();
-  constructor(private userPostService:UserPostService) {
+
+  constructor(private route: ActivatedRoute,private userPostService:UserPostService, private commentService:CommentService) {
 
 
   }
 
   ngOnInit(): void {
-
+    this.loadComments();
   }
+  loadComments(){
+    this.commentService.searchCommentByUserPost(this.id)
+    .subscribe(res=>this.comments=res)
+  }
+
   backToProfile(){
     this.ClickedBAckToAllPosts.next();
   }
