@@ -1,3 +1,4 @@
+import { CommentService } from './../../service/comment.service';
 import { UserPostService } from './../../service/user-post.service';
 import { UserPost } from './../model/userPost';
 import { ProfileType } from './../model/profileType';
@@ -22,7 +23,7 @@ export class UserPersonalProfileComponent implements OnInit {
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
     this.posts=[]
     this.profile=new Profile({
       user:new User({
@@ -54,7 +55,6 @@ export class UserPersonalProfileComponent implements OnInit {
         this.profile=res;
         this.userPostService.searchPostByUser(this.id)
         .subscribe(res=>this.posts=res)
-
       })
   }
   viewHolePost(post:UserPost){

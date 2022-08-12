@@ -23,6 +23,7 @@ public class UserPostService {
 		List<UserPost> allUserPosts=this.userPostRepository.findAll();
 		for (UserPost userPost : allUserPosts) {
 			if(post.getLinks().equals(userPost.getLinks()) & post.getPicture().equals(userPost.getPicture()) & post.getText().equals(userPost.getText())) {
+				post.setId(userPost.getId());
 				return this.userPostRepository.save(post);
 			}
 			last_id=userPost.getId();

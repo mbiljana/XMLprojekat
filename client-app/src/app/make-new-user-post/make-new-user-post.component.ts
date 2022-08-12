@@ -35,6 +35,7 @@ export class MakeNewUserPostComponent implements OnInit {
         gender:'',
         profileType:ProfileType.Private
       }),
+      id:0,
       text:'',
       links:[],
       picture:'',
