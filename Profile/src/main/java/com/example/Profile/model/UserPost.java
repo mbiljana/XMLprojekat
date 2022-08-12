@@ -12,7 +12,7 @@ import lombok.Setter;
 @Document("userPosts")
 public class UserPost {
 	@Id
-	private String id;
+	private Long id;
 	private User user;
 	private String text;
 	private List<String> links;
@@ -24,7 +24,7 @@ public class UserPost {
 	
 
 
-	public UserPost(String id, User user, String text, List<String> links, String picture, int likes, int dislikes) {
+	public UserPost(Long id, User user, String text, List<String> links, String picture, int likes, int dislikes) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -46,11 +46,11 @@ public class UserPost {
 
 
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

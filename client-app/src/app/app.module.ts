@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-pos
 import { UserPostListComponent } from './user-post-list/user-post-list.component';
 import { UserPostComponent } from './user-post/user-post.component';
 import { UserPostProfileComponent } from './user-post-profile/user-post-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { UserPostProfileComponent } from './user-post-profile/user-post-profile.
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,6 +19,17 @@ public class UserPostService {
 	private UserPostRepository userPostRepository;
 	
 	public UserPost save(UserPost post) {
+		Long last_id=(long)0;
+		List<UserPost> allUserPosts=this.userPostRepository.findAll();
+		for (UserPost userPost : allUserPosts) {
+			if(post.getLinks().equals(userPost.getLinks()) & post.getPicture().equals(userPost.getPicture()) & post.getText().equals(userPost.getText())) {
+				return this.userPostRepository.save(post);
+			}
+			last_id=userPost.getId();
+		}
+		
+		last_id=last_id+1;
+		post.setId(last_id);
 		return this.userPostRepository.save(post);
 	}
 	public List<UserPost> findAllPostsByUser(Long id){

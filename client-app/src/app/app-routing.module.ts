@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
-  { path:'search/profile/:id',component:UserProfileComponent}
+  { path:'search/profile/:id',component:UserProfileComponent},
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'profile/:id',component:UserPersonalProfileComponent},
   { path:'profile/:id/newPost',component:MakeNewUserPostComponent}
