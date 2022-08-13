@@ -2,12 +2,14 @@ package com.example.Profile.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Profile.model.Post;
 import com.example.Profile.model.Profile;
+import com.example.Profile.model.User;
 import com.example.Profile.model.UserPost;
 import com.example.Profile.repository.UserPostRepository;
 import com.example.Profile.repository.UserRepository;
@@ -42,5 +44,14 @@ public class UserPostService {
 			}
 		}
 		return posts;
+	}
+	public UserPost findById(Long id) {
+		Optional<UserPost> opt = this.userPostRepository.findById(id);
+		if (!opt.isPresent()) {
+			return null;
+		} else
+		{
+			return opt.get();
+		}
 	}
 }

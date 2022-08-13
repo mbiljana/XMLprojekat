@@ -14,4 +14,7 @@ export class CommentService {
   searchCommentByUserPost(id:number):Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.url}/${id}`);
   }
+  save(newComment:Comment):Observable<Comment>{
+    return this.http.post<Comment>(this.url,newComment);
+  }
 }

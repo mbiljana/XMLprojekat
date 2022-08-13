@@ -22,6 +22,7 @@ export class UserPostProfileComponent implements OnInit {
 
 
 
+
   @Output()
   ClickedBAckToAllPosts:EventEmitter<void>=new EventEmitter();
 
@@ -51,4 +52,5 @@ export class UserPostProfileComponent implements OnInit {
     this.userPostService.save(this.post)
     .subscribe(res=>this.post=res);
   }
+
 }
