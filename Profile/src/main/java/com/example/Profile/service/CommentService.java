@@ -18,11 +18,11 @@ public class CommentService {
 	public Comment save(Comment comment) {
 		return this.commentRepository.save(comment);
 	}
-	public List<Comment> findAllCommentsByPost(Long id){
+	public List<Comment> findAllCommentsByUserPost(Long id){
 		List<Comment> all=this.commentRepository.findAll();
 		List<Comment> comments=new ArrayList<>();
 		for (Comment com : all) {
-			if(com.getPost().getId()==id) {
+			if(com.getUserPost()!=null && com.getUserPost().getId()==id) {
 				comments.add(com);
 			}
 		}
