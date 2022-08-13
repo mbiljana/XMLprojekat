@@ -1,5 +1,6 @@
 package com.example.securityservice.Config;
 
+import com.example.securityservice.Dto.JwtAuthenticationRequest;
 import com.example.securityservice.Security.RestAuthenticationEntryPoint;
 import com.example.securityservice.Security.TokenAuthenticationFilter;
 import com.example.securityservice.Service.impl.CustomUserDetailsService;
@@ -16,19 +17,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@EnableWebSecurity
+//@EnableWebSecurity
+@EnableGlobalMethodSecurity( prePostEnabled = true)
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //injection password encodera da bi se izbegao circular reference
-    //private final EncoderConfig encoderConfig;
+    private EncoderConfig encoderConfig;
 
+
+    //return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     // Servis koji se koristi za citanje podataka o korisnicima aplikacije
     private final CustomUserDetailsService customUserDetailsService;
@@ -39,11 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final TokenUtils tokenUtils;
     @Autowired
-    public WebSecurityConfig(CustomUserDetailsService customUserDetailsService, RestAuthenticationEntryPoint restAuthenticationEntryPoint, TokenUtils tokenUtils){
+    public WebSecurityConfig(CustomUserDetailsService customUserDetailsService, RestAuthenticationEntryPoint restAuthenticationEntryPoint, TokenUtils tokenUtils, EncoderConfig encoderConfig){
         this.customUserDetailsService = customUserDetailsService;
         this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
         this.tokenUtils = tokenUtils;
-       // this.encoderConfig = encoderConfig;
+        this.encoderConfig = encoderConfig;
     }
 
     // Registrujemo authentication manager koji ce da uradi autentifikaciju korisnika za nas
@@ -54,25 +60,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // Definisemo nacin utvrdjivanja korisnika pri autentifikaciji
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    //* 13.8. 18:31
+    @Override
+    //@Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 // Definisemo uputstva AuthenticationManager-u:
 
                 // 1. koji servis da koristi da izvuce podatke o korisniku koji zeli da se autentifikuje
                 // prilikom autentifikacije, AuthenticationManager ce sam pozivati loadUserByUsername() metodu ovog servisa
-                .userDetailsService(customUserDetailsService);
+                .userDetailsService(customUserDetailsService)
 
                 // 2. kroz koji enkoder da provuce lozinku koju je dobio od klijenta u zahtevu
                 // da bi adekvatan hash koji dobije kao rezultat hash algoritma uporedio sa onim koji se nalazi u bazi (posto se u bazi ne cuva plain lozinka)
-                //.passwordEncoder(encoderConfig.passwordEncoder());
+                .passwordEncoder(encoderConfig.passwordEncoder());
     }
+
+
+
+
 
 
 
     // Definisemo prava pristupa za zahteve ka odredjenim URL-ovima/rutama
     @Override
-    //Autowired
+    //@Autowired
     protected void configure(HttpSecurity http) throws Exception {
         http
                 // komunikacija izmedju klijenta i servera je stateless posto je u pitanju REST aplikacija
@@ -87,6 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/auth/**").permitAll()		// /auth/**
                 .antMatchers("/h2-console/**").permitAll()	// /h2-console/** ako se koristi H2 baza)
                 .antMatchers("/api/foo").permitAll()		// /api/foo
+                .antMatchers("/auth/login").permitAll()
 
                 // ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
                 // koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi

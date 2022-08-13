@@ -2,8 +2,10 @@ package com.example.securityservice.Security;
 
 import com.example.securityservice.util.TokenUtils;
 import io.jsonwebtoken.ExpiredJwtException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -22,8 +24,10 @@ import java.io.IOException;
 // Filter proverava da li JWT token postoji u Authorization header-u u zahtevu koji stize od klijenta
 // Ukoliko token postoji, proverava se da li je validan. Ukoliko je sve u redu, postavlja se autentifikacija
 // u SecurityContext holder kako bi podaci o korisniku bili dostupni u ostalim delovima aplikacije gde su neophodni
+//@Component
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
     private final TokenUtils tokenUtils;
+
 
     private final UserDetailsService userDetailsService;
 

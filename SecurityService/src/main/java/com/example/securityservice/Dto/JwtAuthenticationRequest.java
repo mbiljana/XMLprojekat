@@ -1,11 +1,22 @@
 package com.example.securityservice.Dto;
 
 //dto za login
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class JwtAuthenticationRequest {
     private String korisnicko;
     private String password;
 
 
+    /*
     public JwtAuthenticationRequest() {
         super();
     }
@@ -30,4 +41,6 @@ public class JwtAuthenticationRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
+     */
 }

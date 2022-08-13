@@ -41,4 +41,6 @@ export class User implements UserInterface {
      // this.following = obj.following;
      // this.followRequests = obj.followRequests;
   }
+
+
 }
