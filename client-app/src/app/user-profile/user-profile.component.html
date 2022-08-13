@@ -69,3 +69,29 @@
   </table>
   </div>
 </div>
+
+<div class="row" class="container" *ngIf="showUserPosts">
+  <div class="col-md"></div>
+  <div class="center" id="comp1"  style="width: 1200px; height: 1000px;">
+    <label style="font-weight: bold;">Posts</label>
+    <table class="topics" class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th></th><th></th><th></th><th>Likes</th><th>Dislikes</th><th>Hole post</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr app-user-post *ngFor="let post of posts" [post]=post (ClickedHolePostView)="viewHolePost($event)" ></tr>
+
+      </tbody>
+  </table>
+  </div>
+  <div class="col-md"></div>
+</div>
+<div class="row" class="container" *ngIf="showHolePost">
+  <div class="col-md"></div>
+  <div class="center" id="comp1"  style="width: 1000px;">
+    <app-user-post-profile [post]="post" [id]="post.id" (ClickedBAckToAllPosts)="showAllPosts()"></app-user-post-profile>
+  </div>
+  <div class="col-md"></div>
+</div>

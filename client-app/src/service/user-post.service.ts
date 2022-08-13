@@ -16,6 +16,9 @@ export class UserPostService {
     return this.http.post<UserPost>(this.url,newPost);
   }
   searchPostByUser(id:number):Observable<UserPost[]>{
-    return this.http.get<UserPost[]>(`${this.url}/${id}`);
+    return this.http.get<UserPost[]>(`${this.url+"/user"}/${id}`);
+  }
+  getUserPost(id:number):Observable<UserPost>{
+    return this.http.get<UserPost>(`${this.url}/${id}`);
   }
 }

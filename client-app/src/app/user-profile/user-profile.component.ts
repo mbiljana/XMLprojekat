@@ -5,6 +5,8 @@ import { User } from 'src/app/model/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../model/profile';
+import { UserPost } from '../model/userPost';
+import { UserPostService } from 'src/service/user-post.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,14 +19,18 @@ export class UserProfileComponent implements OnInit {
   user:User;
 
   profile:Profile;
+  posts:UserPost[];
+  post:UserPost;
 
 
   id:number;
   compare=ProfileType.Private;
 
   showAllInformation:boolean=false;
+  showUserPosts:boolean=true;
+  showHolePost:boolean=false;
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
     this.user=new User({
       firstName: '',
       lastName: '',
@@ -77,7 +83,11 @@ export class UserProfileComponent implements OnInit {
   loadProfile(){
     this.id = this.route.snapshot.params['id'];
     this.profileService.getProfile(this.id)
-      .subscribe(res=>this.profile=res)
+      .subscribe(res=>{
+        this.profile=res;
+        this.userPostService.searchPostByUser(this.id)
+        .subscribe(res=>this.posts=res)
+      })
   }
   checkProfileType(){
     if(this.user.profileType==ProfileType.Private){
@@ -89,5 +99,16 @@ export class UserProfileComponent implements OnInit {
 
   followUser() {
     console.log("Hi I'm here!");
+  }
+  viewHolePost(post:UserPost){
+    this.showHolePost=true;
+    this.post=post;
+    console.log(post)
+    this.showUserPosts=false;
+  }
+  showAllPosts(){
+    this.loadProfile();
+    this.showUserPosts=true;
+    this.showHolePost=false;
   }
 }

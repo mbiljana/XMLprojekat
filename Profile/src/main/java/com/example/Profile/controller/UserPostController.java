@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Profile.model.Post;
+import com.example.Profile.model.User;
 import com.example.Profile.model.UserPost;
 import com.example.Profile.service.UserPostService;
 
@@ -30,10 +31,18 @@ public class UserPostController {
 		UserPost saved=this.userPostService.save(newPost);
 		return new ResponseEntity<>(saved,HttpStatus.CREATED);
 	}
-	@RequestMapping(value="api/userPost/{userId}", method = RequestMethod.GET,
+	@RequestMapping(value="api/userPost/user/{userId}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<UserPost>> findAllPostsByUser(@PathVariable Long userId){
 		List<UserPost> posts=this.userPostService.findAllPostsByUser(userId);
 		return new ResponseEntity<List<UserPost>>(posts, HttpStatus.OK);
+	}
+	@RequestMapping(value="api/userPost/{id}",method = RequestMethod.GET)
+	public ResponseEntity<UserPost>  findOne(@PathVariable Long id){
+		UserPost userPost=this.userPostService.findById(id);
+		if (userPost==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} 
+		return new ResponseEntity<>(userPost, HttpStatus.OK);
 	}
 }

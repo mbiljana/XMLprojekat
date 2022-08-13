@@ -6,15 +6,15 @@ import { User } from './user';
 export interface CommentInterface {
   id?:number;
   text: string;
-  post:Post;
-  userPost:UserPost;
+  post?:Post;
+  userPost?:UserPost;
   user:User;
 }
 export class Comment implements CommentInterface {
   id?:number;
   text: string;
-  post:Post;
-  userPost:UserPost;
+  post?:Post;
+  userPost?:UserPost;
   user:User;
 
   constructor(obj: CommentInterface) {

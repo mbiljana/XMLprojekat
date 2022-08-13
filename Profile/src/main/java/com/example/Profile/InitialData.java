@@ -175,14 +175,14 @@ public class InitialData {
 		UserPost up4=new UserPost(u2,"Mathematical logic is the study of formal logic within mathematics. Major subareas include model theory, proof theory, set theory, and recursion theory. Research in mathematical logic commonly addresses the mathematical properties of formal systems of logic such as their expressive or deductive power.",links2,"/assets/userPostPicture/post4.jpeg",0, 0);
 		userPostService.save(up4);
 		
-		Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
+		/*Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
 		commentService.save(com4);
 		
 		Comment com5=new Comment((long)5, "Excelent job for everyone who want to lear new things",up2,u4);
 		commentService.save(com5);
 		
-		Comment com6=new Comment((long)6, "Excelent job for students",up1,u2);
-		commentService.save(com6);
+		Comment com6=new Comment((long)6, "Excelent job for students and",up1,u2);
+		commentService.save(com6);*/
 	}
 	
 }

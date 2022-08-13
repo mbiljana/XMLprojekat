@@ -1,3 +1,5 @@
+import { AddCommentComponent } from './add-comment/add-comment.component';
+
 import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
 import { UserPersonalProfileComponent } from './user-personal-profile/user-personal-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'profile/:id',component:UserPersonalProfileComponent},
-  { path:'profile/:id/newPost',component:MakeNewUserPostComponent}
+  { path:'profile/:id/newPost',component:MakeNewUserPostComponent},
+  { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent}
 ];
 
 @NgModule({
