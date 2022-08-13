@@ -26,7 +26,7 @@ public class CommentController {
 	@RequestMapping(value="api/comment/{postId}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<Comment>> findAllPostsByUser(@PathVariable Long postId){
-		List<Comment> comments=this.commentService.findAllCommentsByPost(postId);
+		List<Comment> comments=this.commentService.findAllCommentsByUserPost(postId);
 		return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
 	}
 }

@@ -15,18 +15,24 @@ public class Comment {
 	private String text;
 	private Post post;
 	private UserPost userPost;
-	public Comment(Long id, String text,Post post) {
+	private User user;
+	
+	public Comment(Long id, String text, Post post, User user) {
 		super();
 		this.id = id;
 		this.text = text;
-		this.post=post;
+		this.post = post;
+		this.user = user;
 	}
-	public Comment(Long id, String text,UserPost userPost) {
+	
+	public Comment(Long id, String text, UserPost userPost, User user) {
 		super();
 		this.id = id;
 		this.text = text;
-		this.userPost=userPost;
+		this.userPost = userPost;
+		this.user = user;
 	}
+
 	public Comment() {}
 	public Long getId() {
 		return id;
@@ -51,6 +57,14 @@ public class Comment {
 	}
 	public void setUserPost(UserPost userPost) {
 		this.userPost = userPost;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

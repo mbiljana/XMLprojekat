@@ -29,12 +29,15 @@
     <table class="table table-striped table-bordered">
       <thead>
           <tr>
-              <th></th>
+              <th></th><th></th><th></th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let pl of comments">
               <td>{{pl.text}}</td>
+              <td><a href="profile/{{pl.user.id}}">{{pl.user.firstName}} {{pl.user.lastName}}</a></td>
+              <td>{{pl.user.username}}</td>
+              <td><img style="height: 50px; border-radius: 50px;" src="{{pl.user.profilePicture}}"></td>
           </tr>
       </tbody>
   </table>
