@@ -30,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UserMessagesComponent } from './user-messages/user-messages.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { NavbarProfileComponent } from './navbar-profile/navbar-profile.componen
     UserPostComponent,
     UserPostProfileComponent,
     AddCommentComponent,
-    NavbarProfileComponent
+    NavbarProfileComponent,
+    MessagesComponent,
+    UserMessagesComponent
 
   ],
   imports: [

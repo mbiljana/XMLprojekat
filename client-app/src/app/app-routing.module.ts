@@ -9,12 +9,14 @@ import { SearchComponent } from './search/search.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
+import {MessagesComponent} from "./messages/messages.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
   { path: 'search', component: SearchComponent},
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
+  {path: 'messages', component: MessagesComponent},
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'profile/:id',component:UserPersonalProfileComponent},

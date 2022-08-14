@@ -1,0 +1,13 @@
+<div>
+  <table class="table table-striped " >
+    <thead>
+    <tr>
+      <th>Sender</th><th>Message</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr app-user-messages *ngFor="let message of messages" [mess]=message >
+    </tr>
+    </tbody>
+  </table>
+</div>

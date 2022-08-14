@@ -9,7 +9,13 @@
       <li class="nav-item">
         <a class="nav-link" href="search">Search profile</a>
       </li>
-
+    </ul>
+  </div>
+  <div class="right " id="nsc">
+    <ul class="navbar-nav me-auto ">
+      <li>
+        <a class="nav-link" href="messages">Chat <mat-icon>message</mat-icon></a>
+      </li>
     </ul>
   </div>
   <div class="right login" *ngIf="!loginService.isUserLoggedIn(); else activeUser">
