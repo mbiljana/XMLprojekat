@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
-  url = "http://localhost:8080/api/post";
+  url = "http://localhost:8184/api/post";
 
   constructor(private http: HttpClient) { }
 

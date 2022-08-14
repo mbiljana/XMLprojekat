@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  url = "http://localhost:8080/api/company";
+  url = "http://localhost:8184/api/company";
 
   constructor(private http: HttpClient) { }
 
