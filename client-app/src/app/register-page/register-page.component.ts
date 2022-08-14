@@ -23,7 +23,9 @@ export class RegisterPageComponent implements OnInit {
     mobile: '',
     profilePicture:'',
     gender:'',
-    profileType:ProfileType.Private
+    profileType:ProfileType.Private,
+    role:'',
+    firstLogin:false
   });
   genders=['female','male'];
   confirmedPassword: string;

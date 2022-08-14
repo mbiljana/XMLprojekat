@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../app/model/user";
+import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);
   }
 
-  followUser(followerId: string, toFollowId:string){
-    return this.http.put<String>(this.urlFollow, followerId);
+  followUser(fDTO : FollowRequestsDTO){
+    return this.http.put<String>(this.urlFollow, fDTO);
   }
 }

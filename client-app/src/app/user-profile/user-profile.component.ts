@@ -5,8 +5,11 @@ import { User } from 'src/app/model/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../model/profile';
+import { FollowRequestsDTO} from "../model/FollowRequestsDTO";
+
 import { UserPost } from '../model/userPost';
 import { UserPostService } from 'src/service/user-post.service';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +25,8 @@ export class UserProfileComponent implements OnInit {
   posts:UserPost[];
   post:UserPost;
 
+  fDTO: FollowRequestsDTO;
+
 
   id:number;
   compare=ProfileType.Private;
@@ -30,7 +35,15 @@ export class UserProfileComponent implements OnInit {
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
 
+  constructor(private route: ActivatedRoute,private profileService: ProfileService) {
+    this.fDTO = new FollowRequestsDTO({
+      followerId: '',
+      toFollowId: ''
+    })
+
+
   constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
+
     this.user=new User({
       firstName: '',
       lastName: '',
@@ -39,7 +52,9 @@ export class UserProfileComponent implements OnInit {
       email: '',
       mobile: '',
       gender:'',
-      profileType:ProfileType.Private
+      profileType:ProfileType.Private,
+      role:'',
+      firstLogin:false
     });
     this.profile=new Profile({
       user:new User({
@@ -50,7 +65,9 @@ export class UserProfileComponent implements OnInit {
         email: '',
         mobile: '',
         gender:'',
-        profileType:ProfileType.Private
+        profileType:ProfileType.Private,
+        role:'',
+        firstLogin:false
       }),
       proramLanguages:[],
       exCompanies:[],
@@ -97,9 +114,14 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+
   followUser() {
-    this.profileService.followUser(this.user.username, this.user.username);
+    this.fDTO.toFollowId=this.profile.user.username;
+
+    this.profileService.followUser(this.fDTO)
+      .subscribe();
   }
+
   viewHolePost(post:UserPost){
     this.showHolePost=true;
     this.post=post;
