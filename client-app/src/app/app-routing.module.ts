@@ -16,10 +16,10 @@ const routes: Routes = [
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
   { path:'search/profile/:id',component:UserProfileComponent},
-  { path:'search/profile/:id',component:UserProfileComponent},
   { path:'profile/:id',component:UserPersonalProfileComponent},
   { path:'profile/:id/newPost',component:MakeNewUserPostComponent},
-  { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent}
+  { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
+  { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
 ];
 
 @NgModule({
