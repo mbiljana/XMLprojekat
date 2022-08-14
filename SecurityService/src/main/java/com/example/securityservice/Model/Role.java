@@ -19,7 +19,15 @@ public class Role implements GrantedAuthority {
     @Id
     private Long id;
     private String name;
-    @JsonIgnore
+    
+    
+    public Role(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	@JsonIgnore
     @Override
     public String getAuthority() {
         return name;

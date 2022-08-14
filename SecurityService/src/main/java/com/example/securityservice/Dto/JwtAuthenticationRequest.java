@@ -14,6 +14,18 @@ import lombok.Setter;
 public class JwtAuthenticationRequest {
     private String korisnicko;
     private String password;
+	public String getKorisnicko() {
+		return korisnicko;
+	}
+	public void setKorisnicko(String korisnicko) {
+		this.korisnicko = korisnicko;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 
     /*

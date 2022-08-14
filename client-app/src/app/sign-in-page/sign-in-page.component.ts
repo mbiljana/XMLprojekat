@@ -28,6 +28,7 @@ export class SignInPageComponent implements OnInit {
     else {
       this.loginservice.authenticate(this.username, this.password).subscribe(
         (data: any) => {
+          console.log(data)
           this.LogIn.next();
           //window.location.reload();
           this.router.navigate(['']);

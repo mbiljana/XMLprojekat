@@ -22,7 +22,7 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    private Long id;
 
     private String korisnicko;
     private String password;
@@ -32,22 +32,45 @@ public class User implements UserDetails {
     private boolean enabled;
     //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
-
-    public User(String username, String password, String firstName, String lastName, String email, boolean enabled, List<Role> roles) {
-        this.korisnicko = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.enabled = enabled;
-        this.roles = roles;
-    }
+    private String roleType;
+    public User() {}
+    
 
 
-    public String getId() {
+    public User(Long id, String korisnicko, String password, String firstName, String lastName, String email,
+			boolean enabled, List<Role> roles, String roleType) {
+		super();
+		this.id = id;
+		this.korisnicko = korisnicko;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.enabled = enabled;
+		this.roles = roles;
+		this.roleType = roleType;
+	}
+
+
+
+	
+	public String getRoleType() {
+		return roleType;
+	}
+
+
+
+	public void setRoleType(String roleType) {
+		this.roleType = roleType;
+	}
+
+
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,5 +164,15 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
+
+	public String getKorisnicko() {
+		return korisnicko;
+	}
+
+
+	public void setKorisnicko(String korisnicko) {
+		this.korisnicko = korisnicko;
+	}
 
 }
