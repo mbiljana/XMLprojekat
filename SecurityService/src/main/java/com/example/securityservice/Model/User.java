@@ -10,9 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -121,11 +119,9 @@ public class User implements UserDetails {
     /*public Timestamp getLastPasswordResetDate() {
         return lastPasswordResetDate;
     }
-
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
-
      */
 
     @JsonIgnore
@@ -145,7 +141,5 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
-
 
 }
