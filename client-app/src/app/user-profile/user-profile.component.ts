@@ -11,6 +11,7 @@ import { UserPost } from '../model/userPost';
 import { UserPostService } from 'src/service/user-post.service';
 
 
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -115,7 +116,10 @@ export class UserProfileComponent implements OnInit {
 
 
   followUser() {
-    console.log("Hi I'm here!");
+    this.fDTO.followerId = 'bika';
+    this.fDTO.toFollowId = this.profile.user.username;
+    this.profileService.followUser(this.fDTO);
+
   }
 
   viewHolePost(post:UserPost){

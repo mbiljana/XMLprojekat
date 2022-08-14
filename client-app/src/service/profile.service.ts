@@ -26,7 +26,7 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);
   }
 
-  followUser(fDTO : FollowRequestsDTO){
+  followUser(fDTO : FollowRequestsDTO):Observable<String>{
     return this.http.put<String>(this.urlFollow, fDTO);
   }
 }

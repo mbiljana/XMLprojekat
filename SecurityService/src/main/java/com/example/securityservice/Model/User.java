@@ -15,8 +15,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Document("users")
 public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
