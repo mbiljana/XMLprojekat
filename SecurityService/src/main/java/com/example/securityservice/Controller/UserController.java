@@ -33,7 +33,7 @@ public class UserController {
     // Korisnik jeste autentifikovan, ali nije autorizovan da pristupi resursu
     @GetMapping("/user/{userId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public User loadById(@PathVariable String userId) {
+    public User loadById(@PathVariable Long userId) {
         return this.userService.findById(userId);
     }
 

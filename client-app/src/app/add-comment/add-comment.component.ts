@@ -35,7 +35,9 @@ export class AddCommentComponent implements OnInit {
           email: '',
           mobile: '',
           gender:'',
-          profileType:ProfileType.Private
+          profileType:ProfileType.Private,
+          firstLogin:false,
+          role:''
         }),
 
         id:0,

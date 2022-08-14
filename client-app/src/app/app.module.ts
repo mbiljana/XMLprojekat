@@ -29,6 +29,7 @@ import { UserPostProfileComponent } from './user-post-profile/user-post-profile.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     UserPostListComponent,
     UserPostComponent,
     UserPostProfileComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    NavbarProfileComponent
 
   ],
   imports: [

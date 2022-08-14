@@ -35,15 +35,14 @@ export class UserProfileComponent implements OnInit {
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService) {
+
+
+
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
     this.fDTO = new FollowRequestsDTO({
       followerId: '',
       toFollowId: ''
     })
-
-
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
-
     this.user=new User({
       firstName: '',
       lastName: '',
@@ -53,8 +52,8 @@ export class UserProfileComponent implements OnInit {
       mobile: '',
       gender:'',
       profileType:ProfileType.Private,
-      role:'',
-      firstLogin:false
+      firstLogin:false,
+      role:''
     });
     this.profile=new Profile({
       user:new User({
@@ -66,8 +65,8 @@ export class UserProfileComponent implements OnInit {
         mobile: '',
         gender:'',
         profileType:ProfileType.Private,
-        role:'',
-        firstLogin:false
+        firstLogin:false,
+        role:''
       }),
       proramLanguages:[],
       exCompanies:[],
@@ -116,10 +115,7 @@ export class UserProfileComponent implements OnInit {
 
 
   followUser() {
-    this.fDTO.toFollowId=this.profile.user.username;
-
-    this.profileService.followUser(this.fDTO)
-      .subscribe();
+    console.log("Hi I'm here!");
   }
 
   viewHolePost(post:UserPost){
