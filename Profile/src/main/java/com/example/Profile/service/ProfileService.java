@@ -1,5 +1,6 @@
 package com.example.Profile.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,19 @@ public class ProfileService {
 			return profileOpt.get();
 		}
 		
+	}
+	public List<Profile> findAll(){
+		return profileRepository.findAll();
+	}
+
+	public Profile update(Profile editedUser){
+		Profile existingUser = profileRepository.getById(editedUser.getId());
+		if(existingUser == null){
+			throw new IllegalStateException("User does not exist!");
+		}
+		else{
+			profileRepository.delete(existingUser);
+			return profileRepository.save(editedUser);
+		}
 	}
 }

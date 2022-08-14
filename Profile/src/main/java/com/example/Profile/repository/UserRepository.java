@@ -10,4 +10,6 @@ import com.example.Profile.model.User;
 public interface UserRepository extends MongoRepository<User, Long> {
 
 	public List<User> findByFirstNameAndLastName(String firstName, String lastName);
+	public User findByUsername(String username);
+	public User getById(Long id);
 }

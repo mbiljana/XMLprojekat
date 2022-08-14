@@ -1,16 +1,16 @@
 package com.example.Profile.controller;
 
+import com.example.Profile.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Profile.model.Profile;
 import com.example.Profile.service.ProfileService;
+
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -18,6 +18,7 @@ public class ProfileController {
 	
 	@Autowired
 	private ProfileService profileService;
+
 	
 	@RequestMapping(value="api/profile/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Profile>  findOne(@PathVariable Long id){
@@ -26,5 +27,20 @@ public class ProfileController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(profile, HttpStatus.OK);
+	}
+
+	@RequestMapping(value="api/profile/all",method = RequestMethod.GET)
+	public List<Profile> findAll(){
+		return this.profileService.findAll();
+	}
+
+
+	//put profile
+	//TODO: SAGA
+	@PutMapping(
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> updateProfile(@RequestBody Profile profiles) throws Exception {
+		return new ResponseEntity<Profile>(profileService.update(profiles),HttpStatus.OK);
 	}
 }
