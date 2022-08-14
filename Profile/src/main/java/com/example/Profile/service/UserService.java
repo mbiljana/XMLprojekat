@@ -29,4 +29,14 @@ public class UserService {
 			return userOpt.get();
 		}
 	}
+
+	public User findByUsername(String username){
+		User user = userRepository.findByUsername(username);
+		if(user == null){
+			throw new IllegalStateException("User does not exist!");
+		}
+		return user;
+	}
+
+
 }
