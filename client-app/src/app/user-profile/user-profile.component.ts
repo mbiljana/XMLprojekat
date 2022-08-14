@@ -98,7 +98,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   followUser() {
-    console.log("Hi I'm here!");
+    this.profileService.followUser(this.user.username, this.user.username);
   }
   viewHolePost(post:UserPost){
     this.showHolePost=true;

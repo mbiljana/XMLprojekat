@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
-        u.setPassword(userRequest.getPassword());
+        u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
         u.setFirstName(userRequest.getFirstname());
         u.setLastName(userRequest.getLastname());

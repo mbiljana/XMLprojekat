@@ -24,4 +24,8 @@ export class ProfileService {
   getProfile(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);
   }
+
+  followUser(followerId: string, toFollowId:string){
+    return this.http.put<String>(this.urlFollow, followerId);
+  }
 }
