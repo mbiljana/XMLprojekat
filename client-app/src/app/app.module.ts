@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,8 @@ import { UserPostListComponent } from './user-post-list/user-post-list.component
 import { UserPostComponent } from './user-post/user-post.component';
 import { UserPostProfileComponent } from './user-post-profile/user-post-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MakeNewUserPostComponent,
     UserPostListComponent,
     UserPostComponent,
-    UserPostProfileComponent
+    UserPostProfileComponent,
+    AddCommentComponent
 
   ],
   imports: [
@@ -59,7 +62,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

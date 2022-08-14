@@ -89,13 +89,13 @@ public class InitialData {
 		Post p4=new Post((long)4, "Senior C++ programer", "Hello! We are looking for senior C++ developer, with very good experiance in programing and also communication skills","/assets/postPicture/post4.jpeg",c1);
 		postService.save(p4);
 		//////////////////////////////////
-		Comment com1=new Comment((long)1, "I think that this job offer is not good, beacouse lot of thing",p1);
+		Comment com1=new Comment((long)1, "I think that this job offer is not good, beacouse lot of thing",p1,u3);
 		commentService.save(com1);
 		
-		Comment com2=new Comment((long)2, "Excelent",p3);
+		Comment com2=new Comment((long)2, "Excelent",p3,u4);
 		commentService.save(com2);
 		
-		Comment com3=new Comment((long)3, "Excelent job for students",p1);
+		Comment com3=new Comment((long)3, "Excelent job for students",p1,u2);
 		commentService.save(com3);
 		//////////////////////////////////
 		ProgramLanguage pl1=new ProgramLanguage((long)1, "C#");
@@ -133,9 +133,18 @@ public class InitialData {
 		pls1.add(pl1);
 		pls1.add(pl2);
 		
+		List<ProgramLanguage> pls2=new ArrayList<>();
+		pls2.add(pl3);
+		pls2.add(pl2);
+		pls2.add(pl5);
+		
 		List<Language> ls1=new ArrayList<>();
 		ls1.add(l1);
 		ls1.add(l4);
+		
+		List<Language> ls2=new ArrayList<>();
+		ls2.add(l2);
+		ls2.add(l3);
 		
 		List<String> exCopmanies=new ArrayList<>();
 		exCopmanies.add("Vega IT");
@@ -143,6 +152,9 @@ public class InitialData {
 		
 		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.",ProfileType.PRIVATE);
 		profileService.save(pro1);
+		
+		Profile pro2=new Profile((long)2, u2, pls2, exCopmanies, ls2, "Mathematics faculty", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.",ProfileType.PRIVATE);
+		profileService.save(pro2);
 		
 		List<String> links1=new ArrayList<String>();
 		links1.add("https://dev.java/");
@@ -156,6 +168,21 @@ public class InitialData {
 		links2.add("https://www.w3schools.com/angular/angular_tables.asp");
 		UserPost up2=new UserPost(u1,"Go is a procedural programming language. It was developed in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson at Google but launched in 2009 as an open-source programming language. Programs are assembled by using packages, for efficient management of dependencies. This language also supports environment adopting patterns alike to dynamic languages. For eg., type inference (y := 0 is a valid declaration of a variable y of type float).",links2,"/assets/userPostPicture/post3.jpeg",0, 0);
 		userPostService.save(up2);
+		
+		UserPost up3=new UserPost(u2,"Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.",links1,"/assets/userPostPicture/post2.png",0, 0);
+		userPostService.save(up3);
+		
+		UserPost up4=new UserPost(u2,"Mathematical logic is the study of formal logic within mathematics. Major subareas include model theory, proof theory, set theory, and recursion theory. Research in mathematical logic commonly addresses the mathematical properties of formal systems of logic such as their expressive or deductive power.",links2,"/assets/userPostPicture/post4.jpeg",0, 0);
+		userPostService.save(up4);
+		
+		/*Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
+		commentService.save(com4);
+		
+		Comment com5=new Comment((long)5, "Excelent job for everyone who want to lear new things",up2,u4);
+		commentService.save(com5);
+		
+		Comment com6=new Comment((long)6, "Excelent job for students and",up1,u2);
+		commentService.save(com6);*/
 	}
 	
 }

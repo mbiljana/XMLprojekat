@@ -66,6 +66,7 @@ export class UserPersonalProfileComponent implements OnInit {
     this.showUserPosts=false;
   }
   showAllPosts(){
+    this.loadProfile();
     this.showUserPosts=true;
     this.showHolePost=false;
   }
