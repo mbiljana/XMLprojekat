@@ -32,6 +32,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { UserMessagesComponent } from './user-messages/user-messages.component';
     AddCommentComponent,
     NavbarProfileComponent,
     MessagesComponent,
-    UserMessagesComponent
+    UserMessagesComponent,
+    CompanyPostProfileComponent
 
   ],
   imports: [
