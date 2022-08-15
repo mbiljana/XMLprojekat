@@ -4,7 +4,7 @@ import { UserPostService } from './../../service/user-post.service';
 import { HttpClient } from '@angular/common/http';
 import { CommentService } from 'src/service/comment.service';
 import { ProfileService } from 'src/service/profile.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../model/user';
 import { ProfileType } from '../model/profileType';
 import { UserPost } from '../model/userPost';
@@ -23,7 +23,7 @@ export class AddCommentComponent implements OnInit {
   makedPost:boolean=false;
   showMakePost:boolean=true;
   constructor(private http: HttpClient,private userPostService:UserPostService,private route: ActivatedRoute,
-    private commentService:CommentService,
+    private commentService:CommentService,private router: Router,
     private profileService: ProfileService) {
       this.newComment=new Comment({
 
@@ -75,5 +75,8 @@ export class AddCommentComponent implements OnInit {
     .subscribe()
     this.makedPost=true;
     this.showMakePost=false;
+  }
+  backToProfile(){
+    this.router.navigate(['profile',this.id]);
   }
 }

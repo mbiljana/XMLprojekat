@@ -82,4 +82,14 @@ public class CommentService {
 		}
 		return comments;
 	}
+	public List<Comment> findAllCommentsByCompanyPost(Long id){
+		List<Comment> all=this.commentRepository.findAll();
+		List<Comment> comments=new ArrayList<>();
+		for (Comment com : all) {
+			if(com.getPost()!=null && com.getPost().getId()==id) {
+				comments.add(com);
+			}
+		}
+		return comments;
+	}
 }

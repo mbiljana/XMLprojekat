@@ -1,5 +1,5 @@
 import { Post } from './../model/post';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'tr[app-post-item]',
@@ -9,10 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PostItemComponent implements OnInit {
   @Input()
   post:Post;
+
+  @Output()
+  ClickedHolePostView:EventEmitter<Post>=new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-  viewComment(){}
+  viewHolePost(){
+    this.ClickedHolePostView.next(this.post);
+    console.log(this.post);
+  }
 
 }

@@ -10,8 +10,8 @@ import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
   providedIn: 'root'
 })
 export class ProfileService {
-  url = "http://localhost:8080/api/user";
-  urlProfile="http://localhost:8080/api/profile";
+  url = "http://localhost:8184/api/user";
+  urlProfile="http://localhost:8184/api/profile";
   urlFollow = "http://localhost:8191/api/users/follow"
 
   constructor(private http: HttpClient) { }

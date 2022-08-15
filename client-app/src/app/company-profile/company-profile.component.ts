@@ -12,7 +12,10 @@ export class CompanyProfileComponent implements OnInit {
   @Input()
   company:Company;
 
+  selectedPost:Post;
+
   showPost=false;
+  showHolePost=false;
 
   posts:Post[];
   constructor(private postService:PostService) {
@@ -28,5 +31,13 @@ export class CompanyProfileComponent implements OnInit {
     .subscribe(res=>this.posts=res);
     this.showPost=true;
   }
-
+  showHolePostProfile(post:Post){
+    this.showHolePost=true;
+    this.showPost=false;
+    this.selectedPost=post;
+  }
+  showAllPosts(){
+    this.showPost=true;
+    this.showHolePost=false;
+  }
 }

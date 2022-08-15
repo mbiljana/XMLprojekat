@@ -33,6 +33,8 @@ import { NavbarProfileComponent } from './navbar-profile/navbar-profile.componen
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +63,11 @@ import { SendMessageComponent } from './send-message/send-message.component';
     NavbarProfileComponent,
     MessagesComponent,
     UserMessagesComponent,
-    SendMessageComponent
+
+    SendMessageComponent,
+
+    CompanyPostProfileComponent
+
 
   ],
   imports: [

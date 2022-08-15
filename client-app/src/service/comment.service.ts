@@ -7,12 +7,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CommentService {
-  url = "http://localhost:8080/api/comment";
+  url = "http://localhost:8184/api/comment";
+  urlCompanyPost = "http://localhost:8184/api/comment/companyPost";
 
   constructor(private http: HttpClient) { }
 
   searchCommentByUserPost(id:number):Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.url}/${id}`);
+  }
+  searchCommentByCompanyPost(id:number):Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.urlCompanyPost}/${id}`);
   }
   save(newComment:Comment):Observable<Comment>{
     return this.http.post<Comment>(this.url,newComment);
