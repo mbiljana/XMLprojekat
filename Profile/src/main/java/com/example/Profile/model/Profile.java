@@ -20,9 +20,8 @@ public class Profile {
 	private String education;
 	private String additionInformation;
 	private ProfileType profileType;
-	
-	
-	
+
+
 	public Long getId() {
 		return id;
 	}
@@ -131,7 +130,6 @@ public class Profile {
 		this.additionInformation = additionInformation;
 		this.profileType = profileType;
 	}
-
 
 
 	public Profile() {}

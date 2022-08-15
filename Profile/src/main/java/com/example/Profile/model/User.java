@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Document("users")
@@ -22,7 +24,10 @@ public class User {
 	private String gender;
 	private String profilePicture;
 	private ProfileType profileType;
-	
+
+	private List<String> following;
+	private List<String> followRequests;
+	private List<String> blocked;
 	
 	public User() {}
 
@@ -56,6 +61,21 @@ public class User {
 		this.profileType = profileType;
 	}
 
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, List<String> following, List<String> followRequests, List<String> blocked) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.profileType = profileType;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.blocked = blocked;
+	}
 
 	public Long getId() {
 		return id;
@@ -155,9 +175,28 @@ public class User {
 	public void setProfileType(ProfileType profileType) {
 		this.profileType = profileType;
 	}
-	
-	
-	
-	
-	
+
+	public List<String> getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(List<String> following) {
+		this.following = following;
+	}
+
+	public List<String> getFollowRequests() {
+		return followRequests;
+	}
+
+	public void setFollowRequests(List<String> followRequests) {
+		this.followRequests = followRequests;
+	}
+
+	public List<String> getBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(List<String> blocked) {
+		this.blocked = blocked;
+	}
 }
