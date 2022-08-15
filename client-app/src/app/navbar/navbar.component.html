@@ -20,10 +20,10 @@
   </div>
   <div class="right login" *ngIf="!loginService.isUserLoggedIn(); else activeUser">
     <a id="a" class="nav-item nav-link" href="sign-in">
-      Sign in
+      Sign in<mat-icon>login</mat-icon>
     </a>
     <a class="nav-item nav-link" href="register">
-      Register
+      Register<mat-icon>app_registration</mat-icon>
     </a>
   </div>
   <ng-template #activeUser>
