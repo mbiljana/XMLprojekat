@@ -12,6 +12,7 @@ export class UserPostComponent implements OnInit {
   @Input()
   post:UserPost;
 
+
   @Output()
   ClickedHolePostView:EventEmitter<UserPost>=new EventEmitter();
 

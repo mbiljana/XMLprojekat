@@ -2,37 +2,40 @@ import { User } from './user';
 import { Company } from './company';
 
 export interface PostInterface {
-  id?:number;
+  id:number;
   title: string;
-  text: string;
+  jobDescription: string;
   picture: string;
-  links: string[];
+  preconditions: string[];
+  position:string;
   numOfLikes: number;
   numOfDislikes: number;
   company: Company;
-  followersCanSee:User[];
+  //followersCanSee:User[];
 
 }
 export class Post implements PostInterface {
-  id?:number;
+  id:number;
   title: string;
-  text: string;
+  jobDescription: string;
   picture: string;
-  links: string[];
+  preconditions: string[];
+  position:string;
   numOfLikes: number;
   numOfDislikes: number;
   company: Company;
-  followersCanSee:User[];
+  //followersCanSee:User[];
 
   constructor(obj: PostInterface) {
       this.id=obj.id;
       this.title=obj.title;
-      this.text = obj.text
+      this.jobDescription = obj.jobDescription
       this.picture = obj.picture;
-      this.links = obj.links;
+      this.position=obj.position;
+      this.preconditions = obj.preconditions;
       this.numOfLikes = obj.numOfLikes;
       this.numOfDislikes=obj.numOfDislikes;
       this.company=obj.company;
-      this.followersCanSee=obj.followersCanSee;
+      //this.followersCanSee=obj.followersCanSee;
   }
 }
