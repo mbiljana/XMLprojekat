@@ -55,17 +55,28 @@ public class InitialData {
 	
 	@PostConstruct
 	public void init() {
-		
-		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE);
+
+		List<String> following = new ArrayList<>();
+		following.add("stef");
+		following.add("lana");
+
+		List<String> followRequests = new ArrayList<>();
+		followRequests.add("stefan");
+		followRequests.add("marko");
+
+		List<String> blocked = new ArrayList<>();
+		blocked.add("stef");
+
+		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
 		userService.save(u1);
 		
-		User u2=new User((long)2,"lana","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC);
+		User u2=new User((long)2,"lana99","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked);
 		userService.save(u2);
 		
-		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE);
+		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
 		userService.save(u3);
 		
-		User u4=new User((long)4,"stef","123","Stefan","Stefanovic");
+		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
 		userService.save(u4);
 		///////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");
@@ -149,6 +160,8 @@ public class InitialData {
 		List<String> exCopmanies=new ArrayList<>();
 		exCopmanies.add("Vega IT");
 		exCopmanies.add("FSD");
+
+
 		
 		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of tehnical scientist", "I am very interesting to find a job taht will offer to me a lot of new tehnical skills and new friends.",ProfileType.PRIVATE);
 		profileService.save(pro1);
