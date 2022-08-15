@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { CommentService } from 'src/service/comment.service';
 import { Comment } from '../model/comment';
 import { Post } from '../model/post';
@@ -14,6 +14,9 @@ export class CompanyPostProfileComponent implements OnInit {
 
   @Input()
   id:number;
+
+  @Output()
+  ClickBackToCompanyProfile:EventEmitter  <void> = new EventEmitter();
 
   comments:Comment[]
   constructor(private commentService:CommentService) { }
@@ -31,9 +34,11 @@ export class CompanyPostProfileComponent implements OnInit {
     //this.userPostService.save(this.post)
     //.subscribe(res=>this.post=res);
   }
-  backToProfile(){}
+  backToProfile(){
+    this.ClickBackToCompanyProfile.next();
+  }
   loadComments(){
-    this.commentService.searchCommentByUserPost(this.id)
+    this.commentService.searchCommentByCompanyPost(this.id)
     .subscribe(res=>this.comments=res)
   }
 }

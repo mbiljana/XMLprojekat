@@ -30,6 +30,12 @@ public class CommentController {
 		List<Comment> comments=this.commentService.findAllCommentsByUserPost(postId);
 		return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
 	}
+	@RequestMapping(value="api/comment/companyPost/{postId}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<Comment>> findAllCommentByCompanyPost(@PathVariable Long postId){
+		List<Comment> comments=this.commentService.findAllCommentsByCompanyPost(postId);
+		return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
+	}
 	@RequestMapping(value="api/comment",method = RequestMethod.POST,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Comment> save(@RequestBody Comment newComment){
