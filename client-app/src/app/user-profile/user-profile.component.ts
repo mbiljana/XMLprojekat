@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   profile:Profile;
   posts:UserPost[];
   post:UserPost;
+  currentUser:Profile;
 
   fDTO: FollowRequestsDTO;
 

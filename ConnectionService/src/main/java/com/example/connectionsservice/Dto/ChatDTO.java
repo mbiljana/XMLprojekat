@@ -5,16 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageDTO {
-    private String senderUsername;
-    private String recieverUsername;
-    private String message;
-    //private Date sentDate;
-
+public class ChatDTO {
+    private String sender;
+    private String reciever;
 }

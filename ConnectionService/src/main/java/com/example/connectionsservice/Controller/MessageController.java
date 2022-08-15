@@ -1,5 +1,6 @@
 package com.example.connectionsservice.Controller;
 
+import com.example.connectionsservice.Dto.ChatDTO;
 import com.example.connectionsservice.Dto.MessageDTO;
 import com.example.connectionsservice.Dto.SentMessageDTO;
 import com.example.connectionsservice.Model.Message;
@@ -48,9 +49,9 @@ public class MessageController {
     //dobavljanje svih primljenih poruka za korisnika
     @GetMapping(path = "/recMess",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllRecievedMessages(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
-        List<Message> messages = user.getRecievedMessages();
+    public ResponseEntity<?> getAllRecievedMessages(@RequestBody ChatDTO sDTO){
+        User user = this.userService.findByUsername(sDTO.getReciever());
+        List<Message> messages = this.messageService.findRecievedMessages(user.getUsername(), sDTO.getSender());
         return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
     }
 

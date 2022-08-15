@@ -24,8 +24,8 @@ public class MessageService {
         return this.messageRepository.save(message);
     }
 
-    public List<Message> findRecievedMessages(String username){
-        return messageRepository.findMessageByRecieverUsername(username);
+    public List<Message> findRecievedMessages(String username, String sender){
+        return messageRepository.findMessageByRecieverUsernameAndSenderUsername(username,sender);
     }
 
     public List<Message> findSentMessages(String username){
@@ -37,7 +37,7 @@ public class MessageService {
         User userReciever = this.userRepository.findByUsername(reciever);
         String mes = mess;
         Date date = new Date();
-        MessageDTO messageDTO = new MessageDTO(userSender.getUsername(),userReciever.getUsername(),mes,date);
+        MessageDTO messageDTO = new MessageDTO(userSender.getUsername(),userReciever.getUsername(),mes);
         Message message = new Message();
         message.setRecieverUsername(messageDTO.getRecieverUsername());
         message.setSenderUsername(messageDTO.getSenderUsername());
@@ -54,4 +54,6 @@ public class MessageService {
     public List<Message> getAll(){
         return this.messageRepository.findAll();
     }
+
+
 }
