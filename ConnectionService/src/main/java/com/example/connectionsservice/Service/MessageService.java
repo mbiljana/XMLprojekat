@@ -8,6 +8,8 @@ import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,8 +24,8 @@ public class MessageService {
         return this.messageRepository.save(message);
     }
 
-    public List<Message> findRecievedMessages(String username){
-        return messageRepository.findMessageByRecieverUsername(username);
+    public List<Message> findRecievedMessages(String username, String sender){
+        return messageRepository.findMessageByRecieverUsernameAndSenderUsername(username,sender);
     }
 
     public List<Message> findSentMessages(String username){
@@ -34,11 +36,13 @@ public class MessageService {
         User userSender = this.userRepository.findByUsername(sender);
         User userReciever = this.userRepository.findByUsername(reciever);
         String mes = mess;
+        Date date = new Date();
         MessageDTO messageDTO = new MessageDTO(userSender.getUsername(),userReciever.getUsername(),mes);
         Message message = new Message();
         message.setRecieverUsername(messageDTO.getRecieverUsername());
         message.setSenderUsername(messageDTO.getSenderUsername());
         message.setMessage(messageDTO.getMessage());
+        message.setSentDate(date);
         this.messageRepository.save(message);
         userReciever.getRecievedMessages().add(message);
         userRepository.save(userReciever);
@@ -50,4 +54,6 @@ public class MessageService {
     public List<Message> getAll(){
         return this.messageRepository.findAll();
     }
+
+
 }

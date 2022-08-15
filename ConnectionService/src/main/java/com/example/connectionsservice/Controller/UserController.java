@@ -66,40 +66,6 @@ public class UserController {
         return new ResponseEntity<List<String>>(userFollowing, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/sendMessage", consumes = MediaType.APPLICATION_JSON_VALUE,
-                produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> sendMessage(@RequestBody MessageDTO mDTO){
-        Message message = this.messageService.sendMessage(mDTO.getSenderUsername(),mDTO.getRecieverUsername(),mDTO.getMessage());
-        return new ResponseEntity<Message>(message,HttpStatus.OK);
-    }
-
-    //dobavljanje svih poslatih poruka za korisnika
-    @GetMapping(path = "/sentMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllSentMessages(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
-        List<Message> messages = user.getSentMessages();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-    }
-
-
-    //dobavljanje svih primljenih poruka za korisnika
-    @GetMapping(path = "/recMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllRecievedMessages(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
-        List<Message> messages = user.getRecievedMessages();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-    }
-
-
-    //dobavljanje svih poruka - test
-    @GetMapping(path = "/allMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllMessages(){
-        List<Message> messages = this.messageService.getAll();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-    }
 
 
 }

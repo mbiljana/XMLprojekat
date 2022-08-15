@@ -11,11 +11,14 @@ export class UserMessagesComponent implements OnInit {
   @Input()
   public mess: Message;
 
+  private date:Date;
+
   constructor() {
     this.mess = new Message({
       senderUsername:'',
       recieverUsername:'',
-      message: ''
+      message: '',
+      sentDate: this.date
     });
   }
 

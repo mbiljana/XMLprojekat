@@ -11,7 +11,7 @@ import {Message} from "../app/model/message";
 export class MessagingService {
 
   //samo proba za sve poruke
-  url = "http://localhost:8191/api/users/allMess"
+  url = "http://localhost:8191/api/messages/allMess"
   constructor(private http: HttpClient) { }
 
   getAllMessages():Observable<Message[]>{
