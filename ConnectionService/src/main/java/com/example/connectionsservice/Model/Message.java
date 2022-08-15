@@ -7,6 +7,10 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,5 +22,6 @@ public class Message {
     private String senderUsername;
     private String recieverUsername;
     private String message;
+    private Date sentDate;
 
 }

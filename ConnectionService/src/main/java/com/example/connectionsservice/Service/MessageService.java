@@ -8,6 +8,8 @@ import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,11 +36,13 @@ public class MessageService {
         User userSender = this.userRepository.findByUsername(sender);
         User userReciever = this.userRepository.findByUsername(reciever);
         String mes = mess;
-        MessageDTO messageDTO = new MessageDTO(userSender.getUsername(),userReciever.getUsername(),mes);
+        Date date = new Date();
+        MessageDTO messageDTO = new MessageDTO(userSender.getUsername(),userReciever.getUsername(),mes,date);
         Message message = new Message();
         message.setRecieverUsername(messageDTO.getRecieverUsername());
         message.setSenderUsername(messageDTO.getSenderUsername());
         message.setMessage(messageDTO.getMessage());
+        message.setSentDate(date);
         this.messageRepository.save(message);
         userReciever.getRecievedMessages().add(message);
         userRepository.save(userReciever);
