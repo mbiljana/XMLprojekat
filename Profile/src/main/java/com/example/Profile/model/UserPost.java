@@ -1,5 +1,6 @@
 package com.example.Profile.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -19,6 +20,7 @@ public class UserPost {
 	private String picture;
 	private int likes;
 	private int dislikes;
+	private List<Long> userWhoLiked; 
 	
 	public UserPost() {}
 	
@@ -33,6 +35,7 @@ public class UserPost {
 		this.picture = picture;
 		this.likes = likes;
 		this.dislikes = dislikes;
+		this.userWhoLiked=new ArrayList<>();
 	}
 	public UserPost( User user, String text, List<String> links, String picture, int likes, int dislikes) {
 		super();
@@ -42,6 +45,7 @@ public class UserPost {
 		this.picture = picture;
 		this.likes = likes;
 		this.dislikes = dislikes;
+		this.userWhoLiked=new ArrayList<>();
 	}
 
 
@@ -96,6 +100,12 @@ public class UserPost {
 	}
 	public void setDislikes(int dislikes) {
 		this.dislikes = dislikes;
+	}
+	public List<Long> getUserWhoLiked() {
+		return userWhoLiked;
+	}
+	public void setUserWhoLiked(List<Long> userWhoLiked) {
+		this.userWhoLiked = userWhoLiked;
 	}
 	
 }

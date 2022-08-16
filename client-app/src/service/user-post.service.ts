@@ -1,3 +1,4 @@
+import { UserLikePostDTO } from './../app/model/UserLikePostDTO';
 import { Observable } from 'rxjs';
 import { UserPost } from './../app/model/userPost';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +15,9 @@ export class UserPostService {
 
   save(newPost:UserPost):Observable<UserPost>{
     return this.http.post<UserPost>(this.url,newPost);
+  }
+  like(dto:UserLikePostDTO):Observable<UserPost>{
+    return this.http.post<UserPost>(this.url+"/like",dto);
   }
   searchPostByUser(id:number):Observable<UserPost[]>{
     return this.http.get<UserPost[]>(`${this.url+"/user"}/${id}`);

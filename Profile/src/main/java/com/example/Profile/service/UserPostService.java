@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Profile.dto.UserLikePostDTO;
 import com.example.Profile.model.Post;
 import com.example.Profile.model.Profile;
 import com.example.Profile.model.User;
@@ -53,5 +54,24 @@ public class UserPostService {
 		{
 			return opt.get();
 		}
+	}
+	public boolean isUserAlreadyLike(UserLikePostDTO dto) {
+		UserPost post=this.findById(dto.getUserPost().getId());
+		for (Long userId : post.getUserWhoLiked()) {
+			if (userId==dto.getUserId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public UserPost likePost(UserLikePostDTO dto) {
+		if(!this.isUserAlreadyLike(dto)) {
+			UserPost post=this.findById(dto.getUserPost().getId());
+			post.getUserWhoLiked().add(dto.getUserId());
+			post.setLikes(post.getLikes()+1);
+			return this.userPostRepository.save(post);
+		}
+		return null;
 	}
 }

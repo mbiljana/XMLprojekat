@@ -27,6 +27,7 @@ export class UserPersonalProfileComponent implements OnInit {
     this.posts=[]
     this.profile=new Profile({
       user:new User({
+        id:0,
         firstName: '',
         lastName: '',
         username: '',

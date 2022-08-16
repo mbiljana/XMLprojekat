@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
+import { PopUpLoginComponent } from './pop-up-login/pop-up-login.component';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { CompanyPostProfileComponent } from './company-post-profile/company-post
 
     SendMessageComponent,
 
-    CompanyPostProfileComponent
+    CompanyPostProfileComponent,
+     PopUpLoginComponent
 
 
   ],
@@ -77,7 +80,8 @@ import { CompanyPostProfileComponent } from './company-post-profile/company-post
     FormsModule,
     MatIconModule,
     BrowserAnimationsModule,
-    CommonModule,ReactiveFormsModule
+    CommonModule,ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
