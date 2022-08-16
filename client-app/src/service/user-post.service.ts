@@ -19,6 +19,9 @@ export class UserPostService {
   like(dto:UserLikePostDTO):Observable<UserPost>{
     return this.http.post<UserPost>(this.url+"/like",dto);
   }
+  dislike(dto:UserLikePostDTO):Observable<UserPost>{
+    return this.http.post<UserPost>(this.url+"/dislike",dto);
+  }
   searchPostByUser(id:number):Observable<UserPost[]>{
     return this.http.get<UserPost[]>(`${this.url+"/user"}/${id}`);
   }

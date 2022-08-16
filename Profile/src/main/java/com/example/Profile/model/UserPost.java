@@ -21,6 +21,7 @@ public class UserPost {
 	private int likes;
 	private int dislikes;
 	private List<Long> userWhoLiked; 
+	private List<Long> userWhoDisliked; 
 	
 	public UserPost() {}
 	
@@ -36,6 +37,7 @@ public class UserPost {
 		this.likes = likes;
 		this.dislikes = dislikes;
 		this.userWhoLiked=new ArrayList<>();
+		this.userWhoDisliked=new ArrayList<>();
 	}
 	public UserPost( User user, String text, List<String> links, String picture, int likes, int dislikes) {
 		super();
@@ -46,6 +48,7 @@ public class UserPost {
 		this.likes = likes;
 		this.dislikes = dislikes;
 		this.userWhoLiked=new ArrayList<>();
+		this.userWhoDisliked=new ArrayList<>();
 	}
 
 
@@ -106,6 +109,12 @@ public class UserPost {
 	}
 	public void setUserWhoLiked(List<Long> userWhoLiked) {
 		this.userWhoLiked = userWhoLiked;
+	}
+	public List<Long> getUserWhoDisliked() {
+		return userWhoDisliked;
+	}
+	public void setUserWhoDisliked(List<Long> userWhoDisliked) {
+		this.userWhoDisliked = userWhoDisliked;
 	}
 	
 }

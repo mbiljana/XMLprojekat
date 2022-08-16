@@ -37,9 +37,13 @@ public class UserPostController {
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserPost> like(@RequestBody UserLikePostDTO dto){
 		UserPost saved=this.userPostService.likePost(dto);
-		/*if(saved==null) {
-			return new ResponseEntity<UserPost>(HttpStatus.NOT_FOUND);
-		}*/
+		return new ResponseEntity<>(saved,HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="api/userPost/dislike",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserPost> dislike(@RequestBody UserLikePostDTO dto){
+		UserPost saved=this.userPostService.dislikePost(dto);
 		return new ResponseEntity<>(saved,HttpStatus.CREATED);
 	}
 	

@@ -1,4 +1,5 @@
-import { PopUpLoginComponent } from './../pop-up-login/pop-up-login.component';
+import { PopUpLikedComponent } from './../pop-up-liked/pop-up-liked.component';
+import { PopUpLikeDislikeComponent } from './../pop-up-like-dislike/pop-up-like-dislike.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserLikePostDTO } from './../model/UserLikePostDTO';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -94,16 +95,22 @@ export class UserPostProfileComponent implements OnInit {
     this.userPostService.like(this.dto)
     .subscribe(res=>{
       if(res==null){
-        this.dialogRef.open(PopUpLoginComponent)
+        this.dialogRef.open(PopUpLikedComponent)
       }else{
         this.post=res
       }
     });
   }
   dislikePost(){
-    this.post.dislikes=this.post.dislikes+1;
-    this.userPostService.save(this.post)
-    .subscribe(res=>this.post=res);
+    this.dto.userPost=this.post;
+    this.userPostService.dislike(this.dto)
+    .subscribe(res=>{
+      if(res==null){
+        this.dialogRef.open(PopUpLikeDislikeComponent)
+      }else{
+        this.post=res
+      }
+    });
   }
   addCom(){
     console.log(this.typeComponent)
