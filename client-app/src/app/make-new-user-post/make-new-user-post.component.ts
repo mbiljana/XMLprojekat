@@ -26,6 +26,7 @@ export class MakeNewUserPostComponent implements OnInit {
     this.userPost=new UserPost({
 
       user:new User({
+        id:0,
         firstName: '',
         lastName: '',
         username: '',
@@ -42,7 +43,8 @@ export class MakeNewUserPostComponent implements OnInit {
       links:[],
       picture:'',
       likes:0,
-      dislikes:0
+      dislikes:0,
+      userWhoLiked:[]
     });
    }
 

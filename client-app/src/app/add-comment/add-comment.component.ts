@@ -29,6 +29,7 @@ export class AddCommentComponent implements OnInit {
       this.newComment=new Comment({
 
         user:new User({
+          id:0,
           firstName: '',
           lastName: '',
           username: '',
