@@ -35,7 +35,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
-import { PopUpLoginComponent } from './pop-up-login/pop-up-login.component';
+import { PopUpLikeDislikeComponent } from './pop-up-like-dislike/pop-up-like-dislike.component';
+import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { PopUpLoginComponent } from './pop-up-login/pop-up-login.component';
     SendMessageComponent,
 
     CompanyPostProfileComponent,
-     PopUpLoginComponent
+     PopUpLikeDislikeComponent,
+     PopUpLikedComponent
 
 
   ],
