@@ -11,4 +11,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ConnectionsNumberDTO {
     private int connectionsNum;
+
+	public int getConnectionsNum() {
+		return connectionsNum;
+	}
+
+	public void setConnectionsNum(int connectionsNum) {
+		this.connectionsNum = connectionsNum;
+	}
+
+	public ConnectionsNumberDTO(int connectionsNum) {
+		super();
+		this.connectionsNum = connectionsNum;
+	}
+	public ConnectionsNumberDTO() {}
 }

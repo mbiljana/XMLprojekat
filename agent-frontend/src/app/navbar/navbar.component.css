@@ -11,6 +11,7 @@ h1,p{
 }
 ::ng-deep .nav-item {
   color: cornsilk;
+
   font-size: 16px;
   margin: 10px;
 }
@@ -27,7 +28,7 @@ h1,p{
 
 ::ng-deep .navbar {
   margin: 0px;
-  background-color: #134074;
+  background-color: cadetblue;;
 }
 
 ::ng-deep .right {

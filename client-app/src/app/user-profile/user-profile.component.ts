@@ -65,6 +65,7 @@ export class UserProfileComponent implements OnInit {
       followRequests:[]
     });
     this.followedUser = new User({
+      id:0,
       firstName: '',
       lastName: '',
       username: '',
