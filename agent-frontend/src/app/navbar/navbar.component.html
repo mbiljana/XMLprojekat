@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark ">
+  <a class="navbar-brand nav-link" href="">
+    Agent app <mat-icon>work</mat-icon>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      <li class="nav-item">
+        <a class="nav-link" href="newPost">New post<mat-icon>add</mat-icon></a>
+      </li>
+    </ul>
+  </div>
+  <div class="right login" >
+    <a id="a" class="nav-item nav-link" href="sign-in">
+      Sign in<mat-icon>login</mat-icon>
+    </a>
+    <a class="nav-item nav-link" href="register">
+      Register<mat-icon>app_registration</mat-icon>
+    </a>
+  </div>
+  <ng-template #activeUser>
+    <app-navbar-profile ></app-navbar-profile>
+  </ng-template>
+
+
+
+</nav>

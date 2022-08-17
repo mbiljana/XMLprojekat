@@ -1,0 +1,42 @@
+.jumbotron{
+  background-color:aliceblue;
+  margin: auto;
+  margin-top: 1%;
+  width: 50%;
+  border: 3px;
+  padding: 10px;
+}
+h1,p{
+  text-align: center;
+}
+::ng-deep .nav-item {
+  color: cornsilk;
+
+  font-size: 16px;
+  margin: 10px;
+}
+
+
+
+::ng-deep .navbar-brand {
+  color: white;
+}
+
+::ng-deep .navbar-brand:hover {
+  color: #8DA9C4;
+}
+
+::ng-deep .navbar {
+  margin: 0px;
+  background-color: cadetblue;;
+}
+
+::ng-deep .right {
+  display: flex;
+  flex-direction: row;
+}
+
+::ng-deep .right:hover {
+  cursor: pointer;
+
+}

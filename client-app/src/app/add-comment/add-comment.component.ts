@@ -22,12 +22,14 @@ export class AddCommentComponent implements OnInit {
   text:string;
   makedPost:boolean=false;
   showMakePost:boolean=true;
+  idLoginUser:any;
   constructor(private http: HttpClient,private userPostService:UserPostService,private route: ActivatedRoute,
     private commentService:CommentService,private router: Router,
     private profileService: ProfileService) {
       this.newComment=new Comment({
 
         user:new User({
+          id:0,
           firstName: '',
           lastName: '',
           username: '',
@@ -62,9 +64,10 @@ export class AddCommentComponent implements OnInit {
         console.log(res);}
       )
   }
-  loadUser(){///ovde treba da se ucita user koji je ulogovan u sistem, treba ispraviti nakon securitija
-    this.id = this.route.snapshot.params['id'];
-    this.profileService.getUser(this.id)
+  loadUser(){
+      this.idLoginUser = sessionStorage.getItem('id');
+      console.log(this.idLoginUser)
+      this.profileService.getUser(this.idLoginUser)
       .subscribe(res =>
         this.newComment.user = res
       )
@@ -79,6 +82,6 @@ export class AddCommentComponent implements OnInit {
     this.showMakePost=false;
   }
   backToProfile(){
-    this.router.navigate(['profile',this.id]);
+    this.router.navigate(['profile',this.idLoginUser]);
   }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Profile.dto.UserLikePostDTO;
 import com.example.Profile.model.Post;
 import com.example.Profile.model.User;
 import com.example.Profile.model.UserPost;
@@ -31,6 +32,21 @@ public class UserPostController {
 		UserPost saved=this.userPostService.save(newPost);
 		return new ResponseEntity<>(saved,HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value="api/userPost/like",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserPost> like(@RequestBody UserLikePostDTO dto){
+		UserPost saved=this.userPostService.likePost(dto);
+		return new ResponseEntity<>(saved,HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="api/userPost/dislike",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserPost> dislike(@RequestBody UserLikePostDTO dto){
+		UserPost saved=this.userPostService.dislikePost(dto);
+		return new ResponseEntity<>(saved,HttpStatus.CREATED);
+	}
+	
 	@RequestMapping(value="api/userPost/user/{userId}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<UserPost>> findAllPostsByUser(@PathVariable Long userId){
@@ -45,4 +61,11 @@ public class UserPostController {
 		} 
 		return new ResponseEntity<>(userPost, HttpStatus.OK);
 	}
+	@RequestMapping(value="api/userPost/following/{userId}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<UserPost>> allUserPostFromUsersWhoFollowedByUser(@PathVariable Long userId){
+		List<UserPost> posts=this.userPostService.allUserPostFromUsersWhoFollowedByUser(userId);
+		return new ResponseEntity<List<UserPost>>(posts, HttpStatus.OK);
+	}
+	
 }

@@ -1,6 +1,6 @@
 import { ProfileType } from './profileType';
 export interface UserInterface {
-    id?: number ;
+    id: number ;
     firstName: string;
     lastName: string;
     username: string;
@@ -16,7 +16,7 @@ export interface UserInterface {
     followRequests:string[];
 }
 export class User implements UserInterface {
-  id?: number ;
+  id: number ;
   firstName: string;
   lastName: string;
   username: string;

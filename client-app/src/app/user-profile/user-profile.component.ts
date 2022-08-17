@@ -50,6 +50,7 @@ export class UserProfileComponent implements OnInit {
       toFollowId: ''
     })
     this.user=new User({
+      id:0,
       firstName: '',
       lastName: '',
       username: '',
@@ -64,6 +65,7 @@ export class UserProfileComponent implements OnInit {
       followRequests:[]
     });
     this.followedUser = new User({
+      id:0,
       firstName: '',
       lastName: '',
       username: '',
@@ -79,6 +81,7 @@ export class UserProfileComponent implements OnInit {
     });
     this.profile=new Profile({
       user:new User({
+        id:0,
         firstName: '',
         lastName: '',
         username: '',

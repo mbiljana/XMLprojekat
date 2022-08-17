@@ -8,6 +8,7 @@ export interface UserPostInterface {
   picture: string;
   likes:number;
   dislikes:number;
+  userWhoLiked:number[];
 }
 export class UserPost implements UserPostInterface {
   id:number;
@@ -17,7 +18,7 @@ export class UserPost implements UserPostInterface {
   picture: string;
   likes:number;
   dislikes:number;
-
+  userWhoLiked:number[];
   constructor(obj: UserPostInterface) {
       this.id = obj.id;
       this.user = obj.user;
@@ -26,5 +27,6 @@ export class UserPost implements UserPostInterface {
       this.picture=obj.picture;
       this.likes=obj.likes;
       this.dislikes=obj.dislikes;
+      this.userWhoLiked=obj.userWhoLiked;
   }
 }
