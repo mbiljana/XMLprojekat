@@ -1,3 +1,4 @@
+import { AllPostFromFollowingComponent } from './all-post-from-following/all-post-from-following.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 
 import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
@@ -13,6 +14,7 @@ import {MessagesComponent} from "./messages/messages.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
+  { path:'allPost',component:AllPostFromFollowingComponent},
   { path: 'search', component: SearchComponent},
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
