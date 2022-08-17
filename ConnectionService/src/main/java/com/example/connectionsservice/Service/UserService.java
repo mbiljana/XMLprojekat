@@ -46,6 +46,7 @@ public class UserService {
             return userRepository.save(toFollowUser);
         }else{
             followerUser.getFollowing().add(toFollowUsername);
+            toFollowUser.getFollowing().add(followerUsername);
             return userRepository.save(followerUser);
         }
     }
@@ -63,6 +64,14 @@ public class UserService {
         return  followRequest;
     }
 
+    //getting the number of connections user has
+    public List<String> getNumConnectionsForUser(String username){
+        List<String> following = new ArrayList<>();
+        User user = userRepository.findByUsername(username);
+        following = user.getFollowing();
+        return  following;
+    }
+
     //confirm a request
     public List<String> confirmRequest(String username, String followerUsername){
         //user koji je primio zahtev
@@ -72,12 +81,14 @@ public class UserService {
 
         //lista ljudi koje prati user koji je zapratio
         List<String> userFollowing = follower.getFollowing();
+        List<String> otherSideFollow = user.getFollowing();
         //zahtevi koje je primio user
         List<String> userRequests = user.getFollowRequests();
         for (String f: user.getFollowRequests()
              ) {
             if(f.equals(follower.getUsername())){
                 userFollowing.add(user.getUsername());
+                otherSideFollow.add(follower.getUsername());
                 userRequests.remove(f);
                 userRepository.save(user);
                 userRepository.save(follower);
