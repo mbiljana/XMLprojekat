@@ -61,4 +61,11 @@ public class UserPostController {
 		} 
 		return new ResponseEntity<>(userPost, HttpStatus.OK);
 	}
+	@RequestMapping(value="api/userPost/following/{userId}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<UserPost>> allUserPostFromUsersWhoFollowedByUser(@PathVariable Long userId){
+		List<UserPost> posts=this.userPostService.allUserPostFromUsersWhoFollowedByUser(userId);
+		return new ResponseEntity<List<UserPost>>(posts, HttpStatus.OK);
+	}
+	
 }

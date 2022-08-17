@@ -113,4 +113,20 @@ public class UserPostService {
 		}
 		return null;
 	}
+	
+	public List<UserPost> allUserPostFromUsersWhoFollowedByUser(Long userId){
+		
+		User loginUser=this.userService.findById(userId);
+		List<UserPost> allpost=new ArrayList<>();
+		
+		for (String username : loginUser.getFollowing()) {
+			User user=this.userService.findByUsername(username);
+			List<UserPost> allPostByUser=this.findAllPostsByUser(user.getId());
+			for (UserPost userPost : allPostByUser) {
+				allpost.add(userPost);
+			}
+		}
+		return allpost;
+	}
+	
 }
