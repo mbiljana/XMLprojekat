@@ -1,0 +1,18 @@
+<mat-card style="margin-left: 590px; margin-top: 25px;"  class="example-card" *ngFor="let post of posts">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"><img style="height: 50px; border-radius: 50px;" src="{{post.user.profilePicture}}"></div>
+    <mat-card-title>{{post.user.firstName}} {{post.user.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{post.user.username}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image style="width: 540px; height: 300px; margin-left: 70px;" src="{{post.picture}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <h3>
+      {{post.text}}
+    </h3>
+    <h3><mat-icon class="mat-18">thumb_up</mat-icon><label>{{post.likes}} </label><mat-icon class="mat-18">thumb_down</mat-icon>{{post.dislikes}}</h3>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button >View details</button>
+  </mat-card-actions>
+</mat-card>
