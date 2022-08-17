@@ -2,7 +2,9 @@ package com.example.Profile.controller;
 
 
 import java.util.List;
+import java.util.Map;
 
+import com.example.Profile.model.Profile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,22 @@ public class UserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} 
 		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+
+	@RequestMapping(value="api/users",method = RequestMethod.GET)
+	public List<User> findAll(){
+		return this.userService.findAll();
+	}
+
+	@PutMapping(path = "/block",
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> block(@RequestBody Map<String, String> block){
+		try{
+			return new ResponseEntity<User>(userService.block(block.get("blockerId"), block.get("blockedId")), HttpStatus.OK);
+		} catch (IllegalStateException e){
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
 
 

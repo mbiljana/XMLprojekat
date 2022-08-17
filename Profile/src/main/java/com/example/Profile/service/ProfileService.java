@@ -43,4 +43,5 @@ public class ProfileService {
 			return profileRepository.save(editedUser);
 		}
 	}
+
 }

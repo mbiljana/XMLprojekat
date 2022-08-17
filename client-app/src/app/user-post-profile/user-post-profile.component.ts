@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommentService } from './../../service/comment.service';
 import { UserPostService } from './../../service/user-post.service';
 import { ProfileType } from './../model/profileType';
@@ -18,6 +18,9 @@ export class UserPostProfileComponent implements OnInit {
   @Input()
   id:number;
 
+  @Input()
+  typeComponent:string;
+
   comments:Comment[]
 
 
@@ -26,7 +29,7 @@ export class UserPostProfileComponent implements OnInit {
   @Output()
   ClickedBAckToAllPosts:EventEmitter<void>=new EventEmitter();
 
-  constructor(private route: ActivatedRoute,private userPostService:UserPostService, private commentService:CommentService) {
+  constructor(private route: ActivatedRoute,private userPostService:UserPostService, private commentService:CommentService,private router: Router) {
 
 
   }
@@ -52,5 +55,13 @@ export class UserPostProfileComponent implements OnInit {
     this.userPostService.save(this.post)
     .subscribe(res=>this.post=res);
   }
-
+  addCom(){
+    console.log(this.typeComponent)
+    if(this.typeComponent=="userPersonalProfile"){
+      var link1="search"+this.post.user.id+"/newComment"
+      this.router.navigate(['link1']);
+    }else{
+      this.router.navigate(['/search']);
+    }
+  }
 }
