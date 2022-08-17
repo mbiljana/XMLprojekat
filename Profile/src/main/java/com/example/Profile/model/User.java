@@ -24,6 +24,7 @@ public class User {
 	private String gender;
 	private String profilePicture;
 	private ProfileType profileType;
+	private boolean isPrivate;
 
 	private List<String> following;
 	private List<String> followRequests;
@@ -77,7 +78,9 @@ public class User {
 		this.blocked = blocked;
 	}
 
-	public Long getId() {
+
+
+    public Long getId() {
 		return id;
 	}
 
@@ -197,6 +200,23 @@ public class User {
 	}
 
 	public void setBlocked(List<String> blocked) {
+		this.blocked = blocked;
+	}
+
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, boolean isPrivate, List<String> following, List<String> followRequests, List<String> blocked) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.profileType = profileType;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
 		this.blocked = blocked;
 	}
 }

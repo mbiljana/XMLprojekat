@@ -8,11 +8,11 @@ import {User} from "../app/model/user";
 })
 export class UserService {
   url = "http://localhost:8191/api/users";
-  followUrl = "http://localhost:8191/api/users/follow";
 
   constructor(private http: HttpClient) { }
 
-  //followUser()
-  //return this.http.put
+  getUser(id:number):Observable<User>{
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
 
 }

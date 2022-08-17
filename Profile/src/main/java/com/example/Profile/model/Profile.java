@@ -20,6 +20,7 @@ public class Profile {
 	private String education;
 	private String additionInformation;
 	private ProfileType profileType;
+	//private boolean isPrivate;
 
 
 	public Long getId() {

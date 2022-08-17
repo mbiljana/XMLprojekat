@@ -25,7 +25,9 @@ export class RegisterPageComponent implements OnInit {
     gender:'',
     profileType:ProfileType.Private,
     role:'',
-    firstLogin:false
+    firstLogin:false,
+    following:[],
+    followRequests:[]
   });
   genders=['female','male'];
   confirmedPassword: string;

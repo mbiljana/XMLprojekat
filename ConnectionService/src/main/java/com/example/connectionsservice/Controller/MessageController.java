@@ -56,6 +56,7 @@ public class MessageController {
     }
 
 
+
     //dobavljanje svih poruka - test
     @GetMapping(path = "/allMess",
             produces = MediaType.APPLICATION_JSON_VALUE)

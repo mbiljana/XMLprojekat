@@ -21,16 +21,20 @@ export class UserProfileComponent implements OnInit {
 
 
   user:User;
+  followedUser : User;
+  toFollowUsername: string;
 
   profile:Profile;
   posts:UserPost[];
   post:UserPost;
   currentUser:Profile;
+  loggedUser:User;
 
   fDTO: FollowRequestsDTO;
 
 
   id:number;
+  idLoginUser:any;
   compare=ProfileType.Private;
 
   showAllInformation:boolean=false;
@@ -56,7 +60,23 @@ export class UserProfileComponent implements OnInit {
       gender:'',
       profileType:ProfileType.Private,
       firstLogin:false,
-      role:''
+      role:'',
+      following:[],
+      followRequests:[]
+    });
+    this.followedUser = new User({
+      firstName: '',
+      lastName: '',
+      username: '',
+      password: '',
+      email: '',
+      mobile: '',
+      gender:'',
+      profileType:ProfileType.Private,
+      firstLogin:false,
+      role:'',
+      following:[],
+      followRequests:[]
     });
     this.profile=new Profile({
       user:new User({
@@ -70,7 +90,9 @@ export class UserProfileComponent implements OnInit {
         gender:'',
         profileType:ProfileType.Private,
         firstLogin:false,
-        role:''
+        role:'',
+        following:[],
+        followRequests:[]
       }),
       proramLanguages:[],
       exCompanies:[],
@@ -83,6 +105,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProfile();
+    this.loadUser();
   }
 
   loadClient(){
@@ -117,12 +140,19 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  loadUser(){
+    this.idLoginUser = sessionStorage.getItem('id');
+    //console.log(this.idLoginUser)
+    this.profileService.getUser(this.idLoginUser)
+      .subscribe(res =>
+        this.loggedUser = res
+      )
+  }
 
   followUser() {
-    this.fDTO.followerId = 'bika';
+    this.fDTO.followerId = this.loggedUser.username;
     this.fDTO.toFollowId = this.profile.user.username;
-    this.profileService.followUser(this.fDTO);
-
+    this.profileService.followUser(this.fDTO).subscribe(res => this.followedUser = res);
   }
 
   viewHolePost(post:UserPost){

@@ -27,7 +27,9 @@ export class FoundUserComponent implements OnInit {
       gender:'',
       profileType:ProfileType.Private,
       role:'',
-      firstLogin:false
+      firstLogin:false,
+      following:[],
+      followRequests:[]
     });
   }
 

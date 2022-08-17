@@ -12,8 +12,8 @@ export interface UserInterface {
     profileType:ProfileType;
     role: string;
     firstLogin: boolean;
-   // following:string[];
-    //followRequests:string[];
+    following:string[];
+    followRequests:string[];
 }
 export class User implements UserInterface {
   id: number ;
@@ -28,8 +28,8 @@ export class User implements UserInterface {
   profileType:ProfileType;
   role: string;
   firstLogin: boolean;
-  //following:string[];
-  //followRequests:string[];
+  following:string[];
+  followRequests:string[];
 
   constructor(obj: UserInterface) {
       this.id = obj.id;
@@ -44,8 +44,8 @@ export class User implements UserInterface {
       this.profileType=obj.profileType;
       this.role = obj.role;
       this.firstLogin = obj.firstLogin;
-     // this.following = obj.following;
-     // this.followRequests = obj.followRequests;
+      this.following = obj.following;
+      this.followRequests = obj.followRequests;
   }
 
 
