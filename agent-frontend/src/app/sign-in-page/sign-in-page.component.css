@@ -1,0 +1,40 @@
+.modal-content {
+  padding: 20px;
+  background-color: #AEC2D5;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  width: 650px;
+  height: 270px;
+  margin-left: 600px;
+}
+
+
+.form-group input {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+  font-size: 19px;
+  width: 300px;
+}
+
+
+
+label {
+  font-size: 20px;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+h5 {
+  margin-bottom: 0px;
+}
