@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import {MessagesComponent} from "./messages/messages.component";
+import {FollowRequestsComponent} from "./follow-requests/follow-requests.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path:'profile/:id/newPost',component:MakeNewUserPostComponent},
   { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
+  {path:'requests', component: FollowRequestsComponent},
 ];
 
 @NgModule({

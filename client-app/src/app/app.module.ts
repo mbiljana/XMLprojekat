@@ -34,6 +34,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
+import { FollowRequestsComponent } from './follow-requests/follow-requests.component';
+import { FollowRequestComponent } from './follow-request/follow-request.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { CompanyPostProfileComponent } from './company-post-profile/company-post
 
     SendMessageComponent,
 
-    CompanyPostProfileComponent
+    CompanyPostProfileComponent,
+      FollowRequestsComponent,
+      FollowRequestComponent
 
 
   ],

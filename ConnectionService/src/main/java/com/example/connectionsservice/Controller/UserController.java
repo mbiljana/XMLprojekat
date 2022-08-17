@@ -50,7 +50,7 @@ public class UserController {
     }
 
     //get all follow requests for user
-    @GetMapping(path = "/requests",
+    @PostMapping(path = "/requests",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllFollowRequests(@RequestBody UsersFollowRequests username){
         List<String> followRequests = new ArrayList<>();
