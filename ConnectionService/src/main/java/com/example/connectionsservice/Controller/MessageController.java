@@ -55,6 +55,15 @@ public class MessageController {
         return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
     }
 
+    //dobavljanje interfejsa za chat
+    @GetMapping(path = "/chat",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getChat(@RequestBody SentMessageDTO sDTO){
+        User user = this.userService.findByUsername(sDTO.getUsername());
+        List<Message> messages = this.messageService.getChatInterface(user.getUsername());
+        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+    }
+
 
 
     //dobavljanje svih poruka - test

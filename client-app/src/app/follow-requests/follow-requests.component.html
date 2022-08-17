@@ -1,0 +1,16 @@
+<div class="modal-dialog text-center">
+  <div class="modal-content">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Sender</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-follow-request *ngFor="let request of requests" [request]=request >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

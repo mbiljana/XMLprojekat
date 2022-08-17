@@ -35,8 +35,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
+import { FollowRequestsComponent } from './follow-requests/follow-requests.component';
+import { FollowRequestComponent } from './follow-request/follow-request.component';
 import { PopUpLikeDislikeComponent } from './pop-up-like-dislike/pop-up-like-dislike.component';
 import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
+
 
 
 @NgModule({
@@ -70,8 +73,13 @@ import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
     SendMessageComponent,
 
     CompanyPostProfileComponent,
+
+      FollowRequestsComponent,
+      FollowRequestComponent
+
      PopUpLikeDislikeComponent,
      PopUpLikedComponent
+
 
 
   ],
