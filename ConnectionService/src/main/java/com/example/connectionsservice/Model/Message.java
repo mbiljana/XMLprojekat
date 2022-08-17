@@ -23,5 +23,45 @@ public class Message {
     private String recieverUsername;
     private String message;
     private Date sentDate;
+	public Message(String id, String senderUsername, String recieverUsername, String message, Date sentDate) {
+		super();
+		this.id = id;
+		this.senderUsername = senderUsername;
+		this.recieverUsername = recieverUsername;
+		this.message = message;
+		this.sentDate = sentDate;
+	}
+	public Message() {}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getSenderUsername() {
+		return senderUsername;
+	}
+	public void setSenderUsername(String senderUsername) {
+		this.senderUsername = senderUsername;
+	}
+	public String getRecieverUsername() {
+		return recieverUsername;
+	}
+	public void setRecieverUsername(String recieverUsername) {
+		this.recieverUsername = recieverUsername;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Date getSentDate() {
+		return sentDate;
+	}
+	public void setSentDate(Date sentDate) {
+		this.sentDate = sentDate;
+	}
+    
 
 }

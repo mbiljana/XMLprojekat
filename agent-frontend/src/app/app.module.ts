@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     NavbarComponent,
     NavbarProfileComponent,
     RegisterPageComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    MakeNewPostComponent
   ],
   imports: [
     BrowserModule,
