@@ -47,6 +47,7 @@ public class UserService {
         }else{
             followerUser.getFollowing().add(toFollowUsername);
             toFollowUser.getFollowing().add(followerUsername);
+            userRepository.save(toFollowUser);
             return userRepository.save(followerUser);
         }
     }
@@ -64,13 +65,15 @@ public class UserService {
         return  followRequest;
     }
 
-    //getting the number of connections user has
+    //get all users connections
     public List<String> getNumConnectionsForUser(String username){
         List<String> following = new ArrayList<>();
         User user = userRepository.findByUsername(username);
         following = user.getFollowing();
         return  following;
     }
+
+
 
     //confirm a request
     public List<String> confirmRequest(String username, String followerUsername){

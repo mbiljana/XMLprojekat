@@ -78,6 +78,9 @@ public class InitialData {
 		
 		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
 		userService.save(u4);
+
+		User u5=new User((long)22,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PUBLIC,following, followRequests, blocked);
+		userService.save(u5);
 		///////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");
 		companyService.save(c1);

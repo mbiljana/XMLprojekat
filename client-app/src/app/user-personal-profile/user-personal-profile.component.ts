@@ -36,7 +36,9 @@ export class UserPersonalProfileComponent implements OnInit {
         gender:'',
         profileType:ProfileType.Private,
         role:'',
-        firstLogin:false
+        firstLogin:false,
+        following:[],
+        followRequests:[]
       }),
       proramLanguages:[],
       exCompanies:[],
