@@ -8,7 +8,6 @@ public class CompanyDTO {
 	private String description;
 	private AddressDTO address;
 	private String username;
-	private String password;
 	private String email;
 	private String mobile;
 	private String profilePicture;
@@ -36,12 +35,6 @@ public class CompanyDTO {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -67,7 +60,7 @@ public class CompanyDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public CompanyDTO(Long id, String name, String description, AddressDTO address, String username, String password,
+	public CompanyDTO(Long id, String name, String description, AddressDTO address, String username,
 			String email, String mobile, String profilePicture) {
 		super();
 		this.id = id;
@@ -75,7 +68,6 @@ public class CompanyDTO {
 		this.description = description;
 		this.address = address;
 		this.username = username;
-		this.password = password;
 		this.email = email;
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
