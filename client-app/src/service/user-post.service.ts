@@ -28,4 +28,7 @@ export class UserPostService {
   getUserPost(id:number):Observable<UserPost>{
     return this.http.get<UserPost>(`${this.url}/${id}`);
   }
+  getUserPostFromFollowing(id:number):Observable<UserPost[]>{
+    return this.http.get<UserPost[]>(`${this.url+"/following"}/${id}`);
+  }
 }

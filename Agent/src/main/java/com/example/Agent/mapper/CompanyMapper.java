@@ -17,7 +17,6 @@ public class CompanyMapper {
 				a.getDescription(),
 				addressDTO,
 				a.getUsername(),
-				a.getPassword(),
 				a.getEmail(),
 				a.getMobile(),
 				a.getProfilePicture()
@@ -28,7 +27,7 @@ public class CompanyMapper {
 	public static Company convertFromDTO(CompanyDTO dto) {
 		Address address=new Address(dto.getAddress().getId(),dto.getAddress().getStreet(), dto.getAddress().getState(), dto.getAddress().getCity());
 		Company company=new Company(
-				dto.getId(),dto.getName(),dto.getDescription(),address,dto.getUsername(),dto.getPassword(),dto.getEmail(),dto.getMobile(),dto.getProfilePicture());
+				dto.getId(),dto.getName(),dto.getDescription(),address,dto.getUsername(),dto.getEmail(),dto.getMobile(),dto.getProfilePicture());
 		return company;
 	}
 }

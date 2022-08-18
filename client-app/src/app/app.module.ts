@@ -41,6 +41,12 @@ import { PopUpLikeDislikeComponent } from './pop-up-like-dislike/pop-up-like-dis
 import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
 import { ChatComponent } from './chat/chat.component';
 
+import { AllPostFromFollowingComponent } from './all-post-from-following/all-post-from-following.component';
+import {MatCardModule} from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 @NgModule({
@@ -80,7 +86,8 @@ import { ChatComponent } from './chat/chat.component';
 
      PopUpLikeDislikeComponent,
      PopUpLikedComponent,
-     ChatComponent
+     ChatComponent,
+     AllPostFromFollowingComponent
 
 
 
@@ -93,7 +100,11 @@ import { ChatComponent } from './chat/chat.component';
     MatIconModule,
     BrowserAnimationsModule,
     CommonModule,ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

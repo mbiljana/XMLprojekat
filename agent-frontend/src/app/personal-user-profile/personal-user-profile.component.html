@@ -1,0 +1,20 @@
+
+
+<div class="row" class="container">
+  <div class="center" >
+    <h1>{{user.firstName}}  {{user.lastName}}</h1>
+
+    <div class="text-center">
+      <img src="{{user.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{user.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{user.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{user.mobile}}</label>
+    <button style="margin-left: 170px; margin-top: 20px;"  class="btn btn-success" [routerLink]="['newCompanyRequest']">New company request<mat-icon class="mat-18">add</mat-icon></button>
+  </div><br>
+</div>
