@@ -27,7 +27,6 @@ const routes: Routes = [
   {path:'profile/:id/requests', component: FollowRequestsComponent},
   {path:'profile/:id/requests/profile/:id', component: UserProfileComponent}
 
-  //profile/2/requests/profile/4
 ];
 
 @NgModule({

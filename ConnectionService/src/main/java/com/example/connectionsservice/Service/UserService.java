@@ -23,6 +23,10 @@ public class UserService {
        return this.userRepository.findByUsername(username);
     }
 
+    public User findOne(Long id) {
+        return this.userRepository.findById(id).get();
+    }
+
 
     //follow a user
     public User follow(String followerUsername, String toFollowUsername) {
