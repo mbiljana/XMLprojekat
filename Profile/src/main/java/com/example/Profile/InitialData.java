@@ -58,7 +58,7 @@ public class InitialData {
 
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		following.add("lana");
+		following.add("lana99");
 
 		List<String> followRequests = new ArrayList<>();
 		followRequests.add("stefan");
