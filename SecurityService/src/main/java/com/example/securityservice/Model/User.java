@@ -20,13 +20,14 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private Long id;
+    private String id;
 
     private String korisnicko;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
+    private String gender;
     private boolean enabled;
     //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
@@ -35,7 +36,7 @@ public class User implements UserDetails {
     
 
 
-    public User(Long id, String korisnicko, String password, String firstName, String lastName, String email,
+    public User(String id, String korisnicko, String password, String firstName, String lastName, String email,
 			boolean enabled, List<Role> roles, String roleType) {
 		super();
 		this.id = id;
@@ -64,11 +65,11 @@ public class User implements UserDetails {
 
 
 
-	public Long getId() {
+	public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -144,6 +145,14 @@ public class User implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
      */
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     @JsonIgnore
     @Override

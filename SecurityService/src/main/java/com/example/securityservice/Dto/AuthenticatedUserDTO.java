@@ -1,14 +1,14 @@
 package com.example.securityservice.Dto;
 
 public class AuthenticatedUserDTO {
-	private Long id;
+	private String id;
     private String role;
     private String username;
     private UserTokenState token;
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getRole() {
@@ -29,7 +29,7 @@ public class AuthenticatedUserDTO {
 	public void setToken(UserTokenState token) {
 		this.token = token;
 	}
-	public AuthenticatedUserDTO(Long id, String role, String username, UserTokenState token) {
+	public AuthenticatedUserDTO(String id, String role, String username, UserTokenState token) {
 		super();
 		this.id = id;
 		this.role = role;
