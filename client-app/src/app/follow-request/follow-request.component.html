@@ -1,4 +1,7 @@
 <td>{{request}}</td>
 <td>
+
+  <button class="btn btn-info " [routerLink]="['profile',user.id]" >View profile</button>
+
   <button class="btn btn-info" (click)="acceptRequest()">Accept</button>
 </td>

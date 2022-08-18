@@ -74,6 +74,15 @@ public class UserController {
         return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/{username}",method = RequestMethod.GET)
+    public ResponseEntity<User>  findOne(@PathVariable String username){
+        User profile=this.userService.findByUsername(username);
+        if (profile==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(profile, HttpStatus.OK);
+    }
+
 
 
 

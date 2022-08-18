@@ -17,7 +17,7 @@ export class FollowRequestComponent implements OnInit {
 
 
   idLoginUser:any;
-  loggedUser:User;
+  user:User;
   follower: string;
 
   fDTO: FollowRequestsDTO;
@@ -28,21 +28,30 @@ export class FollowRequestComponent implements OnInit {
   constructor(private route: ActivatedRoute, private followService: FollowReqService, private profileService:ProfileService) {
     this.request = '';
    // this.follower = '';
-
+    this.user=new User({
+      id:0,
+      firstName: '',
+      lastName: '',
+      username: '',
+      password: '',
+      email: '',
+      mobile: '',
+      gender:'',
+      profileType:ProfileType.Private,
+      role:'',
+      firstLogin:false,
+      following:[],
+      followRequests:[]
+    });
 
   }
 
   ngOnInit(): void {
-    this.loadUser();
+    this.findUser();
   }
 
-  loadUser(){
-    this.idLoginUser = sessionStorage.getItem('id');
-    //console.log(this.idLoginUser)
-    this.profileService.getUser(this.idLoginUser)
-      .subscribe(res =>
-        this.loggedUser = res
-      )
+  findUser(){
+    this.profileService.getUserByUsername(this.request).subscribe(res => this.user=res);
   }
 
   acceptRequest(){

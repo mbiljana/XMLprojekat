@@ -14,7 +14,8 @@ export class ProfileService {
   url = "http://localhost:8184/api/user";
   urlProfile="http://localhost:8184/api/profile";
   urlFollow = "http://localhost:8191/api/users/follow";
-  urlFollowing = "http://localhost:8191/api/following"
+  urlFollowing = "http://localhost:8191/api/following";
+  urlUser = "http://localhost:8191/api/users";
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,9 @@ export class ProfileService {
   }
   getUser(id:number):Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
+  }
+  getUserByUsername(un:string):Observable<User>{
+    return this.http.get<User>(`${this.urlUser}/${un}`);
   }
   getProfile(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);
