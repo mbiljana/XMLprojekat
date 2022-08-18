@@ -28,7 +28,7 @@ const routes: Routes = [
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
 
   { path:'allPost/newComment/:postId',component:AddCommentComponent},
-  { path:"allPost/detailsUserPost/:postId",component:UserPostProfileComponent}
+  { path:"allPost/detailsUserPost/:postId",component:UserPostProfileComponent},
 
   {path:'requests', component: FollowRequestsComponent},
 
