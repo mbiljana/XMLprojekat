@@ -24,6 +24,7 @@ const routes: Routes = [
   { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
   {path:'requests', component: FollowRequestsComponent},
+  {path:'profile/:id/requests', component: FollowRequestsComponent},
 ];
 
 @NgModule({

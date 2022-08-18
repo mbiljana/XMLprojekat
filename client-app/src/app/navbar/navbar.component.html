@@ -11,15 +11,15 @@
       </li>
     </ul>
   </div>
-  <div class="collapse navbar-collapse" id="navsp">
+  <div class="collapse navbar-collapse" id="navsp" *ngIf="loginService.isUserLoggedIn();">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
       <li class="nav-item">
-        <a class="nav-link" href="requests">Follow requests <mat-icon>plus</mat-icon></a>
+        <a class="nav-link" href="requests" >Follow requests <mat-icon>group</mat-icon></a>
       </li>
     </ul>
   </div>
-  <div class="right " id="nsc">
+  <div class="right " id="nsc" *ngIf="loginService.isUserLoggedIn();">
     <ul class="navbar-nav me-auto ">
       <li>
         <a class="nav-link" href="messages">Chat <mat-icon>message</mat-icon></a>

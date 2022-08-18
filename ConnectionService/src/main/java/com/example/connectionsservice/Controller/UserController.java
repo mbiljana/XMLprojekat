@@ -57,13 +57,21 @@ public class UserController {
         followRequests = userService.getFollowRequests(username.getUsername());
         return new ResponseEntity<List<String>>(followRequests, HttpStatus.OK);
     }
+    //get all follow requests for user
+    @GetMapping(path = "/requestsId/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllFollowRequestsId(@PathVariable Long id){
+        List<String> followRequests = new ArrayList<>();
+        followRequests = userService.getFollowRequestsId(id);
+        return new ResponseEntity<List<String>>(followRequests, HttpStatus.OK);
+    }
 
     //accept follow request
     @PutMapping (path = "/accept",consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> acceptRequest(@RequestBody FollowRequestsDTO fDTO){
-        List<String> userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
-        return new ResponseEntity<List<String>>(userFollowing, HttpStatus.OK);
+        String userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
+        return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
     }
 
 

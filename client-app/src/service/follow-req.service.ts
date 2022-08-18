@@ -12,18 +12,18 @@ import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
 export class FollowReqService {
 
 
-  url = "http://localhost:8191/api/users/requests";
+  url = "http://localhost:8191/api/users/requestsId";
   urlAccept = "http://localhost:8191/api/users/accept";
 
   constructor(private http: HttpClient) { }
 
 
-  getUsersFollowRequests(requests : UsersFollowRequestsDTO):Observable<String[]>{
-    return this.http.post<String[]>(this.url,requests);
+  getUsersFollowRequests(id:number):Observable<string[]>{
+    return this.http.get<string[]>(`${this.url}/${id}`);
   }
 
-  acceptRequest(request : FollowRequestsDTO):Observable<String[]>{
-    return this.http.put<String[]>(this.urlAccept,request);
+  acceptRequest(request : FollowRequestsDTO):Observable<string>{
+    return this.http.put<string>(this.urlAccept,request);
   }
 
 

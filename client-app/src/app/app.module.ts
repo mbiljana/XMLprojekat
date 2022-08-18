@@ -75,7 +75,7 @@ import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
     CompanyPostProfileComponent,
 
       FollowRequestsComponent,
-      FollowRequestComponent
+      FollowRequestComponent,
 
      PopUpLikeDislikeComponent,
      PopUpLikedComponent

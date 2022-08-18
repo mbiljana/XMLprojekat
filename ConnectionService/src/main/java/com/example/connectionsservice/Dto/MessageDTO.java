@@ -9,8 +9,8 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class MessageDTO {
     private String senderUsername;
     private String recieverUsername;

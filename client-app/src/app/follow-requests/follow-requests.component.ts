@@ -16,6 +16,7 @@ import {waitForAsync} from "@angular/core/testing";
 })
 export class FollowRequestsComponent implements OnInit {
 
+  id:number;
   idLoginUser:any;
   loggedUser:User;
   foundUser: UsersFollowRequestsDTO;
@@ -23,37 +24,41 @@ export class FollowRequestsComponent implements OnInit {
 
 
   @Input()
-  requests: String[];
+  requests: string[];
 
   constructor(private route: ActivatedRoute, private requestService: FollowReqService,private profileService: ProfileService ) {
+
     this.foundUser = new UsersFollowRequestsDTO({
-      username:''
+      username : ''
     });
   }
-
-
-
   ngOnInit() {
     this.loadUser();
-   //this.loadRequests(1000);
   }
-
 
   loadUser(){
-    this.idLoginUser = sessionStorage.getItem('id');
-    this.profileService.getUser(this.idLoginUser)
-      .subscribe(res =>
-        this.loggedUser = res
-      );
-    console.log("user found" + this.loggedUser.username);
+    this.id = this.route.snapshot.params['id'];
+    //this.idLoginUser = sessionStorage.getItem('id');
+    this.profileService.getUser(this.id)
+      .subscribe(res =>{
+          this.loggedUser = res;
+          this.requestService.getUsersFollowRequests(this.id).subscribe(res=> this.requests=res);
+      }
+
+      )
+    console.log(this.id);
   }
 
+
   loadRequests(){
-    this.foundUser = new UsersFollowRequestsDTO({
-      username : this.loggedUser.username
-    });
-    //this.foundUser = new UsersFollowRequestsDTO({username : 'maja'});
-    this.requestService.getUsersFollowRequests(this.foundUser).subscribe(res=> this.requests=res);
+
+    //console.log(this.loggedUser.username);
   }
+    /*
+    this.foundUser.username = this.loggedUser.username;
+    this.requestService.getUsersFollowRequests(this.foundUser).subscribe(res=> this.requests=res);
+    }
+
+     */
 
 }
