@@ -13,7 +13,7 @@ public class Company {
 	private String description;
 	private Address address;
 	private String username;
-	private String password;
+	//private String password;
 	private String email;
 	private String mobile;
 	private String profilePicture;
@@ -43,12 +43,6 @@ public class Company {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -76,7 +70,7 @@ public class Company {
 	}
 	
 	
-	public Company(Long id, String name, String description, Address address, String username, String password,
+	public Company(Long id, String name, String description, Address address, String username, 
 			String email, String mobile, String profilePicture) {
 		super();
 		this.id = id;
@@ -84,7 +78,6 @@ public class Company {
 		this.description = description;
 		this.address = address;
 		this.username = username;
-		this.password = password;
 		this.email = email;
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;

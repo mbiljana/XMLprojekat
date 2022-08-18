@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Agent.model.User;
@@ -31,14 +34,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Za pristup ovoj metodi neophodno je da ulogovani korisnik ima ADMIN ulogu
-    // Ukoliko nema, server ce vratiti gresku 403 Forbidden
-    // Korisnik jeste autentifikovan, ali nije autorizovan da pristupi resursu
-    @GetMapping("/user/{userId}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public User loadById(@PathVariable Long userId) {
-        return this.userService.findById(userId);
-    }
 
     @GetMapping("/user/all")
     @PreAuthorize("hasRole('ADMIN')")
@@ -58,4 +53,12 @@ public class UserController {
         fooObj.put("foo", "bar");
         return fooObj;
     }
+	@RequestMapping(value="/user/{id}",method = RequestMethod.GET)
+	public ResponseEntity<User>  findOne(@PathVariable Long id){
+		User user=this.userService.findById(id);
+		if (user==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} 
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
 }
