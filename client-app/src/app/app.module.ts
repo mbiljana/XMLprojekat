@@ -39,6 +39,8 @@ import { FollowRequestsComponent } from './follow-requests/follow-requests.compo
 import { FollowRequestComponent } from './follow-request/follow-request.component';
 import { PopUpLikeDislikeComponent } from './pop-up-like-dislike/pop-up-like-dislike.component';
 import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
+import { ChatComponent } from './chat/chat.component';
+
 import { AllPostFromFollowingComponent } from './all-post-from-following/all-post-from-following.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -84,6 +86,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
      PopUpLikeDislikeComponent,
      PopUpLikedComponent,
+     ChatComponent,
      AllPostFromFollowingComponent
 
 

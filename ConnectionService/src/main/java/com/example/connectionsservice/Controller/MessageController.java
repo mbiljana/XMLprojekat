@@ -56,10 +56,10 @@ public class MessageController {
     }
 
     //dobavljanje interfejsa za chat
-    @GetMapping(path = "/chat",
+    @GetMapping(path = "/chat/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getChat(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
+    public ResponseEntity<?> getChat(@PathVariable Long id){
+        User user = this.userService.findOne(id);
         List<Message> messages = this.messageService.getChatInterface(user.getUsername());
         return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
     }
