@@ -65,6 +65,13 @@ public class UserService {
         return  followRequest;
     }
 
+    public List<String> getFollowRequestsId(Long id){
+        List<String> followRequest = new ArrayList<>();
+        User user = userRepository.findById(id).get();
+        followRequest = user.getFollowRequests();
+        return  followRequest;
+    }
+
     //get all users connections
     public List<String> getNumConnectionsForUser(String username){
         List<String> following = new ArrayList<>();
@@ -76,7 +83,7 @@ public class UserService {
 
 
     //confirm a request
-    public List<String> confirmRequest(String username, String followerUsername){
+    public String confirmRequest(String username, String followerUsername){
         //user koji je primio zahtev
         User user = userRepository.findByUsername(username);
         //user koji je poslao zahtev
@@ -98,7 +105,8 @@ public class UserService {
                 break;
             }
         }
-        return userRequests;
+        String flw = follower.getUsername();
+        return flw;
     }
 
 

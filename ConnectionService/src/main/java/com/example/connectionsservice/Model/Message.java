@@ -13,8 +13,8 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Document("messages")
 public class Message {
     @Id

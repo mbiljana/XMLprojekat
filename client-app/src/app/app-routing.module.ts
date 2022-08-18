@@ -31,6 +31,8 @@ const routes: Routes = [
   { path:"allPost/detailsUserPost/:postId",component:UserPostProfileComponent},
 
   {path:'requests', component: FollowRequestsComponent},
+  {path:'profile/:id/requests', component: FollowRequestsComponent},
+  {path:'profile/:id/requests/profile/:id', component: UserProfileComponent}
 
 ];
 

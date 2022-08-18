@@ -80,7 +80,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CompanyPostProfileComponent,
 
       FollowRequestsComponent,
-      FollowRequestComponent
+      FollowRequestComponent,
 
      PopUpLikeDislikeComponent,
      PopUpLikedComponent,
