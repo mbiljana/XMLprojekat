@@ -1,3 +1,4 @@
+import { UserPostProfileComponent } from './user-post-profile/user-post-profile.component';
 import { AllPostFromFollowingComponent } from './all-post-from-following/all-post-from-following.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 
@@ -25,7 +26,12 @@ const routes: Routes = [
   { path:'profile/:id/newPost',component:MakeNewUserPostComponent},
   { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
+
+  { path:'allPost/newComment/:postId',component:AddCommentComponent},
+  { path:"allPost/detailsUserPost/:postId",component:UserPostProfileComponent}
+
   {path:'requests', component: FollowRequestsComponent},
+
 ];
 
 @NgModule({
