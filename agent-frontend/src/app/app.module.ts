@@ -15,6 +15,8 @@ import { NavbarProfileComponent } from './navbar-profile/navbar-profile.componen
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
+import { PersonalUserProfileComponent } from './personal-user-profile/personal-user-profile.component';
+import { NewCompanyRequestComponent } from './new-company-request/new-company-request.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
     NavbarProfileComponent,
     RegisterPageComponent,
     SignInPageComponent,
-    MakeNewPostComponent
+    MakeNewPostComponent,
+    PersonalUserProfileComponent,
+    NewCompanyRequestComponent
   ],
   imports: [
     BrowserModule,
