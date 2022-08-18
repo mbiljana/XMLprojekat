@@ -29,7 +29,7 @@ public class PostMapper {
 		
 		public static Post convertFromDTO(PostDTO dto) {
 			Address address=new Address(dto.getCompany().getAddress().getId(),dto.getCompany().getAddress().getStreet(), dto.getCompany().getAddress().getState(),dto.getCompany().getAddress().getCity());
-			Company company=new Company(dto.getCompany().getId(),dto.getCompany().getName(), dto.getCompany().getDescription(), address,dto.getCompany().getUsername(),dto.getCompany().getPassword(),dto.getCompany().getEmail(),dto.getCompany().getMobile(),dto.getCompany().getProfilePicture());
+			Company company=new Company(dto.getCompany().getId(),dto.getCompany().getName(), dto.getCompany().getDescription(), address,dto.getCompany().getUsername(),dto.getCompany().getEmail(),dto.getCompany().getMobile(),dto.getCompany().getProfilePicture());
 			Post post=new Post(
 					dto.getId(),dto.getTitle(),dto.getJobDescription(),dto.getPreconditions(),dto.getPosition(),dto.getPicture(),dto.getNumOfLikes(),dto.getNumOfDislikes(),company);
 			return post;

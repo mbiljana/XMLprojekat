@@ -39,6 +39,11 @@ import { FollowRequestsComponent } from './follow-requests/follow-requests.compo
 import { FollowRequestComponent } from './follow-request/follow-request.component';
 import { PopUpLikeDislikeComponent } from './pop-up-like-dislike/pop-up-like-dislike.component';
 import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
+import { AllPostFromFollowingComponent } from './all-post-from-following/all-post-from-following.component';
+import {MatCardModule} from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -78,7 +83,8 @@ import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
       FollowRequestComponent,
 
      PopUpLikeDislikeComponent,
-     PopUpLikedComponent
+     PopUpLikedComponent,
+     AllPostFromFollowingComponent
 
 
 
@@ -91,7 +97,11 @@ import { PopUpLikedComponent } from './pop-up-liked/pop-up-liked.component';
     MatIconModule,
     BrowserAnimationsModule,
     CommonModule,ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

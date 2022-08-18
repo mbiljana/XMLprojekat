@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/service/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  isActive: boolean = false;
+  role:any;
+  visiable_instrucotrs_button:boolean;
+  constructor(public loginService: AuthenticationService) {
+   }
 
   ngOnInit(): void {
+    this.role=sessionStorage.getItem('role');
+    if(this.role=='Client'){
+      this.visiable_instrucotrs_button=true;
+    }else{
+      this.visiable_instrucotrs_button=false;
+    }
+  }
+  HideInstrucotsButton(){
+    this.role=sessionStorage.getItem('role');
+    if(this.role=='Client'){
+      this.visiable_instrucotrs_button=true;
+    }else{
+      this.visiable_instrucotrs_button=false;
+    }
+  }
+  SignIn(){
+    this.role=sessionStorage.getItem('role');
+    if(this.role=='Client'){
+      this.visiable_instrucotrs_button=true;
+    }else{
+      this.visiable_instrucotrs_button=false;
+    }
   }
 
 }
