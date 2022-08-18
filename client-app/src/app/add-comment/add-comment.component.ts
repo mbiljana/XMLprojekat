@@ -81,7 +81,7 @@ export class AddCommentComponent implements OnInit {
     this.makedPost=true;
     this.showMakePost=false;
   }
-  backToProfile(){
-    this.router.navigate(['profile',this.idLoginUser]);
+  backToAllPost(){
+    this.router.navigate(['allPost']);
   }
 }
