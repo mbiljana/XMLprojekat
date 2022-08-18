@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { MatIconModule } from '@angular/material/icon';
@@ -30,7 +31,8 @@ import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
