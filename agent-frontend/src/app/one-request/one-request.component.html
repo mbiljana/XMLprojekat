@@ -1,1 +1,36 @@
-<p>one-request works!</p>
+<div class="row" class="container">
+  <div class="center" id="comp1" >
+    <h1>{{request.company.name}}</h1>
+
+    <div class="text-center">
+      <img src="{{request.company.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+
+    <button style="margin-top: 30px;"  class="btn btn-primary" [routerLink]="['newPost']">Add new post <mat-icon class="mat-18">add</mat-icon></button>
+  </div><br>
+  <div  class="center" id="comp2" >
+    <h1>Company</h1>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{request.company.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{request.company.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{request.company.mobile}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Short description of the activity</label>
+    <label>{{request.company.description}}</label>
+  </div>
+  <div  class="center" id="comp2" >
+    <h1>Owner</h1>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{request.company.owner.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{request.company.owner.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{request.company.owner.mobile}}</label>
+  </div>
+</div>

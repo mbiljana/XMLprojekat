@@ -16,4 +16,7 @@ export class CompanyRequestService {
   getAll():Observable<CompanyRequest[]>{
     return this.http.get<CompanyRequest[]>(this.url)
   }
+  getOne(id:number):Observable<CompanyRequest>{
+    return this.http.get<CompanyRequest>(`${this.url}/${id}`);
+  }
 }
