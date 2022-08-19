@@ -33,6 +33,9 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+
+import {UserPersonalProfileUpdateComponent} from "./user-personal-profile-update/user-personal-profile-update.component";
+
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
 import { FollowRequestsComponent } from './follow-requests/follow-requests.component';
@@ -48,6 +51,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ViewConnectionsComponent } from './view-connections/view-connections.component';
 import { ViewConnectionComponent } from './view-connection/view-connection.component';
+
 
 
 
@@ -74,6 +78,7 @@ import { ViewConnectionComponent } from './view-connection/view-connection.compo
     UserPostListComponent,
     UserPostComponent,
     UserPostProfileComponent,
+    UserPersonalProfileUpdateComponent,
     AddCommentComponent,
     NavbarProfileComponent,
     MessagesComponent,

@@ -2,6 +2,7 @@ package com.example.Profile.repository;
 
 import java.util.List;
 
+import com.example.Profile.model.Profile;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -37,7 +37,7 @@ public class ProfileController {
 
 
 	//put profile
-	@PutMapping(
+	@PutMapping(value = "api/profile/update",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateProfile(@RequestBody Profile profiles) throws Exception {
