@@ -7,6 +7,7 @@ export interface UserInterface {
     password: string;
     email: string;
     mobile: string;
+    dateOfBirth?: string;
     profilePicture?:string;
     gender?:string;
     profileType:ProfileType;
@@ -23,6 +24,7 @@ export class User implements UserInterface {
   password: string;
   email: string;
   mobile: string;
+  dateOfBirth?: string;
   profilePicture?:string;
   gender?:string;
   profileType:ProfileType;
@@ -41,6 +43,7 @@ export class User implements UserInterface {
       this.mobile = obj.mobile;
       this.profilePicture=obj.profilePicture;
       this.gender=obj.gender;
+      this.dateOfBirth = obj.dateOfBirth;
       this.profileType=obj.profileType;
       this.role = obj.role;
       this.firstLogin = obj.firstLogin;

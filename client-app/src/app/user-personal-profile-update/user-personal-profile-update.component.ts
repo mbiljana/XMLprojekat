@@ -8,6 +8,7 @@ import {UserPost} from "../model/userPost";
 import {UserPostService} from "../../service/user-post.service";
 import {CommentService} from "../../service/comment.service";
 import { ThisReceiver } from '@angular/compiler';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-user-personal-profile-update',
@@ -21,13 +22,15 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   id:number;
   posts:UserPost[];
   post:UserPost;
+  selectedFile: File;
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
+  constructor(private http: HttpClient,private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
     this.posts=[]
     this.profile=new Profile({
       user:new User({
+        id:0,
         firstName: '',
         lastName: '',
         username: '',
@@ -37,7 +40,9 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
         gender:'',
         profileType:ProfileType.Private,
         role:'',
-        firstLogin:false
+        firstLogin:false,
+        following:[],
+        followRequests:[]
       }),
       proramLanguages:[],
       exCompanies:[],
@@ -63,6 +68,22 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   saveChanges(){
   this.profileService.updateProfile(this.profile)
     .subscribe()
+  }
+
+  public onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+  onUpload() {
+    console.log(this.selectedFile);
+
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('http://localhost:8080/upload', uploadImageData)
+      .subscribe((response) => {
+
+        }
+      );
   }
 
 }

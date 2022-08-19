@@ -1,13 +1,27 @@
 <div class="row" class="container">
 <div class="center" id="comp1" >
-  <h1>{{profile.user.firstName}}  {{profile.user.lastName}}</h1>
+
 
   <div class="text-center">
     <img src="{{profile.user.profilePicture}}" class="img-thumbnail" alt="...">
   </div>
-  <h3>{{profile.user.profileType}} PROFILE</h3>
+  <label style="font-weight: bold">Change picture:</label>
+  <br><br>
+  <input id="file_input" type="file" (change)="onFileChanged($event)" class="input1">
+  <br>
+  <button id="upload_button" class="btn btn-info" (click)="onUpload()">Upload</button>
+  <br><br>
+  <label style="font-weight: bold;">Name</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.firstName" id="name" name="name" type="text" class="from-control">
+  </div>
+  <label style="font-weight: bold;">Surname</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.lastName" id="surname" name="surname" type="text" class="from-control">
+  </div>
 </div><br>
 <div  class="center" id="comp2" >
+  <br>
   <label style="font-weight: bold;">Username</label>
   <div class="form-group">
     <input [(ngModel)]="profile.user.username" id="username" name="username" type="text" class="from-control">
@@ -23,6 +37,16 @@
     <input [(ngModel)]="profile.user.mobile" id="mobile" name="mobile" type="text" class="from-control">
   </div>
 
+  <label style="font-weight: bold;">Date of Birth</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.dateOfBirth" id="date" name="date" type="date" class="from-control">
+  </div>
+
+  <label style="font-weight: bold;">Gender</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.gender" id="gender" name="date" type="text" class="from-control">
+  </div>
+
   <label style="font-weight: bold;">Education</label>
   <div class="form-group">
     <input [(ngModel)]="profile.education" id="education" name="education" type="text" class="from-control">
@@ -34,6 +58,7 @@
   </div>
 </div>
 <div  class="center" id="comp3" >
+  <br>
   <label style="font-weight: bold;">Program languages</label>
   <table class="table table-striped table-bordered">
     <thead>
@@ -75,6 +100,6 @@
     </tr>
     </tbody>
   </table>
-  <button (click)="saveChanges()"> Save changes</button>
 </div>
 </div>
+<button (click)="saveChanges()" class="btn1 btn-info"> Save changes</button>

@@ -67,19 +67,19 @@ public class InitialData {
 		List<String> blocked = new ArrayList<>();
 		blocked.add("stef");
 
-		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
+		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2020-10-10");
 		userService.save(u1);
 		
-		User u2=new User((long)2,"lana99","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked);
+		User u2=new User((long)2,"lana99","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked,"2003-03-03");
 		userService.save(u2);
 		
-		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
+		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked,"2006-06-06");
 		userService.save(u3);
 		
-		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
+		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked,"1993-03-03");
 		userService.save(u4);
 
-		User u5=new User((long)22,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PUBLIC,following, followRequests, blocked);
+		User u5=new User((long)22,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PUBLIC,following, followRequests, blocked,"1987-07-07");
 		userService.save(u5);
 		///////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");

@@ -25,7 +25,7 @@ public class User {
 	private String profilePicture;
 	private ProfileType profileType;
 	private boolean isPrivate;
-
+	private String dateOfBirth;
 	private List<String> following;
 	private List<String> followRequests;
 	private List<String> blocked;
@@ -62,7 +62,7 @@ public class User {
 		this.profileType = profileType;
 	}
 
-	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, List<String> following, List<String> followRequests, List<String> blocked) {
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, List<String> following, List<String> followRequests, List<String> blocked, String dateOfBirth) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -76,11 +76,18 @@ public class User {
 		this.following = following;
 		this.followRequests = followRequests;
 		this.blocked = blocked;
+		this.dateOfBirth = dateOfBirth;
 	}
 
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
 
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
