@@ -46,6 +46,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ViewConnectionsComponent } from './view-connections/view-connections.component';
+import { ViewConnectionComponent } from './view-connection/view-connection.component';
 
 
 
@@ -87,7 +89,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
      PopUpLikeDislikeComponent,
      PopUpLikedComponent,
      ChatComponent,
-     AllPostFromFollowingComponent
+     AllPostFromFollowingComponent,
+     ViewConnectionsComponent,
+     ViewConnectionComponent
 
 
 
