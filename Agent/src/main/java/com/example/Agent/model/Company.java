@@ -17,7 +17,7 @@ public class Company {
 	private String email;
 	private String mobile;
 	private String profilePicture;
-	
+	private User owner;
 	
 	public Long getId() {
 		return id;
@@ -70,8 +70,14 @@ public class Company {
 	}
 	
 	
-	public Company(Long id, String name, String description, Address address, String username, 
-			String email, String mobile, String profilePicture) {
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+	public Company(Long id, String name, String description, Address address, String username, String email,
+			String mobile, String profilePicture, User owner) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -81,6 +87,7 @@ public class Company {
 		this.email = email;
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
+		this.owner = owner;
 	}
 	public Company() {}
 	

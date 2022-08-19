@@ -1,6 +1,7 @@
 package com.example.Agent.dto;
 
 import com.example.Agent.model.Address;
+import com.example.Agent.model.User;
 
 public class CompanyDTO {
 	private Long id;
@@ -11,6 +12,7 @@ public class CompanyDTO {
 	private String email;
 	private String mobile;
 	private String profilePicture;
+	private User owner;
 	public Long getId() {
 		return id;
 	}
@@ -60,8 +62,16 @@ public class CompanyDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public CompanyDTO(Long id, String name, String description, AddressDTO address, String username,
-			String email, String mobile, String profilePicture) {
+	
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+	public CompanyDTO() {}
+	public CompanyDTO(Long id, String name, String description, AddressDTO address, String username, String email,
+			String mobile, String profilePicture, User owner) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,7 +81,7 @@ public class CompanyDTO {
 		this.email = email;
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
+		this.owner = owner;
 	}
-	public CompanyDTO() {}
 	
 }
