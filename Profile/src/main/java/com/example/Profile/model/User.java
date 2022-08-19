@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -19,6 +20,7 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private String dateOfBirth;
 	private String email;
 	private String mobile;
 	private String gender;
@@ -62,7 +64,7 @@ public class User {
 		this.profileType = profileType;
 	}
 
-	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, List<String> following, List<String> followRequests, List<String> blocked) {
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, ProfileType profileType, List<String> following, List<String> followRequests, List<String> blocked, String dateOfBirth) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -76,11 +78,28 @@ public class User {
 		this.following = following;
 		this.followRequests = followRequests;
 		this.blocked = blocked;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 
 
-    public Long getId() {
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+
+	public void setPrivate(boolean aPrivate) {
+		isPrivate = aPrivate;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
