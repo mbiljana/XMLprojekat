@@ -32,6 +32,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+import {UserPersonalProfileUpdateComponent} from "./user-personal-profile-update/user-personal-profile-update.component";
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { UserMessagesComponent } from './user-messages/user-messages.component';
     UserPostListComponent,
     UserPostComponent,
     UserPostProfileComponent,
+    UserPersonalProfileUpdateComponent,
     AddCommentComponent,
     NavbarProfileComponent,
     MessagesComponent,

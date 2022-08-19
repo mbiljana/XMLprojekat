@@ -1,4 +1,4 @@
-import { PostService } from './../../service/post.service';
+ import { PostService } from './../../service/post.service';
 import { Post } from './../model/post';
 import { Company } from './../model/company';
 import { Component, Input, OnInit } from '@angular/core';
