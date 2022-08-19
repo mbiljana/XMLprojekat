@@ -23,6 +23,10 @@ public class UserService {
        return this.userRepository.findByUsername(username);
     }
 
+    public User findOne(Long id) {
+        return this.userRepository.findById(id).get();
+    }
+
 
     //follow a user
     public User follow(String followerUsername, String toFollowUsername) {
@@ -46,6 +50,8 @@ public class UserService {
             return userRepository.save(toFollowUser);
         }else{
             followerUser.getFollowing().add(toFollowUsername);
+            toFollowUser.getFollowing().add(followerUsername);
+            userRepository.save(toFollowUser);
             return userRepository.save(followerUser);
         }
     }
@@ -63,8 +69,33 @@ public class UserService {
         return  followRequest;
     }
 
+    public List<String> getFollowRequestsId(Long id){
+        List<String> followRequest = new ArrayList<>();
+        User user = userRepository.findById(id).get();
+        followRequest = user.getFollowRequests();
+        return  followRequest;
+    }
+
+    //get all users connections
+    public List<String> getUsersConnections(String username){
+        List<String> following = new ArrayList<>();
+        User user = userRepository.findByUsername(username);
+        following = user.getFollowing();
+        return  following;
+    }
+
+    //get all users connections by id
+    public List<String> getUsersConnectionsId(Long id){
+        List<String> following = new ArrayList<>();
+        User user = userRepository.findById(id).get();
+        following = user.getFollowing();
+        return  following;
+    }
+
+
+
     //confirm a request
-    public List<String> confirmRequest(String username, String followerUsername){
+    public String confirmRequest(String username, String followerUsername){
         //user koji je primio zahtev
         User user = userRepository.findByUsername(username);
         //user koji je poslao zahtev
@@ -72,19 +103,22 @@ public class UserService {
 
         //lista ljudi koje prati user koji je zapratio
         List<String> userFollowing = follower.getFollowing();
+        List<String> otherSideFollow = user.getFollowing();
         //zahtevi koje je primio user
         List<String> userRequests = user.getFollowRequests();
         for (String f: user.getFollowRequests()
              ) {
             if(f.equals(follower.getUsername())){
                 userFollowing.add(user.getUsername());
+                otherSideFollow.add(follower.getUsername());
                 userRequests.remove(f);
                 userRepository.save(user);
                 userRepository.save(follower);
                 break;
             }
         }
-        return userRequests;
+        String flw = follower.getUsername();
+        return flw;
     }
 
 

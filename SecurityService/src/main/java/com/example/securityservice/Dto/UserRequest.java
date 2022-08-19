@@ -18,6 +18,7 @@ public class UserRequest {
     private String lastname;
 
     private String email;
+    private String gender;
 
     public String getKorisnicko() {
         return korisnicko;
@@ -65,5 +66,13 @@ public class UserRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

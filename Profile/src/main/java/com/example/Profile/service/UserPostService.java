@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Profile.dto.UserLikePostDTO;
 import com.example.Profile.model.Post;
 import com.example.Profile.model.Profile;
 import com.example.Profile.model.User;
@@ -19,6 +20,9 @@ public class UserPostService {
 
 	@Autowired
 	private UserPostRepository userPostRepository;
+	
+	@Autowired
+	private UserService userService;
 	
 	public UserPost save(UserPost post) {
 		Long last_id=(long)0;
@@ -54,4 +58,75 @@ public class UserPostService {
 			return opt.get();
 		}
 	}
+	public boolean isUserAlreadyLike(UserLikePostDTO dto) {
+		UserPost post=this.findById(dto.getUserPost().getId());
+		for (Long userId : post.getUserWhoLiked()) {
+			if (userId==dto.getUserId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public UserPost likePost(UserLikePostDTO dto) {
+		if(!this.isUserAlreadyLike(dto) && !this.isUserAlreadyDislike(dto)) {
+			UserPost post=this.findById(dto.getUserPost().getId());
+			post.getUserWhoLiked().add(dto.getUserId());
+			post.setLikes(post.getLikes()+1);
+			return this.userPostRepository.save(post);
+		}else if (this.isUserAlreadyDislike(dto)) {
+			UserPost post=this.findById(dto.getUserPost().getId());
+			post.setDislikes(post.getDislikes()-1);
+			post.getUserWhoDisliked().remove(dto.getUserId());
+			
+			post.getUserWhoLiked().add(dto.getUserId());
+			post.setLikes(post.getLikes()+1);
+			return this.userPostRepository.save(post);
+		}
+		
+		return null;
+	}
+	public boolean isUserAlreadyDislike(UserLikePostDTO dto) {
+		UserPost post=this.findById(dto.getUserPost().getId());
+		for (Long userId : post.getUserWhoDisliked()) {
+			if (userId==dto.getUserId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public UserPost dislikePost(UserLikePostDTO dto) {
+		if(!this.isUserAlreadyDislike(dto) && !this.isUserAlreadyLike(dto)) {
+			UserPost post=this.findById(dto.getUserPost().getId());
+			post.getUserWhoDisliked().add(dto.getUserId());
+			post.setDislikes(post.getDislikes()+1);
+			return this.userPostRepository.save(post);
+		}else if(this.isUserAlreadyLike(dto)) {
+			UserPost post=this.findById(dto.getUserPost().getId());
+			post.setLikes(post.getLikes()-1);
+			post.getUserWhoLiked().remove(dto.getUserId());
+			
+			post.getUserWhoDisliked().add(dto.getUserId());
+			post.setDislikes(post.getDislikes()+1);
+			return this.userPostRepository.save(post);
+		}
+		return null;
+	}
+	
+	public List<UserPost> allUserPostFromUsersWhoFollowedByUser(Long userId){
+		
+		User loginUser=this.userService.findById(userId);
+		List<UserPost> allpost=new ArrayList<>();
+		
+		for (String username : loginUser.getFollowing()) {
+			User user=this.userService.findByUsername(username);
+			List<UserPost> allPostByUser=this.findAllPostsByUser(user.getId());
+			for (UserPost userPost : allPostByUser) {
+				allpost.add(userPost);
+			}
+		}
+		return allpost;
+	}
+	
 }

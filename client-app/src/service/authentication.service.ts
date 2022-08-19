@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
@@ -11,6 +11,7 @@ export class AuthenticationService {
   private access_token = null;
 
   constructor(private http: HttpClient) { }
+
 
   authenticate(korisnicko: string, password: string) {
 
@@ -55,4 +56,5 @@ export class AuthenticationService {
     sessionStorage.removeItem("role");
 
   }
+
 }

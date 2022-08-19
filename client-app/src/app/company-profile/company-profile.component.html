@@ -13,8 +13,8 @@
           <li class="nav-item active">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item" (click)="showPosts()">
-            <a class="nav-link" >Posts</a>
+          <li class="nav-item" >
+            <a class="nav-link" (click)="showPosts()">Posts</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -36,9 +36,19 @@
   </div>
   <!-- Background image -->
 </header>
-<div *ngIf="showPost" class="jumbotron jumbotron-fluid" >
+<div class="row" *ngIf="showPost" class="jumbotron jumbotron-fluid" >
   <div class="container">
     <h1 class="display-4">Posts</h1>
-    <app-post-list [posts]="posts"></app-post-list>
+    <app-post-list [posts]="posts" (ClickedHolePostView)="showHolePostProfile($event)"></app-post-list>
   </div>
 </div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="row" class="container" *ngIf="showHolePost">
+    <div class="col-md"></div>
+    <div class="center" id="comp1"  style="width: 1050px;">
+      <app-company-post-profile [post]="selectedPost" [id]="selectedPost.id" (ClickBackToCompanyProfile)="showAllPosts()"></app-company-post-profile>
+    </div>
+    <div class="col-md"></div>
+  </div>
+</div>
+

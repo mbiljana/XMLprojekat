@@ -1,0 +1,16 @@
+<div class="modal-dialog text-center">
+  <div class="modal-content">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Username</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-view-connection *ngFor="let connection of connections" [connection]=connection >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

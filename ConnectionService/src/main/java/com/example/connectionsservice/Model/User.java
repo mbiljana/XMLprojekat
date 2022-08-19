@@ -12,8 +12,8 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Document("users")
 
 public class User {
@@ -30,7 +30,7 @@ public class User {
     //is the profile private(true) or public(false)
     private boolean isPrivate;
     //accounts this user follows
-    private List<String> following;
+    private List<String> following;//lista username-va
     //follow request from other users
     private List<String> followRequests;
     private List<Message> sentMessages;
@@ -48,8 +48,30 @@ public class User {
         this.profilePicture = profilePicture;
         this.isPrivate = isPrivate;
     }
+    
 
-    public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests) {
+    public User(Long id, String username, String password, String firstName, String lastName, String email,
+			String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following,
+			List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.sentMessages = sentMessages;
+		this.recievedMessages = recievedMessages;
+	}
+
+
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -63,4 +85,117 @@ public class User {
         this.following = following;
         this.followRequests = followRequests;
     }
+	public User() {}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
+
+	public List<String> getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(List<String> following) {
+		this.following = following;
+	}
+
+	public List<String> getFollowRequests() {
+		return followRequests;
+	}
+
+	public void setFollowRequests(List<String> followRequests) {
+		this.followRequests = followRequests;
+	}
+
+	public List<Message> getSentMessages() {
+		return sentMessages;
+	}
+
+	public void setSentMessages(List<Message> sentMessages) {
+		this.sentMessages = sentMessages;
+	}
+
+	public List<Message> getRecievedMessages() {
+		return recievedMessages;
+	}
+
+	public void setRecievedMessages(List<Message> recievedMessages) {
+		this.recievedMessages = recievedMessages;
+	}
+    
 }

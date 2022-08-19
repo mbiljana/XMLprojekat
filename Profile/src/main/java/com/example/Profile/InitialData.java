@@ -58,7 +58,7 @@ public class InitialData {
 
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		following.add("lana");
+		following.add("lana99");
 
 		List<String> followRequests = new ArrayList<>();
 		followRequests.add("stefan");
@@ -78,6 +78,9 @@ public class InitialData {
 		
 		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked);
 		userService.save(u4);
+
+		User u5=new User((long)22,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PUBLIC,following, followRequests, blocked);
+		userService.save(u5);
 		///////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");
 		companyService.save(c1);
@@ -88,16 +91,31 @@ public class InitialData {
 		Company c3=new Company((long)3, "synehrone", "123","Synehrone", "synehrone@gmail.com", "83498234923", "/assets/companyPicture/company3.jpeg");
 		companyService.save(c3);
 		//////////////////////////////////
-		Post p1=new Post((long)1,"Java developer","Our company looking for junior java developer, experiance is not necessary.","/assets/postPicture/post1.jpeg",c1);
+		List<String> preconditions1=new ArrayList<>();
+		preconditions1.add("c++");
+		preconditions1.add("object-oriented programming");
+		preconditions1.add("previous experience");
+		
+		List<String> preconditions2=new ArrayList<>();
+		preconditions2.add("Python");
+		preconditions2.add("object-oriented programming");
+		preconditions2.add("previous experience");
+		
+		List<String> preconditions3=new ArrayList<>();
+		preconditions3.add("Angular");
+		preconditions3.add("object-oriented programming");
+		preconditions3.add("Java");
+		
+		Post p1=new Post((long)1,"Java developer","Our company looking for junior java developer, experiance is not necessary.","/assets/postPicture/post1.jpeg",preconditions1,"c++ senior developer",c1);
 		postService.save(p1);
 		
-		Post p2=new Post((long)2, "Senior C# programer", "We are looking for senior C# developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",c2);
+		Post p2=new Post((long)2, "Senior AI programer", "We are looking for senior C# developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",preconditions2,"AI junior developer",c2);
 		postService.save(p2);
 		
-		Post p3=new Post((long)3, "Senior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",c1);
+		Post p3=new Post((long)3, "Junior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",preconditions3,"Hava sprign boot junior developer",c1);
 		postService.save(p3);
 		
-		Post p4=new Post((long)4, "Senior C++ programer", "Hello! We are looking for senior C++ developer, with very good experiance in programing and also communication skills","/assets/postPicture/post4.jpeg",c1);
+		Post p4=new Post((long)4, "Senior C++ programer", "Hello! We are looking for senior C++ developer, with very good experiance in programing and also communication skills","/assets/postPicture/post4.jpeg",preconditions1,"c++ senior developer",c1);
 		postService.save(p4);
 		//////////////////////////////////
 		Comment com1=new Comment((long)1, "I think that this job offer is not good, beacouse lot of thing",p1,u3);
@@ -188,14 +206,14 @@ public class InitialData {
 		UserPost up4=new UserPost(u2,"Mathematical logic is the study of formal logic within mathematics. Major subareas include model theory, proof theory, set theory, and recursion theory. Research in mathematical logic commonly addresses the mathematical properties of formal systems of logic such as their expressive or deductive power.",links2,"/assets/userPostPicture/post4.jpeg",0, 0);
 		userPostService.save(up4);
 		
-		/*Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
+		Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
 		commentService.save(com4);
 		
 		Comment com5=new Comment((long)5, "Excelent job for everyone who want to lear new things",up2,u4);
 		commentService.save(com5);
 		
 		Comment com6=new Comment((long)6, "Excelent job for students and",up1,u2);
-		commentService.save(com6);*/
+		commentService.save(com6);
 	}
 	
 }

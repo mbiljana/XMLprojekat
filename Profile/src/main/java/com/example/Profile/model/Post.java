@@ -14,38 +14,42 @@ public class Post {
 	@Id
 	private Long id;
 	private String title;
-	private String text;
+	private String jobDescription;
+	private List<String> preconditions;
+	private String position;
 	private String picture;
-	private List<String> links;	
 	private int numOfLikes;	
 	private int numOfDislikes;
 	private Company company;
 	List<Comment> comments;
-	List<User> followersCanSee;
+	//List<User> followersCanSee;
 	
-	public Post(Long id, String title, String text, String picture, List<String> links, int numOfLikes,
-			int numOfDislikes, Company company, List<Comment> comments, List<User> followersCanSee) {
+	
+	public Post(Long id, String title, String jobDescription, String picture,List<String> preconditions,String position,Company company) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.text = text;
-		this.picture = picture;
-		this.links = links;
-		this.numOfLikes = numOfLikes;
-		this.numOfDislikes = numOfDislikes;
-		this.company = company;
-		this.comments = comments;
-		this.followersCanSee = followersCanSee;
-	}
-	public Post(Long id, String title, String text, String picture,Company company) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.text = text;
+		this.jobDescription = jobDescription;
+		this.preconditions=preconditions;
+		this.position=position;
 		this.picture = picture;
 		this.company=company;
 		this.numOfLikes = 0;
 		this.numOfDislikes = 0;
+	}
+	public Post(Long id, String title, String jobDescription, List<String> preconditions, String position, String picture,
+			int numOfLikes, int numOfDislikes, Company company, List<Comment> comments) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.jobDescription = jobDescription;
+		this.preconditions = preconditions;
+		this.position = position;
+		this.picture = picture;
+		this.numOfLikes = numOfLikes;
+		this.numOfDislikes = numOfDislikes;
+		this.company = company;
+		this.comments = comments;
 	}
 	public Post() {}
 	public Long getId() {
@@ -60,23 +64,12 @@ public class Post {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getText() {
-		return text;
-	}
-	public void setText(String text) {
-		this.text = text;
-	}
+	
 	public String getPicture() {
 		return picture;
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
-	}
-	public List<String> getLinks() {
-		return links;
-	}
-	public void setLinks(List<String> links) {
-		this.links = links;
 	}
 	public int getNumOfLikes() {
 		return numOfLikes;
@@ -96,17 +89,29 @@ public class Post {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-	public List<User> getFollowersCanSee() {
-		return followersCanSee;
-	}
-	public void setFollowersCanSee(List<User> followersCanSee) {
-		this.followersCanSee = followersCanSee;
-	}
 	public Company getCompany() {
 		return company;
 	}
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+	public String getJobDescription() {
+		return jobDescription;
+	}
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
+	}
+	public List<String> getPreconditions() {
+		return preconditions;
+	}
+	public void setPreconditions(List<String> preconditions) {
+		this.preconditions = preconditions;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 }

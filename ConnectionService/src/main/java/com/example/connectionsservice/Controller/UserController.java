@@ -50,11 +50,19 @@ public class UserController {
     }
 
     //get all follow requests for user
-    @GetMapping(path = "/requests",
+    @PostMapping(path = "/requests",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllFollowRequests(@RequestBody UsersFollowRequests username){
         List<String> followRequests = new ArrayList<>();
         followRequests = userService.getFollowRequests(username.getUsername());
+        return new ResponseEntity<List<String>>(followRequests, HttpStatus.OK);
+    }
+    //get all follow requests for user
+    @GetMapping(path = "/requestsId/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllFollowRequestsId(@PathVariable Long id){
+        List<String> followRequests = new ArrayList<>();
+        followRequests = userService.getFollowRequestsId(id);
         return new ResponseEntity<List<String>>(followRequests, HttpStatus.OK);
     }
 
@@ -62,44 +70,22 @@ public class UserController {
     @PutMapping (path = "/accept",consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> acceptRequest(@RequestBody FollowRequestsDTO fDTO){
-        List<String> userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
-        return new ResponseEntity<List<String>>(userFollowing, HttpStatus.OK);
+        String userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
+        return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/sendMessage", consumes = MediaType.APPLICATION_JSON_VALUE,
-                produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> sendMessage(@RequestBody MessageDTO mDTO){
-        Message message = this.messageService.sendMessage(mDTO.getSenderUsername(),mDTO.getRecieverUsername(),mDTO.getMessage());
-        return new ResponseEntity<Message>(message,HttpStatus.OK);
-    }
-
-    //dobavljanje svih poslatih poruka za korisnika
-    @GetMapping(path = "/sentMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllSentMessages(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
-        List<Message> messages = user.getSentMessages();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+    @RequestMapping(value="/{username}",method = RequestMethod.GET)
+    public ResponseEntity<User>  findOne(@PathVariable String username){
+        User profile=this.userService.findByUsername(username);
+        if (profile==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(profile, HttpStatus.OK);
     }
 
 
-    //dobavljanje svih primljenih poruka za korisnika
-    @GetMapping(path = "/recMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllRecievedMessages(@RequestBody SentMessageDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getUsername());
-        List<Message> messages = user.getRecievedMessages();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-    }
 
 
-    //dobavljanje svih poruka - test
-    @GetMapping(path = "/allMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllMessages(){
-        List<Message> messages = this.messageService.getAll();
-        return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-    }
 
 
 }

@@ -7,6 +7,11 @@
       <img src="{{profile.user.profilePicture}}" class="img-thumbnail" alt="...">
     </div>
     <h3>{{profile.user.profileType}} PROFILE</h3>
+
+    <label [routerLink]="['view-connections']" id="conn">{{numConnections.connectionsNum}} connections </label>
+
+    <button  class="btn btn-primary" [routerLink]="['requests']">Follow requests <mat-icon class="mat-18">group</mat-icon></button>
+
     <button  class="btn btn-primary" [routerLink]="['newPost']">Add new post <mat-icon class="mat-18">add</mat-icon></button>
     <br><br><button  class="btn btn-primary" [routerLink]="['updateProfile']">Update profile</button>
   </div><br>

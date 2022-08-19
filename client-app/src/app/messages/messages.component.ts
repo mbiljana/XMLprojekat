@@ -14,6 +14,9 @@ export class MessagesComponent implements OnInit {
   @Input()
   messages:Message[];
 
+  idLoginUser : any;
+
+
   constructor(private route: ActivatedRoute, private messagingService:MessagingService) {
   }
 
@@ -22,7 +25,12 @@ export class MessagesComponent implements OnInit {
   }
 
   loadMessages(){
-    this.messagingService.getAllMessages().subscribe(res=> this.messages=res);
+    this.idLoginUser = sessionStorage.getItem('id');
+    console.log(this.idLoginUser);
+    //this.messagingService.getAllMessages().subscribe(res=> this.messages=res);
+    this.messagingService.getUserChat(this.idLoginUser).subscribe(res=> this.messages=res);
+
+
   }
 
 

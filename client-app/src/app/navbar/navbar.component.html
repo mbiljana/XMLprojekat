@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand nav-link" href="">
+  <a class="navbar-brand nav-link" href="allPost">
     Dislinkt <mat-icon>work</mat-icon>
   </a>
 
@@ -11,7 +11,7 @@
       </li>
     </ul>
   </div>
-  <div class="right " id="nsc">
+  <div class="right " id="nsc" *ngIf="loginService.isUserLoggedIn();">
     <ul class="navbar-nav me-auto ">
       <li>
         <a class="nav-link" href="messages">Chat <mat-icon>message</mat-icon></a>
@@ -20,10 +20,10 @@
   </div>
   <div class="right login" *ngIf="!loginService.isUserLoggedIn(); else activeUser">
     <a id="a" class="nav-item nav-link" href="sign-in">
-      Sign in
+      Sign in<mat-icon>login</mat-icon>
     </a>
     <a class="nav-item nav-link" href="register">
-      Register
+      Register<mat-icon>app_registration</mat-icon>
     </a>
   </div>
   <ng-template #activeUser>
