@@ -12,23 +12,23 @@
       <div class="col-sm">
           <br>
           <label>Name</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.name"  >
           <label>Short description of the activity</label>
-          <textarea>Write ...</textarea>
+          <textarea [(ngModel)]="newCompany.description">Write ...</textarea>
 
           <label>Username</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.username" >
           <label>Email</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.email" >
           <label>Mobile</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.mobile" >
 
           <label>State</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.address.state" >
           <label>City</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.address.city" >
           <label>Street</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="newCompany.address.street" >
           <label>Choose main picture:</label>
           <input id="file_input" type="file" (change)="onFileChanged($event)">
           <button id="upload_button" class="btn btn-info" (click)="onUpload()">Upload</button>
