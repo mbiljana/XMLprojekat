@@ -1,3 +1,5 @@
+import { OneRequestComponent } from './one-request/one-request.component';
+import { CompanyRequestListComponent } from './company-request-list/company-request-list.component';
 import { NewCompanyRequestComponent } from './new-company-request/new-company-request.component';
 import { PersonalUserProfileComponent } from './personal-user-profile/personal-user-profile.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path:'sign-in',component:SignInPageComponent},
   { path:'profile/:id',component:PersonalUserProfileComponent},
   { path:'profile/:id/newCompanyRequest',component:NewCompanyRequestComponent},
+  { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
+  { path:'profile/:id/allRequests/oneRequest/:id',component:OneRequestComponent}
 ];
 
 @NgModule({

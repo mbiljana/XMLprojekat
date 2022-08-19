@@ -12,23 +12,23 @@
       <div class="col-sm">
           <br>
           <label>Name</label>
-          <input type="text" [(ngModel)]="newCompany.name"  >
+          <input type="text" [(ngModel)]="newRequest.company.name"  >
           <label>Short description of the activity</label>
-          <textarea [(ngModel)]="newCompany.description">Write ...</textarea>
+          <textarea [(ngModel)]="newRequest.company.description">Write ...</textarea>
 
           <label>Username</label>
-          <input type="text" [(ngModel)]="newCompany.username" >
+          <input type="text" [(ngModel)]="newRequest.company.username" >
           <label>Email</label>
-          <input type="text" [(ngModel)]="newCompany.email" >
+          <input type="text" [(ngModel)]="newRequest.company.email" >
           <label>Mobile</label>
-          <input type="text" [(ngModel)]="newCompany.mobile" >
+          <input type="text" [(ngModel)]="newRequest.company.mobile" >
 
           <label>State</label>
-          <input type="text" [(ngModel)]="newCompany.address.state" >
+          <input type="text" [(ngModel)]="newRequest.company.address.state" >
           <label>City</label>
-          <input type="text" [(ngModel)]="newCompany.address.city" >
+          <input type="text" [(ngModel)]="newRequest.company.address.city" >
           <label>Street</label>
-          <input type="text" [(ngModel)]="newCompany.address.street" >
+          <input type="text" [(ngModel)]="newRequest.company.address.street" >
           <label>Choose main picture:</label>
           <input id="file_input" type="file" (change)="onFileChanged($event)">
           <button id="upload_button" class="btn btn-info" (click)="onUpload()">Upload</button>

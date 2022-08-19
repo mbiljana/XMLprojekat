@@ -1,3 +1,4 @@
+import { CompanyRequest } from './../model/companyRequest';
 import { UserService } from './../../service/user.service';
 import { CompanyService } from './../../service/company.service';
 import { Company } from './../model/company';
@@ -5,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../model/address';
 import { User } from '../model/user';
+import { CompanyRequestService } from 'src/service/company-request.service';
 
 @Component({
   selector: 'app-new-company-request',
@@ -16,33 +18,35 @@ export class NewCompanyRequestComponent implements OnInit {
   showMakeCompany:boolean=true;
   selectedFile: File;
   idLoginUser:any;
-  newCompany:Company;
+  newRequest:CompanyRequest;
 
-  constructor(private http: HttpClient,private companyService: CompanyService, private userService: UserService) {
-    this.newCompany=new Company({
-      id:0,
-      name:'',
-      description:'',
-      address:new Address({
-        city:'',
-        state:'',
-        street:''
-      }),
-      username:'',
-      email:'',
-      mobile:'',
-      profilePicture:'',
-      owner:new User({
+  constructor(private http: HttpClient,private companyRequestService: CompanyRequestService, private userService: UserService) {
+    this.newRequest=new CompanyRequest({
+      company:new Company({
         id:0,
-        firstName: '',
-        lastName: '',
-        username: '',
-        password: '',
-        email: '',
-        mobile: '',
-        gender:'',
-        role:'',
-        firstLogin:false
+        name:'',
+        description:'',
+        address:new Address({
+          city:'',
+          state:'',
+          street:''
+        }),
+        username:'',
+        email:'',
+        mobile:'',
+        profilePicture:'',
+        owner:new User({
+          id:0,
+          firstName: '',
+          lastName: '',
+          username: '',
+          password: '',
+          email: '',
+          mobile: '',
+          gender:'',
+          role:'',
+          firstLogin:false
+        })
       })
     })
   }
@@ -51,12 +55,12 @@ export class NewCompanyRequestComponent implements OnInit {
     this.loadUser();
   }
   sendRequsest(){
-    var path_picture="/assets/profilePicture/"+this.selectedFile.name;
+    var path_picture="/assets/companyPicture/"+this.selectedFile.name;
 
 
-    this.newCompany.profilePicture=path_picture;
+    this.newRequest.company.profilePicture=path_picture;
 
-    this.companyService.save(this.newCompany)
+    this.companyRequestService.save(this.newRequest)
     .subscribe()
     this.makedCompany=true;
     this.showMakeCompany=false;
@@ -67,8 +71,7 @@ export class NewCompanyRequestComponent implements OnInit {
     console.log(this.idLoginUser)
     this.userService.getUser(this.idLoginUser)
     .subscribe(res =>{
-      this.newCompany.owner = res;
-      console.log(res)
+      this.newRequest.company.owner = res;
     }
     )
 }
