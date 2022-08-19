@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Message} from "../app/model/message";
+import {ConnectionsNumberDTO} from "../app/model/ConnectionsNumberDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {Message} from "../app/model/message";
 export class ConnectionsService {
 
   url = "http://localhost:8191/api/following";
+  urlNum = "http://localhost:8191/api/following/numConn";
   constructor(private http: HttpClient) {}
 
   //get all users that logged user is connected to
@@ -17,7 +19,7 @@ export class ConnectionsService {
   }
 
   //get number of connection logged user has
-  getNumberOfConnections(id:number):Observable<number>{
-    return this.http.get<number>(`${this.url}/${id}`);
+  getNumberOfConnections(id:number):Observable<ConnectionsNumberDTO>{
+    return this.http.get<ConnectionsNumberDTO>(`${this.urlNum}/${id}`);
   }
 }

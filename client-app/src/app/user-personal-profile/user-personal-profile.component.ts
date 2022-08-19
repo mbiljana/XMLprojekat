@@ -8,6 +8,8 @@ import { ProfileService } from './../../service/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { ThisReceiver } from '@angular/compiler';
+import {ConnectionsService} from "../../service/connections.service";
+import {ConnectionsNumberDTO} from "../model/ConnectionsNumberDTO";
 
 @Component({
   selector: 'app-user-personal-profile',
@@ -22,8 +24,9 @@ export class UserPersonalProfileComponent implements OnInit {
   post:UserPost;
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
+  numConnections:ConnectionsNumberDTO;
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService, private connectionService: ConnectionsService) {
     this.posts=[]
     this.profile=new Profile({
       user:new User({
@@ -48,6 +51,9 @@ export class UserPersonalProfileComponent implements OnInit {
       additionInformation:'',
       profileType:ProfileType.Private
     });
+    this.numConnections = new ConnectionsNumberDTO({
+      connectionsNum :0
+    });
    }
 
   ngOnInit(): void {
@@ -59,7 +65,8 @@ export class UserPersonalProfileComponent implements OnInit {
       .subscribe(res=>{
         this.profile=res;
         this.userPostService.searchPostByUser(this.id)
-        .subscribe(res=>this.posts=res)
+        .subscribe(res=>this.posts=res);
+        this.connectionService.getNumberOfConnections(this.id).subscribe(res => this.numConnections = res);
       })
   }
   viewHolePost(post:UserPost){
@@ -73,4 +80,6 @@ export class UserPersonalProfileComponent implements OnInit {
     this.showUserPosts=true;
     this.showHolePost=false;
   }
+
+
 }
