@@ -16,7 +16,7 @@ const routes: Routes = [
   { path:'profile/:id',component:PersonalUserProfileComponent},
   { path:'profile/:id/newCompanyRequest',component:NewCompanyRequestComponent},
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
-  { path:'profile/:id/allRequests/oneRequest/:id',component:OneRequestComponent}
+  { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent}
 ];
 
 @NgModule({

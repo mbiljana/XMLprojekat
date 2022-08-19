@@ -17,6 +17,7 @@ import com.example.Agent.dto.CompanyDTO;
 import com.example.Agent.mapper.CompanyMapper;
 import com.example.Agent.model.Company;
 import com.example.Agent.model.CompanyRequest;
+import com.example.Agent.model.User;
 import com.example.Agent.service.CompanyRequestService;
 
 @CrossOrigin("*")
@@ -36,5 +37,13 @@ public class CompanyRequestController {
 	public ResponseEntity<List<CompanyRequest>> findAll(){
 		List<CompanyRequest> all=this.companyRequestService.findAll();
 		return new ResponseEntity<List<CompanyRequest>>(all, HttpStatus.OK);
+	}
+	@RequestMapping(value="api/companyRequest/{id}",method = RequestMethod.GET)
+	public ResponseEntity<CompanyRequest>  findOne(@PathVariable Long id){
+		CompanyRequest req=this.companyRequestService.findById(id);
+		if (req==null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} 
+		return new ResponseEntity<>(req, HttpStatus.OK);
 	}
 }

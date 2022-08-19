@@ -1,6 +1,7 @@
 package com.example.Agent.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,12 @@ public class CompanyRequestService {
 	}
 	public List<CompanyRequest> findAll(){
 		return this.companyRequestRepository.findAll();
+	}
+	public CompanyRequest findById(Long id) {
+		Optional<CompanyRequest> opt=this.companyRequestRepository.findById(id);
+		if(!opt.isPresent()) {
+			return null;
+		}
+		return opt.get();
 	}
 }
