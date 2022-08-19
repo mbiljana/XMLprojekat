@@ -77,9 +77,17 @@ public class UserService {
     }
 
     //get all users connections
-    public List<String> getNumConnectionsForUser(String username){
+    public List<String> getUsersConnections(String username){
         List<String> following = new ArrayList<>();
         User user = userRepository.findByUsername(username);
+        following = user.getFollowing();
+        return  following;
+    }
+
+    //get all users connections by id
+    public List<String> getUsersConnectionsId(Long id){
+        List<String> following = new ArrayList<>();
+        User user = userRepository.findById(id).get();
         following = user.getFollowing();
         return  following;
     }

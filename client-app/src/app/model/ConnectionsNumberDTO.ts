@@ -1,9 +1,9 @@
 export interface ConnectionsNumberDTOInterface {
-  connectionsNum:bigint;
+  connectionsNum:number;
 
 }
 export class ConnectionsNumberDTO implements ConnectionsNumberDTOInterface {
-  connectionsNum:bigint;
+  connectionsNum:number;
 
   constructor(obj: ConnectionsNumberDTOInterface) {
     this.connectionsNum = obj.connectionsNum;

@@ -28,15 +28,31 @@ public class FollowingController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "/numConn",
+    //get the number of connections user has
+    @GetMapping(path = "/numConn/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ConnectionsNumberDTO> getNumberOfUsersConnections(@RequestParam String username){
-        User user = userService.findByUsername(username);
-        int numberConn = userService.getNumConnectionsForUser(user.getUsername()).size();
+    public ResponseEntity<ConnectionsNumberDTO> getNumberOfUsersConnections(@PathVariable Long id){
+        User user = userService.findOne(id);
+        int numberConn = userService.getUsersConnections(user.getUsername()).size();
         ConnectionsNumberDTO cDTO = new ConnectionsNumberDTO();
         cDTO.setConnectionsNum(numberConn);
         if(user == null)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<ConnectionsNumberDTO>(cDTO, HttpStatus.OK);
     }
+
+
+    //get users connections
+    @GetMapping(path="/{id}",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<String>>  findOne(@PathVariable Long id){
+        User profile=this.userService.findOne(id);
+        List<String> connections = profile.getFollowing();
+        if (profile==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<String>>(connections, HttpStatus.OK);
+    }
+
+
+
 }

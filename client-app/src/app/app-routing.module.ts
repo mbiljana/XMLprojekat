@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import {MessagesComponent} from "./messages/messages.component";
 import {FollowRequestsComponent} from "./follow-requests/follow-requests.component";
+import {ViewConnectionsComponent} from "./view-connections/view-connections.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
@@ -32,7 +33,9 @@ const routes: Routes = [
 
   {path:'requests', component: FollowRequestsComponent},
   {path:'profile/:id/requests', component: FollowRequestsComponent},
-  {path:'profile/:id/requests/profile/:id', component: UserProfileComponent}
+  {path:'profile/:id/requests/profile/:id', component: UserProfileComponent},
+  {path:'profile/:id/view-connections', component:ViewConnectionsComponent},
+  {path:'profile/:id/view-connections/profile/:id', component:UserProfileComponent}
 
 ];
 
