@@ -9,7 +9,7 @@ import {ProfileType} from "../model/profileType";
 import {ProfileService} from "../../service/profile.service";
 
 @Component({
-  selector: '[app-follow-request]',
+  selector: 'tr[app-follow-request]',
   templateUrl: './follow-request.component.html',
   styleUrls: ['./follow-request.component.css']
 })

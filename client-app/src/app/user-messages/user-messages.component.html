@@ -2,5 +2,5 @@
 <td>{{mess.message}}</td>
 <td>{{mess.sentDate}}</td>
 <td>
-  <button class="btn btn-info">View chat</button>
+  <button class="btn btn-info" [routerLink]="['chat', mess.senderUsername,mess.recieverUsername]" >View chat</button>
 </td>

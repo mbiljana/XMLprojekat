@@ -14,6 +14,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import {MessagesComponent} from "./messages/messages.component";
 import {FollowRequestsComponent} from "./follow-requests/follow-requests.component";
 import {ViewConnectionsComponent} from "./view-connections/view-connections.component";
+import {ViewChatComponent} from "./view-chat/view-chat.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path:'profile/:id/requests', component: FollowRequestsComponent},
   {path:'profile/:id/requests/profile/:id', component: UserProfileComponent},
   {path:'profile/:id/view-connections', component:ViewConnectionsComponent},
-  {path:'profile/:id/view-connections/profile/:id', component:UserProfileComponent}
+  {path:'profile/:id/view-connections/profile/:id', component:UserProfileComponent},
+  {path: 'messages/chat/:id/:fid', component: ViewChatComponent}
 
 ];
 

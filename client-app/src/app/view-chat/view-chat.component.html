@@ -1,0 +1,15 @@
+<div class="modal-dialog text-center">
+  <div class="modal-content">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Sender</th><th>Message</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-view-chat-oneline *ngFor="let message of messages" [mess]=message >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

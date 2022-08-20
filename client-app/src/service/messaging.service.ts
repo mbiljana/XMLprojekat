@@ -16,6 +16,7 @@ export class MessagingService {
   url = "http://localhost:8191/api/messages/allMess";
   urlRecieved = "http://localhost:8191/api/messages/recMess";
   urlChat = "http://localhost:8191/api/messages/chat";
+  urlMess = "http://localhost:8191/api/messages";
   constructor(private http: HttpClient) { }
 
   getAllMessages():Observable<Message[]>{
@@ -24,5 +25,9 @@ export class MessagingService {
 
   getUserChat(id:number):Observable<Message[]>{
     return this.http.get<Message[]>(`${this.urlChat}/${id}`);
+  }
+
+  getMessagesWithUser(id:string,fid:string):Observable<Message[]>{
+    return this.http.get<Message[]>(`${this.urlMess}/${id}/${fid}`);
   }
 }

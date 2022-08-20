@@ -48,6 +48,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ViewConnectionsComponent } from './view-connections/view-connections.component';
 import { ViewConnectionComponent } from './view-connection/view-connection.component';
+import { ViewChatComponent } from './view-chat/view-chat.component';
+import { ViewChatOnelineComponent } from './view-chat-oneline/view-chat-oneline.component';
 
 
 
@@ -91,7 +93,9 @@ import { ViewConnectionComponent } from './view-connection/view-connection.compo
      ChatComponent,
      AllPostFromFollowingComponent,
      ViewConnectionsComponent,
-     ViewConnectionComponent
+     ViewConnectionComponent,
+     ViewChatComponent,
+     ViewChatOnelineComponent
 
 
 

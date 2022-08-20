@@ -47,11 +47,12 @@ public class MessageController {
 
 
     //dobavljanje svih primljenih poruka za korisnika
-    @GetMapping(path = "/recMess",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getAllRecievedMessages(@RequestBody ChatDTO sDTO){
-        User user = this.userService.findByUsername(sDTO.getReciever());
-        List<Message> messages = this.messageService.findRecievedMessages(user.getUsername(), sDTO.getSender());
+    //prvi je reciever, drugi je sender
+    @GetMapping(path = "/{username}/{fusername}")
+    public ResponseEntity<?> getAllRecievedMessages(@PathVariable String username, @PathVariable String fusername){
+        User user = this.userService.findByUsername(username);
+        User sender = this.userService.findByUsername(fusername);
+        List<Message> messages = this.messageService.findRecievedMessages(user.getUsername(), sender.getUsername());
         return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
     }
 
