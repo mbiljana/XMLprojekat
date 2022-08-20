@@ -24,7 +24,12 @@ public class MessageService {
 
     //chat with one person
     public List<Message> findRecievedMessages(String username, String sender){
-        return messageRepository.findMessageByRecieverUsernameAndSenderUsername(username,sender);
+        List<Message> messages1 = new ArrayList<>();
+        List<Message> messages2 = new ArrayList<>();
+        messages1 = messageRepository.findMessageByRecieverUsernameAndSenderUsername(username,sender);
+        messages2 = this.messageRepository.findMessageByRecieverUsernameAndSenderUsername(sender,username);
+        messages1.addAll(messages2);
+        return messages1;
     }
 
     //chat "interface"

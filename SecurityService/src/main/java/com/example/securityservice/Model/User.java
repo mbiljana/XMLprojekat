@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,7 +21,7 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    private Long id;
 
     private String korisnicko;
     private String password;
@@ -36,7 +37,7 @@ public class User implements UserDetails {
     
 
 
-    public User(String id, String korisnicko, String password, String firstName, String lastName, String email,
+    public User(Long id, String korisnicko, String password, String firstName, String lastName, String email,
 			boolean enabled, List<Role> roles, String roleType) {
 		super();
 		this.id = id;
@@ -65,11 +66,11 @@ public class User implements UserDetails {
 
 
 
-	public String getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

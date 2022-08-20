@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="center" id="comp1" >
+  <div class="center" id="comp2" >
     <h1>{{profile.user.firstName}}  {{profile.user.lastName}}</h1>
 
     <div class="text-center">
@@ -11,9 +11,11 @@
 
     <button  class="btn btn-primary" (click)="followUser()" >Follow<mat-icon>person_add</mat-icon></button>
 
+    <button  class="btn btn-primary" >Message<mat-icon>send</mat-icon></button>
+
 
   </div><br>
-  <div  class="center" id="comp2" >
+  <div  class="center" id="com" >
     <label style="font-weight: bold;">Username</label>
     <label>{{profile.user.username}}</label>
     <label>-----------------------------------------------------</label>
@@ -76,7 +78,7 @@
 
 <div class="row" class="container" *ngIf="showUserPosts">
   <div class="col-md"></div>
-  <div class="center" id="comp1"  style="width: 1200px; height: 1000px;">
+  <div class="center" id="co"  style="width: 1200px; height: 1000px;">
     <label style="font-weight: bold;">Posts</label>
     <table class="topics" class="table table-striped table-bordered">
       <thead>
