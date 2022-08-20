@@ -23,6 +23,7 @@ public class ProfileService {
 	@Autowired
 	private UserService userService;
 	
+	
 	public Profile save(Profile profile) {
 		return this.profileRepository.save(profile);
 	}

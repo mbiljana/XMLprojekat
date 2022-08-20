@@ -18,6 +18,7 @@ import com.example.Profile.model.ProfileType;
 import com.example.Profile.model.ProgramLanguage;
 import com.example.Profile.model.User;
 import com.example.Profile.model.UserPost;
+import com.example.Profile.repository.LanguageRepository;
 import com.example.Profile.service.CommentService;
 import com.example.Profile.service.CompanyService;
 import com.example.Profile.service.LanguageService;
@@ -43,7 +44,7 @@ public class InitialData {
 	UserService userService;
 	
 	@Autowired
-	LanguageService languageService;
+	LanguageRepository languageService;
 	
 	@Autowired
 	ProgramLanguageService programLanguageService;
