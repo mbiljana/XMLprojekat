@@ -1,1 +1,5 @@
-<p>send-message works!</p>
+<div class="container">
+  <textarea [(ngModel)]="msg" >Type...</textarea>
+  <button (click)="sendMessage()" onClick="window.location.reload()">Send <mat-icon>reply</mat-icon></button>
+</div>
+
