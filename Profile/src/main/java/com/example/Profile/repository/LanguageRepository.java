@@ -7,5 +7,5 @@ import com.example.Profile.model.Language;
 
 @Repository
 public interface LanguageRepository extends MongoRepository<Language, Long>{
-
+	Language findByName(String name);
 }
