@@ -9,6 +9,9 @@ import { FollowRequestsDTO} from "../model/FollowRequestsDTO";
 
 import { UserPost } from '../model/userPost';
 import { UserPostService } from 'src/service/user-post.service';
+import {Message} from "../model/message";
+import {MessageDTO} from "../model/MessageDTO";
+import {MessagingService} from "../../service/messaging.service";
 
 
 
@@ -23,6 +26,11 @@ export class UserProfileComponent implements OnInit {
   user:User;
   followedUser : User;
   toFollowUsername: string;
+
+  sender:string;
+  reciever:string;
+  retMsg: Message;
+  sendMess: MessageDTO;
 
   profile:Profile;
   posts:UserPost[];
@@ -44,7 +52,7 @@ export class UserProfileComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private messageService: MessagingService) {
     this.fDTO = new FollowRequestsDTO({
       followerId: '',
       toFollowId: ''
@@ -101,7 +109,12 @@ export class UserProfileComponent implements OnInit {
       education:'',
       additionInformation:'',
       profileType:ProfileType.Private
-    });
+    }),
+      this.sendMess = new MessageDTO({
+        senderUsername: '',
+        recieverUsername: '',
+        message: ''
+      });
   }
 
   ngOnInit(): void {
@@ -148,6 +161,8 @@ export class UserProfileComponent implements OnInit {
       .subscribe(res =>
         this.loggedUser = res
       )
+    this.reciever = this.route.snapshot.params['id'];
+    this.sender = this.idLoginUser;
   }
 
   followUser() {
@@ -167,4 +182,15 @@ export class UserProfileComponent implements OnInit {
     this.showUserPosts=true;
     this.showHolePost=false;
   }
+
+
+  /*
+  sendMessage(){
+    this.sendMess.senderUsername = this.route.snapshot.params['fid'];
+    this.sendMess.recieverUsername = this.route.snapshot.params['id'];
+    this.sendMess.message = this.msg;
+    this.sendMess.sendMessage(this.messToSend).subscribe(res => this.sendMsg = res);
+  }
+
+   */
 }

@@ -11,7 +11,7 @@
 
     <button  class="btn btn-primary" (click)="followUser()" >Follow<mat-icon>person_add</mat-icon></button>
 
-    <button  class="btn btn-primary" >Message<mat-icon>send</mat-icon></button>
+    <button  class="btn btn-primary" [routerLink]="['send', sender, reciever]">Message<mat-icon>send</mat-icon></button>
 
 
   </div><br>
