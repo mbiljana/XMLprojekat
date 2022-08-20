@@ -52,7 +52,7 @@ public class InitialData {
         messageService.save(m5);
 
 
-
+        User u5=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,flw,flw,mess,mess2);
         User u1=new User((long)2,"lana99","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,req,mess,mess2);
         User u2=new User((long)22,"maja","123","Maja","Majkic","maja@gmail.com","3247876777","female","/assets/profilePicture/profile1.jpeg",true,flw,req,mess,mess2);
         User u3=new User((long)3,"kica","123","Kica","Kikic","kica@gmail.com","78542476777","male","/assets/profilePicture/profile1.jpeg",false,req,flw,mess,mess2);
@@ -63,6 +63,7 @@ public class InitialData {
         userService.save(u2);
         userService.save(u3);
         userService.save(u4);
+        userService.save(u5);
     }
 
 
