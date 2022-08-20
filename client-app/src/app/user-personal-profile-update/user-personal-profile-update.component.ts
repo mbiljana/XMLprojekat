@@ -10,7 +10,10 @@ import {UserPost} from "../model/userPost";
 import {UserPostService} from "../../service/user-post.service";
 import {CommentService} from "../../service/comment.service";
 import { ThisReceiver } from '@angular/compiler';
-import { ProgramLanguage } from '../model/programLanguage';
+
+import {ProgramLanguage} from "../model/programLanguage";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-user-personal-profile-update',
@@ -24,6 +27,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   id:number;
   posts:UserPost[];
   post:UserPost;
+  selectedFile: File;
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
   programLanguagesLists:string;
@@ -32,8 +36,8 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   newLanguage:Language;
   foundLanguage:Language;
 
-  constructor(private languageService: LanguageService,
-    private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
+  constructor(private route: ActivatedRoute,private http: HttpClient,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
+
     this.posts=[]
     this.profile=new Profile({
       user:new User({
@@ -45,6 +49,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
         email: '',
         mobile: '',
         gender:'',
+        dateOfBirth:'',
         profileType:ProfileType.Private,
         role:'',
         firstLogin:false,
@@ -80,6 +85,23 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
           .subscribe(res=>this.posts=res)
       })
   }
+
+  public onFileChangedPhoto(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+  onUploadPhoto() {
+    console.log(this.selectedFile);
+
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('http://localhost:8080/upload', uploadImageData)
+      .subscribe((response) => {
+
+        }
+      );
+  }
+
   saveChanges(){
 //treba sada stringove pretvoriti u liste
   this.profile.exCompanies=this.exCompaniesLists.split(",");
