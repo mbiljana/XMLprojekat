@@ -68,7 +68,7 @@ public class InitialData {
 
 		List<String> blocked = new ArrayList<>();
 		blocked.add("stef");
-
+	//komentar
 		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2020-10-10");
 		userService.save(u1);
 		
