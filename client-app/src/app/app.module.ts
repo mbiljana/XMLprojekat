@@ -50,6 +50,7 @@ import { ViewConnectionsComponent } from './view-connections/view-connections.co
 import { ViewConnectionComponent } from './view-connection/view-connection.component';
 import { ViewChatComponent } from './view-chat/view-chat.component';
 import { ViewChatOnelineComponent } from './view-chat-oneline/view-chat-oneline.component';
+import { ReplyMessageComponent } from './reply-message/reply-message.component';
 
 
 
@@ -95,7 +96,8 @@ import { ViewChatOnelineComponent } from './view-chat-oneline/view-chat-oneline.
      ViewConnectionsComponent,
      ViewConnectionComponent,
      ViewChatComponent,
-     ViewChatOnelineComponent
+     ViewChatOnelineComponent,
+     ReplyMessageComponent
 
 
 
