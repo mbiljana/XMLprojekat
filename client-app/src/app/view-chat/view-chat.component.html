@@ -1,5 +1,6 @@
 <div class="modal-dialog text-center">
   <div class="modal-content">
+    <label class="fw-bold">Chat with {{chatWith}}</label>
     <table class="table table-striped" border="1" width="200" >
       <thead>
       <tr>
@@ -13,4 +14,7 @@
     </table>
   </div>
 </div>
-<app-reply-message></app-reply-message>
+<div class="container" align="right" >
+  <textarea [(ngModel)]="msg" >Write a message...</textarea>
+  <button class="btn btn-outline-primary" (click)="sendMessage()" onClick="window.location.reload()" >Reply <mat-icon>reply</mat-icon></button>
+</div>

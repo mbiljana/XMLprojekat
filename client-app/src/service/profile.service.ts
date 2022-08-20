@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import {User} from "../app/model/user";
 import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
 import {ConnectionsNumberDTO} from "../app/model/ConnectionsNumberDTO";
+import {Message} from "../app/model/message";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,8 @@ export class ProfileService {
   followUser(fDTO : FollowRequestsDTO):Observable<User>{
     return this.http.put<User>(this.urlFollow, fDTO);
   }
+
+
 
   /*
   getNumConnections(username:string):Observable<ConnectionsNumberDTO>{

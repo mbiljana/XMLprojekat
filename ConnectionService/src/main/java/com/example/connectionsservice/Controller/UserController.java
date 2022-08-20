@@ -49,6 +49,18 @@ public class UserController {
         }
     }
 
+    //follow a user
+    @PostMapping(path = "/follow/{id}/{fid}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> follow(@PathVariable String id,@PathVariable String fid){
+        try{
+            return new ResponseEntity<User>(userService.follow(id, fid), HttpStatus.OK);
+        } catch (IllegalStateException e){
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     //get all follow requests for user
     @PostMapping(path = "/requests",
             produces = MediaType.APPLICATION_JSON_VALUE)
