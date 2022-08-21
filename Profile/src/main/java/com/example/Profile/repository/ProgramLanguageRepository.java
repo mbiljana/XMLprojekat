@@ -7,5 +7,5 @@ import com.example.Profile.model.ProgramLanguage;
 
 @Repository
 public interface ProgramLanguageRepository extends MongoRepository<ProgramLanguage, Long>{
-
+	ProgramLanguage findByNameIgnoreCase(String name);
 }

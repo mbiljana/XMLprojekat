@@ -7,8 +7,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.Profile.dto.UpdateProfileDTO;
+import com.example.Profile.model.Language;
 import com.example.Profile.model.Profile;
+import com.example.Profile.model.ProgramLanguage;
+import com.example.Profile.service.LanguageService;
 import com.example.Profile.service.ProfileService;
+import com.example.Profile.service.ProgramLanguageService;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +24,7 @@ public class ProfileController {
 	
 	@Autowired
 	private ProfileService profileService;
+	
 
 	
 	@RequestMapping(value="api/profile/{id}",method = RequestMethod.GET)
@@ -40,8 +46,9 @@ public class ProfileController {
 	@PutMapping(value = "api/profile/update",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateProfile(@RequestBody Profile profiles) throws Exception {
-		return new ResponseEntity<Profile>(profileService.update(profiles),HttpStatus.OK);
+	public ResponseEntity<?> updateProfile(@RequestBody UpdateProfileDTO updateProfile) throws Exception {
+		
+		return new ResponseEntity<Profile>(this.profileService.updateProfileLists(updateProfile),HttpStatus.OK);
 	}
 
 
