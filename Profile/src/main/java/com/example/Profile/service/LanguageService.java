@@ -35,6 +35,6 @@ public class LanguageService {
 		return opt.get();
 	}
 	public Language findByName(String name) {
-		return this.languageRepository.findByName(name);
+		return this.languageRepository.findByNameIgnoreCase(name);
 	}
 }

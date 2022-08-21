@@ -36,6 +36,8 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   newLanguage:Language;
   foundLanguage:Language;
 
+  listaObjekataLanguage:Language[]=[];
+
   constructor(private route: ActivatedRoute,private http: HttpClient,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
 
     this.posts=[]
@@ -105,27 +107,10 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   saveChanges(){
 //treba sada stringove pretvoriti u liste
   this.profile.exCompanies=this.exCompaniesLists.split(",");
-  //treba ispraviti , provere treba da se desavaju na backendu
-  //programske jezike i jezike treba naci iz baze,treba naci da li jezik sa tim imenom postoji ako ne treba kreirati novi
-  /*var listLanguageName=this.languagesLists.split(",");
-  //this.profile.languages.splice(0)
-  for(var val of listLanguageName){
-    this.newLanguage.name=val;
-    this.languageService.findByName(val)
-    .subscribe(res=>{
-      if(res!=null){
-        this.profile.languages.push(res);
-        console.log("postoji")
-        console.log(res)
-      }
-      else{
-      this.languageService.save(this.newLanguage)
-        .subscribe(res1=>this.profile.languages.push(res1))
-      }
-    })
-  }*/
+  this.profile.supportLanguageList=this.languagesLists.split(",");
+  this.profile.supportProgramLanguageList=this.programLanguagesLists.split(",");
 
-  this.profile.languages.push(this.newLanguage);
+
   this.profileService.updateProfile(this.profile)
     .subscribe()
 

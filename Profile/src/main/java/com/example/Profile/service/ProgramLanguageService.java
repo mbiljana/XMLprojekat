@@ -32,4 +32,7 @@ public class ProgramLanguageService {
 		}
 		return opt.get();
 	}
+	public ProgramLanguage findByName(String name) {
+		return this.programLanguageRepository.findByNameIgnoreCase(name);
+	}
 }
