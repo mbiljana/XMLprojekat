@@ -1,9 +1,6 @@
 package com.example.connectionsservice.Controller;
 
-import com.example.connectionsservice.Dto.FollowRequestsDTO;
-import com.example.connectionsservice.Dto.MessageDTO;
-import com.example.connectionsservice.Dto.SentMessageDTO;
-import com.example.connectionsservice.Dto.UsersFollowRequests;
+import com.example.connectionsservice.Dto.*;
 import com.example.connectionsservice.Model.Message;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Service.MessageService;
@@ -102,6 +99,13 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(profile, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/following",consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> isFollowing(@RequestBody IsFollowingDTO fDTO){
+        boolean ret = this.userService.isUserFollowing(fDTO.id1,fDTO.id2);
+        return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
 

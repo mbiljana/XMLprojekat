@@ -6,6 +6,7 @@ import {UsersFollowRequestsDTO} from "../app/model/UsersFollowRequestsDTO";
 import {Comment} from "../app/model/comment";
 import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
 import {User} from "../app/model/user";
+import {IsFollowingDTO} from "../app/model/IsFollowingDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class FollowReqService {
   url = "http://localhost:8191/api/users/requestsId";
   urlAccept = "http://localhost:8191/api/users/accept";
   urlFollow = "http://localhost:8191/api/users/follow";
+  urlBool = "http://localhost:8191/api/users/following";
+
   constructor(private http: HttpClient) { }
 
 
@@ -32,6 +35,10 @@ export class FollowReqService {
 
   acceptRequest(un:string,fun:string):Observable<User>{
     return this.http.get<User>(`${this.urlAccept}/${un}/${fun}`);
+  }
+
+  isFollowing(fDTO: IsFollowingDTO):Observable<boolean>{
+    return this.http.post<boolean>(this.urlBool, fDTO);
   }
 
 

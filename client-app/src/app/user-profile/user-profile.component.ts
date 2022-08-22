@@ -12,6 +12,8 @@ import { UserPostService } from 'src/service/user-post.service';
 import {Message} from "../model/message";
 import {MessageDTO} from "../model/MessageDTO";
 import {MessagingService} from "../../service/messaging.service";
+import {FollowReqService} from "../../service/follow-req.service";
+import {IsFollowingDTO} from "../model/IsFollowingDTO";
 
 
 
@@ -48,14 +50,27 @@ export class UserProfileComponent implements OnInit {
   showAllInformation:boolean=false;
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
+  enabledFollow:boolean = true;
+  alreadyFollowing:boolean = false;
+
+  tmpId1:any;
+  tmpId2:number;
+  tmpUser1:User;
+  tmpUser2:User;
+
+  ifDTO: IsFollowingDTO;
 
 
 
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private messageService: MessagingService) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private userPostService: UserPostService,private messageService: MessagingService, private followingService:FollowReqService) {
     this.fDTO = new FollowRequestsDTO({
       followerId: '',
       toFollowId: ''
+    })
+    this.ifDTO = new IsFollowingDTO({
+      id1:0,
+      id2:0
     })
     this.user=new User({
       id:0,
@@ -120,6 +135,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loadProfile();
     this.loadUser();
+    this.isFollowing();
   }
 
   loadClient(){
@@ -144,10 +160,25 @@ export class UserProfileComponent implements OnInit {
         this.profile=res;
         console.log(res.user.profileType)
         this.isUserPrivate(res.user.profileType);
+        this.ifDTO.id2 = res.user.id;
         this.userPostService.searchPostByUser(this.id)
         .subscribe(res=>this.posts=res)
       })
+
   }
+
+
+  isFollowing(){
+    this.tmpId2 = this.route.snapshot.params['id'];
+    this.tmpId1 = sessionStorage.getItem('id');
+    this.ifDTO.id2 = this.tmpId2;
+    this.ifDTO.id1 = this.tmpId1;
+    this.followingService.isFollowing(this.ifDTO).subscribe(res => {
+      this.alreadyFollowing = res;
+    });
+  }
+
+
   isUserPrivate(type:ProfileType){
     if(type.toString()=="PRIVATE"){
       this.showAllInformation=false;
@@ -168,8 +199,10 @@ export class UserProfileComponent implements OnInit {
     this.idLoginUser = sessionStorage.getItem('id');
     //console.log(this.idLoginUser)
     this.profileService.getUser(this.idLoginUser)
-      .subscribe(res =>
-        this.loggedUser = res
+      .subscribe(res => {
+          this.loggedUser = res;
+          this.ifDTO.id1 = res.id;
+        }
       )
     this.reciever = this.route.snapshot.params['id'];
     this.sender = this.idLoginUser;

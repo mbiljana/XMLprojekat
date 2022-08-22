@@ -2,7 +2,7 @@ package com.example.securityservice.Model;
 
 public enum RoleType{
 	
-	Admin(Values.Admin), User(Values.User), CompanyOwner(Values.CompanyOwner);
+	Admin(Values.Admin), User(Values.User), Company(Values.Company);
 
 	RoleType(String value) {
         if (!this.name().equals(value))
@@ -11,7 +11,7 @@ public enum RoleType{
 
     public static class Values {
         public static final String User = "User";
-        public static final String CompanyOwner = "CompanyOwner";
+        public static final String Company = "Company";
         public static final String Admin = "Admin";
     }
 

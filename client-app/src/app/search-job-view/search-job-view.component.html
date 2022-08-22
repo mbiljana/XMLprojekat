@@ -4,6 +4,8 @@
 <td>{{post.preconditions}}</td>
 <td>{{post.position}}</td>
 <td>{{post.company.name}}</td>
+<label><button style="margin-right: 15px;" class="btn btn-info" (click)="likePost()"><mat-icon class="mat-18">thumb_up</mat-icon></button>{{post.numOfLikes}}</label>
+<label><button style="margin-right: 15px;" class="btn btn-info" (click)="dislikePost()"><mat-icon class="mat-18">thumb_down</mat-icon></button>{{post.numOfDislikes}}</label>
 
 
 

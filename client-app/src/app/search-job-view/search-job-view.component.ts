@@ -17,6 +17,7 @@ export class SearchJobViewComponent implements OnInit {
 
   retPost:Post;
   public company:Company;
+  public comments: Comment[];
 
   constructor(private route: ActivatedRoute, private postService:PostService) {
     this.post = new Post({
@@ -39,5 +40,13 @@ export class SearchJobViewComponent implements OnInit {
 
   findPost(){
     this.postService.searchPost(this.post.id).subscribe(res => this.retPost = res);
+
+  }
+
+  likePost(){
+    this.post.numOfLikes=this.post.numOfLikes+1;
+  }
+  dislikePost(){
+    this.post.numOfDislikes = this.post.numOfDislikes+1;
   }
 }
