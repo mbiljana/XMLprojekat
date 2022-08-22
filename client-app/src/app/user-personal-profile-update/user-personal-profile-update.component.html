@@ -1,0 +1,78 @@
+<div class="row" class="container">
+<div class="center" id="comp1" >
+
+
+  <div class="text-center">
+    <img src="{{profile.user.profilePicture}}" class="img-thumbnail" alt="...">
+    <label style="font-weight: bold">Change picture:</label>
+    <input id="file_input" type="file" (change)="onFileChangedPhoto($event)" class="input1">
+    <br><br>
+    <button id="upload_button" class="btn btn-info" (click)="onUploadPhoto()">Upload</button>
+  </div>
+  <br>
+  <label style="font-weight: bold;">Name</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.firstName" id="name" name="name" type="text" class="from-control">
+  </div>
+  <label style="font-weight: bold;">Surname</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.lastName" id="surname" name="surname" type="text" class="from-control">
+  </div>
+
+  <h3>{{profile.user.profileType}} PROFILE</h3>
+  <button class="btn btn-primary" (click)="saveChanges()"> Save changes</button>
+
+</div><br>
+<div  class="center" id="comp2" >
+  <br><br>
+  <label style="font-weight: bold;">Username</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.username" id="username" name="username" type="text" class="from-control">
+  </div>
+
+  <label style="font-weight: bold;">Email</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.email" id="email" name="email" type="text" class="from-control">
+  </div>
+
+  <label style="font-weight: bold;">Mobile</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.mobile" id="mobile" name="mobile" type="text" class="from-control">
+  </div>
+
+  <label style="font-weight: bold;">Date of Birth</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.dateOfBirth" id="date" name="date" type="date" class="from-control">
+  </div>
+
+  <label style="font-weight: bold;">Education</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.education" id="education" name="education" type="text" class="from-control">
+  </div>
+
+
+  <label style="font-weight: bold;">Additional informations</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.additionInformation" id="additionInformation" name="additionInformation" type="text" class="from-control">
+  </div>
+</div>
+<div  class="center" id="comp3" >
+  <br><br>
+  <label style="font-weight: bold;">Program languages</label>
+
+  <div class="form-group">
+    <input class="from-control" [(ngModel)]="programLanguagesLists" type="text" >
+  </div>
+
+  <label>-----------------------------------------------------</label>
+  <label style="font-weight: bold;">Languages</label>
+  <div class="form-group">
+    <input class="from-control" [(ngModel)]="languagesLists" type="text" >
+  </div>
+  <label>-----------------------------------------------------</label>
+  <label style="font-weight: bold;">Ex companies</label>
+  <div class="form-group">
+    <input class="from-control" [(ngModel)]="exCompaniesLists" type="text" >
+  </div>
+</div>
+</div>

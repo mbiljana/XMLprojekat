@@ -5,6 +5,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { MakeNewUserPostComponent } from './make-new-user-post/make-new-user-post.component';
 import { UserPersonalProfileComponent } from './user-personal-profile/user-personal-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import {UserPersonalProfileUpdateComponent} from "./user-personal-profile-update/user-personal-profile-update.component";
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SearchComponent } from './search/search.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path:'search/profile/:id',component:UserProfileComponent},
   { path:'profile/:id',component:UserPersonalProfileComponent},
   { path:'profile/:id/newPost',component:MakeNewUserPostComponent},
+  { path: 'profile/:id/updateProfile', component:UserPersonalProfileUpdateComponent},
   { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
 

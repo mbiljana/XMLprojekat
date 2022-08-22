@@ -33,6 +33,9 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+
+import {UserPersonalProfileUpdateComponent} from "./user-personal-profile-update/user-personal-profile-update.component";
+
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
 import { FollowRequestsComponent } from './follow-requests/follow-requests.component';
@@ -51,6 +54,7 @@ import { ViewConnectionComponent } from './view-connection/view-connection.compo
 import { ViewChatComponent } from './view-chat/view-chat.component';
 import { ViewChatOnelineComponent } from './view-chat-oneline/view-chat-oneline.component';
 import { ReplyMessageComponent } from './reply-message/reply-message.component';
+
 
 
 
@@ -77,6 +81,7 @@ import { ReplyMessageComponent } from './reply-message/reply-message.component';
     UserPostListComponent,
     UserPostComponent,
     UserPostProfileComponent,
+    UserPersonalProfileUpdateComponent,
     AddCommentComponent,
     NavbarProfileComponent,
     MessagesComponent,

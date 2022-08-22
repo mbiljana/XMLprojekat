@@ -1,0 +1,13 @@
+<div class="container">
+  <table  class="table table-striped " style="width: 970px;">
+      <thead>
+          <tr>
+              <th></th><th>Name</th><th>Username</th><th>Owner</th><th>Owner email</th><th>Approved</th><th>Details</th>
+          </tr>
+      </thead>
+      <tbody >
+    <tr app-company-request-item *ngFor="let r of requests" [request]=r >
+          </tr>
+  </tbody>
+  </table>
+</div>

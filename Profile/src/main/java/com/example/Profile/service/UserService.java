@@ -18,6 +18,9 @@ public class UserService {
 	public User save(User user) {
 		return this.userRepository.save(user);
 	}
+
+
+
 	public List<User> findByFirstNameAndLastName(User user) {
 		return this.userRepository.findByFirstNameAndLastName(user.getFirstName(),user.getLastName());
 	}
@@ -42,6 +45,24 @@ public class UserService {
 			throw new IllegalStateException("User does not exist!");
 		}
 		return user;
+	}
+
+	public User update(User editedUser){
+		User user = this.findById(editedUser.getId());
+		user.setFirstName(editedUser.getFirstName());
+		user.setEmail(editedUser.getEmail());
+		user.setLastName(editedUser.getLastName());
+		user.setUsername(editedUser.getUsername());
+		user.setMobile(editedUser.getMobile());
+		user.setPassword(editedUser.getPassword());
+		user.setGender(editedUser.getGender());
+		user.setDateOfBirth(editedUser.getDateOfBirth());
+		if(user == null){
+			throw new IllegalStateException("User does not exist!");
+		}
+		else{
+			return userRepository.save(user);
+		}
 	}
 
 	public User block(String userBlockingUsername,String userBlockedUsername){

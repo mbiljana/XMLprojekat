@@ -8,6 +8,8 @@ export interface ProfileInterface {
     proramLanguages:ProgramLanguage[];
     exCompanies:string[];
     languages:Language[];
+    supportLanguageList?:string[];
+    supportProgramLanguageList?:string[];
     education:string;
     additionInformation:string;
     profileType:ProfileType;
@@ -18,6 +20,8 @@ export class Profile implements ProfileInterface {
   proramLanguages:ProgramLanguage[];
   exCompanies:string[];
   languages:Language[];
+  supportLanguageList?:string[];
+  supportProgramLanguageList?:string[];
   education:string;
   additionInformation:string;
   profileType:ProfileType;
@@ -28,6 +32,8 @@ export class Profile implements ProfileInterface {
       this.proramLanguages = obj.proramLanguages;
       this.exCompanies = obj.exCompanies
       this.languages = obj.languages;
+      this.supportLanguageList=obj.supportLanguageList;
+      this.supportProgramLanguageList=obj.supportProgramLanguageList;
       this.education = obj.education;
       this.additionInformation = obj.additionInformation;
       this.profileType=obj.profileType;
