@@ -1,0 +1,11 @@
+<td>
+  <img style="height: 200px; border-radius: 50px;" src="{{request.company.profilePicture}}">
+</td>
+<td>{{request.company.name}}</td>
+<td>{{request.company.username}}</td>
+<td>{{request.company.owner.firstName}} {{request.company.owner.lastName}}</td>
+<td>{{request.company.owner.email}}</td>
+<td>{{request.approved}}</td>
+<td>
+  <button class="btn btn-success" [routerLink]="['oneRequest',request.id]"><mat-icon>info</mat-icon></button>
+</td>

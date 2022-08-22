@@ -1,15 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark ">
   <a class="navbar-brand nav-link" href="allPost">
-    Dislinkt <mat-icon>work</mat-icon>
+    Agent app <mat-icon>work</mat-icon>
   </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="search">Search profile <mat-icon>search</mat-icon></a>
-      </li>
-    </ul>
   </div>
 
   <div class="right login" *ngIf="!loginService.isUserLoggedIn(); else activeUser">
@@ -21,7 +16,7 @@
     </a>
   </div>
   <ng-template #activeUser>
-    <app-navbar-profile (LogOut)="HideInstrucotsButton()"></app-navbar-profile>
+    <app-navbar-profile (LogOut)="HideInstrucotsButton()" (OwnerIsLogin)="ownerIsLogin()"></app-navbar-profile>
   </ng-template>
 
 

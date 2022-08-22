@@ -15,6 +15,13 @@
     <label>-----------------------------------------------------</label>
     <label style="font-weight: bold;">Mobile</label>
     <label>{{user.mobile}}</label>
-    <button style="margin-left: 170px; margin-top: 20px;"  class="btn btn-success" [routerLink]="['newCompanyRequest']">New company request<mat-icon class="mat-18">add</mat-icon></button>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Role</label>
+    <label>{{role}}</label>
+
+    <button *ngIf="visable_user_button"  style="margin-left: 170px; margin-top: 20px;"  class="btn btn-success" [routerLink]="['newCompanyRequest']">New company request<mat-icon class="mat-18">add</mat-icon></button>
+    <button *ngIf="visable_admin_button" style="margin-left: 170px; margin-top: 20px;"  class="btn btn-success" [routerLink]="['allRequests']">All company requests</button>
+    <button *ngIf="visable_owner_button" style="margin-left: 170px; margin-top: 20px;"  class="btn btn-success" [routerLink]="['company']">Company profile</button>
+
   </div><br>
 </div>

@@ -33,6 +33,9 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+
+import {UserPersonalProfileUpdateComponent} from "./user-personal-profile-update/user-personal-profile-update.component";
+
 import { SendMessageComponent } from './send-message/send-message.component';
 import { CompanyPostProfileComponent } from './company-post-profile/company-post-profile.component';
 import { FollowRequestsComponent } from './follow-requests/follow-requests.component';
@@ -55,6 +58,7 @@ import { SearchJobComponent } from './search-job/search-job.component';
 import { SearchJobViewComponent } from './search-job-view/search-job-view.component';
 import { FoundCompanyPostsComponent } from './found-company-posts/found-company-posts.component';
 import { FoundCompanyPostComponent } from './found-company-post/found-company-post.component';
+
 
 
 
@@ -81,6 +85,7 @@ import { FoundCompanyPostComponent } from './found-company-post/found-company-po
     UserPostListComponent,
     UserPostComponent,
     UserPostProfileComponent,
+    UserPersonalProfileUpdateComponent,
     AddCommentComponent,
     NavbarProfileComponent,
     MessagesComponent,

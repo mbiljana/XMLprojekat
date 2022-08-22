@@ -17,6 +17,10 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
 import { PersonalUserProfileComponent } from './personal-user-profile/personal-user-profile.component';
 import { NewCompanyRequestComponent } from './new-company-request/new-company-request.component';
+import { CompanyRequestListComponent } from './company-request-list/company-request-list.component';
+import { CompanyRequestItemComponent } from './company-request-item/company-request-item.component';
+import { OneRequestComponent } from './one-request/one-request.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { NewCompanyRequestComponent } from './new-company-request/new-company-re
     SignInPageComponent,
     MakeNewPostComponent,
     PersonalUserProfileComponent,
-    NewCompanyRequestComponent
+    NewCompanyRequestComponent,
+    CompanyRequestListComponent,
+    CompanyRequestItemComponent,
+    OneRequestComponent,
+    CompanyProfileComponent
   ],
   imports: [
     BrowserModule,

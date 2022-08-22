@@ -33,6 +33,9 @@ export class ProfileService {
   getProfile(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);
   }
+  updateProfile(profile:Profile):Observable<Profile>{
+    return this.http.put<Profile>(this.urlProfile+ "/update", profile);
+  }
 
   followUser(fDTO : FollowRequestsDTO):Observable<User>{
     return this.http.put<User>(this.urlFollow, fDTO);

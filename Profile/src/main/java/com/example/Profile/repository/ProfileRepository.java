@@ -10,8 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ProfileRepository extends MongoRepository<Profile, Long>{
-    public Profile getById(Long id);
-    public List<Profile> findAll();
+
 
 
 }

@@ -129,11 +129,11 @@ export class UserProfileComponent implements OnInit {
       .subscribe(res =>{
         this.user = res;
         console.log(res.profileType)
-        if(res.profileType.valueOf()===ProfileType.Private.valueOf()){
+        /*if(res.profileType.valueOf()===ProfileType.Private.valueOf()){
           this.showAllInformation=false;
         }else{
           this.showAllInformation=true;
-        }
+        }*/
       }
       )
   }
@@ -142,9 +142,19 @@ export class UserProfileComponent implements OnInit {
     this.profileService.getProfile(this.id)
       .subscribe(res=>{
         this.profile=res;
+        console.log(res.user.profileType)
+        this.isUserPrivate(res.user.profileType);
         this.userPostService.searchPostByUser(this.id)
         .subscribe(res=>this.posts=res)
       })
+  }
+  isUserPrivate(type:ProfileType){
+    if(type.toString()=="PRIVATE"){
+      this.showAllInformation=false;
+      this.showUserPosts=false;
+    }else{
+      this.showAllInformation=true;
+    }
   }
   checkProfileType(){
     if(this.user.profileType==ProfileType.Private){
