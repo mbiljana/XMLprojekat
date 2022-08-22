@@ -13,6 +13,9 @@ export class CompanyRequestService {
   save(newComoany:CompanyRequest):Observable<CompanyRequest>{
     return this.http.post<CompanyRequest>(this.url,newComoany);
   }
+  approve(newComoany:CompanyRequest):Observable<CompanyRequest>{
+    return this.http.post<CompanyRequest>(this.url+"/approve",newComoany);
+  }
   getAll():Observable<CompanyRequest[]>{
     return this.http.get<CompanyRequest[]>(this.url)
   }

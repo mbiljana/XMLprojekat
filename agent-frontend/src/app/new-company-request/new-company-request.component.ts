@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address } from '../model/address';
 import { User } from '../model/user';
 import { CompanyRequestService } from 'src/service/company-request.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-company-request',
@@ -20,8 +21,9 @@ export class NewCompanyRequestComponent implements OnInit {
   idLoginUser:any;
   newRequest:CompanyRequest;
 
-  constructor(private http: HttpClient,private companyRequestService: CompanyRequestService, private userService: UserService) {
+  constructor(private http: HttpClient,private companyRequestService: CompanyRequestService, private userService: UserService,private router: Router) {
     this.newRequest=new CompanyRequest({
+      approved:false,
       company:new Company({
         id:0,
         name:'',
@@ -65,7 +67,9 @@ export class NewCompanyRequestComponent implements OnInit {
     this.makedCompany=true;
     this.showMakeCompany=false;
   }
-  backToProfile(){}
+  backToProfile(){
+    this.router.navigate(['profile', this.idLoginUser]);
+  }
   loadUser(){
     this.idLoginUser = sessionStorage.getItem('id');
     console.log(this.idLoginUser)
