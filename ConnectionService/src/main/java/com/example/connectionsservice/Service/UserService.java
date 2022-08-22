@@ -121,5 +121,19 @@ public class UserService {
         return flw;
     }
 
+    public boolean isUserFollowing(Long idUser, Long idFollower){
+        User u1 = this.userRepository.findById(idUser).get();
+        User u2 = this.userRepository.findById(idFollower).get();
+        boolean ret = false;
+        for (String s: u1.getFollowing()) {
+            if(s.equals(u2.getUsername())){
+                ret = true;
+            }else{
+                ret = false;
+            }
+        }
+        return ret;
+    }
+
 
 }

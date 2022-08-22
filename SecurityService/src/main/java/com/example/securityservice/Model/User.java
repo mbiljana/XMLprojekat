@@ -183,4 +183,9 @@ public class User implements UserDetails {
 		this.korisnicko = korisnicko;
 	}
 
+    public User(Long id, String korisnicko, String password) {
+        this.id = id;
+        this.korisnicko = korisnicko;
+        this.password = password;
+    }
 }
