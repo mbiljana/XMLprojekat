@@ -1,0 +1,37 @@
+<div class="row" class="container">
+  <div class="center" id="comp1" >
+    <h1>{{company.name}}</h1>
+
+    <div class="text-center">
+      <img src="{{company.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+  </div><br>
+  <div  class="center" id="comp2" >
+    <h1>Company</h1>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{company.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{company.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{company.mobile}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Short description of the activity</label>
+    <label>{{company.description}}</label>
+  </div>
+  <div  class="center" id="comp2" >
+    <h1>Owner</h1>
+    <label style="font-weight: bold;">First and last name</label>
+    <label>{{company.owner.firstName}} {{company.owner.lastName}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{company.owner.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{company.owner.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{company.owner.mobile}}</label>
+  </div>
+</div>

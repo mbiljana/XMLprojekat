@@ -14,4 +14,7 @@ export class CompanyService {
   save(newComoany:Company):Observable<Company>{
     return this.http.post<Company>(this.url,newComoany);
   }
+  getOneByOwnerId(id:number):Observable<Company>{
+    return this.http.get<Company>(`${this.url+"/owner"}/${id}`);
+  }
 }

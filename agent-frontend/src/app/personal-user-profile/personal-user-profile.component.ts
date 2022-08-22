@@ -12,6 +12,9 @@ export class PersonalUserProfileComponent implements OnInit {
   user:User;
   userId:number;
   role:any;
+  visable_owner_button:boolean=false;
+  visable_admin_button:boolean=false;
+  visable_user_button:boolean=false;
   constructor(private userService : UserService,private router: Router,private route: ActivatedRoute) {
     this.user=new User({
       id:0,
@@ -33,6 +36,18 @@ export class PersonalUserProfileComponent implements OnInit {
 
   loadUser(){
     this.role = sessionStorage.getItem('role');
+    if (this.role == 'Owner') {
+      this.visable_owner_button=true;
+
+    }
+    if (this.role == 'Admin') {
+      this.visable_admin_button=true;
+
+    }
+    if (this.role == 'User') {
+      this.visable_user_button=true;
+
+    }
     this.userId = this.route.snapshot.params['id'];
     this.userService.getUser(this.userId)
     .subscribe(res =>

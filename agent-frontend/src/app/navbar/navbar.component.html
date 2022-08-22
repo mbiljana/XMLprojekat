@@ -16,7 +16,7 @@
     </a>
   </div>
   <ng-template #activeUser>
-    <app-navbar-profile (LogOut)="HideInstrucotsButton()"></app-navbar-profile>
+    <app-navbar-profile (LogOut)="HideInstrucotsButton()" (OwnerIsLogin)="ownerIsLogin()"></app-navbar-profile>
   </ng-template>
 
 

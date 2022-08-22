@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   isActive: boolean = false;
   role:any;
   visiable_instrucotrs_button:boolean;
+  visiable_owner_button:boolean;
   constructor(public loginService: AuthenticationService) {
    }
 
@@ -37,5 +38,7 @@ export class NavbarComponent implements OnInit {
       this.visiable_instrucotrs_button=false;
     }
   }
-
+  ownerIsLogin(){
+    this.visiable_owner_button=true;
+  }
 }
