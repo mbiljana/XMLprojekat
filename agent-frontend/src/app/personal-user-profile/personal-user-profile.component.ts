@@ -11,6 +11,7 @@ import { User } from '../model/user';
 export class PersonalUserProfileComponent implements OnInit {
   user:User;
   userId:number;
+  role:any;
   constructor(private userService : UserService,private router: Router,private route: ActivatedRoute) {
     this.user=new User({
       id:0,
@@ -31,6 +32,7 @@ export class PersonalUserProfileComponent implements OnInit {
   }
 
   loadUser(){
+    this.role = sessionStorage.getItem('role');
     this.userId = this.route.snapshot.params['id'];
     this.userService.getUser(this.userId)
     .subscribe(res =>

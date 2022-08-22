@@ -18,7 +18,9 @@ import com.example.Agent.mapper.CompanyMapper;
 import com.example.Agent.model.Company;
 import com.example.Agent.model.CompanyRequest;
 import com.example.Agent.model.User;
+import com.example.Agent.repository.CompanyRequestRepository;
 import com.example.Agent.service.CompanyRequestService;
+import com.example.Agent.service.CompanyService;
 
 @CrossOrigin("*")
 @RestController
@@ -26,10 +28,23 @@ public class CompanyRequestController {
 	@Autowired
 	private CompanyRequestService companyRequestService;
 	
+	@Autowired
+	private CompanyRequestRepository companyRequestRepository;
+	@Autowired
+	private CompanyService companyService;
+	
 	@RequestMapping(value="api/companyRequest",method = RequestMethod.POST,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CompanyRequest> save(@RequestBody CompanyRequest newrequest){
 		CompanyRequest companyRequest = this.companyRequestService.save(newrequest);
+		return new ResponseEntity<>(companyRequest,HttpStatus.CREATED);
+	}
+	@RequestMapping(value="api/companyRequest/approve",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CompanyRequest> approve(@RequestBody CompanyRequest newrequest){
+		Company saved=this.companyService.save(newrequest.getCompany());
+		newrequest.setCompany(saved);
+		CompanyRequest companyRequest = this.companyRequestRepository.save(newrequest);
 		return new ResponseEntity<>(companyRequest,HttpStatus.CREATED);
 	}
 	@RequestMapping(value="api/companyRequest", method = RequestMethod.GET,

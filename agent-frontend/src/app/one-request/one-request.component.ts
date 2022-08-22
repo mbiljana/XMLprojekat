@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address } from '../model/address';
 import { Company } from '../model/company';
 import { User } from '../model/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-one-request',
@@ -14,8 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 export class OneRequestComponent implements OnInit {
   request:CompanyRequest;
   idRequest:number;
-  constructor(private companyRequestService: CompanyRequestService,private route: ActivatedRoute) {
+  constructor(private companyRequestService: CompanyRequestService,private route: ActivatedRoute,private router: Router) {
     this.request=new CompanyRequest({
+      approved:false,
       company:new Company({
         id:0,
         name:'',
@@ -39,10 +40,12 @@ export class OneRequestComponent implements OnInit {
           mobile: '',
           gender:'',
           role:'',
-          firstLogin:false
+          firstLogin:false,
+
         })
       })
     })
+
    }
 
   ngOnInit(): void {
@@ -51,6 +54,14 @@ export class OneRequestComponent implements OnInit {
   loadRequest(){
     this.idRequest = this.route.snapshot.params['idRequest'];
     this.companyRequestService.getOne(this.idRequest)
+    .subscribe(res=>this.request=res)
+  }
+  backToAllRequest(){
+    this.router.navigate(['profile', this.request.company.owner.id]);
+  }
+  approve(){
+    this.request.approved=true;
+    this.companyRequestService.approve(this.request)
     .subscribe(res=>this.request=res)
   }
 }

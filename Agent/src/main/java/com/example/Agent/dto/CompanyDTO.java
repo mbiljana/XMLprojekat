@@ -13,6 +13,14 @@ public class CompanyDTO {
 	private String mobile;
 	private String profilePicture;
 	private User owner;
+	private Boolean approved;
+	
+	public Boolean getApproved() {
+		return approved;
+	}
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -82,6 +90,7 @@ public class CompanyDTO {
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
 		this.owner = owner;
+		this.approved=false;
 	}
 	
 }
