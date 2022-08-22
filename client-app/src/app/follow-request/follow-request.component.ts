@@ -18,9 +18,16 @@ export class FollowRequestComponent implements OnInit {
 
   idLoginUser:any;
   user:User;
-  follower: string;
 
   fDTO: FollowRequestsDTO;
+  retVal : string;
+  retUser:User;
+  loggedUsername:string;
+  loggedId:number;
+  id:number;
+
+  retUsr:string;
+  retFlw:string;
 
   @Input()
   public request : string;
@@ -42,8 +49,26 @@ export class FollowRequestComponent implements OnInit {
       firstLogin:false,
       following:[],
       followRequests:[]
-    });
-
+    }),
+      this.fDTO = new FollowRequestsDTO({
+        followerId:'',
+        toFollowId:''
+      }),
+      this.retUser=new User({
+        id:0,
+        firstName: '',
+        lastName: '',
+        username: '',
+        password: '',
+        email: '',
+        mobile: '',
+        gender:'',
+        profileType:ProfileType.Private,
+        role:'',
+        firstLogin:false,
+        following:[],
+        followRequests:[]
+      });
   }
 
   ngOnInit(): void {
@@ -52,19 +77,14 @@ export class FollowRequestComponent implements OnInit {
 
   findUser(){
     this.profileService.getUserByUsername(this.request).subscribe(res => this.user=res);
+    this.id = this.route.snapshot.params['id'];
+    this.profileService.getUser(this.id).subscribe(res => this.retUser  =res);
   }
 
   acceptRequest(){
-    /*
-    this.fDTO = new FollowRequestsDTO({
-      followerId :this.loggedUser.username,
-      toFollowId : JSON.stringify(this.request)
-    });
-    //this.fDTO.followerId = this.loggedUser.username;
-    //this.fDTO.toFollowId = JSON.stringify(this.request);
-    this.followService.acceptRequest(this.fDTO).subscribe(res => this.follower = res );
-
-     */
+    this.retUsr = this.retUser.username;
+    this.retFlw = this.request;
+    this.followService.acceptRequest(this.retUsr,this.retFlw).subscribe();
   }
 
 

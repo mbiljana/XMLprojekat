@@ -23,8 +23,15 @@ export class FollowReqService {
     return this.http.get<string[]>(`${this.url}/${id}`);
   }
 
-  acceptRequest(request : FollowRequestsDTO):Observable<string>{
-    return this.http.put<string>(this.urlAccept,request);
+  /*
+  acceptRequest(fDTO : FollowRequestsDTO):Observable<User>{
+    return this.http.post<User>(this.urlAccept,fDTO);
+  }
+
+   */
+
+  acceptRequest(un:string,fun:string):Observable<User>{
+    return this.http.get<User>(`${this.urlAccept}/${un}/${fun}`);
   }
 
 
