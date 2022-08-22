@@ -25,7 +25,7 @@ public class PostController {
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PostDTO> save(@RequestBody PostDTO newPostDTO){
 		Post post = PostMapper.convertFromDTO(newPostDTO);
-		Post saved=this.postService.save(post);
+		Post saved=this.postService.saveNew(post);
 		PostDTO dto=PostMapper.convertToDTO(saved);
 		return new ResponseEntity<>(dto,HttpStatus.CREATED);
 	}
