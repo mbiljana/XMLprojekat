@@ -79,11 +79,20 @@ public class UserController {
     }
 
     //accept follow request
-    @PutMapping (path = "/accept",consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping (path = "/accept",consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> acceptRequest(@RequestBody FollowRequestsDTO fDTO){
         String userFollowing = userService.confirmRequest(fDTO.followerId, fDTO.toFollowId);
         return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
+    }
+
+    //accept follow request another way
+    @GetMapping (path = "/accept/{un}/{fun}",consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> acceptRequest(@PathVariable String un, @PathVariable String fun){
+        String userFollowing = userService.confirmRequest(un, fun);
+        User user = this.userService.findByUsername(un);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
     @RequestMapping(value="/{username}",method = RequestMethod.GET)

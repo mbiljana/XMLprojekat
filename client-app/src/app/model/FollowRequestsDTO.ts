@@ -1,8 +1,6 @@
-
 export interface FollowRequestsDTOInterface {
   followerId:string;
   toFollowId: string;
-
 }
 export class FollowRequestsDTO implements FollowRequestsDTOInterface {
   followerId:string;
