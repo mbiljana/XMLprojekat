@@ -28,4 +28,17 @@ public class PostService {
 		}
 		return posts;
 	}
+
+	public List<Post> searchByTitle(String title){
+		List<Post> allPosts = this.postRepository.findByTitle(title);
+		return allPosts;
+	}
+
+	public List<Post> findAllPosts(){
+		return this.postRepository.findAll();
+	}
+
+	public Post findPostById(Long id){
+		return this.postRepository.findById(id).get();
+	}
 }

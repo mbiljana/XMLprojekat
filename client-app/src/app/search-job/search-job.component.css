@@ -1,0 +1,27 @@
+.forma{
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 230px;
+  background-color:lightblue;
+
+  width: 50%;
+
+}
+.form-search{
+  text-align: center;
+  margin: 5px;
+}
+.btn{
+  text-align: center;
+  margin-top: 10px;
+  width: 260px;
+
+}
+input{
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 100px;
+}
+h3{
+  text-align: center;
+}

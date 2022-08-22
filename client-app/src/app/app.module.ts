@@ -54,6 +54,10 @@ import { ViewConnectionComponent } from './view-connection/view-connection.compo
 import { ViewChatComponent } from './view-chat/view-chat.component';
 import { ViewChatOnelineComponent } from './view-chat-oneline/view-chat-oneline.component';
 import { ReplyMessageComponent } from './reply-message/reply-message.component';
+import { SearchJobComponent } from './search-job/search-job.component';
+import { SearchJobViewComponent } from './search-job-view/search-job-view.component';
+import { FoundCompanyPostsComponent } from './found-company-posts/found-company-posts.component';
+import { FoundCompanyPostComponent } from './found-company-post/found-company-post.component';
 
 
 
@@ -102,7 +106,11 @@ import { ReplyMessageComponent } from './reply-message/reply-message.component';
      ViewConnectionComponent,
      ViewChatComponent,
      ViewChatOnelineComponent,
-     ReplyMessageComponent
+     ReplyMessageComponent,
+     SearchJobComponent,
+     SearchJobViewComponent,
+     FoundCompanyPostsComponent,
+     FoundCompanyPostComponent
 
 
 
