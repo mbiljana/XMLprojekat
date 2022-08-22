@@ -1,0 +1,24 @@
+<div class="forma">
+  <h3>Search job</h3>
+  <form class="form-search"  (ngSubmit)="searchJob()">
+    <input style="width: 250px;" name="name" id="name" type="text" [(ngModel)]="title"><br>
+    <input type="submit" value="search" class="btn btn-primary" >
+  </form>
+</div>
+<div class="modal-dialog text-center">
+  <div class="modal-content">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Post title</th>
+        <th>Company name</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-search-job-view *ngFor="let post of posts" [post]=post>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

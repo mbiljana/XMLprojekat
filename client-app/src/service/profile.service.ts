@@ -18,6 +18,7 @@ export class ProfileService {
   urlFollowing = "http://localhost:8191/api/following";
   urlUser = "http://localhost:8191/api/users";
 
+
   constructor(private http: HttpClient) { }
 
   searchUserByFirstAndLastName(user :UserSearch):Observable<User[]>{
