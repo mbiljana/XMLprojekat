@@ -20,6 +20,7 @@ import { NewCompanyRequestComponent } from './new-company-request/new-company-re
 import { CompanyRequestListComponent } from './company-request-list/company-request-list.component';
 import { CompanyRequestItemComponent } from './company-request-item/company-request-item.component';
 import { OneRequestComponent } from './one-request/one-request.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { OneRequestComponent } from './one-request/one-request.component';
     NewCompanyRequestComponent,
     CompanyRequestListComponent,
     CompanyRequestItemComponent,
-    OneRequestComponent
+    OneRequestComponent,
+    CompanyProfileComponent
   ],
   imports: [
     BrowserModule,

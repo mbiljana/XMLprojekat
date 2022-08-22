@@ -18,6 +18,9 @@ export class NavbarProfileComponent implements OnInit {
   @Output()
   LogOut: EventEmitter<void> = new EventEmitter();
 
+  @Output()
+  OwnerIsLogin: EventEmitter<void> = new EventEmitter();
+
   constructor(private _http: HttpClient, private loginService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
@@ -35,14 +38,16 @@ export class NavbarProfileComponent implements OnInit {
     if (this.role == 'User') {
       this.router.navigate(['profile', this.id]);
 
-    } else if (this.role == 'Instructor') {
-      this.router.navigate(['instructors', this.id]);
+    } else if (this.role == 'Owner') {
+      this.router.navigate(['profile', this.id]);
+      this.OwnerIsLogin.next();
+
     } else if (this.role == 'CottageOwner') {
       this.router.navigate(['cottageOwner', this.id]);
 
     } else if (this.role == 'Admin' || this.role == 'SysAdmin') {
 
-      this.router.navigate(['admin', this.id]);
+      this.router.navigate(['profile', this.id]);
     } else if (this.role == 'BoatOwner') {
     this.router.navigate(['boatOwner', this.id]);
     }
