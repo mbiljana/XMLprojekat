@@ -1,0 +1,80 @@
+.center {
+  margin: 10px;
+  width: 50%;
+  padding: 10px;
+  background-color: whitesmoke
+}
+
+h1,h2,h3{
+  text-align: center;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.comp1, .comp2, .comp3 {
+  border: 1px solid black;
+  flex-grow: 1;
+  margin-left: 30px;
+}
+.btn{
+  width: 200px;
+  height: 50px;
+}
+
+.input1{
+  margin-left: 100px;
+}
+
+
+
+label{
+  display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: 1.5em;
+
+}
+.topics{
+  height: 100%;
+  width: 100%;
+}
+
+.form-group textarea {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 19px;
+  width: 300px;
+}
+
+.form-group input {
+  margin-left: 50px;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+  font-size: 19px;
+  width: 300px;
+}
+.form-group select {
+  margin-top: 10px;
+  margin-left: 30px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+  font-size: 19px;
+  width: 300px;
+}
+
+.modal-content {
+  padding: 20px;
+  background-color: #AEC2D5;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 690px;
+  width: 400px;
+}

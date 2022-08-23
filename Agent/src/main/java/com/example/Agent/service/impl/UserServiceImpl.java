@@ -1,6 +1,7 @@
 package com.example.Agent.service.impl;
 
 
+import com.example.Agent.dto.UpdateUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -74,6 +75,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         return this.userRepository.save(user);
+    }
+
+    public User update(UpdateUserDTO editedUser){
+        User user = this.findById(editedUser.getId());
+        user.setFirstName(editedUser.getFirstName());
+        user.setEmail(editedUser.getEmail());
+        user.setLastName(editedUser.getLastName());
+        user.setUsername(editedUser.getKorisnicko());
+        user.setMobile(editedUser.getMobile());
+        user.setPassword(editedUser.getPassword());
+        if(user == null){
+            throw new IllegalStateException("User does not exist!");
+        }
+        else{
+            return userRepository.save(user);
+        }
     }
 
 

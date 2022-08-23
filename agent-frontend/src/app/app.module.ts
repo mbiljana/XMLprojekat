@@ -21,9 +21,13 @@ import { CompanyRequestListComponent } from './company-request-list/company-requ
 import { CompanyRequestItemComponent } from './company-request-item/company-request-item.component';
 import { OneRequestComponent } from './one-request/one-request.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+
 import { PostListComponent } from './post-list/post-list.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PostProfileComponent } from './post-profile/post-profile.component';
+
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -40,9 +44,12 @@ import { PostProfileComponent } from './post-profile/post-profile.component';
     CompanyRequestItemComponent,
     OneRequestComponent,
     CompanyProfileComponent,
+
     PostListComponent,
     PostItemComponent,
-    PostProfileComponent
+    PostProfileComponent,
+    UpdateProfileComponent
+
   ],
   imports: [
     BrowserModule,
