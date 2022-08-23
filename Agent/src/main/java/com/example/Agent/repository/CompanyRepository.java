@@ -7,5 +7,5 @@ import com.example.Agent.model.Company;
 
 @Repository
 public interface CompanyRepository extends MongoRepository<Company, Long>{
-
+	Company findByNameIgnoreCase(String name);
 }

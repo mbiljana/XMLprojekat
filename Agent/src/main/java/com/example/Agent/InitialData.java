@@ -106,7 +106,7 @@ public class InitialData {
         postRepository.save(p2);
 
         /////////////////////////////////////////////////////////////////////
-        Company c1 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u2);
-        companyService.save(c1);
+        Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u2);
+        companyService.save(c2);
     }
 }

@@ -20,6 +20,9 @@ public class CompanyService {
 	@Autowired
 	private AddressService addressService;
 	
+	public Company findByNameIgnoreCase(String name) {
+		return this.companyRepository.findByNameIgnoreCase(name);
+	}
 	
 	public Company save (Company newCompany) {
 		Long last_id=(long)0;

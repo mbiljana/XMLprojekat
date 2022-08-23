@@ -1,5 +1,5 @@
 import { Company } from './../app/model/company';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -17,4 +17,9 @@ export class CompanyService {
   getOneByOwnerId(id:number):Observable<Company>{
     return this.http.get<Company>(`${this.url+"/owner"}/${id}`);
   }
+  findByName(name:string):Observable<Company>{
+    const params:HttpParams=new HttpParams().append('name',name);
+    return this.http.get<Company>(this.url,{params});
+  }
+
 }
