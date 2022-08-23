@@ -26,8 +26,8 @@ export class FollowRequestComponent implements OnInit {
   loggedId:number;
   id:number;
 
-  retUsr:string;
-  retFlw:string;
+  retUsr:String;
+  retFlw:String;
 
   @Input()
   public request : string;
@@ -84,7 +84,9 @@ export class FollowRequestComponent implements OnInit {
   acceptRequest(){
     this.retUsr = this.retUser.username;
     this.retFlw = this.request;
-    this.followService.acceptRequest(this.retUsr,this.retFlw).subscribe();
+    this.fDTO.toFollowId = this.retFlw;
+    this.fDTO.followerId = this.retUsr;
+    this.followService.acceptRequest(this.fDTO).subscribe(res => this.retFlw = res);
   }
 
 

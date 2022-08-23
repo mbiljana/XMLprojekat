@@ -11,31 +11,33 @@
     </div>
     <br>
     <label style="font-weight: bold;">Name</label>
-    <div class="form-group">
+    <div class="form-group text-center">
       <input [(ngModel)]="user.firstName" id="name" name="name" type="text" class="from-control">
     </div>
     <label style="font-weight: bold;">Surname</label>
-    <div class="form-group">
+    <div class="form-group text-center" >
       <input [(ngModel)]="user.lastName" id="surname" name="surname" type="text" class="from-control">
     </div>
+    <div class="text-center">
+      <button id="save_button" class="btn btn-info" (click)="saveChanges()" onClick="window.location.reload()"> Save changes</button>
+    </div>
 
-    <button class="btn btn-primary" (click)="saveChanges()" onClick="window.location.reload()"> Save changes</button>
 
   </div><br>
   <div  class="center" id="comp2" >
     <br><br>
     <label style="font-weight: bold;">Username</label>
-    <div class="form-group">
+    <div class="form-group text-center">
       <input [(ngModel)]="user.username" id="username" name="username" type="text" class="from-control">
     </div>
 
     <label style="font-weight: bold;">Email</label>
-    <div class="form-group">
+    <div class="form-group text-center">
       <input [(ngModel)]="user.email" id="email" name="email" type="text" class="from-control">
     </div>
 
     <label style="font-weight: bold;">Mobile</label>
-    <div class="form-group">
+    <div class="form-group text-center">
       <input [(ngModel)]="user.mobile" id="mobile" name="mobile" type="text" class="from-control">
     </div>
   </div>
