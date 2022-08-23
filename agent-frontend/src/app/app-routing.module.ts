@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import {UpdateProfileComponent} from "./update-profile/update-profile.component";
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:'register',component:RegisterPageComponent},
   { path:'sign-in',component:SignInPageComponent},
   { path:'profile/:id',component:PersonalUserProfileComponent},
+  {path:'profile/:id/update', component:UpdateProfileComponent},
   { path:'profile/:id/newCompanyRequest',component:NewCompanyRequestComponent},
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
   { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent},
