@@ -1,3 +1,5 @@
+import { PostProfileComponent } from './post-profile/post-profile.component';
+import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { CompanyInterface } from './model/company';
 import { OneRequestComponent } from './one-request/one-request.component';
@@ -23,7 +25,12 @@ const routes: Routes = [
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
   { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent},
   { path:'profile/:id/company',component:CompanyProfileComponent},
-  { path:'profile/:id/company/update',component:UpdateCompanyComponent}
+
+  { path:'profile/:id/company/update',component:UpdateCompanyComponent},
+
+  { path:'profile/:id/company/post/:postId',component:PostProfileComponent},
+  { path:'profile/:id/company/newPost',component:MakeNewPostComponent}
+
 ];
 
 @NgModule({
