@@ -26,16 +26,17 @@ export class FollowReqService {
     return this.http.get<string[]>(`${this.url}/${id}`);
   }
 
-  /*
-  acceptRequest(fDTO : FollowRequestsDTO):Observable<User>{
-    return this.http.post<User>(this.urlAccept,fDTO);
+  acceptRequest(fDTO : FollowRequestsDTO):Observable<String>{
+    return this.http.post<String>(this.urlAccept,fDTO);
   }
 
-   */
 
+  /*
   acceptRequest(un:string,fun:string):Observable<User>{
     return this.http.get<User>(`${this.urlAccept}/${un}/${fun}`);
   }
+
+   */
 
   isFollowing(fDTO: IsFollowingDTO):Observable<boolean>{
     return this.http.post<boolean>(this.urlBool, fDTO);

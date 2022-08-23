@@ -1,10 +1,10 @@
 export interface FollowRequestsDTOInterface {
-  followerId:string;
-  toFollowId: string;
+  followerId:String;
+  toFollowId: String;
 }
 export class FollowRequestsDTO implements FollowRequestsDTOInterface {
-  followerId:string;
-  toFollowId: string;
+  followerId:String;
+  toFollowId: String;
 
   constructor(obj: FollowRequestsDTOInterface) {
     this.followerId = obj.followerId;
