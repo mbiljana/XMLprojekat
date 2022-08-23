@@ -9,7 +9,7 @@
     <br><br>
     <button id="upload_button" class="btn btn-info" (click)="onUploadPhoto()">Upload</button>
   </div>
-  <br>
+
   <label style="font-weight: bold;">Name</label>
   <div class="form-group">
     <input [(ngModel)]="profile.user.firstName" id="name" name="name" type="text" class="from-control">
@@ -18,9 +18,11 @@
   <div class="form-group">
     <input [(ngModel)]="profile.user.lastName" id="surname" name="surname" type="text" class="from-control">
   </div>
+  <label style="font-weight: bold;">Type of profile</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.profileType" id="type" name="type" type="text" class="from-control">
+  </div>
 
-  <h3>{{profile.user.profileType}} PROFILE</h3>
-  <button class="btn btn-primary" (click)="saveChanges()"> Save changes</button>
 
 </div><br>
 <div  class="center" id="comp2" >
@@ -45,31 +47,38 @@
     <input [(ngModel)]="profile.user.dateOfBirth" id="date" name="date" type="date" class="from-control">
   </div>
 
+  <label style="font-weight: bold;">Gender</label>
+  <div class="form-group">
+    <input [(ngModel)]="profile.user.gender" id="gender" name="gender" type="text" class="from-control">
+  </div>
+
+  <br><br><br><br><br><button  (click)="saveChanges()"   class="btn1" > Save changes</button>
+</div>
+<div  class="center" id="comp3" >
+  <br><br>
+
   <label style="font-weight: bold;">Education</label>
   <div class="form-group">
     <input [(ngModel)]="profile.education" id="education" name="education" type="text" class="from-control">
   </div>
 
 
-  <label style="font-weight: bold;">Additional informations</label>
+  <label style="font-weight: bold;">Additional information</label>
   <div class="form-group">
     <input [(ngModel)]="profile.additionInformation" id="additionInformation" name="additionInformation" type="text" class="from-control">
   </div>
-</div>
-<div  class="center" id="comp3" >
-  <br><br>
+
   <label style="font-weight: bold;">Program languages</label>
 
   <div class="form-group">
     <input class="from-control" [(ngModel)]="programLanguagesLists" type="text" >
   </div>
 
-  <label>-----------------------------------------------------</label>
   <label style="font-weight: bold;">Languages</label>
   <div class="form-group">
     <input class="from-control" [(ngModel)]="languagesLists" type="text" >
   </div>
-  <label>-----------------------------------------------------</label>
+
   <label style="font-weight: bold;">Ex companies</label>
   <div class="form-group">
     <input class="from-control" [(ngModel)]="exCompaniesLists" type="text" >

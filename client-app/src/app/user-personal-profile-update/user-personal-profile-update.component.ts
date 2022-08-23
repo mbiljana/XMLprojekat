@@ -2,7 +2,7 @@ import { Language } from './../model/language';
 import { LanguageService } from './../../service/language.service';
 import { ProfileType } from './../model/profileType';
 import { Profile } from './../model/profile';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ProfileService } from './../../service/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
@@ -38,7 +38,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
 
   listaObjekataLanguage:Language[]=[];
 
-  constructor(private route: ActivatedRoute,private http: HttpClient,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
+  constructor( private router: Router,private route: ActivatedRoute,private http: HttpClient,private profileService: ProfileService,private userPostService: UserPostService,private commentService:CommentService) {
 
     this.posts=[]
     this.profile=new Profile({
@@ -112,8 +112,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
 
 
   this.profileService.updateProfile(this.profile)
-    .subscribe()
-
+    .subscribe(res => this.router.navigate(['profile', res.user.id]))
   }
   insertProgramLanguagesIntoString(languages:ProgramLanguage[]){
     var listaImena:string[]=[];

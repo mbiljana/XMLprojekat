@@ -4,6 +4,7 @@ package com.example.Profile.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.example.Profile.dto.BlockUserDTO;
 import com.example.Profile.model.Profile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -45,13 +46,22 @@ public class UserController {
 	@PutMapping(path = "/block",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> block(@RequestBody Map<String, String> block){
-		try{
+	public ResponseEntity<?> block(@RequestBody Map<String, String> block) {
+		try {
 			return new ResponseEntity<User>(userService.block(block.get("blockerId"), block.get("blockedId")), HttpStatus.OK);
-		} catch (IllegalStateException e){
+		} catch (IllegalStateException e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	//bolja verzija
+		@PutMapping (path = "/blockUser",consumes = MediaType.APPLICATION_JSON_VALUE,
+				produces = MediaType.APPLICATION_JSON_VALUE)
+		public ResponseEntity<?> acceptRequest(@RequestBody BlockUserDTO fDTO){
+			User userFollowing = this.userService.block(fDTO.blockId, fDTO.blockedId);
+			return new ResponseEntity<User>(userFollowing, HttpStatus.OK);
+		}
+
 
 
 }
