@@ -45,6 +45,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(UserRequest userRequest) {
         User u = new User();
+        Long last_id=(long)0;
+        List<User> allUsers = this.userRepository.findAll();
+        for(User us : allUsers){
+            last_id  =us.getId();
+        }
+        last_id = last_id+1;
+        u.setId(last_id);
         u.setKorisnicko(userRequest.getKorisnicko());
 
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka

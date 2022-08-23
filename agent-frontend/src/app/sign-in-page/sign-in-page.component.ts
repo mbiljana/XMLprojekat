@@ -8,8 +8,8 @@ import { AuthenticationService } from 'src/service/authentication.service';
   styleUrls: ['./sign-in-page.component.css']
 })
 export class SignInPageComponent implements OnInit {
-  username: any
-  password = ''
+  username: any;
+  password = '';
   invalidLogin = false;
   @Output()
   LogIn: EventEmitter<void> = new EventEmitter();
