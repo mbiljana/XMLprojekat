@@ -1,0 +1,11 @@
+.jumbotron{
+  background-color:aliceblue;
+  margin: auto;
+  margin-top: 1%;
+  width: 60%;
+  border: 3px;
+  padding: 10px;
+}
+h1,p{
+  text-align: center;
+}
