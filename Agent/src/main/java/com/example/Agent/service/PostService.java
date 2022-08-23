@@ -1,6 +1,8 @@
 package com.example.Agent.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,22 +16,35 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	public Post save(Post newPost) {
+	public Post saveUpdate(Post newPost) {
 		return this.postRepository.save(newPost);
 	}
-	public Post save1(Post post) {
+	public Post saveNew(Post post) {
 		Long last_id=(long)0;
 		List<Post> all=this.postRepository.findAll();
 		for (Post p : all) {
-			if(p.getTitle().equals(post.getTitle()) && p.getJobDescription().equals(post.getJobDescription()) && p.getPreconditions().equals(post.getPreconditions()) && p.getPosition().equals(post.getPosition()) && p.getPicture().equals(post.getPicture())){
-				post.setId(p.getId());
-				return this.postRepository.save(post);
-			}
 			last_id=p.getId();
 		}
 		
 		last_id=last_id+1;
 		post.setId(last_id);
 		return this.postRepository.save(post);
+	}
+	public List<Post> findAllByCompanyId(Long id){
+		List<Post> all=this.postRepository.findAll();
+		List<Post> founds=new ArrayList<>();
+		for (Post post : all) {
+			if(post.getCompany().getId()==id) {
+				founds.add(post);
+			}
+		}
+		return founds;
+	}
+	public Post findById(Long id) {
+		Optional<Post> opt=this.postRepository.findById(id);
+		if(!opt.isPresent()) {
+			return null;
+		}
+		return opt.get();
 	}
 }

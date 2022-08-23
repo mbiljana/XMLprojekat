@@ -6,17 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.Agent.dto.UpdateUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Agent.model.User;
 import com.example.Agent.service.UserService;
@@ -61,4 +57,14 @@ public class UserController {
 		} 
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
+
+
+    //update user profile
+    @PutMapping(value = "/user/update",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateProfile(@RequestBody UpdateUserDTO uDTO) throws Exception {
+
+        return new ResponseEntity<User>(this.userService.update(uDTO),HttpStatus.OK);
+    }
 }

@@ -11,11 +11,34 @@
   <div class="row">
       <div class="col-sm">
           <br>
-          <label>Write your post</label>
-          <textarea >Some text...</textarea>
+          <label>Title</label>
+          <input type="text" [(ngModel)]="this.newPost.title">
+          <label>Position</label>
+          <input type="text" [(ngModel)]="this.newPost.position">
+          <label>Job description</label>
+          <textarea [(ngModel)]="this.newPost.jobDescription">Some text...</textarea>
           <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
-          <label>Add useful and important links ...</label>
-          <textarea style="height: 100px; " >Additional links ...</textarea>
+          <label>Precondition</label>
+          <div class="row">
+            <div class="col">
+              <textarea [(ngModel)]="onePrecondition" style="height: 100px; width: 350px; " >one precondition ...</textarea>
+              <button class="btn btn-info" style="width: 50px; margin-bottom: 80px; margin-left: 10px;" (click)="addNewPrecondition()"><mat-icon>add</mat-icon></button>
+            </div>
+            <div class="col">
+              <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pl of listOfPreconditions">
+                        <td>{{pl}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+          </div>
           <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
           <label>Choose main picture:</label>
           <input id="file_input" type="file" (change)="onFileChanged($event)">

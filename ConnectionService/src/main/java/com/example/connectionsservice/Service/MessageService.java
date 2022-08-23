@@ -26,11 +26,13 @@ public class MessageService {
     public List<Message> findRecievedMessages(String username, String sender){
         List<Message> messages1 = new ArrayList<>();
         List<Message> messages2 = new ArrayList<>();
-        messages1 = messageRepository.findMessageByRecieverUsernameAndSenderUsername(username,sender);
-        messages2 = this.messageRepository.findMessageByRecieverUsernameAndSenderUsername(sender,username);
+        messages1 = messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(username,sender);
+        messages2 = this.messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(sender,username);
         messages1.addAll(messages2);
+
         return messages1;
     }
+    
 
     //chat "interface"
     public List<Message> getChatInterface(String username){
@@ -43,11 +45,11 @@ public class MessageService {
         for (Message m: allUsersMsgs) {
             if(senderNames.isEmpty()){
                 senderNames.add(m.getSenderUsername());
-                tmp = this.messageRepository.findMessageByRecieverUsernameAndSenderUsername(user.getUsername(),m.getSenderUsername());
+                tmp = this.messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(user.getUsername(),m.getSenderUsername());
                 interfaceMsgs.add(tmp.get(tmp.size()-1));
             }else if (!senderNames.contains(m.getSenderUsername())){
                 senderNames.add(m.getSenderUsername());
-                tmp = this.messageRepository.findMessageByRecieverUsernameAndSenderUsername(user.getUsername(),m.getSenderUsername());
+                tmp = this.messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(user.getUsername(),m.getSenderUsername());
                 interfaceMsgs.add(tmp.get(tmp.size()-1));
             }else{
                 tmp.clear();
