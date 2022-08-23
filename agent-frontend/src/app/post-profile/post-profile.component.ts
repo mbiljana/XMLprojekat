@@ -37,7 +37,7 @@ export class PostProfileComponent implements OnInit {
     //.subscribe(res=>this.comments=res)
   }
   loadPost(){
-    this.postId = this.route.snapshot.params['id'];
+    this.postId = this.route.snapshot.params['postId'];
     this.postService.getOneById(this.postId)
     .subscribe(res=>this.post=res)
   }
