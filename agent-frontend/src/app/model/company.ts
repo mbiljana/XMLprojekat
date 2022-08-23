@@ -11,6 +11,8 @@ export interface CompanyInterface {
 	mobile:string;
 	profilePicture:string;
 	owner:User;
+  grades:number[];
+	averageSalary?:number;
 }
 export class Company implements CompanyInterface {
 	id:number;
@@ -22,6 +24,8 @@ export class Company implements CompanyInterface {
 	mobile:string;
 	profilePicture:string;
 	owner:User;
+  grades:number[];
+	averageSalary?:number;
 
 
 constructor(obj: CompanyInterface) {
@@ -34,6 +38,8 @@ constructor(obj: CompanyInterface) {
     this.mobile = obj.mobile;
     this.profilePicture=obj.profilePicture;
     this.owner=obj.owner;
+    this.averageSalary=obj.averageSalary;
+    this.grades=obj.grades;
 }
 
 

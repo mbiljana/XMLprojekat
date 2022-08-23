@@ -1,3 +1,4 @@
+import { CompanySearchProfileComponent } from './company-search-profile/company-search-profile.component';
 import { SearchCompanyComponent } from './search-company/search-company.component';
 import { PostProfileComponent } from './post-profile/post-profile.component';
 import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
 
   { path:'profile/:id/company/post/:postId',component:PostProfileComponent},
   { path:'profile/:id/company/newPost',component:MakeNewPostComponent},
-  { path:'search',component:SearchCompanyComponent}
+  { path:'search',component:SearchCompanyComponent},
+  { path:'company/:id', component:CompanySearchProfileComponent}
 
 ];
 

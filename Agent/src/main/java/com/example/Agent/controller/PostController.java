@@ -32,7 +32,13 @@ public class PostController {
 		Post saved=this.postService.saveNew(post);
 		PostDTO dto=PostMapper.convertToDTO(saved);
 		return new ResponseEntity<>(dto,HttpStatus.CREATED);
-	}
+	}/*
+	@RequestMapping(value="api/post",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Post> save(@RequestBody Post newPost){
+		Post saved=this.postService.saveNew(newPost);
+		return new ResponseEntity<>(saved,HttpStatus.CREATED);
+	}*/
 	@RequestMapping(value="api/post/company/{id}",method = RequestMethod.GET)
 	public ResponseEntity<List<Post>>  findAllByCompanyId(@PathVariable Long id){
 		List<Post> posts=this.postService.findAllByCompanyId(id);

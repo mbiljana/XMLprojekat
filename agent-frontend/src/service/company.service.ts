@@ -1,3 +1,4 @@
+import { GradeCompany } from './../app/model/gradeCompany';
 import { Company } from './../app/model/company';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -14,6 +15,9 @@ export class CompanyService {
   save(newComoany:Company):Observable<Company>{
     return this.http.post<Company>(this.url,newComoany);
   }
+  grade(gradeCompany:GradeCompany):Observable<Company>{
+    return this.http.post<Company>(this.url+"/grade",gradeCompany);
+  }
   getOneByOwnerId(id:number):Observable<Company>{
     return this.http.get<Company>(`${this.url+"/owner"}/${id}`);
   }
@@ -21,5 +25,7 @@ export class CompanyService {
     const params:HttpParams=new HttpParams().append('name',name);
     return this.http.get<Company>(this.url,{params});
   }
-
+  getOneById(id:number):Observable<Company>{
+    return this.http.get<Company>(`${this.url}/${id}`);
+  }
 }

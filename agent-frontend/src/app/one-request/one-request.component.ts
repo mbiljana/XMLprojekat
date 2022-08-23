@@ -18,6 +18,7 @@ export class OneRequestComponent implements OnInit {
     this.request=new CompanyRequest({
       approved:false,
       company:new Company({
+        grades:[],
         id:0,
         name:'',
         description:'',

@@ -19,6 +19,7 @@ export class CompanyProfileComponent implements OnInit {
   constructor(private companyService:CompanyService,private route: ActivatedRoute, private postService:PostService) {
     this.posts=[];
     this.company=new Company({
+      grades:[],
       id:0,
       name:'',
       description:'',

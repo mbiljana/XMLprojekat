@@ -50,8 +50,10 @@ export class MakeNewPostComponent implements OnInit {
           gender:'',
           role:'',
           firstLogin:false
-        })
         }),
+        grades:[]
+        }),
+
       title:'',
       jobDescription:'',
       preconditions:[],
