@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import com.example.Agent.model.Address;
+import com.example.Agent.model.Company;
+import com.example.Agent.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +22,13 @@ public class InitialData {
 
     private final UserService userService;
     private final RoleService roleService;
+    private final CompanyService companyService;
 
     @Autowired
-    public InitialData(  RoleService roleService, UserService userService){
+    public InitialData(RoleService roleService, UserService userService, CompanyService companyService){
         this.userService = userService;
         this.roleService = roleService;
+        this.companyService = companyService;
     }
 
 
@@ -31,6 +36,7 @@ public class InitialData {
     public void init(){
         List<Role> role1 = new ArrayList<>();
         List<Role> role2 = new ArrayList<>();
+        Address address = new Address((long)47, "Stevana Musica 18", "Srbija", "Novi Sad");
         //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Role r1 = new Role((long)55, "ROLE_USER");
         
@@ -53,7 +59,8 @@ public class InitialData {
         userService.saveUser(u3);
         userService.saveUser(u4);
 
-
-
+        /////////////////////////////////////////////////////////////////////
+        Company c1 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u2);
+        companyService.save(c1);
     }
 }

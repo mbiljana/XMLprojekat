@@ -22,6 +22,7 @@ import { CompanyRequestItemComponent } from './company-request-item/company-requ
 import { OneRequestComponent } from './one-request/one-request.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { UpdateCompanyComponent } from './update-company/update-company.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     CompanyRequestItemComponent,
     OneRequestComponent,
     CompanyProfileComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    UpdateCompanyComponent
   ],
   imports: [
     BrowserModule,

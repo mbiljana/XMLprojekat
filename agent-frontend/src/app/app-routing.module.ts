@@ -10,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import {UpdateProfileComponent} from "./update-profile/update-profile.component";
+import {UpdateCompanyComponent} from "./update-company/update-company.component";
 
 const routes: Routes = [
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path:'profile/:id/newCompanyRequest',component:NewCompanyRequestComponent},
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
   { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent},
-  { path:'profile/:id/company',component:CompanyProfileComponent}
+  { path:'profile/:id/company',component:CompanyProfileComponent},
+  { path:'profile/:id/company/update',component:UpdateCompanyComponent}
 ];
 
 @NgModule({
