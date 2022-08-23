@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Agent.dto.CompanyDTO;
@@ -47,4 +48,12 @@ public class CompanyController {
 		} 
 		return new ResponseEntity<>(company, HttpStatus.OK);
 	}
+	@RequestMapping(value="api/company", method = RequestMethod.GET,
+			params = "name",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<Company> findByName(@RequestParam String name){
+		Company company=this.companyService.findByNameIgnoreCase(name);
+		return new ResponseEntity<>(company,HttpStatus.OK);
+	}
+
 }
