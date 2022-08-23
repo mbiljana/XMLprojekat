@@ -19,6 +19,7 @@ import {ViewChatComponent} from "./view-chat/view-chat.component";
 import {SendMessageComponent} from "./send-message/send-message.component";
 import {SearchJobComponent} from "./search-job/search-job.component";
 import {SearchJobViewComponent} from "./search-job-view/search-job-view.component";
+import {NotificationComponent} from "./notification/notification.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path:'profile/:id/view-connections/profile/:id', component:UserProfileComponent},
   {path: 'messages/chat/:id/:fid', component: ViewChatComponent},
   {path:'search/profile/:id/send/:id/:fid',component:SendMessageComponent},
-  {path: 'search-job', component:SearchJobComponent}
+  {path: 'search-job', component:SearchJobComponent},
+  {path: 'notifications', component:NotificationComponent}
 
 ];
 
