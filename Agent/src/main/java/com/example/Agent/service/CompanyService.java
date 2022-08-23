@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.Agent.model.Company;
 import com.example.Agent.model.CompanyRequest;
+import com.example.Agent.model.Post;
 import com.example.Agent.repository.CompanyRepository;
 
 @Service
@@ -35,6 +36,10 @@ public class CompanyService {
 		this.addressService.save(newCompany.getAddress());
 		return this.companyRepository.save(newCompany);
 	}
+	public Company saveUpdate (Company newCompany) {
+		
+		return this.companyRepository.save(newCompany);
+	}
 	public Company findByOwnerId(Long id) {
 		List<Company> all=this.companyRepository.findAll();
 		for (Company company : all) {
@@ -43,5 +48,12 @@ public class CompanyService {
 			}
 		}
 		return null;
+	}
+	public Company findById(Long id) {
+		Optional<Company> opt=this.companyRepository.findById(id);
+		if(!opt.isPresent()) {
+			return null;
+		}
+		return opt.get();
 	}
 }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address } from '../model/address';
 import { Company } from '../model/company';
 import { User } from '../model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-company',
@@ -14,7 +15,7 @@ export class SearchCompanyComponent implements OnInit {
   name:string;
   showFoundCompany:boolean=false;
 
-  constructor(private companyService:CompanyService) {
+  constructor(private companyService:CompanyService,private router: Router) {
     this.company=new Company({
       id:0,
       name:'',
@@ -39,7 +40,8 @@ export class SearchCompanyComponent implements OnInit {
         gender:'',
         role:'',
         firstLogin:false
-      })
+      }),
+      grades:[]
     })
    }
 
@@ -49,5 +51,7 @@ export class SearchCompanyComponent implements OnInit {
     this.companyService.findByName(this.name)
     .subscribe(res=>{this.company=res;this.showFoundCompany=true;})
   }
-  viewProfile(){}
+  viewProfile(){
+    this.router.navigate(['company', this.company.id])
+  }
 }

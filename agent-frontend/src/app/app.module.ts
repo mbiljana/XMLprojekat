@@ -29,6 +29,7 @@ import { PostProfileComponent } from './post-profile/post-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
 import { SearchCompanyComponent } from './search-company/search-company.component';
+import { CompanySearchProfileComponent } from './company-search-profile/company-search-profile.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { SearchCompanyComponent } from './search-company/search-company.componen
     PostItemComponent,
     PostProfileComponent,
     UpdateProfileComponent,
-    SearchCompanyComponent
+    SearchCompanyComponent,
+    CompanySearchProfileComponent
 
 
   ],
