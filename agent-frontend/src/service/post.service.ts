@@ -14,4 +14,10 @@ export class PostService {
   save(newPost:Post):Observable<Post>{
     return this.http.post<Post>(this.url,newPost);
   }
+  getAllByCompanyId(id:number):Observable<Post[]>{
+    return this.http.get<Post[]>(`${this.url+"/company"}/${id}`);
+  }
+  getOneById(id:number):Observable<Post>{
+    return this.http.get<Post>(`${this.url}/${id}`);
+  }
 }
