@@ -1,6 +1,6 @@
 .container{
   background-position: center;
-  height: 800px;
+  height: 1000px;
   background-color: whitesmoke;
   margin-top: 30px;
  }
@@ -51,4 +51,35 @@
   margin-top: 30px;
   margin-left: 50px;
   margin-right: 50px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+input {
+  width: 20%;
+  height: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin-left: 520px;
+  margin-bottom: 10px;
+}
+#file_input{
+  margin-left: 400px;
+  width:300px;
+  margin-right: 10px;
+  height: 50px;
+}
+table{
+  width: 400px;
 }

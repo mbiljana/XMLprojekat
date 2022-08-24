@@ -1,9 +1,11 @@
+import { PostService } from './../../service/post.service';
 import { Company } from './../model/company';
 import { CompanyService } from './../../service/company.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Address } from '../model/address';
 import { User } from '../model/user';
+import { Post } from '../model/post';
 
 @Component({
   selector: 'app-company-profile',
@@ -13,7 +15,9 @@ import { User } from '../model/user';
 export class CompanyProfileComponent implements OnInit {
   userId:any;
   company :Company;
-  constructor(private companyService:CompanyService,private route: ActivatedRoute) {
+  posts:Post[];
+  constructor(private companyService:CompanyService,private route: ActivatedRoute, private postService:PostService) {
+    this.posts=[];
     this.company=new Company({
       id:0,
       name:'',
@@ -50,7 +54,10 @@ export class CompanyProfileComponent implements OnInit {
   loadCompany(){
     this.userId = this.route.snapshot.params['id'];
     this.companyService.getOneByOwnerId(this.userId)
-    .subscribe(res=>this.company=res)
+    .subscribe(res=>{this.company=res;
+      this.postService.getAllByCompanyId(res.id)
+      .subscribe(res1=>this.posts=res1)
+    })
   }
 
 }
