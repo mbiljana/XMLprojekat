@@ -1,5 +1,6 @@
 package com.example.Agent.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -18,7 +19,24 @@ public class Company {
 	private String mobile;
 	private String profilePicture;
 	private User owner;
+	private List<Integer> grades;
+	private List<Integer> salaries;
 	
+	
+	
+	
+	public List<Integer> getSalaries() {
+		return salaries;
+	}
+	public void setSalaries(List<Integer> salaries) {
+		this.salaries = salaries;
+	}
+	public List<Integer> getGrades() {
+		return grades;
+	}
+	public void setGrades(List<Integer> grades) {
+		this.grades = grades;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -88,6 +106,10 @@ public class Company {
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
 		this.owner = owner;
+		this.salaries=new ArrayList<>();
+		//this.salaries.add(0);
+		this.grades=new ArrayList<>();
+		//this.grades.add(0);
 	}
 	public Company() {}
 	

@@ -58,9 +58,13 @@ import { SearchJobComponent } from './search-job/search-job.component';
 import { SearchJobViewComponent } from './search-job-view/search-job-view.component';
 import { FoundCompanyPostsComponent } from './found-company-posts/found-company-posts.component';
 import { FoundCompanyPostComponent } from './found-company-post/found-company-post.component';
+
+import {ViewConnectionsBlockComponent} from "./view-connections-block/view-connections-block.component";
+
 import { NotificationComponent } from './notification/notification.component';
 import { MessageNotifsComponent } from './message-notifs/message-notifs.component';
 import { MessageNotifComponent } from './message-notif/message-notif.component';
+
 
 
 
@@ -116,7 +120,11 @@ import { MessageNotifComponent } from './message-notif/message-notif.component';
      FoundCompanyPostComponent,
      NotificationComponent,
      MessageNotifsComponent,
-     MessageNotifComponent
+     MessageNotifComponent,
+    ViewConnectionsBlockComponent,
+     NotificationComponent
+
+
 
 
 

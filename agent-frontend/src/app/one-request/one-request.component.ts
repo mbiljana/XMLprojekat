@@ -18,6 +18,8 @@ export class OneRequestComponent implements OnInit {
     this.request=new CompanyRequest({
       approved:false,
       company:new Company({
+        salaries:[],
+        grades:[],
         id:0,
         name:'',
         description:'',

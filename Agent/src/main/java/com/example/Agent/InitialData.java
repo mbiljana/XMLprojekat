@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import com.example.Agent.model.Address;
+import com.example.Agent.model.Comment;
 import com.example.Agent.model.Company;
 import com.example.Agent.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.example.Agent.model.Post;
 import com.example.Agent.model.Role;
 import com.example.Agent.model.User;
 import com.example.Agent.repository.AddressRepository;
+import com.example.Agent.repository.CommentRepository;
 import com.example.Agent.repository.CompanyRepository;
 import com.example.Agent.repository.PostRepository;
 import com.example.Agent.service.RoleService;
@@ -35,16 +37,19 @@ public class InitialData {
     private final AddressRepository addressRepository;
     private final CompanyRepository companyRepository;
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
     public InitialData(  RoleService roleService, UserService userService,
-    		AddressRepository addressRepository,CompanyRepository companyRepository,PostRepository postRepository,CompanyService companyService){
+    		AddressRepository addressRepository,CompanyRepository companyRepository,PostRepository postRepository,CompanyService companyService,
+    		CommentRepository commentRepository){
         this.userService = userService;
         this.roleService = roleService;
         this.addressRepository=addressRepository;
         this.companyRepository=companyRepository;
         this.postRepository=postRepository;
-         this.companyService = companyService;
+        this.companyService = companyService;
+        this.commentRepository=commentRepository;
 
     }
 
@@ -66,6 +71,10 @@ public class InitialData {
         role2.add(r2);
         role2.add(r1);
         User u1 = new User((long)1,"lana", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Lana","Lanic", "lana@gmail.com","3242476777","/assets/profilePicture/profile1.jpeg",true,role1,"User");
+        User u100 = new User((long)100,"marta", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Marta","MArkovic", "marta@gmail.com","3242476777","/assets/profilePicture/profile5-female.jpeg",true,role1,"User");
+        User u101 = new User((long)101,"dunja", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Dunja","Lazarevic", "dunja@gmail.com","3242476777","/assets/profilePicture/profile6-female.png",true,role1,"User");
+        User u102 = new User((long)102,"vuk", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Vuk","Pantic", "vuk@gmail.com","3242476777","/assets/profilePicture/profile4-man.jpeg",true,role1,"User");
+        
         User u2 = new User((long)2,"lana1", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Lana","Lanic", "lanal@gmail.com","3242476777","/assets/profilePicture/profile2.jpeg",true,role1,"Owner");
         User u3 = new User((long)22,"maja", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Marko","Markovic", "markom@gmail.com",true,role1,"User");
         User u4 = new User((long)4,"admin", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra","Nikola","Nikolic", "admin@example.com",true,role2,"Admin");
@@ -75,6 +84,9 @@ public class InitialData {
         userService.saveUser(u2);
         userService.saveUser(u3);
         userService.saveUser(u4);
+        userService.saveUser(u100);
+        userService.saveUser(u101);
+        userService.saveUser(u102);
         
         Address a1=new Address((long)1, "Maksima Gorkog 1", "Srbija", "Novi Sad");
         Address a2=new Address((long)2, "Radnicka 1", "Srbija", "Subotica");
@@ -104,10 +116,21 @@ public class InitialData {
         
         postRepository.save(p1);
         postRepository.save(p2);
-
+        
+                       		
         /////////////////////////////////////////////////////////////////////
         Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u1);
         companyService.save(c1);
         companyService.save(c2);
+
+
+        
+        Comment com1=new Comment((long)1, "Ihave excelant experiance while working in this company. People are very frendly and want to help when i ask for sometnhing. Very goood!!!!", c1,u102);
+        Comment com2=new Comment((long)2, "people are very closed and do not want to share their experiences and knowledge. I felt extremely unwelcome :((((", c2,u101);
+        Comment com3=new Comment((long)3, "I am junior developer, i just finished faculty of tehnical scientist and i ready to work. THis company is small but very iteresting. I will be very happy if I start working there", c1,u101);
+        
+        commentRepository.save(com1);
+        commentRepository.save(com2);
+        commentRepository.save(com3);
     }
 }

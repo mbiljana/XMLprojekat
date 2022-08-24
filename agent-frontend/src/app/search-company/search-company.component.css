@@ -1,0 +1,37 @@
+.forma{
+  margin-top: 10px;
+  margin-left: 230px;
+  background-color:lightblue;
+
+  width: 50%;
+
+}
+.form-search{
+  margin: 5px;
+}
+.btn{
+  margin-top: 10px;
+  width: 260px;
+
+}
+input{
+  margin-bottom: 10px;
+  margin-left: 100px;
+}
+h3{
+  text-align: center;
+}
+#who_to_search{
+  margin-left: 100px;
+}
+.jumbotron{
+  background-color:aliceblue;
+  margin: auto;
+  margin-top: 1%;
+  width: 50%;
+  border: 3px;
+  padding: 10px;
+}
+h1,p{
+  text-align: center;
+}

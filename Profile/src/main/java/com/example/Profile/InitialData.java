@@ -61,8 +61,8 @@ public class InitialData {
 		following.add("lana99");
 
 		List<String> followRequests = new ArrayList<>();
-		followRequests.add("stefan");
-		followRequests.add("marko");
+		followRequests.add("lana");
+		followRequests.add("marko99");
 
 		List<String> blocked = new ArrayList<>();
 		blocked.add("stef");
@@ -70,7 +70,7 @@ public class InitialData {
 		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2020-10-10");
 		userRepository.save(u1);
 		
-		User u2=new User((long)2,"lana99","12345","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked, "1997-05-05");
+		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked, "1997-05-05");
 		userRepository.save(u2);
 		
 		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2000-02-02");

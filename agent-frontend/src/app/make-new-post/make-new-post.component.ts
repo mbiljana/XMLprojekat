@@ -51,8 +51,11 @@ export class MakeNewPostComponent implements OnInit {
           roles:[],
           roleType:'',
           firstLogin:false
-        })
         }),
+        grades:[],
+        salaries:[]
+        }),
+
       title:'',
       jobDescription:'',
       preconditions:[],
@@ -90,6 +93,7 @@ export class MakeNewPostComponent implements OnInit {
     this.postService.save(this.newPost)
     .subscribe()
     this.makedPost=true;
+    this.showMakePost=false;
   }
   loadCompany(){
     this.userId = this.route.snapshot.params['id'];

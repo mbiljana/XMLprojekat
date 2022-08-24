@@ -5,6 +5,7 @@ import {FollowReqService} from "../../service/follow-req.service";
 import {ProfileService} from "../../service/profile.service";
 import {ConnectionsService} from "../../service/connections.service";
 import {ProfileType} from "../model/profileType";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: '[app-view-connection]',
@@ -21,7 +22,7 @@ export class ViewConnectionComponent implements OnInit {
   @Input()
   public connection : string;
 
-  constructor(private route: ActivatedRoute, private connectionService: ConnectionsService, private profileService:ProfileService) {
+  constructor(private route: ActivatedRoute, private connectionService: ConnectionsService, private profileService:ProfileService, private userService:UserService) {
     this.connection = '';
     this.user=new User({
       id:0,
@@ -47,5 +48,10 @@ export class ViewConnectionComponent implements OnInit {
   findUser(){
     this.profileService.getUserByUsername(this.connection).subscribe(res => this.user=res);
   }
+
+  blockUser(){
+    //this.userService.block().subscribe(
+     // )
+    ;}
 
 }
