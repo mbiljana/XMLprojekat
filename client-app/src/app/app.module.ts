@@ -117,7 +117,7 @@ import { NotificationComponent } from './notification/notification.component';
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
 
-    ViewConnectionsBlockComponent
+    ViewConnectionsBlockComponent,
 
      NotificationComponent
 

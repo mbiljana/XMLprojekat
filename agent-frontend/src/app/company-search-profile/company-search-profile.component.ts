@@ -1,3 +1,4 @@
+import { CommentService } from './../../service/comment.service';
 import { GradeCompany } from './../model/gradeCompany';
 import { CompanyService } from 'src/service/company.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { Company } from '../model/company';
 import { Post } from '../model/post';
 import { User } from '../model/user';
 import { ActivatedRoute } from '@angular/router';
+import { Comment } from '../model/comment';
 
 @Component({
   selector: 'app-company-search-profile',
@@ -16,6 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CompanySearchProfileComponent implements OnInit {
   company:Company;
   companyId:number;
+  comments:Comment[];
   posts:Post[];
   salary:number;
   grade:number;
@@ -25,7 +28,12 @@ export class CompanySearchProfileComponent implements OnInit {
   gradeCompany:GradeCompany;
   averageGrade=0;
   averageSalary=0;
-  constructor(private postService:PostService, private companyService:CompanyService,private route: ActivatedRoute) {
+  showAllPosts:boolean=true;
+  showAllComments:boolean=false;
+  constructor(private postService:PostService,
+              private companyService:CompanyService,
+              private route: ActivatedRoute,
+              private commentService:CommentService) {
     this.gradeCompany=new GradeCompany({
       id:0,
       grade:0,
@@ -129,5 +137,11 @@ export class CompanySearchProfileComponent implements OnInit {
       this.averageSalary = arr.reduce((a, b) => a + b, 0) / arr.length;
     })
     this.showSalaryForm=false;
+  }
+  viewAllComments(){
+    this.showAllPosts=false;
+    this.commentService.getAllByCompanyId(this.companyId)
+    .subscribe(res=>this.comments=res)
+    this.showAllComments=true;
   }
 }
