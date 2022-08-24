@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.Agent.dto.CompanyUpdateDTO;
+import com.example.Agent.dto.UpdateUserDTO;
+import com.example.Agent.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +43,25 @@ public class CompanyService {
 			}
 		}
 		return null;
+	}
+
+	public Company findById(Long id){
+		return this.companyRepository.findById(id).get();
+	}
+
+
+	public Company update(CompanyUpdateDTO editedCompany){
+		Company company = this.findById(editedCompany.getId());
+		company.setAddress(editedCompany.getAddress());
+		company.setDescription(editedCompany.getDescription());
+		company.setMobile(editedCompany.getMobile());
+		company.setEmail(editedCompany.getEmail());
+		company.setName(editedCompany.getName());
+		if(company == null){
+			throw new IllegalStateException("User does not exist!");
+		}
+		else{
+			return companyRepository.save(company);
+		}
 	}
 }

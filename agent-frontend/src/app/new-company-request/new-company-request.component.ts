@@ -46,7 +46,8 @@ export class NewCompanyRequestComponent implements OnInit {
           email: '',
           mobile: '',
           gender:'',
-          role:'',
+          roles:[],
+          roleType:'',
           firstLogin:false
         })
       })

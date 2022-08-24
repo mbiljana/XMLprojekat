@@ -11,36 +11,57 @@ import {UserRequest} from "../model/UserRequest";
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router) { }
+  newUser: User;
+  retUser:User;
+  registrationRequest: UserRequest;
+  constructor(private registrationService:RegistrationService, private router:Router) {
+    this.newUser = new User({
+      id: 0,
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      profilePicture:'',
+      gender:'',
+      roles:[],
+      roleType:'',
+      firstLogin:false
+    });
+    this.retUser = new User({
+      id: 0,
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      profilePicture:'',
+      gender:'',
+      roles:[],
+      roleType:'',
+      firstLogin:false
+    });
+    this.registrationRequest= new UserRequest({
+      id: 0,
+      korisnicko: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      gender:'',
+      email:'',
+      mobile:''
+    });
+  }
   error: string;
 
   ngOnInit(): void {
   }
-  newUser: User = new User({
-    id: 0,
-    username: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    profilePicture:'',
-    gender:'',
-    role:'',
-    firstLogin:false
-  });
+
   genders=['female','male'];
   confirmedPassword: string;
   showForm: boolean = true;
-
-  registrationRequest: UserRequest = new UserRequest({
-    id: 0,
-    korisnicko: this.newUser.username,
-    password: this.newUser.password,
-    firstName: this.newUser.firstName,
-    lastName: this.newUser.lastName,
-    gender:this.newUser.gender
-  })
 
 
   addNewUser(){
@@ -50,7 +71,9 @@ export class RegisterPageComponent implements OnInit {
       this.registrationRequest.firstName = this.newUser.firstName;
       this.registrationRequest.lastName = this.newUser.lastName;
       this.registrationRequest.gender = this.newUser.gender;
-      this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.newUser = res);
+      this.registrationRequest.email = this.newUser.email;
+      this.registrationRequest.mobile = this.newUser.mobile;
+      this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.retUser = res);
     } else {
       this.error = "passwords are not equal";
     }

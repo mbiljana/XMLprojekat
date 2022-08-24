@@ -36,7 +36,8 @@ export class CompanyProfileComponent implements OnInit {
         email: '',
         mobile: '',
         gender:'',
-        role:'',
+        roles:[],
+        roleType:'',
         firstLogin:false
       })
     })

@@ -34,6 +34,7 @@ export class NavbarProfileComponent implements OnInit {
   showDashboard() {
     console.log(this.id)
     this.id = sessionStorage.getItem('id');
+    console.log(this.id)
     this.role = sessionStorage.getItem('role');
     if (this.role == 'User') {
       this.router.navigate(['profile', this.id]);

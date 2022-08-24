@@ -39,7 +39,8 @@ export class OneRequestComponent implements OnInit {
           email: '',
           mobile: '',
           gender:'',
-          role:'',
+          roles:[],
+          roleType:'',
           firstLogin:false,
 
         })

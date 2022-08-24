@@ -59,6 +59,8 @@ import { SearchJobViewComponent } from './search-job-view/search-job-view.compon
 import { FoundCompanyPostsComponent } from './found-company-posts/found-company-posts.component';
 import { FoundCompanyPostComponent } from './found-company-post/found-company-post.component';
 import { NotificationComponent } from './notification/notification.component';
+import { MessageNotifsComponent } from './message-notifs/message-notifs.component';
+import { MessageNotifComponent } from './message-notif/message-notif.component';
 
 
 
@@ -112,7 +114,9 @@ import { NotificationComponent } from './notification/notification.component';
      SearchJobViewComponent,
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
-     NotificationComponent
+     NotificationComponent,
+     MessageNotifsComponent,
+     MessageNotifComponent
 
 
 
