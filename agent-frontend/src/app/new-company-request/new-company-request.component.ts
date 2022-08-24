@@ -26,6 +26,7 @@ export class NewCompanyRequestComponent implements OnInit {
       approved:false,
       company:new Company({
         grades:[],
+        salaries:[],
         id:0,
         name:'',
         description:'',

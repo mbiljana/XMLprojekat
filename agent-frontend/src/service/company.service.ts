@@ -18,6 +18,9 @@ export class CompanyService {
   grade(gradeCompany:GradeCompany):Observable<Company>{
     return this.http.post<Company>(this.url+"/grade",gradeCompany);
   }
+  salary(salaryCompany:GradeCompany):Observable<Company>{
+    return this.http.post<Company>(this.url+"/salary",salaryCompany);
+  }
   getOneByOwnerId(id:number):Observable<Company>{
     return this.http.get<Company>(`${this.url+"/owner"}/${id}`);
   }

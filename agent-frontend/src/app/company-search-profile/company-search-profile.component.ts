@@ -21,13 +21,16 @@ export class CompanySearchProfileComponent implements OnInit {
   grade:number;
   choices = [1,2,3,4,5];
   showGradeForm:boolean=false;
+  showSalaryForm:boolean=false;
   gradeCompany:GradeCompany;
   averageGrade=0;
+  averageSalary=0;
   constructor(private postService:PostService, private companyService:CompanyService,private route: ActivatedRoute) {
     this.gradeCompany=new GradeCompany({
       id:0,
       grade:0,
       company:new Company({
+        salaries:[],
         id:0,
         name:'',
         description:'',
@@ -69,6 +72,7 @@ export class CompanySearchProfileComponent implements OnInit {
       mobile:'',
       profilePicture:'',
       grades:[],
+      salaries:[],
       owner:new User({
         id:0,
         firstName: '',
@@ -92,7 +96,9 @@ export class CompanySearchProfileComponent implements OnInit {
     this.companyService.getOneById(this.companyId)
     .subscribe(res=>{this.company=res;
       const arr = res.grades;
+      const arr1=res.salaries;
       this.averageGrade = arr.reduce((a, b) => a + b, 0) / arr.length;
+      this.averageSalary = arr1.reduce((a, b) => a + b, 0) / arr1.length;
       this.postService.getAllByCompanyId(res.id)
       .subscribe(res1=>this.posts=res1)
     })
@@ -108,5 +114,20 @@ export class CompanySearchProfileComponent implements OnInit {
       const arr = res.grades;
       this.averageGrade = arr.reduce((a, b) => a + b, 0) / arr.length;
     })
+    this.showGradeForm=false;
+  }
+  addSalary(){
+    this.showSalaryForm=true;
+
+  }
+  AddSalaryFromForm(){
+    this.gradeCompany.company=this.company;
+    this.gradeCompany.grade=this.salary;
+    this.companyService.salary(this.gradeCompany)
+    .subscribe(res=>{
+      const arr = res.salaries;
+      this.averageSalary = arr.reduce((a, b) => a + b, 0) / arr.length;
+    })
+    this.showSalaryForm=false;
   }
 }

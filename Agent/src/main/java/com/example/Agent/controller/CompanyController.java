@@ -76,4 +76,12 @@ public class CompanyController {
 		Company saved=this.companyService.saveUpdate(com);
 		return new ResponseEntity<>(saved,HttpStatus.CREATED);
 	}
+	@RequestMapping(value="api/company/salary",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Company> salary(@RequestBody GradeCompany newGradeCompany){
+		Company com=this.companyService.findById(newGradeCompany.getCompany().getId());
+		com.getSalaries().add(newGradeCompany.getGrade());
+		Company saved=this.companyService.saveUpdate(com);
+		return new ResponseEntity<>(saved,HttpStatus.CREATED);
+	}
 }
