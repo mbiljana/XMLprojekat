@@ -19,6 +19,7 @@ export class MessageNotifComponent implements OnInit {
   public notif : MessageNotif;
 
   retNotif: MessageNotif;
+  sender: string;
 
   mess:Message;
   date:Date;
@@ -27,18 +28,40 @@ export class MessageNotifComponent implements OnInit {
   constructor(private route: ActivatedRoute, private notifService: NotificationService, private profileService:ProfileService) {
     this.notif = new MessageNotif({
       id:0,
-      message: this.mess,
+      message: new Message({
+        id:0,
+        senderUsername:'',
+        recieverUsername:'',
+        message:'',
+        sentDate:this.date
+      }),
       Date:this.date,
-      user:this.user
+      user:''
     });
+    this.retNotif = new MessageNotif({
+      id:0,
+      message: new Message({
+        id:0,
+        senderUsername:'',
+        recieverUsername:'',
+        message:'',
+        sentDate:this.date
+      }),
+      Date:this.date,
+      user:''
+    });
+    this.sender = '';
   }
 
   ngOnInit(): void {
     this.findNotif();
+    console.log(this.notif);
   }
 
   findNotif(){
-    this.notifService.getOneNotification(this.notif.id).subscribe(res => this.retNotif = res);
+    this.notifService.getOneNotification(this.notif.id).subscribe(res => {
+      this.notif = res;
+    });
   }
 
 }

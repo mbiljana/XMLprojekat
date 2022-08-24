@@ -133,6 +133,14 @@ public class Profile {
 		this.profileType = profileType;
 	}
 
+	public Profile(Long id, User user) {
+		this.id = id;
+		this.user = user;
+	}
+	public Profile( User user) {
+		this.user = user;
+	}
+
 
 	public Profile() {}
 }

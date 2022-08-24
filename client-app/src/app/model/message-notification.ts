@@ -3,20 +3,20 @@ import {Message} from "./message";
 
 export interface MessageNotifInterface{
   id:number;
-  user:User;
   Date:Date;
-  message:Message;
+  message: Message;
+  user:string;
 }
 export class MessageNotif implements MessageNotifInterface{
   id:number;
-  user:User;
   Date:Date;
   message:Message;
+  user:string;
 
   constructor(obj:MessageNotifInterface) {
     this.id = obj.id;
-    this.user = obj.user;
     this.Date = obj.Date;
     this.message = obj.message;
+    this.user = obj.user;
   }
 }

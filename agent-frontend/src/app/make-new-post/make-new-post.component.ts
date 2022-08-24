@@ -48,7 +48,8 @@ export class MakeNewPostComponent implements OnInit {
           email: '',
           mobile: '',
           gender:'',
-          role:'',
+          roles:[],
+          roleType:'',
           firstLogin:false
         })
         }),

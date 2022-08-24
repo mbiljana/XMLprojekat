@@ -24,6 +24,6 @@ export class CompanyService {
   }
 
   updateCompany(company:UpdateCompany):Observable<Company>{
-    return this.http.put<Company>(this.urlUpdate, company);
+    return this.http.post<Company>(this.urlUpdate, company);
   }
 }

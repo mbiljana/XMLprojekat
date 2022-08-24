@@ -16,10 +16,16 @@ import java.util.List;
 @RequestMapping(path = "/api/notif")
 @CrossOrigin("*")
 public class NotificationController {
+
+    private final UserService userService;
+
+    private final  MessageService messageService;
+
     @Autowired
-    private UserService userService;
-    @Autowired
-    private MessageService messageService;
+    public NotificationController(UserService userService, MessageService messageService){
+        this.userService = userService;
+        this.messageService = messageService;
+    }
 
     //get all users notifications
     @GetMapping(path = "/{id}",

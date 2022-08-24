@@ -4,6 +4,7 @@ import { ProfileType } from '../model/profileType';
 import {UserRequest} from "../model/UserRequest";
 import {RegistrationService} from "../../service/registration.service";
 import {Router} from "@angular/router";
+import {ProfileService} from "../../service/profile.service";
 
 @Component({
   selector: 'app-register-page',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router) {
+  constructor(private registrationService:RegistrationService, private router:Router, private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
@@ -42,8 +43,8 @@ export class RegisterPageComponent implements OnInit {
     id: 0,
     korisnicko: this.newUser.username,
     password: this.newUser.password,
-    firstName: this.newUser.firstName,
-    lastName: this.newUser.lastName,
+    firstname: this.newUser.firstName,
+    lastname: this.newUser.lastName,
     gender:this.newUser.gender
   })
 
@@ -82,10 +83,14 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
     if (this.newUser.password == this.confirmedPassword) {
       this.registrationRequest.korisnicko = this.newUser.username;
       this.registrationRequest.password = this.newUser.password;
-      this.registrationRequest.firstName = this.newUser.firstName;
-      this.registrationRequest.lastName = this.newUser.lastName;
+      this.registrationRequest.firstname = this.newUser.firstName;
+      this.registrationRequest.lastname = this.newUser.lastName;
       this.registrationRequest.gender = this.newUser.gender;
-      this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.newUser = res);
+      this.registrationService.registerUser(this.registrationRequest).subscribe(res => {
+        this.newUser = res;
+        this.profileService.createProfile(res).subscribe();
+      });
+
     } else {
       this.error = "passwords are not equal";
     }

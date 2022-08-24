@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
         // u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
         List<Role> roles = roleService.findByName("ROLE_USER");
         u.setRoles(roles);
+        u.setRoleType("User");
 
         return this.userRepository.save(u);
     }
