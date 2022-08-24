@@ -28,7 +28,9 @@
 
       <button style="margin-top: 10px;" class="btn btn-info" (click)="AddSalaryFromForm()">Save</button>
     </div>
-    <label>{{averageSalary}}<mat-icon>monetization_on</mat-icon></label>
+    <label>{{averageSalary}}$</label>
+
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" (click)="viewAllComments()" >View comments<mat-icon>comment</mat-icon></button>
     </div>
 
   </div><br>
@@ -61,9 +63,15 @@
     <label>{{company.owner.mobile}}</label>
   </div>
 </div>
-<div class="row" style="width: 900px; margin-left: 500px; background-color: whitesmoke">
+<div class="row" style="width: 900px; margin-left: 500px; background-color: whitesmoke" *ngIf="showAllPosts">
   <div>
     <label style="font-weight: bold;">Posts</label>
     <app-post-list [posts]="posts"></app-post-list>
+  </div>
+</div>
+<div class="row" style="width: 900px; margin-left: 500px; background-color: whitesmoke; margin-bottom: 30px;" *ngIf="showAllComments">
+  <div>
+    <label style="font-weight: bold;">What other people think of our company and what our job interviews look like</label>
+    <app-comment-list [comments]="comments"></app-comment-list>
   </div>
 </div>
