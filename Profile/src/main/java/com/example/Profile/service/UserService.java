@@ -57,6 +57,7 @@ public class UserService {
 		user.setPassword(editedUser.getPassword());
 		user.setGender(editedUser.getGender());
 		user.setDateOfBirth(editedUser.getDateOfBirth());
+		user.setProfileType(editedUser.getProfileType());
 		if(user == null){
 			throw new IllegalStateException("User does not exist!");
 		}

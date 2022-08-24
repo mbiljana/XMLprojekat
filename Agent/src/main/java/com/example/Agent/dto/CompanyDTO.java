@@ -1,5 +1,8 @@
 package com.example.Agent.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.Agent.model.Address;
 import com.example.Agent.model.User;
 
@@ -14,7 +17,25 @@ public class CompanyDTO {
 	private String profilePicture;
 	private User owner;
 	private Boolean approved;
+	private List<Integer> grades;
+	private List<Integer> salaries;
 	
+	
+	
+	
+	public List<Integer> getSalaries() {
+		return salaries;
+	}
+	public void setSalaries(List<Integer> salaries) {
+		this.salaries = salaries;
+	}
+	
+	public List<Integer> getGrades() {
+		return grades;
+	}
+	public void setGrades(List<Integer> grades) {
+		this.grades = grades;
+	}
 	public Boolean getApproved() {
 		return approved;
 	}
@@ -91,6 +112,8 @@ public class CompanyDTO {
 		this.profilePicture = profilePicture;
 		this.owner = owner;
 		this.approved=false;
+		this.salaries=new ArrayList<>();
+		this.grades=new ArrayList<>();
 	}
 	
 }

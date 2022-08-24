@@ -1,0 +1,78 @@
+<div class="row" class="container">
+  <div class="center" id="comp1" >
+    <h1>{{company.name}}</h1>
+
+    <div class="text-center">
+      <img src="{{company.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+
+    <div class="text-center">
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info"  (click)="rateCompany()">Rate<mat-icon>rate_review</mat-icon></button>
+
+            <div class="grade" *ngIf="showGradeForm">
+              <h2>Check your grade</h2>
+              <div *ngFor="let choice of choices" class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="{{choice}}" [(ngModel)]="grade">
+                <label class="form-check-label" for="inlineRadio1">{{choice}}</label>
+
+              </div>
+              <button class="btn btn-info" (click)="AddGrade()">Save</button>
+            </div>
+    <label >{{averageGrade}}<mat-icon>grade</mat-icon></label>
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" (click)="addSalary()" >Add salary<mat-icon>monetization_on</mat-icon></button>
+    <div class="grade" *ngIf="showSalaryForm">
+      <h2>Check your salary</h2>
+      <div class="form-group">
+        <input class="from-control" type="number" [(ngModel)]="salary" placeholder="type your salary">
+      </div>
+
+      <button style="margin-top: 10px;" class="btn btn-info" (click)="AddSalaryFromForm()">Save</button>
+    </div>
+    <label>{{averageSalary}}$</label>
+
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" (click)="viewAllComments()" >View comments<mat-icon>comment</mat-icon></button>
+    </div>
+
+  </div><br>
+  <div  class="center" id="comp2" >
+    <h1>Company</h1>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{company.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{company.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{company.mobile}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Short description of the activity</label>
+    <label>{{company.description}}</label>
+  </div>
+  <div  class="center" id="comp2" >
+    <h1>Owner</h1>
+    <label style="font-weight: bold;">First and last name</label>
+    <label>{{company.owner.firstName}} {{company.owner.lastName}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Username</label>
+    <label>{{company.owner.username}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Email</label>
+    <label>{{company.owner.email}}</label>
+    <label>-----------------------------------------------------</label>
+    <label style="font-weight: bold;">Mobile</label>
+    <label>{{company.owner.mobile}}</label>
+  </div>
+</div>
+<div class="row" style="width: 900px; margin-left: 500px; background-color: whitesmoke" *ngIf="showAllPosts">
+  <div>
+    <label style="font-weight: bold;">Posts</label>
+    <app-post-list [posts]="posts"></app-post-list>
+  </div>
+</div>
+<div class="row" style="width: 900px; margin-left: 500px; background-color: whitesmoke; margin-bottom: 30px;" *ngIf="showAllComments">
+  <div>
+    <label style="font-weight: bold;">What other people think of our company and what our job interviews look like</label>
+    <app-comment-list [comments]="comments"></app-comment-list>
+    <button class="btn btn-primary" [routerLink]="['newComment']" >Add comment<mat-icon>add</mat-icon></button>
+  </div>
+</div>

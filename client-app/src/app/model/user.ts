@@ -15,6 +15,7 @@ export interface UserInterface {
     firstLogin: boolean;
     following:string[];
     followRequests:string[];
+    blocked?:string[];
 }
 export class User implements UserInterface {
   id: number ;
@@ -32,6 +33,7 @@ export class User implements UserInterface {
   firstLogin: boolean;
   following:string[];
   followRequests:string[];
+  blocked?:string[];
 
   constructor(obj: UserInterface) {
       this.id = obj.id;
@@ -49,6 +51,7 @@ export class User implements UserInterface {
       this.firstLogin = obj.firstLogin;
       this.following = obj.following;
       this.followRequests = obj.followRequests;
+      this.blocked = obj.blocked;
   }
 
 
