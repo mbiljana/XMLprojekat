@@ -41,7 +41,8 @@ export class SearchCompanyComponent implements OnInit {
         role:'',
         firstLogin:false
       }),
-      grades:[]
+      grades:[],
+      salaries:[]
     })
    }
 

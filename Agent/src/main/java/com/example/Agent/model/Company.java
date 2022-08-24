@@ -20,15 +20,16 @@ public class Company {
 	private String profilePicture;
 	private User owner;
 	private List<Integer> grades;
-	private double averageSalary;
+	private List<Integer> salaries;
 	
 	
 	
-	public double getAverageSalary() {
-		return averageSalary;
+	
+	public List<Integer> getSalaries() {
+		return salaries;
 	}
-	public void setAverageSalary(double averageSalary) {
-		this.averageSalary = averageSalary;
+	public void setSalaries(List<Integer> salaries) {
+		this.salaries = salaries;
 	}
 	public List<Integer> getGrades() {
 		return grades;
@@ -105,9 +106,10 @@ public class Company {
 		this.mobile = mobile;
 		this.profilePicture = profilePicture;
 		this.owner = owner;
-		this.averageSalary=0;
+		this.salaries=new ArrayList<>();
+		//this.salaries.add(0);
 		this.grades=new ArrayList<>();
-		this.grades.add(1);
+		//this.grades.add(0);
 	}
 	public Company() {}
 	

@@ -20,6 +20,7 @@ export class CompanyProfileComponent implements OnInit {
     this.posts=[];
     this.company=new Company({
       grades:[],
+      salaries:[],
       id:0,
       name:'',
       description:'',

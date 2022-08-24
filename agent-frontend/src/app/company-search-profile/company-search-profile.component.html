@@ -19,9 +19,16 @@
               <button class="btn btn-info" (click)="AddGrade()">Save</button>
             </div>
     <label >{{averageGrade}}<mat-icon>grade</mat-icon></label>
-    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" >Add salary<mat-icon>monetization_on</mat-icon></button>
-    <input type="number" [(ngModel)]="salary" placeholder="type your salary">
-    <label>{{company.averageSalary}}$</label>
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" (click)="addSalary()" >Add salary<mat-icon>monetization_on</mat-icon></button>
+    <div class="grade" *ngIf="showSalaryForm">
+      <h2>Check your salary</h2>
+      <div class="form-group">
+        <input class="from-control" type="number" [(ngModel)]="salary" placeholder="type your salary">
+      </div>
+
+      <button style="margin-top: 10px;" class="btn btn-info" (click)="AddSalaryFromForm()">Save</button>
+    </div>
+    <label>{{averageSalary}}<mat-icon>monetization_on</mat-icon></label>
     </div>
 
   </div><br>

@@ -18,13 +18,16 @@ public class CompanyDTO {
 	private User owner;
 	private Boolean approved;
 	private List<Integer> grades;
-	private double averageSalary;
+	private List<Integer> salaries;
 	
-	public double getAverageSalary() {
-		return averageSalary;
+	
+	
+	
+	public List<Integer> getSalaries() {
+		return salaries;
 	}
-	public void setAverageSalary(double averageSalary) {
-		this.averageSalary = averageSalary;
+	public void setSalaries(List<Integer> salaries) {
+		this.salaries = salaries;
 	}
 	
 	public List<Integer> getGrades() {
@@ -109,7 +112,7 @@ public class CompanyDTO {
 		this.profilePicture = profilePicture;
 		this.owner = owner;
 		this.approved=false;
-		this.averageSalary=0;
+		this.salaries=new ArrayList<>();
 		this.grades=new ArrayList<>();
 	}
 	
