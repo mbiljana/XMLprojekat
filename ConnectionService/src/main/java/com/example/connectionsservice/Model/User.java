@@ -35,6 +35,7 @@ public class User {
     private List<String> followRequests;
     private List<Message> sentMessages;
     private List<Message> recievedMessages;
+    private List<Notification> messagesNotifications;
 
     public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate) {
         this.id = id;
@@ -52,7 +53,7 @@ public class User {
 
     public User(Long id, String username, String password, String firstName, String lastName, String email,
 			String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following,
-			List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages) {
+			List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<Notification> notifs) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -68,6 +69,29 @@ public class User {
 		this.followRequests = followRequests;
 		this.sentMessages = sentMessages;
 		this.recievedMessages = recievedMessages;
+
+		this.messagesNotifications = notifs;
+	}
+
+	public User(Long id, String username, String password, String firstName, String lastName, String email,
+				String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following,
+				List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.sentMessages = sentMessages;
+		this.recievedMessages = recievedMessages;
+
 	}
 
 
@@ -83,9 +107,12 @@ public class User {
         this.profilePicture = profilePicture;
         this.isPrivate = isPrivate;
         this.following = following;
-        this.followRequests = followRequests;
     }
+
 	public User() {}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -197,5 +224,12 @@ public class User {
 	public void setRecievedMessages(List<Message> recievedMessages) {
 		this.recievedMessages = recievedMessages;
 	}
-    
+
+	public List<Notification> getMessagesNotifications() {
+		return messagesNotifications;
+	}
+
+	public void setMessagesNotifications(List<Notification> messagesNotifications) {
+		this.messagesNotifications = messagesNotifications;
+	}
 }

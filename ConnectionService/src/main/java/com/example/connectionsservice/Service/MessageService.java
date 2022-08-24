@@ -2,8 +2,10 @@ package com.example.connectionsservice.Service;
 
 import com.example.connectionsservice.Dto.MessageDTO;
 import com.example.connectionsservice.Model.Message;
+import com.example.connectionsservice.Model.Notification;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Repository.MessageRepository;
+import com.example.connectionsservice.Repository.NotificationRepository;
 import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ public class MessageService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     public Message save(Message message){
         return this.messageRepository.save(message);
@@ -80,11 +85,19 @@ public class MessageService {
         userRepository.save(userReciever);
         userSender.getSentMessages().add(message);
         userRepository.save(userSender);
+
+        Notification notification = new Notification(message,userSender,date);
+        userSender.getMessagesNotifications().add(notification);
+
         return  message;
     }
 
     public List<Message> getAll(){
         return this.messageRepository.findAll();
+    }
+
+    public Notification getNotif(Long id){
+        return this.notificationRepository.findById(id).get();
     }
 
 

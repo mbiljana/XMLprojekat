@@ -29,7 +29,8 @@ export class UpdateProfileComponent implements OnInit {
       mobile:'',
       profilePicture:'',
       gender:'',
-      role:'',
+      roles:[],
+      roleType:'',
       firstLogin:false
     });
     this.updateUser = new UpdateUser({
@@ -68,10 +69,8 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   saveChanges(){
-//treba sada stringove pretvoriti u liste
     this.userService.updateUser(this.user)
       .subscribe()
-
   }
 
 }

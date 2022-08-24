@@ -62,6 +62,8 @@ import { FoundCompanyPostComponent } from './found-company-post/found-company-po
 import {ViewConnectionsBlockComponent} from "./view-connections-block/view-connections-block.component";
 
 import { NotificationComponent } from './notification/notification.component';
+import { MessageNotifsComponent } from './message-notifs/message-notifs.component';
+import { MessageNotifComponent } from './message-notif/message-notif.component';
 
 
 
@@ -117,9 +119,15 @@ import { NotificationComponent } from './notification/notification.component';
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
 
+     NotificationComponent,
+     MessageNotifsComponent,
+     MessageNotifComponent
+
+
     ViewConnectionsBlockComponent,
 
      NotificationComponent
+
 
 
 
