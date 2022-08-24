@@ -43,12 +43,13 @@
       </div>
       <p class="error">{{ error }}</p>
       <div>
-        <button type="submit" class="btn btn-primary" (click)="addNewUser()" onClick="window.location.reload()">Register</button><br>
+        <button type="submit" class="btn btn-primary" (click)="addNewUser()" >Register</button><br>
       </div>
 
     </form>
   </div>
 </div><!--
+onClick="window.location.reload()"
 <div class="alert alert-success" role="alert" *ngIf="registrated">
   <h1 class="alert-heading">Well done!</h1>
   <h2>Aww yeah, you succeeded. You should go to your email account and check your message.</h2>

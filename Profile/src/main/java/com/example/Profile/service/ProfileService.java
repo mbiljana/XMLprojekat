@@ -36,6 +36,21 @@ public class ProfileService {
 	public Profile save(Profile profile) {
 		return this.profileRepository.save(profile);
 	}
+	public Profile saveUser(User user){
+		/*
+		Long last_id=(long)0;
+		List<Profile> allUsers = this.profileRepository.findAll();
+		for(Profile us : allUsers){
+			last_id  =us.getId();
+		}
+		last_id = last_id+1;
+
+		 */
+		Profile profile = new Profile();
+		profile.setUser(user);
+		profile.setId(user.getId());
+		return this.profileRepository.save(profile);
+	}
 
 
 	public Profile findById(Long id) {

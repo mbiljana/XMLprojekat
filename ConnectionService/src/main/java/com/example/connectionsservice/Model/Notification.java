@@ -13,8 +13,7 @@ public class Notification {
     @Id
     private Long id;
 
-    private User user;
-
+    private String user;
     private Date date;
 
     private Message messageNotif;
@@ -22,18 +21,34 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(Long id, Message messageNotif, User user, Date date) {
+    public Notification(Long id, Message messageNotif, Date date, String user) {
         this.id = id;
         this.messageNotif = messageNotif;
+        this.date = date;
         this.user = user;
+    }
+    public Notification(Long id, Message messageNotif, Date date) {
+        this.id = id;
+        this.messageNotif = messageNotif;
         this.date = date;
     }
-    public Notification(Message messageNotif, User user, Date date) {
+    public Notification(Message messageNotif, Date date) {
         this.messageNotif = messageNotif;
-        this.user = user;
         this.date = date;
+    }
+    public Notification(Message messageNotif, Date date, String user) {
+        this.messageNotif = messageNotif;
+        this.date = date;
+        this.user = user;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public Date getDate() {
         return date;
@@ -43,13 +58,6 @@ public class Notification {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Long getId() {
         return id;

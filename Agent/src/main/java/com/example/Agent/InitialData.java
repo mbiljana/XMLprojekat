@@ -119,8 +119,11 @@ public class InitialData {
         
                        		
         /////////////////////////////////////////////////////////////////////
-        Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u2);
+        Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u1);
+        companyService.save(c1);
         companyService.save(c2);
+
+
         
         Comment com1=new Comment((long)1, "Ihave excelant experiance while working in this company. People are very frendly and want to help when i ask for sometnhing. Very goood!!!!", c1,u102);
         Comment com2=new Comment((long)2, "people are very closed and do not want to share their experiences and knowledge. I felt extremely unwelcome :((((", c2,u101);

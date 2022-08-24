@@ -118,14 +118,10 @@ import { MessageNotifComponent } from './message-notif/message-notif.component';
      SearchJobViewComponent,
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
-
      NotificationComponent,
      MessageNotifsComponent,
-     MessageNotifComponent
-
-
+     MessageNotifComponent,
     ViewConnectionsBlockComponent,
-
      NotificationComponent
 
 

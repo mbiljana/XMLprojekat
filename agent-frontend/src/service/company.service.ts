@@ -31,8 +31,9 @@ export class CompanyService {
   }
 
 
-  updateCompany(company:UpdateCompany):Observable<Company>{
-    return this.http.put<Company>(this.urlUpdate, company);
+  updateCompany(company:UpdateCompany):Observable<Company> {
+    return this.http.post<Company>(this.urlUpdate, company);
+  }
 
   findByName(name:string):Observable<Company>{
     const params:HttpParams=new HttpParams().append('name',name);
@@ -40,6 +41,5 @@ export class CompanyService {
   }
   getOneById(id:number):Observable<Company>{
     return this.http.get<Company>(`${this.url}/${id}`);
-
   }
 }

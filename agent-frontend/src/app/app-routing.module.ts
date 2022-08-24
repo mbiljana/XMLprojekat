@@ -28,9 +28,7 @@ const routes: Routes = [
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
   { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent},
   { path:'profile/:id/company',component:CompanyProfileComponent},
-
   { path:'profile/:id/company/update',component:UpdateCompanyComponent},
-
   { path:'profile/:id/company/post/:postId',component:PostProfileComponent},
   { path:'profile/:id/company/newPost',component:MakeNewPostComponent},
   { path:'search',component:SearchCompanyComponent},

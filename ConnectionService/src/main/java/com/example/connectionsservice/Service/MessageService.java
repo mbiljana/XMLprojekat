@@ -86,7 +86,7 @@ public class MessageService {
         userSender.getSentMessages().add(message);
         userRepository.save(userSender);
 
-        Notification notification = new Notification(message,userSender,date);
+        Notification notification = new Notification(message,date, userSender.getUsername());
         userSender.getMessagesNotifications().add(notification);
 
         return  message;
