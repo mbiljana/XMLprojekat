@@ -7,7 +7,7 @@
     </div>
 
     <div class="text-center">
-    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info"  (click)="rateCompany()">Rate<mat-icon>rate_review</mat-icon></button>
+    <button style=" margin-top: 20px; width: 300px; height: 50px;" [disabled]="isUserLogin"  class="btn btn-info"  (click)="rateCompany()">Rate<mat-icon>rate_review</mat-icon></button>
 
             <div class="grade" *ngIf="showGradeForm">
               <h2>Check your grade</h2>
@@ -19,7 +19,7 @@
               <button class="btn btn-info" (click)="AddGrade()">Save</button>
             </div>
     <label >{{averageGrade}}<mat-icon>grade</mat-icon></label>
-    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" (click)="addSalary()" >Add salary<mat-icon>monetization_on</mat-icon></button>
+    <button style=" margin-top: 20px; width: 300px; height: 50px;"  class="btn btn-info" [disabled]="isUserLogin"  (click)="addSalary()" >Add salary<mat-icon>monetization_on</mat-icon></button>
     <div class="grade" *ngIf="showSalaryForm">
       <h2>Check your salary</h2>
       <div class="form-group">
@@ -73,6 +73,6 @@
   <div>
     <label style="font-weight: bold;">What other people think of our company and what our job interviews look like</label>
     <app-comment-list [comments]="comments"></app-comment-list>
-    <button class="btn btn-primary" [routerLink]="['newComment']" >Add comment<mat-icon>add</mat-icon></button>
+    <button class="btn btn-primary" [disabled]="isUserLogin"  [routerLink]="['newComment']" >Add comment<mat-icon>add</mat-icon></button>
   </div>
 </div>
