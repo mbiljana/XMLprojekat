@@ -53,12 +53,8 @@ public class User {
         this.profilePicture = profilePicture;
         this.isPrivate = isPrivate;
     }
-    
 
-    public User(Long id, String username, String password, String firstName, String lastName, String email,
-			String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following,
-			List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<Notification> notifs) {
-		super();
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<String> blocked, List<Notification> messagesNotifications) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -73,8 +69,8 @@ public class User {
 		this.followRequests = followRequests;
 		this.sentMessages = sentMessages;
 		this.recievedMessages = recievedMessages;
-
-		this.messagesNotifications = notifs;
+		this.blocked = blocked;
+		this.messagesNotifications = messagesNotifications;
 	}
 
 	public User(Long id, String username, String password, String firstName, String lastName, String email,
