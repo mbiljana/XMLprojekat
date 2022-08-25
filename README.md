@@ -18,6 +18,7 @@
  ng serve
  ```
  <br />    Logovanje: username: lana99, password: 123
+ ##
  <br /> Agentska aplikacija:
  <br />    Potrebno je pokrenuti Agent i agent-frontend
  <br />    U terminalu angular aplikacije pre pokretanja:
