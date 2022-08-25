@@ -1,0 +1,16 @@
+<div class="modal-dialog text-center" id="req">
+  <div class="modal-content text-center">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Username</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-view-connection-block *ngFor="let block of blocks" [block]=block >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

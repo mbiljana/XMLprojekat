@@ -10,8 +10,13 @@ import {UserRequest} from "../app/model/UserRequest";
 })
 export class UserService {
   url = "http://localhost:8191/api/users";
+
+  urlBlock = "http://localhost:8184/api/blockUser";
+  urlNumBlock = "http://localhost:8184/numBlock";
+  urlBlocked = "http://localhost:8184/blocksId";
+
   urlSave = "http://localhost:8191/api/users/save";
-  urlBlock = "http://localhost:8184";
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,11 +24,17 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
-  block(fDTO : FollowRequestsDTO):Observable<User>{
-    return this.http.put<User>(this.urlBlock + "/blockUser",fDTO);
+  block(fDTO : FollowRequestsDTO):Observable<String>{
+    return this.http.post<String>(this.urlBlock,fDTO);
   }
   saveUser(user : User):Observable<User>{
     return this.http.post<User>(this.urlSave,user);
   }
+
+  getBlocked(id:number):Observable<string[]>{
+    return this.http.get<string[]>(`${this.urlBlocked}/${id}`);
+  }
+
+
 
 }

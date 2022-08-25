@@ -62,10 +62,11 @@ import { FoundCompanyPostComponent } from './found-company-post/found-company-po
 import {ViewConnectionsBlockComponent} from "./view-connections-block/view-connections-block.component";
 
 import { NotificationComponent } from './notification/notification.component';
+
+import {ViewConnectionBlockComponent} from "./view-connection-block/view-connection-block.component";
+
 import { MessageNotifsComponent } from './message-notifs/message-notifs.component';
 import { MessageNotifComponent } from './message-notif/message-notif.component';
-
-
 
 
 
@@ -118,10 +119,15 @@ import { MessageNotifComponent } from './message-notif/message-notif.component';
      SearchJobViewComponent,
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
+
+
+    ViewConnectionsBlockComponent,
+    ViewConnectionBlockComponent,
+
      NotificationComponent,
      MessageNotifsComponent,
      MessageNotifComponent,
-    ViewConnectionsBlockComponent,
+
      NotificationComponent
 
 

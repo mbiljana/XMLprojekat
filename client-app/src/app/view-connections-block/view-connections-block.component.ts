@@ -9,6 +9,9 @@ import {Profile} from "../model/profile";
 import {ProfileType} from "../model/profileType";
 import {ConnectionsNumberDTO} from "../model/ConnectionsNumberDTO";
 import {UserService} from "../../service/user.service";
+import {FollowRequestsDTO} from "../model/FollowRequestsDTO";
+import {UsersFollowRequestsDTO} from "../model/UsersFollowRequestsDTO";
+import {FollowReqService} from "../../service/follow-req.service";
 
 @Component({
   selector: 'app-view-connections-block',
@@ -21,37 +24,34 @@ export class ViewConnectionsBlockComponent implements OnInit {
   id: number;
   loggedUser: User;
   profile: Profile;
+  fDTO:FollowRequestsDTO;
+  foundUser:UsersFollowRequestsDTO;
 
   @Input()
-  connections: string[];
+  blocks: string[];
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private userService: UserService, private commentService: CommentService, private connectionService: ConnectionsService) {
-    this.profile = new Profile({
-      user: new User({
-        id: 0,
-        firstName: '',
-        lastName: '',
-        username: '',
-        password: '',
-        email: '',
-        mobile: '',
-        gender: '',
-        profileType: ProfileType.Private,
-        role: '',
-        firstLogin: false,
-        following: [],
-        followRequests: []
-      }),
-      proramLanguages: [],
-      exCompanies: [],
-      languages: [],
-      education: '',
-      additionInformation: '',
-      profileType: ProfileType.Private
+
+  constructor(private route: ActivatedRoute, private profileService: ProfileService, private connectionService:ConnectionsService, private userService:UserService, private followService: FollowReqService) {
+    this.foundUser = new UsersFollowRequestsDTO({
+      username: ''
     });
   }
   ngOnInit(): void {
+    this.loadUser();
+  }
 
+  loadUser(){
+    this.id = this.route.snapshot.params['id'];
+    //this.idLoginUser = sessionStorage.getItem('id');
+    this.profileService.getUser(this.id)
+      .subscribe(res =>{
+          this.loggedUser = res;
+          //this.connectionService.getUsersConnections(this.id).subscribe(res=> this.block=res);
+          this.followService.getBlocked(this.id).subscribe(res => this.blocks=res);
+        }
+
+      )
+    //console.log(this.id);
   }
 
 

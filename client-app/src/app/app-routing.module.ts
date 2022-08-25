@@ -20,7 +20,11 @@ import {SendMessageComponent} from "./send-message/send-message.component";
 import {SearchJobComponent} from "./search-job/search-job.component";
 import {SearchJobViewComponent} from "./search-job-view/search-job-view.component";
 import {NotificationComponent} from "./notification/notification.component";
+
+import {ViewConnectionsBlockComponent} from "./view-connections-block/view-connections-block.component";
+
 import {MessageNotifsComponent} from "./message-notifs/message-notifs.component";
+
 
 const routes: Routes = [
   { path: '', component: MainPageComponent},
@@ -35,7 +39,7 @@ const routes: Routes = [
   { path: 'profile/:id/updateProfile', component:UserPersonalProfileUpdateComponent},
   { path:'search/profile/:id/newComment/:postId',component:AddCommentComponent},
   { path:'profile/:id/newComment/:postId',component:AddCommentComponent},
-
+  { path: 'profile/:id/view-blocked', component:ViewConnectionsBlockComponent},
   { path:'allPost/newComment/:postId',component:AddCommentComponent},
   { path:"allPost/detailsUserPost/:postId",component:UserPostProfileComponent},
 

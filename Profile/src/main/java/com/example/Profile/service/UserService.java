@@ -1,5 +1,6 @@
 package com.example.Profile.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,12 +40,8 @@ public class UserService {
 		}
 	}
 
-	public User findByUsername(String username){
-		User user = userRepository.findByUsername(username);
-		if(user == null){
-			throw new IllegalStateException("User does not exist!");
-		}
-		return user;
+	public User findByUsername(String username) {
+		return this.userRepository.findByUsername(username);
 	}
 
 	public User update(User editedUser){
@@ -66,7 +63,7 @@ public class UserService {
 		}
 	}
 
-	public User block(String userBlockingUsername,String userBlockedUsername){
+	public String block(String userBlockingUsername,String userBlockedUsername){
 		User userBlocking=userRepository.findByUsername(userBlockingUsername);
 		User userBlocked=userRepository.findByUsername(userBlockedUsername);
 		if(userBlocking==null){
@@ -98,9 +95,51 @@ public class UserService {
 		}
 		userBlocking.getBlocked().add(userBlockedUsername);
 		userRepository.save(userBlocked);
-		return userRepository.save(userBlocking);
-
+		userRepository.save(userBlocking);
+		String userBl = userBlocked.getUsername();
+		return userBl;
 	}
+
+	public String confirmRequest(String username, String followerUsername){
+		//user koji je primio zahtev
+		User user = userRepository.findByUsername(username);
+		//user koji je poslao zahtev
+		User follower = userRepository.findByUsername(followerUsername);
+
+		//lista ljudi koje prati user koji je zapratio
+		List<String> userFollowing = follower.getFollowing();
+		List<String> otherSideFollow = user.getFollowing();
+		//zahtevi koje je primio user
+		List<String> userRequests = user.getFollowRequests();
+		for (String f: user.getFollowRequests()
+		) {
+			if(f.equals(follower.getUsername())){
+				userFollowing.add(user.getUsername());
+				otherSideFollow.add(follower.getUsername());
+				userRequests.remove(f);
+				userRepository.save(user);
+				userRepository.save(follower);
+				break;
+			}
+		}
+		String flw = follower.getUsername();
+		return flw;
+	}
+
+
+	public List<String> getBlockedUsers(String username){
+		List<String> blocked = new ArrayList<>();
+		User user = userRepository.findByUsername(username);
+		blocked = user.getBlocked();
+		return blocked;
+	}
+	public List<String> getBlockedUsersId(Long id){
+		List<String> blocked = new ArrayList<>();
+		User user = userRepository.findById(id).get();
+		blocked = user.getBlocked();
+		return  blocked;
+	}
+
 
 
 }
