@@ -26,6 +26,7 @@
  npm install
  ng serve
  ```
- <br />    Logovanje: registrovani korisnik: username: lana, password: 123
+ <br />    Logovanje: 
+ <br />               registrovani korisnik: username: lana, password: 123
  <br />               vlasnik firme: username: lana1, password: 123
  <br />               admin: username: admin, password: 123
