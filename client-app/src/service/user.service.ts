@@ -16,7 +16,7 @@ export class UserService {
   urlBlocked = "http://localhost:8184/blocksId";
 
   urlSave = "http://localhost:8191/api/users/save";
-
+  urlSaveProfileUser = "http://localhost:8184/api/user/create";
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +30,10 @@ export class UserService {
   saveUser(user : User):Observable<User>{
     return this.http.post<User>(this.urlSave,user);
   }
+  saveUserProfile(user : User):Observable<User>{
+    return this.http.post<User>(this.urlSaveProfileUser,user);
+  }
+
 
   getBlocked(id:number):Observable<string[]>{
     return this.http.get<string[]>(`${this.urlBlocked}/${id}`);

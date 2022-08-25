@@ -15,15 +15,16 @@ import com.example.Profile.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
-	public User save(User user) {
-		return this.userRepository.save(user);
-	}
+
 
 
 
 	public List<User> findByFirstNameAndLastName(User user) {
 		return this.userRepository.findByFirstNameAndLastName(user.getFirstName(),user.getLastName());
+	}
+
+	public User saveUser(User user){
+		return this.userRepository.save(user);
 	}
 
 	public List<User> findAll(){
