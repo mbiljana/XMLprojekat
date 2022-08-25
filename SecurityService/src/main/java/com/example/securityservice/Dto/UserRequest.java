@@ -20,6 +20,24 @@ public class UserRequest {
     private String email;
     private String gender;
     private String profilePicture;
+    private String dateOfBirth;
+    private String mobile;
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getProfilePicture() {
         return profilePicture;

@@ -30,6 +30,7 @@ export class RegisterPageComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
+    dateOfBirth: '',
     mobile: '',
     profilePicture:'',
     gender:'',
@@ -51,6 +52,9 @@ export class RegisterPageComponent implements OnInit {
     firstname: this.newUser.firstName,
     lastname: this.newUser.lastName,
     gender:this.newUser.gender,
+    email:this.newUser.email,
+    dateOfBirth:this.newUser.dateOfBirth,
+    mobile:this.newUser.dateOfBirth,
     profilePicture:''
   })
 
@@ -84,7 +88,7 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
    */
 
 
-
+  //menjano
   addNewUser(){
     var path_picture="/assets/profilePicture/"+this.selectedFile.name;
     if (this.newUser.password == this.confirmedPassword) {
@@ -94,6 +98,9 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
       this.registrationRequest.lastname = this.newUser.lastName;
       this.registrationRequest.gender = this.newUser.gender;
       this.registrationRequest.profilePicture = path_picture;
+      this.registrationRequest.mobile = this.newUser.mobile;
+      this.registrationRequest.dateOfBirth = this.newUser.dateOfBirth;
+      this.registrationRequest.email = this.newUser.email;
       this.registrationService.registerUser(this.registrationRequest).subscribe(res => {
         this.newUser = res;
         this.profileService.createProfile(res).subscribe();
