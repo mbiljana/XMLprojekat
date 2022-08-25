@@ -16,8 +16,12 @@ export class ProfileService {
   urlProfile="http://localhost:8184/api/profile";
   urlFollow = "http://localhost:8191/api/users/follow";
   urlFollowing = "http://localhost:8191/api/following";
+
   urlUser = "http://localhost:8191/api/users/user";
   urlUsername = "http://localhost:8191/api/users";
+
+  urlCreate = "http://localhost:8184/api/profile/create";
+
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +43,10 @@ export class ProfileService {
 
   followUser(fDTO : FollowRequestsDTO):Observable<User>{
     return this.http.put<User>(this.urlFollow, fDTO);
+  }
+
+  createProfile(user : User):Observable<Profile>{
+    return this.http.post<Profile>(this.urlCreate, user);
   }
 
 

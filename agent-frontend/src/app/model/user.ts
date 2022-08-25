@@ -1,6 +1,6 @@
 
 export interface UserInterface {
-    id: number ;
+    id: number;
     firstName: string;
     lastName: string;
     username: string;
@@ -9,7 +9,8 @@ export interface UserInterface {
     mobile: string;
     profilePicture?:string;
     gender?:string;
-    role: string;
+    roles: string[];
+  roleType:string;
     firstLogin: boolean;
 }
 export class User implements UserInterface {
@@ -22,7 +23,8 @@ export class User implements UserInterface {
   mobile: string;
   profilePicture?:string;
   gender?:string;
-  role: string;
+  roles: string[];
+  roleType:string;
   firstLogin: boolean;
 
   constructor(obj: UserInterface) {
@@ -35,7 +37,8 @@ export class User implements UserInterface {
       this.mobile = obj.mobile;
       this.profilePicture=obj.profilePicture;
       this.gender=obj.gender;
-      this.role = obj.role;
+      this.roles = obj.roles;
+      this.roleType = obj.roleType;
       this.firstLogin = obj.firstLogin;
   }
 

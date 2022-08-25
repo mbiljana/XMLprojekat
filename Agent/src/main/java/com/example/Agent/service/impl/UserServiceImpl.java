@@ -55,18 +55,18 @@ public class UserServiceImpl implements UserService {
         last_id = last_id+1;
         u.setId(last_id);
         u.setKorisnicko(userRequest.getKorisnicko());
-
+        u.setFirstName(userRequest.getFirstName());
+        u.setLastName(userRequest.getLastName());
+        u.setMobile(userRequest.getMobile());
+        u.setEnabled(true);
+        u.setEmail(userRequest.getEmail());
+        u.setProfilePicture(userRequest.getProfilePicture());
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
         u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-
-        u.setFirstName(userRequest.getFirstname());
-        u.setLastName(userRequest.getLastname());
-        u.setEnabled(true);
-        u.setEmail(userRequest.getEmail());
-
         // u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
         List<Role> roles = roleService.findByName("ROLE_USER");
+        u.setRoleType("User");
         u.setRoles(roles);
 
         return this.userRepository.save(u);

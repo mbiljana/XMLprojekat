@@ -1,0 +1,27 @@
+<div class="container" *ngIf="showMakePost">
+  <div class="row">
+      <div class="col-sm">
+          <br>
+          <h2>Create new comment :)</h2>
+
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm">
+          <br>
+          <label>Write your oppinion</label>
+          <textarea [(ngModel)]="newComment.text">Some text...</textarea>
+          <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm"><br>
+          <button id="submit" class="btn btn-info" (click)="makeNewComment()">Add</button>
+      </div>
+  </div>
+</div>
+<div id="successAddedPost" class="alert alert-success" role="alert" *ngIf="makedPost">
+  <h2 class="alert-heading">Well done!</h2>
+  <h3>Aww yeah, you succeeded. Waiting for your next post :)</h3>
+  <button class="btn btn-success" style="margin-left: 600px;" (click)="backToAllPost()">Back to all posts</button>
+</div>

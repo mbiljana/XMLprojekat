@@ -1,5 +1,6 @@
 package com.example.connectionsservice.Service;
 
+import com.example.connectionsservice.Dto.UserRequest;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,17 @@ public class UserService {
     private UserRepository userRepository;
     public User save(User user) {
         return this.userRepository.save(user);
+    }
+    public User saveFront(UserRequest user)
+    {
+        User user1 = new User();
+        user1.setUsername(user.getKorisnicko());
+        user1.setEmail(user.getEmail());
+        user1.setFirstName(user.getFirstname());
+        user1.setLastName(user.getLastname());
+        user1.setGender(user.getGender());
+        user1.setPassword(user.getPassword());
+        return this.userRepository.save(user1);
     }
     public List<User> findByFirstNameAndLastName(User user) {
         return this.userRepository.findByFirstNameAndLastName(user.getFirstName(),user.getLastName());

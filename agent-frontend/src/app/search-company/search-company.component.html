@@ -1,0 +1,20 @@
+
+<div class="jumbotron jumbotron-fluid"  >
+  <div class="container">
+    <h1 class="display-4">Agent app</h1>
+    <p class="lead">...perfect place to find best company and give your opinion! :)</p>
+  </div>
+  <div class="forma">
+    <h3>Search company</h3>
+    <form class="form-search"  (ngSubmit)="searchCompanyName()">
+        <input style="width: 250px;" name="name" id="name" type="text" [(ngModel)]="name"><br>
+        <input type="submit" value="search" class="btn btn-primary" >
+    </form>
+    <label>---------------------------------------------------------------------------------------------------------------------</label>
+    <div *ngIf="showFoundCompany">
+      <img style="margin-left: 120px;" src="{{company.profilePicture}}">
+      <h3>{{company.name}}, {{company.email}}</h3>
+      <button style="margin-left: 100px; margin-bottom: 15px;" class="btn btn-info" (click)="viewProfile()">view whole profile</button>
+    </div>
+  </div>
+</div>

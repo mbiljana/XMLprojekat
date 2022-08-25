@@ -1,1 +1,46 @@
-<p>update-company works!</p>
+<div class="row" class="container">
+  <div class="center" id="comp1" >
+
+
+    <div class="text-center">
+      <img src="{{company.profilePicture}}" class="img-thumbnail" alt="...">
+    </div>
+    <br>
+    <label style="font-weight: bold;">Name</label>
+    <div class="form-group text-center">
+      <input [(ngModel)]="company.name" id="name" name="name" type="text" class="from-control">
+    </div>
+    <label style="font-weight: bold;">Description</label>
+    <div class="form-group text-center" >
+      <input [(ngModel)]="company.description" id="description" name="surname" type="text" class="from-control">
+    </div>
+    <div class="text-center">
+      <button id="save_button" class="btn btn-info" (click)="saveChanges()" > Save changes</button>
+    </div>
+
+
+  </div><br>
+  <div  class="center" id="comp2" >
+    <br><br>
+    <label style="font-weight: bold;">Username</label>
+    <div class="form-group text-center">
+      <input [(ngModel)]="company.username" id="username" name="username" type="text" class="from-control">
+    </div>
+
+    <label style="font-weight: bold;">Address</label>
+    <div class="form-group text-center">
+      <input [(ngModel)]="company.address.street" id="address" name="email" type="text" class="from-control">
+    </div>
+
+    <label style="font-weight: bold;">Email</label>
+    <div class="form-group text-center">
+      <input [(ngModel)]="company.email" id="email" name="mobile" type="text" class="from-control">
+    </div>
+    <label style="font-weight: bold;">Mobile</label>
+    <div class="form-group text-center">
+      <input [(ngModel)]="company.mobile" id="mobile" name="mobile" type="text" class="from-control">
+    </div>
+  </div>
+</div>
+
+

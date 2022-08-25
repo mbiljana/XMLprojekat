@@ -1,3 +1,6 @@
+import { NewCompanyCommentComponent } from './new-company-comment/new-company-comment.component';
+import { CompanySearchProfileComponent } from './company-search-profile/company-search-profile.component';
+import { SearchCompanyComponent } from './search-company/search-company.component';
 import { PostProfileComponent } from './post-profile/post-profile.component';
 import { MakeNewPostComponent } from './make-new-post/make-new-post.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
@@ -25,11 +28,13 @@ const routes: Routes = [
   { path:'profile/:id/allRequests',component:CompanyRequestListComponent},
   { path:'profile/:id/allRequests/oneRequest/:idRequest',component:OneRequestComponent},
   { path:'profile/:id/company',component:CompanyProfileComponent},
-
   { path:'profile/:id/company/update',component:UpdateCompanyComponent},
-
   { path:'profile/:id/company/post/:postId',component:PostProfileComponent},
-  { path:'profile/:id/company/newPost',component:MakeNewPostComponent}
+  { path:'profile/:id/company/newPost',component:MakeNewPostComponent},
+  { path:'search',component:SearchCompanyComponent},
+  { path:'company/:id', component:CompanySearchProfileComponent},
+  { path:'company/:id/post/:postId',component:PostProfileComponent},
+  { path:'company/:id/newComment', component:NewCompanyCommentComponent}
 
 ];
 

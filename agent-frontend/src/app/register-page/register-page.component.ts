@@ -3,6 +3,7 @@ import {RegistrationService} from "../../service/registration.service";
 import {Router} from "@angular/router";
 import {User} from "../model/user";
 import {UserRequest} from "../model/UserRequest";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register-page',
@@ -11,49 +12,91 @@ import {UserRequest} from "../model/UserRequest";
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router) { }
+  newUser: User;
+  retUser:User;
+  registrationRequest: UserRequest;
+  selectedFile: File;
+  constructor(private registrationService:RegistrationService, private router:Router,private http: HttpClient) {
+    this.newUser = new User({
+      id: 0,
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      profilePicture:'',
+      gender:'',
+      roles:[],
+      roleType:'',
+      firstLogin:false
+    });
+    this.retUser = new User({
+      id: 0,
+      username: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      profilePicture:'',
+      gender:'',
+      roles:[],
+      roleType:'',
+      firstLogin:false
+    });
+    this.registrationRequest= new UserRequest({
+      id: 0,
+      korisnicko: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      gender:'',
+      email:'',
+      mobile:'',
+      profilePicture:''
+    });
+  }
   error: string;
 
   ngOnInit(): void {
   }
-  newUser: User = new User({
-    id: 0,
-    username: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    profilePicture:'',
-    gender:'',
-    role:'',
-    firstLogin:false
-  });
+
   genders=['female','male'];
   confirmedPassword: string;
   showForm: boolean = true;
 
-  registrationRequest: UserRequest = new UserRequest({
-    id: 0,
-    korisnicko: this.newUser.username,
-    password: this.newUser.password,
-    firstName: this.newUser.firstName,
-    lastName: this.newUser.lastName,
-    gender:this.newUser.gender
-  })
-
 
   addNewUser(){
+    var path_picture="/assets/profilePicture/"+this.selectedFile.name;
     if (this.newUser.password == this.confirmedPassword) {
       this.registrationRequest.korisnicko = this.newUser.username;
+      this.registrationRequest.profilePicture = path_picture;
       this.registrationRequest.password = this.newUser.password;
       this.registrationRequest.firstName = this.newUser.firstName;
       this.registrationRequest.lastName = this.newUser.lastName;
       this.registrationRequest.gender = this.newUser.gender;
-      this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.newUser = res);
+      this.registrationRequest.email = this.newUser.email;
+      this.registrationRequest.mobile = this.newUser.mobile;
+      this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.retUser = res);
     } else {
       this.error = "passwords are not equal";
     }
+  }
 
+  onUpload() {
+    console.log(this.selectedFile);
+
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('http://localhost:8083/upload', uploadImageData)
+      .subscribe((response) => {
+        }
+      );
+  }
+
+  public onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }

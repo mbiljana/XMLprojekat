@@ -3,15 +3,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../app/model/user";
 import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
+import {UserRequest} from "../app/model/UserRequest";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   url = "http://localhost:8191/api/users";
+
   urlBlock = "http://localhost:8184/api/blockUser";
   urlNumBlock = "http://localhost:8184/numBlock";
   urlBlocked = "http://localhost:8184/blocksId";
+
+  urlSave = "http://localhost:8191/api/users/save";
+
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +26,9 @@ export class UserService {
 
   block(fDTO : FollowRequestsDTO):Observable<String>{
     return this.http.post<String>(this.urlBlock,fDTO);
+  }
+  saveUser(user : User):Observable<User>{
+    return this.http.post<User>(this.urlSave,user);
   }
 
   getBlocked(id:number):Observable<string[]>{
