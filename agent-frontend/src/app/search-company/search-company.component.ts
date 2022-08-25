@@ -38,8 +38,8 @@ export class SearchCompanyComponent implements OnInit {
         email: '',
         mobile: '',
         gender:'',
-        roleType:'',
         roles:[],
+        roleType:'',
         firstLogin:false
       }),
       grades:[],

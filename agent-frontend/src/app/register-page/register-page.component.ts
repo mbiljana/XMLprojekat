@@ -3,6 +3,7 @@ import {RegistrationService} from "../../service/registration.service";
 import {Router} from "@angular/router";
 import {User} from "../model/user";
 import {UserRequest} from "../model/UserRequest";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register-page',
@@ -14,7 +15,8 @@ export class RegisterPageComponent implements OnInit {
   newUser: User;
   retUser:User;
   registrationRequest: UserRequest;
-  constructor(private registrationService:RegistrationService, private router:Router) {
+  selectedFile: File;
+  constructor(private registrationService:RegistrationService, private router:Router,private http: HttpClient) {
     this.newUser = new User({
       id: 0,
       username: '',
@@ -51,7 +53,8 @@ export class RegisterPageComponent implements OnInit {
       lastName: '',
       gender:'',
       email:'',
-      mobile:''
+      mobile:'',
+      profilePicture:''
     });
   }
   error: string;
@@ -65,8 +68,10 @@ export class RegisterPageComponent implements OnInit {
 
 
   addNewUser(){
+    var path_picture="/assets/profilePicture/"+this.selectedFile.name;
     if (this.newUser.password == this.confirmedPassword) {
       this.registrationRequest.korisnicko = this.newUser.username;
+      this.registrationRequest.profilePicture = path_picture;
       this.registrationRequest.password = this.newUser.password;
       this.registrationRequest.firstName = this.newUser.firstName;
       this.registrationRequest.lastName = this.newUser.lastName;
@@ -77,6 +82,21 @@ export class RegisterPageComponent implements OnInit {
     } else {
       this.error = "passwords are not equal";
     }
+  }
 
+  onUpload() {
+    console.log(this.selectedFile);
+
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('http://localhost:8083/upload', uploadImageData)
+      .subscribe((response) => {
+        }
+      );
+  }
+
+  public onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }

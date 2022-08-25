@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +109,14 @@ public class UserController {
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
+
+    //save user when registered
+    @PostMapping("/save")
+    public ResponseEntity<User> addUser(@RequestBody User userRequest) {
+        User user = this.userService.save(userRequest);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 
 
 

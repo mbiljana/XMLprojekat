@@ -3,12 +3,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../app/model/user";
 import {FollowRequestsDTO} from "../app/model/FollowRequestsDTO";
+import {UserRequest} from "../app/model/UserRequest";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   url = "http://localhost:8191/api/users";
+  urlSave = "http://localhost:8191/api/users/save";
   urlBlock = "http://localhost:8184";
 
   constructor(private http: HttpClient) { }
@@ -19,6 +21,9 @@ export class UserService {
 
   block(fDTO : FollowRequestsDTO):Observable<User>{
     return this.http.put<User>(this.urlBlock + "/blockUser",fDTO);
+  }
+  saveUser(user : User):Observable<User>{
+    return this.http.post<User>(this.urlSave,user);
   }
 
 }

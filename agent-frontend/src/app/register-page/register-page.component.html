@@ -41,6 +41,9 @@
         <input id="confirmPassword" name="confirmPassword" type="password" class="from-control"
                placeholder=" confirm password" [(ngModel)]="confirmedPassword">
       </div>
+      <label>Choose picture:</label>
+      <input id="file_input" type="file" (change)="onFileChanged($event)">
+      <button id="upload_button" class="btn btn-info" (click)="onUpload()">Upload</button>
       <p class="error">{{ error }}</p>
       <div>
         <button type="submit" class="btn btn-primary" (click)="addNewUser()" >Register</button><br>

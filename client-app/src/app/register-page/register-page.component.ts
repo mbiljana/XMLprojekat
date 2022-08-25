@@ -5,6 +5,7 @@ import {UserRequest} from "../model/UserRequest";
 import {RegistrationService} from "../../service/registration.service";
 import {Router} from "@angular/router";
 import {ProfileService} from "../../service/profile.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-register-page',
@@ -13,7 +14,7 @@ import {ProfileService} from "../../service/profile.service";
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router, private profileService: ProfileService) {
+  constructor(private registrationService:RegistrationService, private router:Router, private profileService: ProfileService, private userService:UserService) {
   }
 
   ngOnInit(): void {
@@ -89,6 +90,7 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
       this.registrationService.registerUser(this.registrationRequest).subscribe(res => {
         this.newUser = res;
         this.profileService.createProfile(res).subscribe();
+        this.userService.saveUser(res).subscribe();
       });
 
     } else {
