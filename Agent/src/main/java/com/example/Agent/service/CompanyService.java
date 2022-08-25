@@ -54,25 +54,27 @@ public class CompanyService {
 	}
 
 
+	/*
 	public Company findById(Long id){
+
 		return this.companyRepository.findById(id).get();
 	}
+	 */
 
 
-	public Company update(CompanyUpdateDTO editedCompany){
+	public Company update(CompanyUpdateDTO editedCompany) {
 		Company company = this.findById(editedCompany.getId());
 		company.setAddress(editedCompany.getAddress());
 		company.setDescription(editedCompany.getDescription());
 		company.setMobile(editedCompany.getMobile());
 		company.setEmail(editedCompany.getEmail());
 		company.setName(editedCompany.getName());
-		if(company == null){
+		if (company == null) {
 			throw new IllegalStateException("User does not exist!");
-		}
-		else{
+		} else {
 			return companyRepository.save(company);
 		}
-
+	}
 	public Company findById(Long id) {
 		Optional<Company> opt=this.companyRepository.findById(id);
 		if(!opt.isPresent()) {

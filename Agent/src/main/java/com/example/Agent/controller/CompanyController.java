@@ -67,7 +67,8 @@ public class CompanyController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateProfile(@RequestBody CompanyUpdateDTO uDTO) throws Exception {
 
-		return new ResponseEntity<Company>(this.companyService.update(uDTO),HttpStatus.OK);
+		return new ResponseEntity<Company>(this.companyService.update(uDTO), HttpStatus.OK);
+	}
 
 	@RequestMapping(value="api/company/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Company>  findById(@PathVariable Long id){

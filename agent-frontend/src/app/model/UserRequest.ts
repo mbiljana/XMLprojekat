@@ -8,6 +8,7 @@ export interface UserRequestInterface{
   gender?:string;
   email:string;
   mobile:string;
+  profilePicture:string;
 }
 
 export class UserRequest implements UserRequestInterface{
@@ -19,6 +20,7 @@ export class UserRequest implements UserRequestInterface{
   gender?:string;
   email:string;
   mobile:string;
+  profilePicture:string;
 
   constructor(obj:UserRequestInterface) {
     this.id = obj.id;
@@ -29,6 +31,7 @@ export class UserRequest implements UserRequestInterface{
     this.gender=obj.gender;
     this.email = obj.email;
     this.mobile = obj.mobile;
+    this.profilePicture = obj.profilePicture;
   }
 
 }

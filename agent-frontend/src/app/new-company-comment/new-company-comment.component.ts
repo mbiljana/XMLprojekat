@@ -36,7 +36,8 @@ this.newComment=new Comment({
     email: '',
     mobile: '',
     gender:'',
-    role:'',
+    roles:[],
+    roleType:'',
     firstLogin:false
   }),
   company:new Company({
@@ -63,7 +64,8 @@ this.newComment=new Comment({
       email: '',
       mobile: '',
       gender:'',
-      role:'',
+      roles:[],
+      roleType:'',
       firstLogin:false
     })
   })

@@ -61,7 +61,8 @@ export class CompanySearchProfileComponent implements OnInit {
           email: '',
           mobile: '',
           gender:'',
-          role:'',
+          roles:[],
+          roleType:'',
           firstLogin:false
         })
       })
@@ -90,7 +91,8 @@ export class CompanySearchProfileComponent implements OnInit {
         email: '',
         mobile: '',
         gender:'',
-        role:'',
+        roles:[],
+        roleType:'',
         firstLogin:false
       })
     })
