@@ -65,32 +65,26 @@ public class InitialData {
         blocked.add("lana99");
 
 
-        User u5=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked);
-        User u1=new User((long)2,"lana99","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,req,mess,mess2,blocked);
-        User u2=new User((long)22,"maja","123","Maja","Majkic","maja@gmail.com","3247876777","female","/assets/profilePicture/profile1.jpeg",true,flw,req,mess,mess2,blocked);
-        User u3=new User((long)3,"kica","123","Kica","Kikic","kica@gmail.com","78542476777","male","/assets/profilePicture/profile1.jpeg",false,req,flw,mess,mess2,blocked);
-        User u4=new User((long)4,"bika","123","Bika","Bikic","bika@gmail.com","745485175","male","/assets/profilePicture/profile1.jpeg",true,flw,flw,mess,mess2,blocked);
 
-        User u5=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2);
-
-        userService.save(u5);
         Notification notif = new Notification((long)16, m5, time, "bika");
         Notification notif2 = new Notification((long)17, m3, time, "kica");
         this.notificationService.save(notif);
         this.notificationService.save(notif2);
         notifs.add(notif);
         notifs.add(notif2);
-        User u1=new User((long)2,"lana99","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,req,mess,mess2, notifs);
-        User u2=new User((long)22,"maja","123","Maja","Majkic","maja@gmail.com","3247876777","female","/assets/profilePicture/profile1.jpeg",true,flw,req,mess,mess2);
-        User u3=new User((long)3,"kica","123","Kica","Kikic","kica@gmail.com","78542476777","male","/assets/profilePicture/profile1.jpeg",false,req,flw,mess,mess2);
-        User u4=new User((long)4,"bika","123","Bika","Bikic","bika@gmail.com","745485175","male","/assets/profilePicture/profile1.jpeg",true,flw,flw,mess,mess2);
 
+        User u1=new User((long)2,"lana99","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,req,mess,mess2,blocked,notifs);
+        User u2=new User((long)22,"maja","123","Maja","Majkic","maja@gmail.com","3247876777","female","/assets/profilePicture/profile1.jpeg",true,flw,req,mess,mess2,blocked);
+        User u3=new User((long)3,"kica","123","Kica","Kikic","kica@gmail.com","78542476777","male","/assets/profilePicture/profile1.jpeg",false,req,flw,mess,mess2,blocked);
+        User u4=new User((long)4,"bika","123","Bika","Bikic","bika@gmail.com","745485175","male","/assets/profilePicture/profile1.jpeg",true,flw,flw,mess,mess2,blocked);
+        User u5=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked);
 
 
         userService.save(u1);
         userService.save(u2);
         userService.save(u3);
         userService.save(u4);
+        userService.save(u5);
     }
 
 
