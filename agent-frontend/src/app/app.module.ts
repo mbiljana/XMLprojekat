@@ -33,6 +33,7 @@ import { CompanySearchProfileComponent } from './company-search-profile/company-
 import { NewCompanyCommentComponent } from './new-company-comment/new-company-comment.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import { NavbarSearchButtonComponent } from './navbar-search-button/navbar-search-button.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { CommentItemComponent } from './comment-item/comment-item.component';
     CompanySearchProfileComponent,
     NewCompanyCommentComponent,
     CommentListComponent,
-    CommentItemComponent
+    CommentItemComponent,
+    NavbarSearchButtonComponent
 
 
   ],
