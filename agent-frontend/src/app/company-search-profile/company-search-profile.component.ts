@@ -30,6 +30,8 @@ export class CompanySearchProfileComponent implements OnInit {
   averageSalary=0;
   showAllPosts:boolean=true;
   showAllComments:boolean=false;
+  role:any;
+  isUserLogin:boolean;
   constructor(private postService:PostService,
               private companyService:CompanyService,
               private route: ActivatedRoute,
@@ -100,6 +102,12 @@ export class CompanySearchProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCompany();
+    this.role = sessionStorage.getItem('role');
+    if(this.role=="Owner" || this.role=="Admin"){
+      this.isUserLogin=true;
+    }else{
+      this.isUserLogin=false;
+    }
   }
   loadCompany(){
     this.companyId = this.route.snapshot.params['id'];

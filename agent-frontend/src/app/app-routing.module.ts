@@ -33,6 +33,7 @@ const routes: Routes = [
   { path:'profile/:id/company/newPost',component:MakeNewPostComponent},
   { path:'search',component:SearchCompanyComponent},
   { path:'company/:id', component:CompanySearchProfileComponent},
+  { path:'company/:id/post/:postId',component:PostProfileComponent},
   { path:'company/:id/newComment', component:NewCompanyCommentComponent}
 
 ];
