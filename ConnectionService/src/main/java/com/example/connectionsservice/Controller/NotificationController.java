@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,9 +33,13 @@ public class NotificationController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getUsersNotifs(@PathVariable Long id){
         User user = this.userService.findOne(id);
-        List<Notification> usersNotifications = user.getMessagesNotifications();
-        if(usersNotifications.isEmpty())
+        List<Notification> usersNotifications = new ArrayList<>();
+        try{
+            usersNotifications = user.getMessagesNotifications();
+        }catch (NullPointerException ne){
+            ne.getMessage();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<List<Notification>>(usersNotifications, HttpStatus.OK);
     }
 

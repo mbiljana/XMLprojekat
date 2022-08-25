@@ -12,6 +12,7 @@ export class UserService {
   url = "http://localhost:8191/api/users";
   urlSave = "http://localhost:8191/api/users/save";
   urlBlock = "http://localhost:8184";
+  urlSaveProfileUser = "http://localhost:8184/api/user/create";
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,9 @@ export class UserService {
   saveUser(user : User):Observable<User>{
     return this.http.post<User>(this.urlSave,user);
   }
+  saveUserProfile(user : User):Observable<User>{
+    return this.http.post<User>(this.urlSaveProfileUser,user);
+  }
+
 
 }

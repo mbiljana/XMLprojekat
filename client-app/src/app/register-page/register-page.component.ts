@@ -96,6 +96,7 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
       this.registrationRequest.profilePicture = path_picture;
       this.registrationService.registerUser(this.registrationRequest).subscribe(res => {
         this.newUser = res;
+        this.userService.saveUserProfile(res).subscribe();
         this.profileService.createProfile(res).subscribe();
         this.userService.saveUser(res).subscribe();
       });

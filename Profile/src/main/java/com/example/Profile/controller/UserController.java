@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.Profile.dto.BlockUserDTO;
+import com.example.Profile.dto.ProfileUserDTO;
 import com.example.Profile.model.Profile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -62,6 +63,26 @@ public class UserController {
 			return new ResponseEntity<User>(userFollowing, HttpStatus.OK);
 		}
 
+
+		//save user front
+		@PostMapping(value = "api/user/create",
+				consumes = MediaType.APPLICATION_JSON_VALUE,
+				produces = MediaType.APPLICATION_JSON_VALUE)
+		public ResponseEntity<?> createProfile(@RequestBody User createPr) throws Exception {
+			User user = new User();
+			user.setId(createPr.getId());
+			user.setEmail(createPr.getEmail());
+			user.setFirstName(createPr.getFirstName());
+			user.setUsername(createPr.getUsername());
+			user.setPassword(createPr.getPassword());
+			user.setLastName(createPr.getLastName());
+			user.setGender(createPr.getGender());
+			user.setMobile(createPr.getMobile());
+			user.setProfileType(createPr.getProfileType());
+			user.setProfilePicture(createPr.getProfilePicture());
+			User profile = this.userService.saveUser(user);
+			return new ResponseEntity<User>(profile,HttpStatus.OK);
+		}
 
 
 }
