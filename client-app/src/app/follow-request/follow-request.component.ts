@@ -32,7 +32,7 @@ export class FollowRequestComponent implements OnInit {
   @Input()
   public request : string;
 
-  constructor(private route: ActivatedRoute, private followService: FollowReqService, private profileService:ProfileService) {
+  constructor(private route: ActivatedRoute, private followService: FollowReqService, private profileService:ProfileService, private userService:UserService) {
     this.request = '';
    // this.follower = '';
     this.user=new User({
@@ -48,7 +48,8 @@ export class FollowRequestComponent implements OnInit {
       role:'',
       firstLogin:false,
       following:[],
-      followRequests:[]
+      followRequests:[],
+      blocked:[]
     }),
       this.fDTO = new FollowRequestsDTO({
         followerId:'',
@@ -67,7 +68,8 @@ export class FollowRequestComponent implements OnInit {
         role:'',
         firstLogin:false,
         following:[],
-        followRequests:[]
+        followRequests:[],
+        blocked:[]
       });
   }
 
@@ -87,6 +89,15 @@ export class FollowRequestComponent implements OnInit {
     this.fDTO.toFollowId = this.retFlw;
     this.fDTO.followerId = this.retUsr;
     this.followService.acceptRequest(this.fDTO).subscribe(res => this.retFlw = res);
+  }
+
+  blockUser(){
+    this.retUsr = this.retUser.username;
+    this.retFlw = this.request;
+    this.fDTO.toFollowId = this.retFlw;
+    this.fDTO.followerId = this.retUsr;
+    this.followService.block(this.fDTO).subscribe(res => this.retFlw = res);
+    //console.log(this.fDTO);
   }
 
 

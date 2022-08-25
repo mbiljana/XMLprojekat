@@ -35,7 +35,11 @@ public class User {
     private List<String> followRequests;
     private List<Message> sentMessages;
     private List<Message> recievedMessages;
+
+	private List<String> blocked;
+
     private List<Notification> messagesNotifications;
+
 
     public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate) {
         this.id = id;
@@ -49,12 +53,8 @@ public class User {
         this.profilePicture = profilePicture;
         this.isPrivate = isPrivate;
     }
-    
 
-    public User(Long id, String username, String password, String firstName, String lastName, String email,
-			String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following,
-			List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<Notification> notifs) {
-		super();
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<String> blocked, List<Notification> messagesNotifications) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -69,8 +69,8 @@ public class User {
 		this.followRequests = followRequests;
 		this.sentMessages = sentMessages;
 		this.recievedMessages = recievedMessages;
-
-		this.messagesNotifications = notifs;
+		this.blocked = blocked;
+		this.messagesNotifications = messagesNotifications;
 	}
 
 	public User(Long id, String username, String password, String firstName, String lastName, String email,
@@ -108,6 +108,34 @@ public class User {
         this.isPrivate = isPrivate;
         this.following = following;
     }
+
+
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<String> blocked) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.sentMessages = sentMessages;
+		this.recievedMessages = recievedMessages;
+		this.blocked = blocked;
+	}
+
+	public List<String> getBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(List<String> blocked) {
+		this.blocked = blocked;
+	}
+
 
 	public User() {}
 

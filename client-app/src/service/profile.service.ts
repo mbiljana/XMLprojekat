@@ -16,7 +16,10 @@ export class ProfileService {
   urlProfile="http://localhost:8184/api/profile";
   urlFollow = "http://localhost:8191/api/users/follow";
   urlFollowing = "http://localhost:8191/api/following";
-  urlUser = "http://localhost:8191/api/users";
+
+  urlUser = "http://localhost:8191/api/users/user";
+  urlUsername = "http://localhost:8191/api/users";
+
   urlCreate = "http://localhost:8184/api/profile/create";
 
 
@@ -26,10 +29,10 @@ export class ProfileService {
     return this.http.post<User[]>(this.url,user);
   }
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(`${this.url}/${id}`);
+    return this.http.get<User>(`${this.urlUser}/${id}`);
   }
   getUserByUsername(un:string):Observable<User>{
-    return this.http.get<User>(`${this.urlUser}/${un}`);
+    return this.http.get<User>(`${this.urlUsername}/${un}`);
   }
   getProfile(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.urlProfile}/${id}`);

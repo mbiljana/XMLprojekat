@@ -1,13 +1,16 @@
 package com.example.Profile.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.example.Profile.dto.BlockUserDTO;
 import com.example.Profile.dto.ProfileUserDTO;
 import com.example.Profile.model.Profile;
 import org.springframework.beans.BeanUtils;
+import com.example.Profile.dto.BlockNumberDTO;
+import com.example.Profile.dto.FollowRequestsDTO;
+import com.example.Profile.dto.UsersFollowRequests;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +47,7 @@ public class UserController {
 		return this.userService.findAll();
 	}
 
-	@PutMapping(path = "/block",
+	/*@PutMapping(path = "/block",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> block(@RequestBody Map<String, String> block) {
@@ -53,16 +56,27 @@ public class UserController {
 		} catch (IllegalStateException e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	}
+	}*/
 
 	//bolja verzija
-		@PutMapping (path = "/blockUser",consumes = MediaType.APPLICATION_JSON_VALUE,
-				produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<?> acceptRequest(@RequestBody BlockUserDTO fDTO){
-			User userFollowing = this.userService.block(fDTO.blockId, fDTO.blockedId);
-			return new ResponseEntity<User>(userFollowing, HttpStatus.OK);
+	@RequestMapping(value="api/blockUser",method = RequestMethod.POST,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+		public ResponseEntity<?> blockUser(@RequestBody FollowRequestsDTO fDTO){
+			String userFollowing = this.userService.block(fDTO.followerId, fDTO.toFollowId);
+			return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
 		}
 
+	@GetMapping(path = "/numBlock/{id}",
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BlockNumberDTO> getBlockedUsers(@PathVariable Long id){
+		User user = userService.findById(id);
+		int numberConn = userService.getBlockedUsers(user.getUsername()).size();
+		BlockNumberDTO cDTO = new BlockNumberDTO();
+		cDTO.setBlockNum(numberConn);
+		if(user == null)
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<BlockNumberDTO>(cDTO, HttpStatus.OK);
+	}
 
 		//save user front
 		@PostMapping(value = "api/user/create",
@@ -84,5 +98,12 @@ public class UserController {
 			return new ResponseEntity<User>(profile,HttpStatus.OK);
 		}
 
+	@GetMapping(path = "/blocksId/{id}",
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getAllFollowRequestsId(@PathVariable Long id){
+		List<String> blocks = new ArrayList<>();
+		blocks = userService.getBlockedUsersId(id);
+		return new ResponseEntity<List<String>>(blocks, HttpStatus.OK);
+	}
 
 }
