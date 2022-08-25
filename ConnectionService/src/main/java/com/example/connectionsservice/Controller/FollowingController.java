@@ -33,7 +33,13 @@ public class FollowingController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ConnectionsNumberDTO> getNumberOfUsersConnections(@PathVariable Long id){
         User user = userService.findOne(id);
-        int numberConn = userService.getUsersConnections(user.getUsername()).size();
+        int numberConn =0;
+        try {
+            numberConn = userService.getUsersConnections(user.getUsername()).size();
+        }catch (NullPointerException ne){
+            ne.getMessage();
+        }
+
         ConnectionsNumberDTO cDTO = new ConnectionsNumberDTO();
         cDTO.setConnectionsNum(numberConn);
         if(user == null)

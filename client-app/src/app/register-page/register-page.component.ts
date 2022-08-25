@@ -6,6 +6,7 @@ import {RegistrationService} from "../../service/registration.service";
 import {Router} from "@angular/router";
 import {ProfileService} from "../../service/profile.service";
 import {UserService} from "../../service/user.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register-page',
@@ -14,7 +15,10 @@ import {UserService} from "../../service/user.service";
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router, private profileService: ProfileService, private userService:UserService) {
+
+  selectedFile: File;
+
+  constructor(private registrationService:RegistrationService, private router:Router, private profileService: ProfileService, private userService:UserService,private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -46,7 +50,8 @@ export class RegisterPageComponent implements OnInit {
     password: this.newUser.password,
     firstname: this.newUser.firstName,
     lastname: this.newUser.lastName,
-    gender:this.newUser.gender
+    gender:this.newUser.gender,
+    profilePicture:''
   })
 
 
@@ -81,12 +86,14 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
 
   addNewUser(){
+    var path_picture="/assets/profilePicture/"+this.selectedFile.name;
     if (this.newUser.password == this.confirmedPassword) {
       this.registrationRequest.korisnicko = this.newUser.username;
       this.registrationRequest.password = this.newUser.password;
       this.registrationRequest.firstname = this.newUser.firstName;
       this.registrationRequest.lastname = this.newUser.lastName;
       this.registrationRequest.gender = this.newUser.gender;
+      this.registrationRequest.profilePicture = path_picture;
       this.registrationService.registerUser(this.registrationRequest).subscribe(res => {
         this.newUser = res;
         this.profileService.createProfile(res).subscribe();
@@ -97,5 +104,21 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
       this.error = "passwords are not equal";
     }
 
+  }
+
+  onUpload() {
+    console.log(this.selectedFile);
+
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('http://localhost:8082/upload', uploadImageData)
+      .subscribe((response) => {
+        }
+      );
+  }
+
+  public onFileChanged(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }

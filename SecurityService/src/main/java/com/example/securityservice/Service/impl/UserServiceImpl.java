@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
         last_id = last_id+1;
         u.setId(last_id);
         u.setKorisnicko(userRequest.getKorisnicko());
+        u.setProfilePicture(userRequest.getProfilePicture());
 
         // pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
         // treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
