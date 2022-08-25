@@ -12,6 +12,8 @@
  # Pokretanje
  <br /> Klijentska aplikacija:
  <br />    Potrebno je pokrenuti ConnectionService, ProfileService, SecurityService i client-app
+ ```bash
+ npm install
  <br />    Logovanje: username: lana99, password: 123
  <br /> Agentska aplikacija:
  <br />    Potrebno je pokrenuti Agent i agent-frontend
