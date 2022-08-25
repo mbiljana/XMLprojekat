@@ -72,6 +72,7 @@ public class ProfileController {
 		user.setGender(createPr.getGender());
 		user.setMobile(createPr.getMobile());
 		user.setProfileType(createPr.getProfileType());
+		user.setProfilePicture(createPr.getProfilePicture());
 		Profile profile = this.profileService.saveUser(user);
 		return new ResponseEntity<Profile>(profile,HttpStatus.OK);
 	}

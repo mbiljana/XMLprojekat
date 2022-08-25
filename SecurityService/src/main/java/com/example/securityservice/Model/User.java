@@ -30,15 +30,22 @@ public class User implements UserDetails {
     private String email;
     private String gender;
     private boolean enabled;
+    private String profilePicture;
     //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
     private String roleType;
     public User() {}
-    
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
     public User(Long id, String korisnicko, String password, String firstName, String lastName, String email,
-			boolean enabled, List<Role> roles, String roleType) {
+                boolean enabled, List<Role> roles, String roleType) {
 		super();
 		this.id = id;
 		this.korisnicko = korisnicko;

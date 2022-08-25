@@ -62,7 +62,7 @@ public class CompanyController {
 
 
 	//update company profile
-	@PostMapping(value = "company/update",
+	@PutMapping(value = "api/company/update",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateProfile(@RequestBody CompanyUpdateDTO uDTO) throws Exception {

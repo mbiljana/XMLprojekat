@@ -37,6 +37,7 @@ export class UserPersonalProfileComponent implements OnInit {
         password: '',
         email: '',
         mobile: '',
+        profilePicture:'',
         gender:'',
         profileType:ProfileType.Private,
         role:'',
