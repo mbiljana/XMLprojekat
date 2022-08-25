@@ -32,7 +32,7 @@ export class CompanyService {
 
 
   updateCompany(company:UpdateCompany):Observable<Company> {
-    return this.http.post<Company>(this.urlUpdate, company);
+    return this.http.post<Company>(this.url, company);
   }
 
   findByName(name:string):Observable<Company>{

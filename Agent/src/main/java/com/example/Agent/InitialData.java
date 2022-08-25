@@ -58,7 +58,7 @@ public class InitialData {
     public void init(){
         List<Role> role1 = new ArrayList<>();
         List<Role> role2 = new ArrayList<>();
-        Address address = new Address((long)47, "Stevana Musica 18", "Srbija", "Novi Sad");
+        
         //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Role r1 = new Role((long)55, "ROLE_USER");
         
@@ -91,10 +91,12 @@ public class InitialData {
         Address a1=new Address((long)1, "Maksima Gorkog 1", "Srbija", "Novi Sad");
         Address a2=new Address((long)2, "Radnicka 1", "Srbija", "Subotica");
         Address a3=new Address((long)3, "Lasla Gaja 3", "Srbija", "Beograd");
+        Address a4 = new Address((long)47, "Stevana Musica 18", "Srbija", "Novi Sad");
         
         addressRepository.save(a1);
         addressRepository.save(a2);
         addressRepository.save(a3);
+        addressRepository.save(a4);
         
         List<String> preconditions1=new ArrayList<>();
 		preconditions1.add("c++");
@@ -119,9 +121,9 @@ public class InitialData {
         
                        		
         /////////////////////////////////////////////////////////////////////
-        Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", address, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u1);
-        companyService.save(c1);
-        companyService.save(c2);
+        Company c2 = new Company((long)50, "Sotex solutions", "We support clients throughout all the phases of a software product life cycle allowing them to take the benefits of the global market/business modal shift by providing high-quality development services", a4, "sotex","sotex@gmail.com","0325648875","/assets/companyPicture/sotex.png",u1);
+        
+        this.companyRepository.save(c2);
 
 
         

@@ -36,6 +36,8 @@ export class UpdateCompanyComponent implements OnInit {
       firstLogin:false
     });
     this.company = new Company({
+      grades:[],
+      salaries:[],
       id:0,
       name:'',
       description:'',

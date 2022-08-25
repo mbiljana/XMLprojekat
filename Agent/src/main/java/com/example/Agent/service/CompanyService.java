@@ -54,9 +54,6 @@ public class CompanyService {
 	}
 
 
-	public Company findById(Long id){
-		return this.companyRepository.findById(id).get();
-	}
 
 
 	public Company update(CompanyUpdateDTO editedCompany){
@@ -72,7 +69,7 @@ public class CompanyService {
 		else{
 			return companyRepository.save(company);
 		}
-
+	}
 	public Company findById(Long id) {
 		Optional<Company> opt=this.companyRepository.findById(id);
 		if(!opt.isPresent()) {
