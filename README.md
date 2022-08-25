@@ -12,11 +12,19 @@
  # Pokretanje
  <br /> Klijentska aplikacija:
  <br />    Potrebno je pokrenuti ConnectionService, ProfileService, SecurityService i client-app
+ <br />   U terminalu angular aplikacije pre pokretanja:
  ```bash
  npm install
+ ng serve
+ ```
  <br />    Logovanje: username: lana99, password: 123
  <br /> Agentska aplikacija:
  <br />    Potrebno je pokrenuti Agent i agent-frontend
+ <br />    U terminalu angular aplikacije pre pokretanja:
+  ```bash
+ npm install
+ ng serve
+ ```
  <br />    Logovanje: registrovani korisnik: username: lana, password: 123
  <br />               vlasnik firme: username: lana1, password: 123
  <br />               admin: username: admin, password: 123
