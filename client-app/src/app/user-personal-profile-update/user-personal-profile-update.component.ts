@@ -114,26 +114,40 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   this.profileService.updateProfile(this.profile)
     .subscribe(res => this.router.navigate(['profile', res.user.id]))
   }
-  insertProgramLanguagesIntoString(languages:ProgramLanguage[]){
-    var listaImena:string[]=[];
-    languages.forEach(function(lan:ProgramLanguage){
-      listaImena.push(lan.name)
-    })
-    this.programLanguagesLists=listaImena.join(",")
+  insertProgramLanguagesIntoString(languages:ProgramLanguage[]) {
+    var listaImena: string[] = [];
+    if (listaImena == null) {
+      languages.forEach(function (lan: ProgramLanguage) {
+          listaImena.push(lan.name)
+
+        }
+      )
+    }
+    this.programLanguagesLists = listaImena.join(",")
   }
   insertLanguagesIntoString(languages:Language[]){
     var listaImena:string[]=[];
+    if (listaImena == null) {
     languages.forEach(function(lan:Language){
       listaImena.push(lan.name)
-    })
+      }
+    )
+    }
     this.languagesLists=listaImena.join(",")
   }
+
+
   insertExCompaniesIntoString(languages:string[]){
     var listaImena:string[]=[];
-    languages.forEach(function(lan:string){
-      listaImena.push(lan)
-    })
+    if (listaImena == null) {
+      languages.forEach(function(lan:string){
+        listaImena.push(lan)
+      })
+
+    }
     this.exCompaniesLists=listaImena.join(",")
   }
+
+
 
 }

@@ -6,6 +6,9 @@ export interface UserRequestInterface{
   firstname: string;
   lastname: string;
   gender?:string;
+  email:string;
+  dateOfBirth?:string;
+  mobile?:string;
   profilePicture:string;
 }
 
@@ -17,6 +20,9 @@ export class UserRequest implements UserRequestInterface{
   lastname: string;
   gender?:string;
   profilePicture:string;
+  email:string;
+  mobile?:string;
+  dateOfBirth?:string;
 
   constructor(obj:UserRequestInterface) {
     this.id = obj.id;
@@ -26,6 +32,9 @@ export class UserRequest implements UserRequestInterface{
     this.lastname = obj.lastname;
     this.gender=obj.gender;
     this.profilePicture = obj.profilePicture;
+    this.email = obj.email;
+    this.dateOfBirth = obj.dateOfBirth;
+    this.mobile = obj.mobile;
   }
 
 }
