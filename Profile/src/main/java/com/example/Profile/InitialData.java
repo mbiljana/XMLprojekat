@@ -58,14 +58,14 @@ public class InitialData {
 
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		following.add("lana99");
+		following.add("maja");
 
 		List<String> followRequests = new ArrayList<>();
+		followRequests.add("maja");
 		followRequests.add("lana");
-		followRequests.add("marko99");
 
 		List<String> blocked = new ArrayList<>();
-		blocked.add("stef");
+		blocked.add("lana99");
 	//komentar
 		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2020-10-10");
 		userRepository.save(u1);

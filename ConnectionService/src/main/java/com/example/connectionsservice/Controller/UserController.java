@@ -108,6 +108,30 @@ public class UserController {
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/blockUser",method = RequestMethod.POST,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> blockUser(@RequestBody FollowRequestsDTO fDTO){
+        String userFollowing = this.userService.block(fDTO.followerId, fDTO.toFollowId);
+        return new ResponseEntity<String>(userFollowing, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/blocksId/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllBlockedId(@PathVariable Long id){
+        List<String> blocks = new ArrayList<>();
+        blocks = userService.getBlockedUsersId(id);
+        return new ResponseEntity<List<String>>(blocks, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/user/{id}",method = RequestMethod.GET)
+    public ResponseEntity<User>  findOneByID(@PathVariable Long id){
+        User user=this.userService.findById(id);
+        if (user==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -133,6 +134,60 @@ public class UserService {
             }
         }
         return ret;
+    }
+
+    public String block(String userBlockingUsername,String userBlockedUsername){
+        User userBlocking=userRepository.findByUsername(userBlockingUsername);
+        User userBlocked=userRepository.findByUsername(userBlockedUsername);
+        if(userBlocking==null){
+            throw new IllegalStateException("User who is trying to block does not exist!");
+        }
+
+        if(userBlocked==null){
+            throw new IllegalStateException("User being blocked does not exist!");
+        }
+
+        if(userBlocking.getBlocked().contains(userBlockedUsername)){
+            throw new IllegalStateException("You already blocked this user!");
+        }
+
+        if(userBlocking.getFollowing().contains(userBlockedUsername)){
+            userBlocking.getFollowing().remove(userBlockedUsername);
+        }
+
+        if(userBlocking.getFollowRequests().contains(userBlockedUsername)){
+            userBlocking.getFollowRequests().remove(userBlockedUsername);
+        }
+
+        if(userBlocked.getFollowing().contains(userBlockingUsername)){
+            userBlocked.getFollowing().remove(userBlockingUsername);
+        }
+
+        if(userBlocked.getFollowRequests().contains(userBlockingUsername)){
+            userBlocked.getFollowRequests().remove(userBlockingUsername);
+        }
+        userBlocking.getBlocked().add(userBlockedUsername);
+        userRepository.save(userBlocked);
+        userRepository.save(userBlocking);
+        String userBl = userBlocked.getUsername();
+        return userBl;
+    }
+
+    public List<String> getBlockedUsersId(Long id){
+        List<String> blocked = new ArrayList<>();
+        User user = userRepository.findById(id).get();
+        blocked = user.getBlocked();
+        return  blocked;
+    }
+
+    public User findById(Long id) {
+        Optional<User> userOpt = this.userRepository.findById(id);
+        if (!userOpt.isPresent()) {
+            return null;
+        } else
+        {
+            return userOpt.get();
+        }
     }
 
 

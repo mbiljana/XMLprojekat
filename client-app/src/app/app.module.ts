@@ -62,9 +62,7 @@ import { FoundCompanyPostComponent } from './found-company-post/found-company-po
 import {ViewConnectionsBlockComponent} from "./view-connections-block/view-connections-block.component";
 
 import { NotificationComponent } from './notification/notification.component';
-
-
-
+import {ViewConnectionBlockComponent} from "./view-connection-block/view-connection-block.component";
 
 
 @NgModule({
@@ -117,8 +115,8 @@ import { NotificationComponent } from './notification/notification.component';
      FoundCompanyPostsComponent,
      FoundCompanyPostComponent,
 
-    ViewConnectionsBlockComponent
-
+    ViewConnectionsBlockComponent,
+    ViewConnectionBlockComponent,
      NotificationComponent
 
 
