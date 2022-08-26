@@ -8,9 +8,11 @@
     </div>
     <h3>{{user.profileType}} PROFILE</h3>
 
-
-    <button *ngIf="!alreadyFollowing" class="btn btn-primary" (click)="followUser()" onClick="window.location.reload()" >Follow<mat-icon>person_add</mat-icon></button>
+    <div class="text-center">
+      <button *ngIf="!alreadyFollowing" class="btn btn-primary" (click)="followUser()" onClick="window.location.reload()" >Follow<mat-icon>person_add</mat-icon></button>
     <button *ngIf="alreadyFollowing" class="btn" >Following</button>
+
+    </div>
     <div class="text-center">
     <button  class="btn btn-primary" [routerLink]="['send', sender, reciever]">Message<mat-icon>send</mat-icon></button>
   </div>
