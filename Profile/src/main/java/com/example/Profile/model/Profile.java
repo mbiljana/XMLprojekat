@@ -1,5 +1,6 @@
 package com.example.Profile.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -132,6 +133,8 @@ public class Profile {
 		this.additionInformation = additionInformation;
 		this.profileType = profileType;
 	}
+	
+
 
 	public Profile(Long id, User user) {
 		this.id = id;

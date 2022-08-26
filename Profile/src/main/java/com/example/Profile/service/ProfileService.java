@@ -1,5 +1,6 @@
 package com.example.Profile.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +50,11 @@ public class ProfileService {
 		Profile profile = new Profile();
 		profile.setUser(user);
 		profile.setId(user.getId());
+		//ovo se dodaje da liste ne bi bile null, pa da bi se mogao raditi update
+		profile.setExCompanies(new ArrayList<>());
+		profile.setLanguages(new ArrayList<>());
+		profile.setProramLanguages(new ArrayList<>());
+		
 		return this.profileRepository.save(profile);
 	}
 
@@ -88,8 +94,14 @@ public class ProfileService {
 		p.setUser(updateProfile.getUser());
 		p.setExCompanies(updateProfile.getExCompanies());
 		List<String> lll=updateProfile.getSupportLanguageList();
-		p.getLanguages().clear();
-		p.getProramLanguages().clear();
+		/*if(!(p.getLanguages()==null)) {
+			p.getLanguages().clear();
+		}
+		if(!(p.getProramLanguages()==null)) {
+			p.getProramLanguages().clear();
+		}*/
+		p.setLanguages(new ArrayList<>());
+		p.setProramLanguages(new ArrayList<>());
 		for (String l : lll) {
 			Language newLan=this.languageService.findByName(l);
 			if(newLan==null) {
