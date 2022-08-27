@@ -29,29 +29,29 @@ import com.example.Profile.repository.UserRepository;
 @Component
 public class InitialData {
 
+	private final UserRepository userRepository;
+	private final UserPostRepository userPostRepository;
+	private final ProfileRepository profileRepository;
+	private final ProgramLanguageRepository programLanguageRepository;
+	private final LanguageRepository languageRepository;
+	private final CompanyRepository companyRepository;
+	private final PostRepository postRepository;
+	private final CommentRepository commentRepository;
+
 	@Autowired
-	CommentRepository commentRepository;
-	
-	@Autowired
-	PostRepository postRepository;
-	
-	@Autowired
-	CompanyRepository companyRepository;
-	
-	@Autowired
-	UserRepository userRepository;
-	
-	@Autowired
-	LanguageRepository languageRepository;
-	
-	@Autowired
-	ProgramLanguageRepository programLanguageRepository;
-	
-	@Autowired
-	ProfileRepository profileRepository;
-	
-	@Autowired
-	UserPostRepository userPostRepository;
+	public InitialData(UserPostRepository userPostRepository, ProfileRepository profileRepository,ProgramLanguageRepository programLanguageRepository,
+					   LanguageRepository languageRepository, UserRepository userRepository,CompanyRepository companyRepository,
+					   PostRepository postRepository,CommentRepository commentRepository ){
+		this.userRepository = userRepository;
+		this.userPostRepository = userPostRepository;
+		this.profileRepository = profileRepository;
+		this.programLanguageRepository = programLanguageRepository;
+		this.languageRepository = languageRepository;
+		this.companyRepository = companyRepository;
+		this.postRepository = postRepository;
+		this.commentRepository = commentRepository;
+
+	}
 	
 	@PostConstruct
 	public void init() {

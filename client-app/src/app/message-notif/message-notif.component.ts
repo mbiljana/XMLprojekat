@@ -24,6 +24,7 @@ export class MessageNotifComponent implements OnInit {
   mess:Message;
   date:Date;
   user:User;
+  isPost:boolean;
 
   constructor(private route: ActivatedRoute, private notifService: NotificationService, private profileService:ProfileService) {
     this.notif = new MessageNotif({
@@ -36,7 +37,8 @@ export class MessageNotifComponent implements OnInit {
         sentDate:this.date
       }),
       Date:this.date,
-      user:''
+      user:'',
+      post:false
     });
     this.retNotif = new MessageNotif({
       id:0,
@@ -48,7 +50,8 @@ export class MessageNotifComponent implements OnInit {
         sentDate:this.date
       }),
       Date:this.date,
-      user:''
+      user:'',
+      post:false
     });
     this.sender = '';
   }

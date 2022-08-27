@@ -1,0 +1,17 @@
+<div class="modal-dialog text-center" id="req">
+  <div class="modal-content text-center">
+    <table class="table table-striped" border="1" width="200" >
+      <thead>
+      <tr>
+        <th>Following activity</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr app-post-notif *ngFor="let notif of notifications" [notif]=notif >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+

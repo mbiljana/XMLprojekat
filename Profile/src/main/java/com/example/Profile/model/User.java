@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.management.Notification;
 import java.util.Date;
 import java.util.List;
 
@@ -81,7 +82,23 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-
+	public User(Long id, String username, String password, String firstName, String lastName, String dateOfBirth, String email, String mobile, String gender, String profilePicture, ProfileType profileType, boolean isPrivate, List<String> following, List<String> followRequests, List<String> blocked) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.profileType = profileType;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.blocked = blocked;
+	}
 
 	public String getDateOfBirth() {
 		return dateOfBirth;

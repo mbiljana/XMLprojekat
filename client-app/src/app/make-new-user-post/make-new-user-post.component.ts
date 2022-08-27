@@ -6,6 +6,7 @@ import { UserPostService } from './../../service/user-post.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-make-new-user-post',
@@ -21,7 +22,7 @@ export class MakeNewUserPostComponent implements OnInit {
   makedPost:boolean=false;
   showMakePost:boolean=true;
   constructor(private http: HttpClient,private userPostService:UserPostService,
-    private route: ActivatedRoute,private profileService: ProfileService) {
+    private route: ActivatedRoute,private profileService: ProfileService, private notifServce: NotificationService) {
 
     this.userPost=new UserPost({
 
@@ -90,5 +91,7 @@ export class MakeNewUserPostComponent implements OnInit {
     .subscribe()
     this.makedPost=true;
     this.showMakePost=false;
+    this.notifServce.savePostNotif(this.userPost.user.id).subscribe();
+
   }
 }

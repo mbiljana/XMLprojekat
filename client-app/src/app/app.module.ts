@@ -67,6 +67,8 @@ import {ViewConnectionBlockComponent} from "./view-connection-block/view-connect
 
 import { MessageNotifsComponent } from './message-notifs/message-notifs.component';
 import { MessageNotifComponent } from './message-notif/message-notif.component';
+import { PostNotifsComponent } from './post-notifs/post-notifs.component';
+import { PostNotifComponent } from './post-notif/post-notif.component';
 
 
 
@@ -128,7 +130,9 @@ import { MessageNotifComponent } from './message-notif/message-notif.component';
      MessageNotifsComponent,
      MessageNotifComponent,
 
-     NotificationComponent
+     NotificationComponent,
+       PostNotifsComponent,
+       PostNotifComponent
 
 
 
