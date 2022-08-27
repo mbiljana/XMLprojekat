@@ -39,6 +39,7 @@ public class User {
 	private List<String> blocked;
 
     private List<Notification> messagesNotifications;
+	private List<Notification> postNotifications;
 
 
     public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate) {
@@ -126,6 +127,26 @@ public class User {
 		this.sentMessages = sentMessages;
 		this.recievedMessages = recievedMessages;
 		this.blocked = blocked;
+	}
+
+	public User(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String gender, String profilePicture, boolean isPrivate, List<String> following, List<String> followRequests, List<Message> sentMessages, List<Message> recievedMessages, List<String> blocked, List<Notification> messagesNotifications, List<Notification> postNotifications) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.profilePicture = profilePicture;
+		this.isPrivate = isPrivate;
+		this.following = following;
+		this.followRequests = followRequests;
+		this.sentMessages = sentMessages;
+		this.recievedMessages = recievedMessages;
+		this.blocked = blocked;
+		this.messagesNotifications = messagesNotifications;
+		this.postNotifications = postNotifications;
 	}
 
 	public List<String> getBlocked() {

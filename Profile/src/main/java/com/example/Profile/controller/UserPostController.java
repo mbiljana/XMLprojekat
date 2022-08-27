@@ -30,6 +30,9 @@ public class UserPostController {
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserPost> save(@RequestBody UserPost newPost){
 		UserPost saved=this.userPostService.save(newPost);
+
+		//adding notifications for all users following this user
+
 		return new ResponseEntity<>(saved,HttpStatus.CREATED);
 	}
 	

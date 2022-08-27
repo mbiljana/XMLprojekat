@@ -38,4 +38,8 @@ public class NotificationService {
     public Notification findOne(Long id){
         return this.notificationRepository.findById(id).get();
     }
+
+    public List<Notification> findAll(){
+        return this.notificationRepository.findAll();
+    }
 }

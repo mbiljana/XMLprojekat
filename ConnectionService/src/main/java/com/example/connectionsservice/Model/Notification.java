@@ -17,6 +17,7 @@ public class Notification {
     private Date date;
 
     private Message messageNotif;
+    private boolean post;
 
     public Notification() {
     }
@@ -40,6 +41,19 @@ public class Notification {
         this.messageNotif = messageNotif;
         this.date = date;
         this.user = user;
+    }
+    public Notification(Date date, String user, boolean post) {
+        this.date = date;
+        this.user = user;
+        this.post = post;
+    }
+
+    public boolean isPost() {
+        return post;
+    }
+
+    public void setPost(boolean post) {
+        this.post = post;
     }
 
     public String getUser() {
