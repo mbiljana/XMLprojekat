@@ -8,6 +8,7 @@ import com.example.connectionsservice.Repository.MessageRepository;
 import com.example.connectionsservice.Repository.NotificationRepository;
 import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,8 +21,10 @@ public class MessageService {
     @Autowired
     private UserRepository userRepository;
 
+   // @Autowired
+   // private NotificationRepository notificationRepository;
     @Autowired
-    private NotificationRepository notificationRepository;
+    private NotificationService notificationService;
 
     public Message save(Message message){
         return this.messageRepository.save(message);
@@ -34,6 +37,7 @@ public class MessageService {
         messages1 = messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(username,sender);
         messages2 = this.messageRepository.findMessageByRecieverUsernameAndSenderUsernameOrderBySentDateAsc(sender,username);
         messages1.addAll(messages2);
+        Collections.sort(messages1, Comparator.comparing(Message::getSentDate));
 
         return messages1;
     }
@@ -60,6 +64,9 @@ public class MessageService {
                 tmp.clear();
             }
         }
+        Collections.sort(interfaceMsgs, Comparator.comparing(Message::getSentDate));
+
+
         return interfaceMsgs;
     }
 
@@ -68,6 +75,8 @@ public class MessageService {
     public List<Message> findSentMessages(String username){
         return messageRepository.findMessageBySenderUsername(username);
     }
+
+
 
     public Message sendMessage(String sender, String reciever, String mess){
         User userSender = this.userRepository.findByUsername(sender);
@@ -86,15 +95,12 @@ public class MessageService {
         userSender.getSentMessages().add(message);
         userRepository.save(userSender);
 
-        Notification notification = new Notification(message,date, userSender.getUsername());
-        try {
-            userSender.getMessagesNotifications().add(notification);
-        }catch (NullPointerException ne){
-            ne.getMessage();
-            List<Notification> not = new ArrayList<>();
-            not.add(notification);
-            userSender.setMessagesNotifications(not);
-        }
+        Notification notification = new Notification(message,date, userReciever.getUsername());
+        this.notificationService.saveNotif(notification);
+        List<Notification> not = new ArrayList<>();
+        not.add(notification);
+        userSender.getMessagesNotifications().add(notification);
+        this.userRepository.save(userSender);
         return  message;
     }
 
@@ -103,7 +109,7 @@ public class MessageService {
     }
 
     public Notification getNotif(Long id){
-        return this.notificationRepository.findById(id).get();
+        return this.notificationService.findOne(id);
     }
 
 
