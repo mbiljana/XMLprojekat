@@ -74,19 +74,19 @@ public class InitialData {
 
 
 
-        Notification notif1 = new Notification((long)1, m5, time, "bika");
-        Notification notif2 = new Notification((long)2, m3, time, "kica");
-        this.notificationService.save(notif1);
-        this.notificationService.save(notif2);
-        notifs.add(notif1);
-        notifs.add(notif2);
+        //Notification notif1 = new Notification((long)1, m5, time, "bika");
+        //Notification notif2 = new Notification((long)2, m3, time, "kica");
+        //this.notificationService.save(notif1);
+        //this.notificationService.save(notif2);
+        //notifs.add(notif1);
+        //notifs.add(notif2);
 
-        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked);
+        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked,notifs);
         User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",true,conn,req,mess,mess2,blocked,notifs);
-        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked);
-        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked);
-        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked);
-		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked);
+        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked,notifs);
+        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked,notifs);
+        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked,notifs);
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked,notifs);
 		
         userService.save(u1);
         userService.save(u2);

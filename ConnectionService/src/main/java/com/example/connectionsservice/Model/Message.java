@@ -16,7 +16,7 @@ import java.util.Date;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Document("messages")
-public class Message {
+public class Message{
     @Id
     private String id;
     private String senderUsername;
@@ -69,4 +69,5 @@ public class Message {
         this.recieverUsername = recieverUsername;
         this.message = message;
     }
+
 }

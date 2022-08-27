@@ -1,5 +1,6 @@
 package com.example.connectionsservice.Controller;
 
+import com.example.connectionsservice.Model.Message;
 import com.example.connectionsservice.Model.Notification;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Service.MessageService;
@@ -11,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -40,6 +43,7 @@ public class NotificationController {
             ne.getMessage();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+        Collections.sort(usersNotifications, Comparator.comparing(Notification::getDate));
         return new ResponseEntity<List<Notification>>(usersNotifications, HttpStatus.OK);
     }
 
