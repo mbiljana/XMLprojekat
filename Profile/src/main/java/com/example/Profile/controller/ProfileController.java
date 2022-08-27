@@ -71,6 +71,7 @@ public class ProfileController {
 		user.setLastName(createPr.getLastName());
 		user.setGender(createPr.getGender());
 		user.setMobile(createPr.getMobile());
+		user.setDateOfBirth(createPr.getDateOfBirth());
 		user.setProfileType(createPr.getProfileType());
 		user.setProfilePicture(createPr.getProfilePicture());
 		Profile profile = this.profileService.saveUser(user);

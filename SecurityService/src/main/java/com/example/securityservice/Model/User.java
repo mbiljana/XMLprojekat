@@ -34,6 +34,8 @@ public class User implements UserDetails {
     //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
     private String roleType;
+    private String dateOfBirth;
+    private String mobile;
     public User() {}
 
     public String getProfilePicture() {
@@ -58,10 +60,39 @@ public class User implements UserDetails {
 		this.roleType = roleType;
 	}
 
+    public User(Long id, String korisnicko, String password, String firstName, String lastName, String email, String gender, boolean enabled, String profilePicture, List<Role> roles, String roleType, String dateOfBirth, String mobile) {
+        this.id = id;
+        this.korisnicko = korisnicko;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.enabled = enabled;
+        this.profilePicture = profilePicture;
+        this.roles = roles;
+        this.roleType = roleType;
+        this.dateOfBirth = dateOfBirth;
+        this.mobile = mobile;
+    }
 
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	
-	public String getRoleType() {
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getRoleType() {
 		return roleType;
 	}
 

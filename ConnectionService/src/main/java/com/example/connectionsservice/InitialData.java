@@ -37,28 +37,36 @@ public class InitialData {
         List<Message> mess = new ArrayList<>();
         List<Message> mess2 = new ArrayList<>();
         List<Notification> notifs = new ArrayList<>();
+        
+        
+        //requests
         List<String> req = new ArrayList<>();
-        req.add("bika");
+        req.add("stef");
         req.add("maja");
+        
+        //connections
         List<String> conn = new ArrayList<>();
-        conn.add("lana");
+        conn.add("marko99");
+ 
         //conn.add("maja");
         Date time = new Date();
-
-        Message m1 = new Message("50","maja","kica","hi",time);
+        
+        
+        /////////////messages
+        Message m1 = new Message("50","maja","marko99","hi",time);
         messageService.save(m1);
 
-        Message m2 = new Message("51","maja","kica","caoo",time);
+        Message m2 = new Message("51","maja","marko99","caoo",time);
         messageService.save(m2);
 
-        Message m3 = new Message("52","lana99","kica","hej",time);
+        Message m3 = new Message("52","lana99","marko99","hej",time);
         messageService.save(m3);
 
         //Message m4 = new Message("53","lana99","kica","sta ima",time);
         //messageService.save(m4);
 
 
-        Message m5 = new Message("53","kica","lana99","sta ima",time);
+        Message m5 = new Message("53","marko99","lana99","sta ima",time);
         messageService.save(m5);
 
         List<String> blocked = new ArrayList<>();
@@ -66,25 +74,26 @@ public class InitialData {
 
 
 
-        Notification notif = new Notification((long)16, m5, time, "bika");
-        Notification notif2 = new Notification((long)17, m3, time, "kica");
-        this.notificationService.save(notif);
+        Notification notif1 = new Notification((long)1, m5, time, "bika");
+        Notification notif2 = new Notification((long)2, m3, time, "kica");
+        this.notificationService.save(notif1);
         this.notificationService.save(notif2);
-        notifs.add(notif);
+        notifs.add(notif1);
         notifs.add(notif2);
 
-        User u1=new User((long)2,"lana99","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,req,mess,mess2,blocked,notifs);
-        User u2=new User((long)22,"maja","123","Maja","Majkic","maja@gmail.com","3247876777","female","/assets/profilePicture/profile1.jpeg",true,flw,req,mess,mess2,blocked);
-        User u3=new User((long)3,"kica","123","Kica","Kikic","kica@gmail.com","78542476777","male","/assets/profilePicture/profile1.jpeg",false,req,flw,mess,mess2,blocked);
-        User u4=new User((long)4,"bika","123","Bika","Bikic","bika@gmail.com","745485175","male","/assets/profilePicture/profile1.jpeg",true,flw,flw,mess,mess2,blocked);
-        User u5=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked);
-
-
+        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked);
+        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",true,conn,req,mess,mess2,blocked,notifs);
+        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked);
+        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked);
+        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked);
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked);
+		
         userService.save(u1);
         userService.save(u2);
         userService.save(u3);
         userService.save(u4);
         userService.save(u5);
+        userService.save(u6);
     }
 
 

@@ -58,30 +58,41 @@ public class InitialData {
 
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		following.add("maja");
+		//u following treba da stoji lana99, da bi se videli postovi, posto samo za nju postoje postovi
+		following.add("lana99");
 
-		List<String> followRequests = new ArrayList<>();
-		followRequests.add("maja");
-		followRequests.add("lana");
+		List<String> followRequests1 = new ArrayList<>();
+		followRequests1.add("maja");
+		
+		List<String> followRequests2 = new ArrayList<>();
+		followRequests2.add("maja");
+		followRequests2.add("stef");
+		
+		List<String> followRequests3 = new ArrayList<>();
+		followRequests2.add("lana");
+		followRequests2.add("lana99");
 
 		List<String> blocked = new ArrayList<>();
 		blocked.add("lana99");
 	//komentar
-		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2020-10-10");
+		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests1, blocked, "2000-10-10");
 		userRepository.save(u1);
 		
-		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests, blocked, "1997-05-05");
+		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests2, blocked, "1997-05-05");
 		userRepository.save(u2);
 		
-		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2000-02-02");
+		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked, "2000-02-02");
 		userRepository.save(u3);
 		
-		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests, blocked, "2003-03-03");
+		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked, "2003-03-03");
 		userRepository.save(u4);
 
-		User u5=new User((long)22,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PUBLIC,following, followRequests, blocked,"1989-08-08");
+		User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",ProfileType.PUBLIC,following, followRequests3, blocked,"1989-08-08");
 		userRepository.save(u5);
-		///////////////////////////////////
+		
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked,"1989-08-08");
+		userRepository.save(u6);
+		///////////////////////////////////COMPANY///////////////////////////////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");
 		companyRepository.save(c1);
 		
@@ -90,6 +101,12 @@ public class InitialData {
 		
 		Company c3=new Company((long)3, "synehrone", "123","Synehrone", "synehrone@gmail.com", "83498234923", "/assets/companyPicture/company3.jpeg");
 		companyRepository.save(c3);
+		
+		Company c4=new Company((long)4, "vegaIT", "123","Vega", "vegaag@gmail.com", "83498234923", "/assets/companyPicture/company-vega.png");
+		companyRepository.save(c4);
+		
+		Company c5=new Company((long)5, "continentalIT", "123","Continental", "con@gmail.com", "83498234923", "/assets/companyPicture/company-continental.png");
+		companyRepository.save(c5);
 		//////////////////////////////////
 		List<String> preconditions1=new ArrayList<>();
 		preconditions1.add("c++");
@@ -112,7 +129,7 @@ public class InitialData {
 		Post p2=new Post((long)2, "Senior AI programer", "We are looking for senior C# developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",preconditions2,"AI junior developer",c2);
 		postRepository.save(p2);
 		
-		Post p3=new Post((long)3, "Junior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post2.jpeg",preconditions3,"Hava sprign boot junior developer",c1);
+		Post p3=new Post((long)3, "Junior Java programer", "We are looking for senior Java spring developer developer, with very good experiance in programing and also communication skills","/assets/postPicture/post3.png",preconditions3,"Hava sprign boot junior developer",c1);
 		postRepository.save(p3);
 		
 		Post p4=new Post((long)4, "Senior C++ programer", "Hello! We are looking for senior C++ developer, with very good experiance in programing and also communication skills","/assets/postPicture/post4.jpeg",preconditions1,"c++ senior developer",c1);
@@ -124,8 +141,11 @@ public class InitialData {
 		Comment com2=new Comment((long)2, "Excelent",p3,u4);
 		commentRepository.save(com2);
 		
-		Comment com3=new Comment((long)3, "Excelent job for students",p1,u2);
+		Comment com3=new Comment((long)3, "Excelent job for students",p1,u4);
 		commentRepository.save(com3);
+		
+		Comment com4=new Comment((long)4, "Excelent job for students",p1,u5);
+		commentRepository.save(com4);
 		//////////////////////////////////
 		ProgramLanguage pl1=new ProgramLanguage((long)1, "C#");
 		programLanguageRepository.save(pl1);
@@ -166,7 +186,7 @@ public class InitialData {
 		pls2.add(pl3);
 		pls2.add(pl2);
 		pls2.add(pl5);
-		
+		////////////////////////////////////////////////
 		List<Language> ls1=new ArrayList<>();
 		ls1.add(l1);
 		ls1.add(l4);
@@ -174,46 +194,61 @@ public class InitialData {
 		List<Language> ls2=new ArrayList<>();
 		ls2.add(l2);
 		ls2.add(l3);
+		ls2.add(l5);
 		
 		List<String> exCopmanies=new ArrayList<>();
 		exCopmanies.add("Vega IT");
 		exCopmanies.add("FSD");
 
 
-		
+		/////////////////////////////////PROFILE////////////////////////////////////////
 		Profile pro1=new Profile((long)1, u1, pls1, exCopmanies, ls1, "Faculty of technical scientist", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
 		profileRepository.save(pro1);
 		
-		Profile pro2=new Profile((long)2, u2, pls2, exCopmanies, ls2, "Mathematics faculty", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
+		Profile pro2=new Profile((long)2, u2, pls2, exCopmanies, ls2, "Mathematics faculty", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PUBLIC);
 		profileRepository.save(pro2);
 		
+		Profile pro3=new Profile((long)3, u3, pls2, exCopmanies, ls1, "Faculty of Organizational Sciences", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
+		profileRepository.save(pro3);
+		
+		Profile pro4=new Profile((long)4, u4, pls2, exCopmanies, ls1, "Faculty of technical scientist", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
+		profileRepository.save(pro3);
+		
+		Profile pro5=new Profile((long)5, u5, pls1, exCopmanies, ls1, "Faculty of Organizational Sciences", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PUBLIC);
+		profileRepository.save(pro5);
+		
+		Profile pro6=new Profile((long)6, u6, pls2, exCopmanies, ls1, "Faculty of technical scientist", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
+		profileRepository.save(pro6);
+		/////////////////////////////////////////////////////////////////////////////
 		List<String> links1=new ArrayList<String>();
 		links1.add("https://dev.java/");
 		links1.add("https://getbootstrap.com/docs/4.0/components/buttons/");
-		UserPost up1=new UserPost((long)1,u1,"Join us October 17-20 in Las Vegas, for the first JavaOne in 5 years. With hundreds of talks from platform architects and industry luminaries, a city-sized developer pavilion, and plenty of networking opportunities, JavaOne is the place to push your Java knowledge to new levels.",links1,"/assets/userPostPicture/post1.jpeg",0, 0);
-		userPostRepository.save(up1);
 		
 		List<String> links2=new ArrayList<String>();
 		links2.add("https://www.geeksforgeeks.org/go-programming-language-introduction/");
 		links2.add("https://getbootstrap.com/docs/4.0/components/buttons/");
 		links2.add("https://www.w3schools.com/angular/angular_tables.asp");
-		UserPost up2=new UserPost((long)2,u1,"Go is a procedural programming language. It was developed in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson at Google but launched in 2009 as an open-source programming language. Programs are assembled by using packages, for efficient management of dependencies. This language also supports environment adopting patterns alike to dynamic languages. For eg., type inference (y := 0 is a valid declaration of a variable y of type float).",links2,"/assets/userPostPicture/post3.jpeg",0, 0);
+		
+		UserPost up1=new UserPost((long)1,u1,"Join us October 17-20 in Las Vegas, for the first JavaOne in 5 years. With hundreds of talks from platform architects and industry luminaries, a city-sized developer pavilion, and plenty of networking opportunities, JavaOne is the place to push your Java knowledge to new levels.",links1,"/assets/userPostPicture/post1.jpeg",0, 0);
+		userPostRepository.save(up1);
+		
+		UserPost up2=new UserPost((long)2,u1,"Go is a procedural programming language. It was developed in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson at Google but launched in 2009 as an open-source programming language. Programs are assembled by using packages, for efficient management of dependencies. This language also supports environment adopting patterns alike to dynamic languages. For eg., type inference (y := 0 is a valid declaration of a variable y of type float).",links2,"/assets/userPostPicture/post2.png",0, 0);
 		userPostRepository.save(up2);
 		
-		UserPost up3=new UserPost((long)3,u2,"Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.",links1,"/assets/userPostPicture/post2.png",0, 0);
+		UserPost up3=new UserPost((long)3,u2,"Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.",links1,"/assets/userPostPicture/post3.jpeg",0, 0);
 		userPostRepository.save(up3);
 		
 		UserPost up4=new UserPost((long)4,u2,"Mathematical logic is the study of formal logic within mathematics. Major subareas include model theory, proof theory, set theory, and recursion theory. Research in mathematical logic commonly addresses the mathematical properties of formal systems of logic such as their expressive or deductive power.",links2,"/assets/userPostPicture/post4.jpeg",0, 0);
 		userPostRepository.save(up4);
-		
-		Comment com4=new Comment((long)4, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
-		commentRepository.save(com4);
-		
-		Comment com5=new Comment((long)5, "Excelent job for everyone who want to lear new things",up2,u4);
+		/////////////////////////////COMMMENTS for user posts////////////////////////////////////////
+		Comment com5=new Comment((long)5, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
 		commentRepository.save(com5);
 		
-		Comment com6=new Comment((long)6, "Excelent job for students and",up1,u2);
+		Comment com6=new Comment((long)6, "Excelent job for everyone who want to lear new things",up2,u4);
 		commentRepository.save(com6);
+		
+		Comment com7=new Comment((long)7, "Excelent job for students and",up1,u2);
+		commentRepository.save(com7);
 	}
 	
 }

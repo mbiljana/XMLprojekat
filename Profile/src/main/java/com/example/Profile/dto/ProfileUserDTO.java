@@ -11,6 +11,7 @@ public class ProfileUserDTO {
     private String email;
     private String mobile;
     private String profilePicture;
+    private String dateOfBirth;
     private String gender;
     private ProfileType profileType;
 
@@ -28,6 +29,28 @@ public class ProfileUserDTO {
         this.profilePicture = profilePicture;
         this.gender = gender;
         this.profileType = profileType;
+    }
+
+    public ProfileUserDTO(Long id, String username, String password, String firstName, String lastName, String email, String mobile, String profilePicture, String dateOfBirth, String gender, ProfileType profileType) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobile = mobile;
+        this.profilePicture = profilePicture;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.profileType = profileType;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {

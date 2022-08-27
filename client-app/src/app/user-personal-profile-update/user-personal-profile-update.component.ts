@@ -30,9 +30,9 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
   selectedFile: File;
   showUserPosts:boolean=true;
   showHolePost:boolean=false;
-  programLanguagesLists:string;
-  languagesLists:string;
-  exCompaniesLists:string;
+  programLanguagesLists:string='';
+  languagesLists:string='';
+  exCompaniesLists:string='';
   newLanguage:Language;
   foundLanguage:Language;
 
@@ -128,6 +128,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
     })
     this.languagesLists=listaImena.join(",")
   }
+
   insertExCompaniesIntoString(languages:string[]){
     var listaImena:string[]=[];
     languages.forEach(function(lan:string){
@@ -135,5 +136,7 @@ export class UserPersonalProfileUpdateComponent implements OnInit {
     })
     this.exCompaniesLists=listaImena.join(",")
   }
+
+
 
 }
