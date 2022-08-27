@@ -87,8 +87,14 @@ public class MessageService {
         userRepository.save(userSender);
 
         Notification notification = new Notification(message,date, userSender.getUsername());
-        userSender.getMessagesNotifications().add(notification);
-
+        try {
+            userSender.getMessagesNotifications().add(notification);
+        }catch (NullPointerException ne){
+            ne.getMessage();
+            List<Notification> not = new ArrayList<>();
+            not.add(notification);
+            userSender.setMessagesNotifications(not);
+        }
         return  message;
     }
 
