@@ -34,6 +34,7 @@ export class UserPostProfileComponent implements OnInit {
   idLoginUser:any;
 
   dto:UserLikePostDTO;
+  showIfuserIsLongin:boolean;
 
 
   @Output()
@@ -73,6 +74,12 @@ export class UserPostProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.idLoginUser = sessionStorage.getItem('id');
+    if(this.idLoginUser==null){
+      this.showIfuserIsLongin=false;
+    }else{
+      this.showIfuserIsLongin=true;
+    }
     this.loadUser();
     this.loadComments();
   }

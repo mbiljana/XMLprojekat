@@ -59,7 +59,10 @@ public class InitialData {
 		List<String> following = new ArrayList<>();
 		following.add("stef");
 		//u following treba da stoji lana99, da bi se videli postovi, posto samo za nju postoje postovi
-		following.add("lana99");
+		following.add("lana");
+		
+		List<String> following1 = new ArrayList<>();
+		following1.add("marko99");
 
 		List<String> followRequests1 = new ArrayList<>();
 		followRequests1.add("maja");
@@ -75,7 +78,7 @@ public class InitialData {
 		List<String> blocked = new ArrayList<>();
 		blocked.add("lana99");
 	//komentar
-		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following, followRequests1, blocked, "2000-10-10");
+		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following1, followRequests1, blocked, "2000-10-10");
 		userRepository.save(u1);
 		
 		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests2, blocked, "1997-05-05");
@@ -212,7 +215,7 @@ public class InitialData {
 		profileRepository.save(pro3);
 		
 		Profile pro4=new Profile((long)4, u4, pls2, exCopmanies, ls1, "Faculty of technical scientist", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PRIVATE);
-		profileRepository.save(pro3);
+		profileRepository.save(pro4);
 		
 		Profile pro5=new Profile((long)5, u5, pls1, exCopmanies, ls1, "Faculty of Organizational Sciences", "I am very interesting to find a job that will offer to me a lot of new technical skills and new friends.",ProfileType.PUBLIC);
 		profileRepository.save(pro5);
@@ -240,6 +243,8 @@ public class InitialData {
 		
 		UserPost up4=new UserPost((long)4,u2,"Mathematical logic is the study of formal logic within mathematics. Major subareas include model theory, proof theory, set theory, and recursion theory. Research in mathematical logic commonly addresses the mathematical properties of formal systems of logic such as their expressive or deductive power.",links2,"/assets/userPostPicture/post4.jpeg",0, 0);
 		userPostRepository.save(up4);
+		UserPost up5=new UserPost((long)5,u3,"Google LLC is an American multinational technology company that focuses on search engine technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.",links2,"/assets/userPostPicture/post5.jpeg",0, 0);
+		userPostRepository.save(up5);
 		/////////////////////////////COMMMENTS for user posts////////////////////////////////////////
 		Comment com5=new Comment((long)5, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
 		commentRepository.save(com5);
