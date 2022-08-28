@@ -52,6 +52,7 @@ export class UserProfileComponent implements OnInit {
   showHolePost:boolean=false;
   enabledFollow:boolean = true;
   alreadyFollowing:boolean = false;
+  showIfuserIsLongin:boolean;
 
   tmpId1:any;
   tmpId2:number;
@@ -59,6 +60,7 @@ export class UserProfileComponent implements OnInit {
   tmpUser2:User;
 
   ifDTO: IsFollowingDTO;
+  profileType:ProfileType;
 
 
 
@@ -133,6 +135,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.idLoginUser = sessionStorage.getItem('id');
+    if(this.idLoginUser==null){
+      this.showIfuserIsLongin=false;
+    }else{
+      this.showIfuserIsLongin=true;
+    }
     this.loadProfile();
     this.loadUser();
     this.isFollowing();
@@ -157,10 +166,12 @@ export class UserProfileComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.profileService.getProfile(this.id)
       .subscribe(res=>{
+
         this.profile=res;
         console.log(res.user.profileType)
-        this.isUserPrivate(res.user.profileType);
+        this.isUserPublicAndIsInFollowingWithLoginUser(res);
         this.ifDTO.id2 = res.user.id;
+        this.profileType=res.user.profileType;
         this.userPostService.searchPostByUser(this.id)
         .subscribe(res=>this.posts=res)
       })
@@ -178,14 +189,24 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
-  isUserPrivate(type:ProfileType){
-    if(type.toString()=="PRIVATE"){
+//ako je user public ili ako se vec pretai sa ulogovanim userom, onda treba prikazati i ostale informacije na profilu
+  isUserPublicAndIsInFollowingWithLoginUser(profile:Profile){
+    if(profile.user.profileType.toString()=="PRIVATE" && !this.isUserFollowingWithLOginUser(profile.user.following)){
       this.showAllInformation=false;
       this.showUserPosts=false;
     }else{
       this.showAllInformation=true;
     }
+  }
+  isUserFollowingWithLOginUser(listsFollowers:string[]):boolean{
+    var usernameLoginUser=sessionStorage.getItem('username');
+    for(var val of listsFollowers){
+      if(val==usernameLoginUser){
+        return true;
+      }
+    }
+    return false;
+
   }
   checkProfileType(){
     if(this.user.profileType==ProfileType.Private){

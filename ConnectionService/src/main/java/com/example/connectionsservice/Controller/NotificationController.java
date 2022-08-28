@@ -54,7 +54,7 @@ public class NotificationController {
         User user = this.userService.findOne(id);
         List<Notification> postNotifications = new ArrayList<>();
         try{
-            postNotifications = user.getPostNotifications();
+            //postNotifications = user.getPostNotifications();
         }catch (NullPointerException ne){
             ne.getMessage();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class NotificationController {
                 last_id  =us.getId();
             }
             n.setId(last_id);
-            u.getPostNotifications().add(n);
+            //u.getPostNotifications().add(n);
             userService.save(u);
         }
         return new ResponseEntity<User>(user, HttpStatus.OK);
