@@ -12,6 +12,8 @@ export class PostService {
   url = "http://localhost:8184/api/post";
   urlJob = "http://localhost:8184/api/post/search";
   urlPost = "http://localhost:8184/api/post/one";
+  //url from agent app
+  urlAg = "http://localhost:8083/api/post/search";
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +22,9 @@ export class PostService {
   }
   searchJob(sDTO : SearchJObDTO):Observable<Post[]>{
     return this.http.post<Post[]>(this.urlJob, sDTO);
+  }
+  searchJobs(sDTO : SearchJObDTO):Observable<Post[]>{
+    return this.http.post<Post[]>(this.urlAg, sDTO);
   }
 
   searchPost(id:number):Observable<Post>{
