@@ -245,6 +245,8 @@ public class InitialData {
 		userPostRepository.save(up4);
 		UserPost up5=new UserPost((long)5,u3,"Google LLC is an American multinational technology company that focuses on search engine technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.",links2,"/assets/userPostPicture/post5.jpeg",0, 0);
 		userPostRepository.save(up5);
+		UserPost up6=new UserPost((long)6,u5,"founded in 2010 by Kevin Systrom and Mike Krieger, and later acquired by American company Facebook Inc., now known as Meta Platforms. The app allows users to upload media that can be edited with filters and organized by hashtags and geographical tagging. Posts can be shared publicly or with ",links2,"/assets/userPostPicture/post1.jpeg",0, 0);
+		userPostRepository.save(up6);
 		/////////////////////////////COMMMENTS for user posts////////////////////////////////////////
 		Comment com5=new Comment((long)5, "I think that this job offer is not good, beacouse lot of thing. OK",up1,u3);
 		commentRepository.save(com5);
