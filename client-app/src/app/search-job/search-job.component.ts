@@ -11,12 +11,12 @@ import {Post} from "../model/post";
 export class SearchJobComponent implements OnInit {
 
   @Input()
-  title:string;
+  position:string;
   res: SearchJObDTO;
   posts:Post[];
   constructor(private postService:PostService) {
     this.res = new SearchJObDTO({
-      title:''
+      position:''
     });
   }
 
@@ -24,7 +24,7 @@ export class SearchJobComponent implements OnInit {
   }
 
   searchJob(){
-    this.res.title = this.title;
+    this.res.position = this.position;
     this.postService.searchJobs(this.res).subscribe(res => this.posts = res);
   }
 
