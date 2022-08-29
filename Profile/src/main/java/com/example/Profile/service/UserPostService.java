@@ -60,6 +60,9 @@ public class UserPostService {
 	}
 	public boolean isUserAlreadyLike(UserLikePostDTO dto) {
 		UserPost post=this.findById(dto.getUserPost().getId());
+		if(post.getUserWhoLiked()==null) {
+			return false;
+		}
 		for (Long userId : post.getUserWhoLiked()) {
 			if (userId==dto.getUserId()) {
 				return true;
@@ -71,7 +74,15 @@ public class UserPostService {
 	public UserPost likePost(UserLikePostDTO dto) {
 		if(!this.isUserAlreadyLike(dto) && !this.isUserAlreadyDislike(dto)) {
 			UserPost post=this.findById(dto.getUserPost().getId());
-			post.getUserWhoLiked().add(dto.getUserId());
+			//ako je lista ljudi koji su lajkovali prszna, potrebna je provera, ne moze se samo dodati
+			if(post.getUserWhoLiked()==null) {
+				List<Long> initial=new ArrayList<>();
+				initial.add(dto.getUserId());
+				post.setUserWhoLiked(initial);
+			}else {
+				post.getUserWhoLiked().add(dto.getUserId());
+			}
+			
 			post.setLikes(post.getLikes()+1);
 			return this.userPostRepository.save(post);
 		}else if (this.isUserAlreadyDislike(dto)) {
@@ -79,7 +90,13 @@ public class UserPostService {
 			post.setDislikes(post.getDislikes()-1);
 			post.getUserWhoDisliked().remove(dto.getUserId());
 			
-			post.getUserWhoLiked().add(dto.getUserId());
+			if(post.getUserWhoLiked()==null) {
+				List<Long> initial=new ArrayList<>();
+				initial.add(dto.getUserId());
+				post.setUserWhoLiked(initial);
+			}else {
+				post.getUserWhoLiked().add(dto.getUserId());
+			}
 			post.setLikes(post.getLikes()+1);
 			return this.userPostRepository.save(post);
 		}
@@ -88,6 +105,9 @@ public class UserPostService {
 	}
 	public boolean isUserAlreadyDislike(UserLikePostDTO dto) {
 		UserPost post=this.findById(dto.getUserPost().getId());
+		if(post.getUserWhoDisliked()==null) {
+			return false;
+		}
 		for (Long userId : post.getUserWhoDisliked()) {
 			if (userId==dto.getUserId()) {
 				return true;
@@ -99,7 +119,14 @@ public class UserPostService {
 	public UserPost dislikePost(UserLikePostDTO dto) {
 		if(!this.isUserAlreadyDislike(dto) && !this.isUserAlreadyLike(dto)) {
 			UserPost post=this.findById(dto.getUserPost().getId());
-			post.getUserWhoDisliked().add(dto.getUserId());
+			if(post.getUserWhoDisliked()==null) {
+				List<Long> initial=new ArrayList<>();
+				initial.add(dto.getUserId());
+				post.setUserWhoDisliked(initial);
+			}else {
+				post.getUserWhoDisliked().add(dto.getUserId());
+			}
+			
 			post.setDislikes(post.getDislikes()+1);
 			return this.userPostRepository.save(post);
 		}else if(this.isUserAlreadyLike(dto)) {
@@ -107,7 +134,13 @@ public class UserPostService {
 			post.setLikes(post.getLikes()-1);
 			post.getUserWhoLiked().remove(dto.getUserId());
 			
-			post.getUserWhoDisliked().add(dto.getUserId());
+			if(post.getUserWhoDisliked()==null) {
+				List<Long> initial=new ArrayList<>();
+				initial.add(dto.getUserId());
+				post.setUserWhoDisliked(initial);
+			}else {
+				post.getUserWhoDisliked().add(dto.getUserId());
+			}
 			post.setDislikes(post.getDislikes()+1);
 			return this.userPostRepository.save(post);
 		}

@@ -58,8 +58,9 @@ export class MakeNewUserPostComponent implements OnInit {
     console.log(this.id);
     this.id = this.route.snapshot.params['id'];
     this.profileService.getUser(this.id)
-      .subscribe(res =>
-        this.userPost.user = res
+      .subscribe(res =>{
+        console.log(res);
+        this.userPost.user = res}
       )
   }
   public onFileChanged(event: any) {

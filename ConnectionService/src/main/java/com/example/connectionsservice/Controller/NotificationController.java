@@ -88,7 +88,7 @@ public class NotificationController {
                 last_id  =us.getId();
             }
             n.setId(last_id);
-            u.getPostNotifications().add(n);
+            //u.getPostNotifications().add(n);
             userService.save(u);
         }
         return new ResponseEntity<User>(user, HttpStatus.OK);

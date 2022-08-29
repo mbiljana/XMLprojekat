@@ -30,7 +30,7 @@ export class ProfileService {
     return this.http.post<User[]>(this.url,user);
   }
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(`${this.urlUser}/${id}`);
+    return this.http.get<User>(`${this.url}/${id}`);
   }
   getUserByUsername(un:string):Observable<User>{
     return this.http.get<User>(`${this.urlUsername}/${un}`);
