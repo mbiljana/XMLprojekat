@@ -92,8 +92,16 @@ public class MessageService {
         this.messageRepository.save(message);
         userReciever.getRecievedMessages().add(message);
         userRepository.save(userReciever);
-        userSender.getSentMessages().add(message);
-        userRepository.save(userSender);
+        if(userSender.getSentMessages() == null){
+            List<Message> sent = new ArrayList<>();
+            userSender.setSentMessages(sent);
+            userRepository.save(userSender);
+        }else{
+            userSender.getSentMessages().add(message);
+            userRepository.save(userSender);
+        }
+
+
 
         Notification notification = new Notification(message,date, userReciever.getUsername());
         this.notificationService.saveNotif(notification);

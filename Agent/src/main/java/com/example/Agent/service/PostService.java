@@ -47,4 +47,11 @@ public class PostService {
 		}
 		return opt.get();
 	}
+
+
+	//find post by post position
+	public List<Post> searchByPosition(String position){
+		List<Post> allPosts = this.postRepository.findByPosition(position);
+		return allPosts;
+	}
 }

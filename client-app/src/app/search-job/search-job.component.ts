@@ -25,7 +25,7 @@ export class SearchJobComponent implements OnInit {
 
   searchJob(){
     this.res.title = this.title;
-    this.postService.searchJob(this.res).subscribe(res => this.posts = res);
+    this.postService.searchJobs(this.res).subscribe(res => this.posts = res);
   }
 
 

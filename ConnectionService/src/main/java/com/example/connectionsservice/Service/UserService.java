@@ -1,6 +1,8 @@
 package com.example.connectionsservice.Service;
 
 import com.example.connectionsservice.Dto.UserRequest;
+import com.example.connectionsservice.Model.Message;
+import com.example.connectionsservice.Model.Notification;
 import com.example.connectionsservice.Model.User;
 import com.example.connectionsservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,22 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     public User save(User user) {
+        List<Notification> notifs = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
+        List<String> blocked = new ArrayList<>();
+        List<String> following = new ArrayList<>();
+        List<String> followRequests = new ArrayList<>();
+        List<Notification> postnotifs = new ArrayList<>();
+        List<Message> sent = new ArrayList<>();
+        List<Message> recieved = new ArrayList<>();
+        user.setSentMessages(sent);
+        user.setRecievedMessages(recieved);
+        user.setFollowing(following);
+        user.setMessagesNotifications(notifs);
+        user.setBlocked(blocked);
+        user.setRecievedMessages(messages);
+        user.setFollowRequests(followRequests);
+        user.setPostNotifications(postnotifs);
         return this.userRepository.save(user);
     }
     public User saveFront(UserRequest user)
@@ -64,6 +82,8 @@ public class UserService {
         }else{
             followerUser.getFollowing().add(toFollowUsername);
             toFollowUser.getFollowing().add(followerUsername);
+            this.userRepository.save(followerUser);
+            this.userRepository.save(toFollowUser);
             userRepository.save(toFollowUser);
             return userRepository.save(followerUser);
         }
