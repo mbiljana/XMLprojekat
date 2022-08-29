@@ -212,6 +212,7 @@ export class UserProfileComponent implements OnInit {
     this.fDTO.followerId = this.loggedUser.username;
     this.fDTO.toFollowId = this.profile.user.username;
     this.profileService.followUser(this.fDTO).subscribe(res => this.followedUser = res);
+    this.profileService.followUserFromPR(this.fDTO).subscribe(res => this.followedUser = res);
   }
 
   viewHolePost(post:UserPost){

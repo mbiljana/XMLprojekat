@@ -82,6 +82,8 @@ public class UserService {
         }else{
             followerUser.getFollowing().add(toFollowUsername);
             toFollowUser.getFollowing().add(followerUsername);
+            this.userRepository.save(followerUser);
+            this.userRepository.save(toFollowUser);
             userRepository.save(toFollowUser);
             return userRepository.save(followerUser);
         }

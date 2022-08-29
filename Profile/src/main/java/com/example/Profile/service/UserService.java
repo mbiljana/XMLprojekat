@@ -142,5 +142,30 @@ public class UserService {
 	}
 
 
+	//follow a user
+	public User follow(String followerUsername, String toFollowUsername) {
+		//the user that sent the request
+		User followerUser = userRepository.findByUsername(followerUsername);
+		//user who got the request from another user
+		User toFollowUser = userRepository.findByUsername(toFollowUsername);
+
+		if(followerUser == null){
+			throw new IllegalStateException("followerUser does not exist!");
+		}
+		if(toFollowUser == null){
+			throw new IllegalStateException("toFollowUser does not exist!");
+		}
+		if(followerUser.getFollowing().contains(toFollowUsername)){
+			throw new IllegalStateException("You already follow this user!");
+		}
+
+			followerUser.getFollowing().add(toFollowUsername);
+			toFollowUser.getFollowing().add(followerUsername);
+			this.userRepository.save(followerUser);
+			this.userRepository.save(toFollowUser);
+			userRepository.save(toFollowUser);
+			return userRepository.save(followerUser);
+	}
+
 
 }
