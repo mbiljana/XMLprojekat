@@ -54,12 +54,13 @@ public class NotificationController {
         User user = this.userService.findOne(id);
         List<Notification> postNotifications = new ArrayList<>();
         try{
-            //postNotifications = user.getPostNotifications();
+            postNotifications = user.getPostNotifications();
+            Collections.sort(postNotifications, Comparator.comparing(Notification::getDate));
         }catch (NullPointerException ne){
             ne.getMessage();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        Collections.sort(postNotifications, Comparator.comparing(Notification::getDate));
+
         return new ResponseEntity<List<Notification>>(postNotifications, HttpStatus.OK);
     }
 

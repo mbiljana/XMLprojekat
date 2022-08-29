@@ -106,4 +106,17 @@ public class UserController {
 		return new ResponseEntity<List<String>>(blocks, HttpStatus.OK);
 	}
 
+
+	//follow a user
+	@PutMapping(path = "api/user/follow",
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> follow(@RequestBody FollowRequestsDTO fDTO){
+		try{
+			return new ResponseEntity<User>(userService.follow(fDTO.followerId, fDTO.toFollowId), HttpStatus.OK);
+		} catch (IllegalStateException e){
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }

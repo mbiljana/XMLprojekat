@@ -97,6 +97,7 @@ public class InitialData {
         User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked4,notifs,notifs);
         User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked5,notifs,notifs);
 		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked6,notifs,notifs);
+
 		
         userService.save(u1);
         userService.save(u2);

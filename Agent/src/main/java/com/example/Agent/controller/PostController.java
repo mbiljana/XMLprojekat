@@ -2,6 +2,7 @@ package com.example.Agent.controller;
 
 import java.util.List;
 
+import com.example.Agent.dto.SearchJobDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -52,5 +53,12 @@ public class PostController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(post, HttpStatus.OK);
+	}
+
+	@RequestMapping(value="api/post/search", method = RequestMethod.POST,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<Post>> findAllPostsWithPosition(@RequestBody SearchJobDTO searchJobDTO){
+		List<Post> posts=this.postService.searchByPosition(searchJobDTO.getPosition());
+		return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 	}
 }
