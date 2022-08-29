@@ -22,6 +22,7 @@ export class AddCommentComponent implements OnInit {
   text:string;
   makedPost:boolean=false;
   showMakePost:boolean=true;
+  probamoSonarCLoud:number;
   idLoginUser:any;
   constructor(private http: HttpClient,private userPostService:UserPostService,private route: ActivatedRoute,
     private commentService:CommentService,private router: Router,
