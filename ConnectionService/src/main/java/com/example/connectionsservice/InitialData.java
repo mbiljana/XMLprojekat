@@ -42,7 +42,7 @@ public class InitialData {
         //requests
         List<String> req = new ArrayList<>();
         req.add("stef");
-        req.add("maja");
+        req.add("lana");
         
         //connections
         List<String> conn = new ArrayList<>();
@@ -69,8 +69,18 @@ public class InitialData {
         Message m5 = new Message("53","marko99","lana99","sta ima",time);
         messageService.save(m5);
 
-        List<String> blocked = new ArrayList<>();
-        blocked.add("lana99");
+        List<String> blocked1 = new ArrayList<>();
+        blocked1.add("lana99");
+        List<String> blocked2 = new ArrayList<>();
+        blocked2.add("lana");
+        List<String> blocked3 = new ArrayList<>();
+        blocked3.add("lana");
+        List<String> blocked4 = new ArrayList<>();
+        blocked4.add("marko99");
+        List<String> blocked5 = new ArrayList<>();
+        blocked5.add("admin");
+        List<String> blocked6 = new ArrayList<>();
+        blocked6.add("marko99");
 
 
 
@@ -81,12 +91,13 @@ public class InitialData {
         //notifs.add(notif1);
         //notifs.add(notif2);
 
-        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked,notifs,notifs);
-        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",false,conn,req,mess,mess2,blocked,notifs,notifs);
-        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked,notifs,notifs);
-        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked,notifs,notifs);
-        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",false,req,flw,mess,mess2,blocked,notifs,notifs);
-		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked,notifs,notifs);
+        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked1,notifs,notifs);
+        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",true,conn,req,mess,mess2,blocked2,notifs,notifs);
+        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked3,notifs,notifs);
+        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked4,notifs,notifs);
+        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked5,notifs,notifs);
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked6,notifs,notifs);
+
 		
         userService.save(u1);
         userService.save(u2);

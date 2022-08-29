@@ -97,6 +97,7 @@ export class FollowRequestComponent implements OnInit {
     this.fDTO.toFollowId = this.retFlw;
     this.fDTO.followerId = this.retUsr;
     this.followService.block(this.fDTO).subscribe(res => this.retFlw = res);
+    this.followService.blockProfile(this.fDTO).subscribe(res => this.retFlw = res);
     //console.log(this.fDTO);
   }
 

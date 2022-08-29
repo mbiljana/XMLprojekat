@@ -19,6 +19,7 @@ export class FollowReqService {
   urlFollow = "http://localhost:8191/api/users/follow";
   urlBool = "http://localhost:8191/api/users/following";
   urlBlock = "http://localhost:8191/api/users/blockUser";
+  urlBlockUser = "http://localhost:8184/api/blockUser";
   urlBlockNum = "http://localhost:8191/api/users/blocksId";
   constructor(private http: HttpClient) { }
 
@@ -50,6 +51,11 @@ export class FollowReqService {
   getBlocked(id:number):Observable<string[]>{
     return this.http.get<string[]>(`${this.urlBlockNum}/${id}`);
   }
+
+  blockProfile(fDTO : FollowRequestsDTO):Observable<String>{
+    return this.http.post<String>(this.urlBlock,fDTO);
+  }
+
 
 
 
