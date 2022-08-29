@@ -1,11 +1,11 @@
 export interface SearchJObDTOInterface {
-  title: string;
+  position: string;
 
 }
 export class SearchJObDTO implements SearchJObDTOInterface {
-  title: string;
+  position: string;
 
   constructor(obj:SearchJObDTOInterface) {
-    this.title = obj.title;
+    this.position = obj.position;
   }
 }

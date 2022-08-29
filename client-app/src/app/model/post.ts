@@ -5,9 +5,9 @@ export interface PostInterface {
   id:number;
   title: string;
   jobDescription: string;
-  picture: string;
   preconditions: string[];
   position:string;
+  picture: string;
   numOfLikes: number;
   numOfDislikes: number;
   company: Company;
@@ -18,9 +18,9 @@ export class Post implements PostInterface {
   id:number;
   title: string;
   jobDescription: string;
-  picture: string;
   preconditions: string[];
   position:string;
+  picture: string;
   numOfLikes: number;
   numOfDislikes: number;
   company: Company;
