@@ -281,4 +281,13 @@ public class User {
 	public void setMessagesNotifications(List<Notification> messagesNotifications) {
 		this.messagesNotifications = messagesNotifications;
 	}
+
+	public List<Notification> getPostNotifications() {
+		return postNotifications;
+	}
+
+	public void setPostNotifications(List<Notification> postNotifications) {
+		this.postNotifications = postNotifications;
+	}
+	
 }

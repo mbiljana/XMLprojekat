@@ -21,7 +21,7 @@ public class Profile {
 	private List<Language> languages;
 	private String education;
 	private String additionInformation;
-	private ProfileType profileType;
+	private ProfileType profileType=ProfileType.PRIVATE;
 	//private boolean isPrivate;
 
 

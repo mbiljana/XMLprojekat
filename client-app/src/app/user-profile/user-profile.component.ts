@@ -62,6 +62,11 @@ export class UserProfileComponent implements OnInit {
   ifDTO: IsFollowingDTO;
   profileType:ProfileType;
 
+  listsOfBlockedUser:string[];
+  isUserBlockedMessageButton:boolean=false;
+
+
+
 
 
 
@@ -168,6 +173,7 @@ export class UserProfileComponent implements OnInit {
       .subscribe(res=>{
 
         this.profile=res;
+        //this.a(res.user.blocked);
         console.log(res.user.profileType)
         this.isUserPublicAndIsInFollowingWithLoginUser(res);
         this.ifDTO.id2 = res.user.id;
@@ -215,6 +221,19 @@ export class UserProfileComponent implements OnInit {
       this.showAllInformation=true;
     }
   }
+  isUserBlocked(){
+    this.followingService.getBlocked(this.id).subscribe(res=>
+      this.a(res)
+    );
+  }
+  a(listsOfBlockedUsername:string[]){
+    for(var val of listsOfBlockedUsername){
+      if(val==this.profile.user.username){
+        this.isUserBlockedMessageButton=true;
+    }
+    this.isUserBlockedMessageButton=false;
+  }
+}
 
   loadUser(){
     this.idLoginUser = sessionStorage.getItem('id');

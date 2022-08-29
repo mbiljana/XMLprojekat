@@ -35,8 +35,8 @@ export class NotificationService {
 
 
 
-  savePostNotif(id:number):Observable<User>{
-    return this.http.get<User>(`${this.urlSavePost}/${id}`)
+  savePostNotif(id:number):Observable<User[]>{
+    return this.http.get<User[]>(`${this.urlSavePost}/${id}`)
   }
 
 

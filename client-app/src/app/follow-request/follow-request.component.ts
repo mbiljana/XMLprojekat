@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UsersFollowRequestsDTO} from "../model/UsersFollowRequestsDTO";
 import {User} from "../model/user";
 import {FollowRequestsDTO} from "../model/FollowRequestsDTO";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FollowReqService} from "../../service/follow-req.service";
 import {UserService} from "../../service/user.service";
 import {ProfileType} from "../model/profileType";
@@ -32,7 +32,7 @@ export class FollowRequestComponent implements OnInit {
   @Input()
   public request : string;
 
-  constructor(private route: ActivatedRoute, private followService: FollowReqService, private profileService:ProfileService, private userService:UserService) {
+  constructor(private router:Router,private route: ActivatedRoute, private followService: FollowReqService, private profileService:ProfileService, private userService:UserService) {
     this.request = '';
    // this.follower = '';
     this.user=new User({
@@ -89,6 +89,7 @@ export class FollowRequestComponent implements OnInit {
     this.fDTO.toFollowId = this.retFlw;
     this.fDTO.followerId = this.retUsr;
     this.followService.acceptRequest(this.fDTO).subscribe(res => this.retFlw = res);
+    this.router.navigate(['profile',this.retUser.id])
   }
 
   blockUser(){
@@ -98,7 +99,7 @@ export class FollowRequestComponent implements OnInit {
     this.fDTO.followerId = this.retUsr;
     this.followService.block(this.fDTO).subscribe(res => this.retFlw = res);
     this.followService.blockProfile(this.fDTO).subscribe(res => this.retFlw = res);
-    //console.log(this.fDTO);
+    this.router.navigate(['profile',this.retUser.id])
   }
 
 

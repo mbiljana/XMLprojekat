@@ -151,7 +151,11 @@ public class UserPostService {
 		
 		User loginUser=this.userService.findById(userId);
 		List<UserPost> allpost=new ArrayList<>();
-		
+		List<String> usernames=new ArrayList<>();
+		//ispravljeno
+		if(loginUser.getFollowing()==null) {
+			loginUser.setFollowing(usernames);
+		}
 		for (String username : loginUser.getFollowing()) {
 			User user=this.userService.findByUsername(username);
 			List<UserPost> allPostByUser=this.findAllPostsByUser(user.getId());

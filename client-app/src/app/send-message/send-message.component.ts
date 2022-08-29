@@ -71,8 +71,8 @@ export class SendMessageComponent implements OnInit {
   }
   sendMessage(){
     console.log(this.userSender.username, this.userReciever.username);
-    this.sendMess.senderUsername = this.userSender.username;
-    this.sendMess.recieverUsername = this.userReciever.username;
+    this.sendMess.senderUsername = this.userReciever.username;
+    this.sendMess.recieverUsername = this.userSender.username;
     this.sendMess.message = this.msg;
     this.messagingService.sendMessage(this.sendMess).subscribe(res => this.retMes = res);
   }

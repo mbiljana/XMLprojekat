@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../model/user";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FollowReqService} from "../../service/follow-req.service";
 import {ProfileService} from "../../service/profile.service";
 import {ConnectionsService} from "../../service/connections.service";
@@ -31,7 +31,7 @@ export class ViewConnectionComponent implements OnInit {
   @Input()
   public connection : string;
 
-  constructor(private route: ActivatedRoute, private followService: FollowReqService, private connectionService: ConnectionsService, private profileService:ProfileService, private userService:UserService) {
+  constructor(private router:Router,private route: ActivatedRoute, private followService: FollowReqService, private connectionService: ConnectionsService, private profileService:ProfileService, private userService:UserService) {
     this.connection = '';
     this.user=new User({
       id:0,
@@ -88,7 +88,10 @@ export class ViewConnectionComponent implements OnInit {
     this.fDTO.toFollowId = this.retFlw;
     this.fDTO.followerId = this.retUsr;
     this.followService.block(this.fDTO).subscribe(res => this.retFlw = res);
+    this.followService.blockProfile(this.fDTO).subscribe(res => this.retFlw = res);
     //console.log(this.fDTO);
+
+      this.router.navigate(['profile',this.retUser.id])
     }
 
 }

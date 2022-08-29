@@ -3,6 +3,7 @@ package com.example.connectionsservice;
 import com.example.connectionsservice.Model.Message;
 import com.example.connectionsservice.Model.Notification;
 import com.example.connectionsservice.Model.User;
+import com.example.connectionsservice.Repository.UserRepository;
 import com.example.connectionsservice.Service.MessageService;
 import com.example.connectionsservice.Service.NotificationService;
 import com.example.connectionsservice.Service.UserService;
@@ -23,17 +24,41 @@ public class InitialData {
     private final MessageService messageService;
 
     private final NotificationService notificationService;
+    
+    private final UserRepository userRepository;
 
-    public InitialData(UserService userService,MessageService messageService, NotificationService notificationService ){
+    public InitialData(UserService userService,MessageService messageService, NotificationService notificationService,UserRepository userRepository ){
         this.userService = userService;
         this.messageService = messageService;
         this.notificationService = notificationService;
+        this.userRepository=userRepository;
     }
 
 
     @PostConstruct
     public void init(){
-        List<String> flw = new ArrayList<>();
+		List<String> following = new ArrayList<>();
+		following.add("stef");
+		//u following treba da stoji lana99, da bi se videli postovi, posto samo za nju postoje postovi
+		following.add("lana");
+		
+		List<String> following1 = new ArrayList<>();
+		following1.add("marko99");
+		
+		List<String> following_marko=new ArrayList<>();
+		following_marko.add("lana");
+
+		List<String> followRequests1 = new ArrayList<>();
+		followRequests1.add("maja");
+		
+		List<String> followRequests2 = new ArrayList<>();
+		followRequests2.add("maja");
+		followRequests2.add("stef");
+		
+		List<String> followRequests3 = new ArrayList<>();
+		followRequests2.add("lana");
+		followRequests2.add("lana99");
+    	
         List<Message> mess = new ArrayList<>();
         List<Message> mess2 = new ArrayList<>();
         List<Notification> notifs = new ArrayList<>();
@@ -91,20 +116,22 @@ public class InitialData {
         //notifs.add(notif1);
         //notifs.add(notif2);
 
-        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,conn,flw,mess,mess2,blocked1,notifs,notifs);
-        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",true,conn,req,mess,mess2,blocked2,notifs,notifs);
-        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,flw,req,mess,mess2,blocked3,notifs,notifs);
-        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,req,flw,mess,mess2,blocked4,notifs,notifs);
-        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,req,flw,mess,mess2,blocked5,notifs,notifs);
-		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,req,flw,mess,mess2,blocked6,notifs,notifs);
+        User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,following1,followRequests1,mess,mess2,blocked1,notifs,notifs);
+        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",false,following,followRequests2,mess,mess2,blocked2,notifs,notifs);
+        User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,following_marko,followRequests3,mess,mess2,blocked3,notifs,notifs);
+        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,following,followRequests3,mess,mess2,blocked4,notifs,notifs);
+        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,following,followRequests3,mess,mess2,blocked5,notifs,notifs);
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,following,followRequests3,mess,mess2,blocked6,notifs,notifs);
 
 		
-        userService.save(u1);
-        userService.save(u2);
-        userService.save(u3);
-        userService.save(u4);
-        userService.save(u5);
-        userService.save(u6);
+		
+		
+        userRepository.save(u1);
+        userRepository.save(u2);
+        userRepository.save(u3);
+        userRepository.save(u4);
+        userRepository.save(u5);
+        userRepository.save(u6);
     }
 
 

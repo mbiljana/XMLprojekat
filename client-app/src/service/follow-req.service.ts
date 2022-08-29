@@ -53,7 +53,7 @@ export class FollowReqService {
   }
 
   blockProfile(fDTO : FollowRequestsDTO):Observable<String>{
-    return this.http.post<String>(this.urlBlock,fDTO);
+    return this.http.post<String>(this.urlBlockUser,fDTO);
   }
 
 

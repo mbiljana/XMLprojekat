@@ -105,8 +105,11 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
         this.newUser = res;
         this.userService.saveUserProfile(res).subscribe();
         this.profileService.createProfile(res).subscribe();
-        this.userService.saveUser(res).subscribe();
+        this.userService.saveUser(res).subscribe(
+
+        );
       });
+      this.router.navigate(['sign-in'])
 
     } else {
       this.error = "passwords are not equal";

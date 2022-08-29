@@ -63,6 +63,9 @@ public class InitialData {
 		
 		List<String> following1 = new ArrayList<>();
 		following1.add("marko99");
+		
+		List<String> following_marko=new ArrayList<>();
+		following_marko.add("lana");
 
 		List<String> followRequests1 = new ArrayList<>();
 		followRequests1.add("maja");
@@ -94,7 +97,7 @@ public class InitialData {
 		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests2, blocked2, "1997-05-05");
 		userRepository.save(u2);
 		
-		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked3, "2000-02-02");
+		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following_marko, followRequests3, blocked3, "2000-02-02");
 		userRepository.save(u3);
 		
 		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked4, "2003-03-03");

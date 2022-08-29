@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.management.Notification;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,12 +28,12 @@ public class User {
 	private String mobile;
 	private String gender;
 	private String profilePicture;
-	private ProfileType profileType;
-	private boolean isPrivate;
+	private ProfileType profileType=ProfileType.PRIVATE;
+	private boolean isPrivate=true;
 
-	private List<String> following;
-	private List<String> followRequests;
-	private List<String> blocked;
+	private List<String> following=new ArrayList<>();
+	private List<String> followRequests=new ArrayList<>();
+	private List<String> blocked=new ArrayList<>();
 	
 	public User() {}
 

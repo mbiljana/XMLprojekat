@@ -3,6 +3,7 @@ package com.example.connectionsservice.Controller;
 import com.example.connectionsservice.Model.Message;
 import com.example.connectionsservice.Model.Notification;
 import com.example.connectionsservice.Model.User;
+import com.example.connectionsservice.Repository.UserRepository;
 import com.example.connectionsservice.Service.MessageService;
 import com.example.connectionsservice.Service.NotificationService;
 import com.example.connectionsservice.Service.UserService;
@@ -23,12 +24,14 @@ public class NotificationController {
 
     private final  MessageService messageService;
     private final NotificationService notificationService;
+    private final UserRepository userRepositoy;
 
     @Autowired
-    public NotificationController(UserService userService, MessageService messageService,NotificationService notificationService){
+    public NotificationController(UserService userService, MessageService messageService,NotificationService notificationService, UserRepository userRepositoy){
         this.userService = userService;
         this.messageService = messageService;
         this.notificationService = notificationService;
+        this.userRepositoy = userRepositoy;
     }
 
     //get all users notifications
@@ -88,10 +91,16 @@ public class NotificationController {
                 last_id  =us.getId();
             }
             n.setId(last_id);
-            //u.getPostNotifications().add(n);
-            userService.save(u);
+            u.getPostNotifications().add(n);
+            userRepositoy.save(u);
         }
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        //provera zasto ne rade notifikacije
+        List<User> usersRet=new ArrayList<>();
+        for (String f: following) {
+        	User u = this.userService.findByUsername(f);
+        	usersRet.add(u);
+        }
+        return new ResponseEntity<List<User>>(usersRet, HttpStatus.OK);
     }
 
 
