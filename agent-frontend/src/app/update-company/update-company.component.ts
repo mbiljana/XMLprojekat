@@ -50,9 +50,7 @@ export class UpdateCompanyComponent implements OnInit {
       email:'',
       mobile:'',
       profilePicture:'',
-      owner:this.user,
-      grades:[],
-      salaries:[]
+      owner:this.user
     });
     this.updateCompany = new UpdateCompany({
       id:0,
