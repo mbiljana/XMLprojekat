@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +30,8 @@ import com.example.Agent.model.User;
 import com.example.Agent.repository.UserRepository;
 import com.example.Agent.service.CompanyService;
 import com.example.Agent.service.UserService;
+
+import java.util.Collection;
 
 
 @CrossOrigin("*")
@@ -62,11 +67,16 @@ public class CompanyController {
 
 
 	//update company profile
+
 	@PutMapping(value = "api/company/update",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
+	//@PreAuthorize("hasRole('OWNER')")
 	public ResponseEntity<?> updateProfile(@RequestBody CompanyUpdateDTO uDTO) throws Exception {
-
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		for(SimpleGrantedAuthority simpleGrantedAuthority : authorities){
+			System.out.println(simpleGrantedAuthority.getAuthority());
+		}
 		return new ResponseEntity<Company>(this.companyService.update(uDTO), HttpStatus.OK);
 	}
 
