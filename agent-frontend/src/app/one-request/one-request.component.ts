@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OneRequestComponent implements OnInit {
   request:CompanyRequest;
   idRequest:number;
+  idLoadUser:any;
   constructor(private companyRequestService: CompanyRequestService,private route: ActivatedRoute,private router: Router) {
     this.request=new CompanyRequest({
       approved:false,
@@ -60,7 +61,8 @@ export class OneRequestComponent implements OnInit {
     .subscribe(res=>this.request=res)
   }
   backToAllRequest(){
-    this.router.navigate(['profile', this.request.company.owner.id]);
+    this.idLoadUser=sessionStorage.getItem('id');
+    this.router.navigate(['profile', this.idLoadUser]);
   }
   approve(){
     this.request.approved=true;

@@ -71,12 +71,7 @@ public class CompanyController {
 	@PutMapping(value = "api/company/update",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	//@PreAuthorize("hasRole('OWNER')")
 	public ResponseEntity<?> updateProfile(@RequestBody CompanyUpdateDTO uDTO) throws Exception {
-		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-		for(SimpleGrantedAuthority simpleGrantedAuthority : authorities){
-			System.out.println(simpleGrantedAuthority.getAuthority());
-		}
 		return new ResponseEntity<Company>(this.companyService.update(uDTO), HttpStatus.OK);
 	}
 

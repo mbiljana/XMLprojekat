@@ -28,7 +28,7 @@ public class User {
     private String gender;
     private String profilePicture;
     //is the profile private(true) or public(false)
-    private boolean isPrivate;
+    private boolean isPrivate=true;
     //accounts this user follows
     private List<String> following;//lista username-va
     //follow request from other users

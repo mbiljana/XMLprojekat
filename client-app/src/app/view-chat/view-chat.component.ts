@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Message} from "../model/message";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MessagingService} from "../../service/messaging.service";
 import {MessageDTO} from "../model/MessageDTO";
 
@@ -22,7 +22,7 @@ export class ViewChatComponent implements OnInit {
   sender: string;
   reciever: string;
 
-  constructor(private route: ActivatedRoute, private messagingService:MessagingService) {
+  constructor(private route: ActivatedRoute, private messagingService:MessagingService,private router:Router) {
     this.messToSend = new MessageDTO({
       senderUsername: '',
       recieverUsername: '',
@@ -47,6 +47,7 @@ export class ViewChatComponent implements OnInit {
     this.messToSend.recieverUsername = this.route.snapshot.params['id'];
     this.messToSend.message = this.msg;
     this.messagingService.sendMessage(this.messToSend).subscribe(res => this.sendMsg = res);
+    window.location.reload();
   }
 
 }
