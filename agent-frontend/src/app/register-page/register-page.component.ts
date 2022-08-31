@@ -79,6 +79,7 @@ export class RegisterPageComponent implements OnInit {
       this.registrationRequest.email = this.newUser.email;
       this.registrationRequest.mobile = this.newUser.mobile;
       this.registrationService.registerUser(this.registrationRequest).subscribe(res => this.retUser = res);
+      this.router.navigate(['sign-in'])
     } else {
       this.error = "passwords are not equal";
     }

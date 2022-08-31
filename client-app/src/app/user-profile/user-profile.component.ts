@@ -175,6 +175,8 @@ export class UserProfileComponent implements OnInit {
         this.profile=res;
         //this.a(res.user.blocked);
         console.log(res.user.profileType)
+
+        console.log("ceo rpofil",res)
         this.isUserPublicAndIsInFollowingWithLoginUser(res);
         this.ifDTO.id2 = res.user.id;
         this.profileType=res.user.profileType;
@@ -206,6 +208,8 @@ export class UserProfileComponent implements OnInit {
   }
   isUserFollowingWithLOginUser(listsFollowers:string[]):boolean{
     var usernameLoginUser=sessionStorage.getItem('username');
+    console.log("ovo je username od ulogovanog",usernameLoginUser)
+    console.log(listsFollowers)
     for(var val of listsFollowers){
       if(val==usernameLoginUser){
         return true;

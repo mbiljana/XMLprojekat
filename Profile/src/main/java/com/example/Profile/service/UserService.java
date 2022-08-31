@@ -9,14 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Profile.model.User;
+import com.example.Profile.repository.ProfileRepository;
 import com.example.Profile.repository.UserRepository;
 
 @Service
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-
-
+	@Autowired
+	private ProfileRepository profileRepository;
 
 
 	public List<User> findByFirstNameAndLastName(User user) {
@@ -97,6 +98,13 @@ public class UserService {
 		userBlocking.getBlocked().add(userBlockedUsername);
 		userRepository.save(userBlocked);
 		userRepository.save(userBlocking);
+		
+		Profile profileBlocking=this.profileRepository.findById(userBlocking.getId()).get();
+		Profile profileBlocked=this.profileRepository.findById(userBlocked.getId()).get();
+		profileBlocking.setUser(userBlocking);
+		profileBlocked.setUser(userBlocked);
+		this.profileRepository.save(profileBlocking);
+		this.profileRepository.save(profileBlocked);
 		String userBl = userBlocked.getUsername();
 		return userBl;
 	}
@@ -164,6 +172,12 @@ public class UserService {
 			this.userRepository.save(followerUser);
 			this.userRepository.save(toFollowUser);
 			userRepository.save(toFollowUser);
+			Profile followerProfile=this.profileRepository.findById(followerUser.getId()).get();
+			Profile toFollowProfile=this.profileRepository.findById(toFollowUser.getId()).get();
+			followerProfile.setUser(followerUser);
+			toFollowProfile.setUser(toFollowUser);
+			this.profileRepository.save(followerProfile);
+			this.profileRepository.save(toFollowProfile);
 			return userRepository.save(followerUser);
 	}
 

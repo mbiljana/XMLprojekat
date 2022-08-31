@@ -103,12 +103,12 @@ public class MessageService {
 
 
 
-        Notification notification = new Notification(message,date, userReciever.getUsername());
+        Notification notification = new Notification(message,date, userSender.getUsername());
         this.notificationService.saveNotif(notification);
         List<Notification> not = new ArrayList<>();
         not.add(notification);
-        userSender.getMessagesNotifications().add(notification);
-        this.userRepository.save(userSender);
+        userReciever.getMessagesNotifications().add(notification);
+        this.userRepository.save(userReciever);
         return  message;
     }
 

@@ -9,7 +9,7 @@
     <h3>{{profileType}} PROFILE</h3>
 
     <div class="text-center" *ngIf="showIfuserIsLongin">
-      <button *ngIf="!alreadyFollowing" class="btn btn-primary" (click)="followUser()" onClick="window.location.reload()" >Follow<mat-icon>person_add</mat-icon></button>
+      <button *ngIf="!alreadyFollowing" class="btn btn-primary" (click)="followUser()" >Follow<mat-icon>person_add</mat-icon></button>
     <button *ngIf="alreadyFollowing" class="btn" >Following</button>
 
     </div>

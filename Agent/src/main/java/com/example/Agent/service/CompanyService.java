@@ -67,6 +67,7 @@ public class CompanyService {
 		company.setDescription(editedCompany.getDescription());
 		company.setMobile(editedCompany.getMobile());
 		company.setEmail(editedCompany.getEmail());
+		company.setUsername(editedCompany.getUsername());
 		company.setName(editedCompany.getName());
 		if (company == null) {
 			throw new IllegalStateException("User does not exist!");

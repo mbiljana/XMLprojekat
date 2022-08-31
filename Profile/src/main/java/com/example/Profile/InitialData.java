@@ -55,58 +55,75 @@ public class InitialData {
 	
 	@PostConstruct
 	public void init() {
-
+		
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		//u following treba da stoji lana99, da bi se videli postovi, posto samo za nju postoje postovi
-		following.add("lana");
 		
 		List<String> following1 = new ArrayList<>();
 		following1.add("marko99");
 		
 		List<String> following_marko=new ArrayList<>();
 		following_marko.add("lana");
-
+		
+		List<String> following_stef=new ArrayList<>();
+		following_stef.add("lana99");
+		
+		List<String> following_maja=new ArrayList<>();
+		
+		List<String> following_admin=new ArrayList<>();
+///////////////////follow requests/////////////////////////
 		List<String> followRequests1 = new ArrayList<>();
 		followRequests1.add("maja");
 		
 		List<String> followRequests2 = new ArrayList<>();
 		followRequests2.add("maja");
-		followRequests2.add("stef");
 		
 		List<String> followRequests3 = new ArrayList<>();
-		followRequests2.add("lana");
 		followRequests2.add("lana99");
-
+		
+		List<String> followRequests3_stef=new ArrayList<>();
+		followRequests3_stef.add("lana");
+		
+		List<String> followRequests_public=new ArrayList<>();
+		
+		List<String> followRequests_admin=new ArrayList<>();
+		/////////////////////////blocked///////////////////////
 		List<String> blocked1 = new ArrayList<>();
-		blocked1.add("lana99");
-		List<String> blocked2 = new ArrayList<>();
-		blocked2.add("lana");
-		List<String> blocked3 = new ArrayList<>();
-		blocked3.add("lana");
-		List<String> blocked4 = new ArrayList<>();
-		blocked4.add("marko99");
-		List<String> blocked5 = new ArrayList<>();
-		blocked5.add("admin");
-		List<String> blocked6 = new ArrayList<>();
-		blocked6.add("marko99");
+        blocked1.add("lana99");
+        
+        List<String> blocked2 = new ArrayList<>();
+
+        List<String> blocked3 = new ArrayList<>();
+        
+        List<String> blocked4 = new ArrayList<>();
+        blocked4.add("marko99");
+        
+        List<String> blocked5 = new ArrayList<>();
+        blocked5.add("admin");
+        
+        List<String> blocked6 = new ArrayList<>();
+        blocked6.add("marko99");
+        
+        List<String> blocked_maja=new ArrayList<>();
+        
+        List<String> blocked_admin=new ArrayList<>();
 	//komentar
 		User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",ProfileType.PRIVATE,following1, followRequests1, blocked1, "2000-10-10");
 		userRepository.save(u1);
 		
-		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests2, blocked2, "1997-05-05");
+		User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@hotmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",ProfileType.PUBLIC,following, followRequests_public, blocked2, "1997-05-05");
 		userRepository.save(u2);
 		
 		User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",ProfileType.PRIVATE,following_marko, followRequests3, blocked3, "2000-02-02");
 		userRepository.save(u3);
 		
-		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked4, "2003-03-03");
+		User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",ProfileType.PRIVATE,following_stef, followRequests3_stef, blocked4, "2003-03-03");
 		userRepository.save(u4);
 
-		User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",ProfileType.PUBLIC,following, followRequests3, blocked5,"1989-08-08");
+		User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",ProfileType.PUBLIC,following_maja, followRequests_public, blocked_maja,"1989-08-08");
 		userRepository.save(u5);
 		
-		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",ProfileType.PRIVATE,following, followRequests3, blocked6,"1989-08-08");
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",ProfileType.PRIVATE,following_admin, followRequests_admin, blocked_admin,"1989-08-08");
 		userRepository.save(u6);
 		///////////////////////////////////COMPANY///////////////////////////////////////////////////////////
 		Company c1=new Company((long) 1, "m&i", "123","M&I", "m&i@gmail.com", "83498234923", "/assets/companyPicture/company1.jpeg");

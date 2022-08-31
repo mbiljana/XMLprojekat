@@ -39,45 +39,46 @@ public class InitialData {
     public void init(){
 		List<String> following = new ArrayList<>();
 		following.add("stef");
-		//u following treba da stoji lana99, da bi se videli postovi, posto samo za nju postoje postovi
-		following.add("lana");
 		
 		List<String> following1 = new ArrayList<>();
 		following1.add("marko99");
 		
 		List<String> following_marko=new ArrayList<>();
 		following_marko.add("lana");
-
+		
+		List<String> following_stef=new ArrayList<>();
+		following_stef.add("lana99");
+		
+		List<String> following_maja=new ArrayList<>();
+		
+		List<String> following_admin=new ArrayList<>();
+///////////////////follow requests/////////////////////////
 		List<String> followRequests1 = new ArrayList<>();
 		followRequests1.add("maja");
 		
 		List<String> followRequests2 = new ArrayList<>();
 		followRequests2.add("maja");
-		followRequests2.add("stef");
 		
 		List<String> followRequests3 = new ArrayList<>();
-		followRequests2.add("lana");
 		followRequests2.add("lana99");
-    	
+		
+		List<String> followRequests3_stef=new ArrayList<>();
+		followRequests3_stef.add("lana");
+		
+		List<String> followRequests_public=new ArrayList<>();
+		
+		List<String> followRequests_admin=new ArrayList<>();
+		///////////////////////////////////////////
         List<Message> mess = new ArrayList<>();
         List<Message> mess2 = new ArrayList<>();
         List<Notification> notifs = new ArrayList<>();
         
         
-        //requests
-        List<String> req = new ArrayList<>();
-        req.add("stef");
-        req.add("lana");
-        
-        //connections
-        List<String> conn = new ArrayList<>();
-        conn.add("marko99");
  
-        //conn.add("maja");
         Date time = new Date();
+       
         
-        
-        /////////////messages
+        /////////////messages//////////////////////////////
         Message m1 = new Message("50","maja","marko99","hi",time);
         messageService.save(m1);
 
@@ -86,42 +87,36 @@ public class InitialData {
 
         Message m3 = new Message("52","lana99","marko99","hej",time);
         messageService.save(m3);
-
-        //Message m4 = new Message("53","lana99","kica","sta ima",time);
-        //messageService.save(m4);
-
-
+        
         Message m5 = new Message("53","marko99","lana99","sta ima",time);
         messageService.save(m5);
-
+///////////////////////////////////blocking lists////////////////////////////////
         List<String> blocked1 = new ArrayList<>();
         blocked1.add("lana99");
+        
         List<String> blocked2 = new ArrayList<>();
-        blocked2.add("lana");
+
         List<String> blocked3 = new ArrayList<>();
-        blocked3.add("lana");
+        
         List<String> blocked4 = new ArrayList<>();
         blocked4.add("marko99");
+        
         List<String> blocked5 = new ArrayList<>();
         blocked5.add("admin");
+        
         List<String> blocked6 = new ArrayList<>();
         blocked6.add("marko99");
-
-
-
-        //Notification notif1 = new Notification((long)1, m5, time, "bika");
-        //Notification notif2 = new Notification((long)2, m3, time, "kica");
-        //this.notificationService.save(notif1);
-        //this.notificationService.save(notif2);
-        //notifs.add(notif1);
-        //notifs.add(notif2);
+        
+        List<String> blocked_maja=new ArrayList<>();
+        
+        List<String> blocked_admin=new ArrayList<>();
 
         User u1=new User((long)1,"lana","123","Lana","Lanic","lana@gmail.com","3242476777","female","/assets/profilePicture/profile1.jpeg",true,following1,followRequests1,mess,mess2,blocked1,notifs,notifs);
-        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",false,following,followRequests2,mess,mess2,blocked2,notifs,notifs);
+        User u2=new User((long)2,"lana99","123","Lana","Lanic","lanal@gmail.com","3242476777","female","/assets/profilePicture/profile2.jpeg",false,following,followRequests_public,mess,mess2,blocked2,notifs,notifs);
         User u3=new User((long)3,"marko99","123","Marko","Markovic","markom@gmail.com","3242476777","male","/assets/profilePicture/profile3.jpeg",true,following_marko,followRequests3,mess,mess2,blocked3,notifs,notifs);
-        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,following,followRequests3,mess,mess2,blocked4,notifs,notifs);
-        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",true,following,followRequests3,mess,mess2,blocked5,notifs,notifs);
-		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,following,followRequests3,mess,mess2,blocked6,notifs,notifs);
+        User u4=new User((long)4,"stef","123","Stefan","Stefanovic","stefans@gmail.com","3242476777","male","/assets/profilePicture/profile4-man.jpeg",true,following_stef,followRequests3_stef,mess,mess2,blocked4,notifs,notifs);
+        User u5=new User((long)5,"maja","123","Maja","Majkovic","maja@gmail.com","3242476777","female","/assets/profilePicture/profile5-female.jpeg",false,following_maja,followRequests_public,mess,mess2,blocked_maja,notifs,notifs);
+		User u6=new User((long)6,"admin", "123","Nikola","Nikolic", "admin@example.com","3242476777","female","/assets/profilePicture/profile7-admin.jpeg",true,following_admin,followRequests_admin,mess,mess2,blocked_admin,notifs,notifs);
 
 		
 		
